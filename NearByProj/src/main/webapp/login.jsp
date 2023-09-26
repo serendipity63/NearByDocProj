@@ -43,8 +43,8 @@
     </style>
 </head>
 <body>
-<% pageContext.include("header.jsp"); %>
-
+<%-- <% pageContext.include("header.jsp"); %>
+ --%>
 <center>
         <div class="header">
             <h3>로그인</h3>
