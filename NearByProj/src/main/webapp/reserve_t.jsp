@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>니어닥병원마이페이지</title>
+<title>Insert title here</title>
 <style>
 
 	body {

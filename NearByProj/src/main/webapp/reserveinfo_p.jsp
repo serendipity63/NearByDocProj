@@ -1,65 +1,93 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>니어닥병원마이페이지</title>
+<title>니어닥환자조회</title>
+</head>
 <style>
+body {
+	margin: 0 auto;
+	position:absolute;
+}
 
-	body {
-            margin: 0 auto;
-            
-        }
+.header {
+	height: 100px;
+	color: blue;
+	left: 100px;
+}
 
-        .header {
-            height: 100px;
-            color:blue;
-          	left:100px;
-        }
+.row {
+	height: 30px;
+}
 
-        .row {
-            height: 20px;
-        }
+.title {
+	font-weight: bold;
+	background-color: lightblue;
+	width: 200px;
+}
 
-        .title {
-            font-weight: bold;
-            background-color: lightblue;
-            width:100px;
-        }
-        .colume {
-            padding:5px;
-            width: 120px;
-            float: left;
-        }
+.colume {
+	padding: 5px;
+	width: 140px;
+	float: left;
+}
 
-        .container {
-            /* padding:10px; */
-            border: 1px solid;
-            width: 1300px;
-            margin-left:200px;
-        }
+.container {
+	/* padding:10px; */
+	border: 1px solid;
+	width: 1500px;
+	margin-left: 400px;
+}
 
-        .input {
-            float: left;
-        }
+.input {
+	float: left;
+}
 
-        input[type='submit'] {
-            font-weight: bold;
-            width:120px;
-            background-color: lightgrey;
-        }
+
+#reserveform{
+	width:700px;
+	margin-right:500px;
+
+	
+}
+select{
+	width:150px;
+	height:30px;
+}
+input{
+	width:300px;
+	height:30px;
+}
+button{
+	width:150px;
+	height:30px;
+	background-color:#0099ff;
+}
 
 </style>
-</head>
-
 <body>
 <% pageContext.include("sidemenu.jsp");%>
+	
 	<center>
         <form>
+        	
             <div class="header">
-                <h1>오늘의 예약</h1><br><br>
+                <h1>환자별 조회</h1><br><br>
             </div>
+            <div id="reserveform">
+
+		
+			<select name="patient">
+				<option value="patient">환자명</option>
+				<option value="number">주민등록번호</option>
+			</select> <input type="text">
+			<button onclick="#">검색</button>
+		
+
+			</div>
+			<br><br>
             <div class="container" id="container">
                 <div class="row">
                     <div class="title colume">일자</div>
@@ -105,6 +133,5 @@
             </div>
         </form>
     </center>
-	
 </body>
 </html>

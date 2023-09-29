@@ -4,62 +4,85 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>니어닥병원마이페이지</title>
+<title>일정으로 환자 조회</title>
+</head>
 <style>
+body {
+	margin: 0 auto;
+}
 
-	body {
-            margin: 0 auto;
-            
-        }
+.header {
+	height: 100px;
+	color: blue;
+	left: 100px;
+}
 
-        .header {
-            height: 100px;
-            color:blue;
-          	left:100px;
-        }
+.row {
+	height: 20px;
+}
 
-        .row {
-            height: 20px;
-        }
+.title {
+	font-weight: bold;
+	background-color: lightblue;
+	width: 200px;
+}
 
-        .title {
-            font-weight: bold;
-            background-color: lightblue;
-            width:100px;
-        }
-        .colume {
-            padding:5px;
-            width: 120px;
-            float: left;
-        }
+.colume {
+	padding: 5px;
+	width: 140px;
+	float: left;
+}
 
-        .container {
-            /* padding:10px; */
-            border: 1px solid;
-            width: 1300px;
-            margin-left:200px;
-        }
+.container {
+	/* padding:10px; */
+	border: 1px solid;
+	width: 1500px;
+	margin-left: 200px;
+}
 
-        .input {
-            float: left;
-        }
+.input {
+	float: left;
+}
 
-        input[type='submit'] {
-            font-weight: bold;
-            width:120px;
-            background-color: lightgrey;
-        }
+input{
+	width:300px;
+	height:30px;
+
+}
+
+#reserveform{
+	width:800px;
+	margin-right:500px;
+	background-img : url('images/calendar.png');
+	
+}
+button{
+	width:100px;
+	height:30px;
+	background-color:#0099ff;
+}
 
 </style>
-</head>
-
 <body>
 <% pageContext.include("sidemenu.jsp");%>
+	
 	<center>
         <form>
+        	
             <div class="header">
-                <h1>오늘의 예약</h1><br><br>
+                <h1>일정별 조회</h1><br><br>
             </div>
+            <div id="reserveform">
+
+		
+			<input type="text" placeholder="0000-00-00"/>
+			<span>-</span>
+			<input type="text" placeholder="0000-00-00">
+			<button onclick="#">검색</button>
+		
+
+			</div>
+			<br><br>
             <div class="container" id="container">
                 <div class="row">
                     <div class="title colume">일자</div>
@@ -105,6 +128,5 @@
             </div>
         </form>
     </center>
-	
 </body>
 </html>
