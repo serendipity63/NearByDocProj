@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%><!--  uri core를 c로 설정 -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,7 +10,7 @@
 <style>
 body {
 	margin: 0 auto;
-	position:absolute;
+	position:relative;
 }
 
 .header {
@@ -55,10 +56,12 @@ body {
 select{
 	width:150px;
 	height:30px;
+	
 }
 input{
 	width:300px;
 	height:30px;
+	
 }
 button{
 	width:150px;

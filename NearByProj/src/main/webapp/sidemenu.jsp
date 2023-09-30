@@ -15,7 +15,8 @@
 }
 body{
 	height:1000px;
-	background-color:rgb(213,238,255);}
+	background-color:rgb(213,238,255);
+	}
 
 
 #iconbox {
@@ -46,6 +47,7 @@ h2 {
 	height:1000px;
 	background-color:lightblue;
 	width:300px;
+	position:relative;
 }
 #list>p{
 	
@@ -79,7 +81,7 @@ h2 {
 			<h2><img src="images/h.png">니어바이닥의원</h2>
 			<h5>hospital@email.com</h5>
 		<div id="list">
-			<p><a href="hmainpage.jsp">홈</a></p>			
+			<p><a href="myPageHeader.html">홈</a></p>			
 			<p><a href="mrecord.jsp">조회</a></p>
 			<p><a href="reserveinfo_d.jsp">일정</a></p>
 			<p><a href="reserveinfo_p.jsp">환자</a></p>
