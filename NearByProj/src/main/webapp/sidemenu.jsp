@@ -72,8 +72,8 @@ h2 {
 			<h2>병원마이페이지</h2>
 			<br>
 	
-			<h2><img src="webapp/home.png">니어바이닥의원</h2>
-			<h5>hospital@email.com</h5>
+			<h2><img src="webapp/image/home.png">니어바이닥의원</h2>
+			<h5>nearbydoc@email.com</h5>
 		<div id="list">
 			<p><a href="#">홈</a></p>			
 			<h2>조회</h2>

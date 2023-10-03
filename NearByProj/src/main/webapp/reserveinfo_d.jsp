@@ -78,7 +78,7 @@ body {
 	height:100px;
 }
 input{
-	width:200px;
+	width:300px;
 	height:30px;
 
 }
