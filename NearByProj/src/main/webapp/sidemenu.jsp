@@ -5,14 +5,12 @@
 <html>
 <head>
 <title>니어닥병원마이페이지</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
-<style>
-*{
-	font-family: 'Nanum Gothic', sans-serif;
 
-}
+
+
+
+<style>
+
 body{
 	height:1000px;
 	background-color:rgb(213,238,255);
@@ -29,11 +27,7 @@ body{
 	height: 100px;
 }
 
-#footerbox {
-	margin: 0 auto;
-	height: 1000px;
-	position: absolute;
-}
+
 
 
 
@@ -68,7 +62,7 @@ h2 {
 <body>
 	<div id="iconbox">
 
-		<a href="hmypage.jsp"> <img src="images/icon.png">
+		<a href="hmypage.jsp"> <img src="/webapp/image/logo.jpg" width:100px; height:100px;>
 		</a>
 
 	</div>
@@ -78,17 +72,17 @@ h2 {
 			<h2>병원마이페이지</h2>
 			<br>
 	
-			<h2><img src="images/h.png">니어바이닥의원</h2>
+			<h2><img src="webapp/home.png">니어바이닥의원</h2>
 			<h5>hospital@email.com</h5>
 		<div id="list">
-			<p><a href="myPageHeader.html">홈</a></p>			
-			<p><a href="mrecord.jsp">조회</a></p>
+			<p><a href="#">홈</a></p>			
+			<h2>조회</h2>
 			<p><a href="reserveinfo_d.jsp">일정</a></p>
 			<p><a href="reserveinfo_p.jsp">환자</a></p>
 			<br>
 			<br>
 			<p><a href="reserve_t.jsp">오늘의 예약내역</a></p>
-			<p><a href="hcorrection.jsp">병원 정보</a></p>
+			<p><a href="hinfo.jsp">병원 정보</a></p>
 			<p><a href="allreserveinfo.jsp">전체 조회</a></p>
 			
 	
@@ -102,7 +96,8 @@ h2 {
 
 
 
-	</div>
+		</div>
+		
 		<footer>
 			
 		

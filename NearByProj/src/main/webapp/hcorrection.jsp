@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%><!--  uri core를 c로 설정 -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -55,7 +56,7 @@ table{
 
 
 input{
-	width:300px;
+	width:200px;
 	height:30px;
 	
 
@@ -76,9 +77,7 @@ input{
 	margin-top:-40px;
 	height:50px;
 }
-.reserveform2 input{
-	background-img : url('images/calendar.png');
-}
+
 select{
 	width:200px;
 	height:30px;
@@ -119,32 +118,32 @@ select{
                <table border="1" id="title">
                <tr>
                <td>진료 과목</td>
-               <td>이비인후과</td>
+               <td><input type="text" placeholder="이비인후과"/></td>
                </tr>
                <tr>
                <td>병원명</td>
-               <td>니어바이닥의원</td>
+               <td><input type="text" placeholder="니어바이닥의원"/></td>
                </tr>
                <tr>
                <td>E-Mail</td>
-               <td>ch2488@naver.com</td>
+               <td><input type="text" placeholder="ch2488@naver.com"/></td>
                </tr>
                <tr>
                <td>전화번호</td>
-               <td>02-1234-5678</td>
+               <td><input type="text" placeholder="02-1234-5678"/></td>
                </tr>
                <tr>
                <td>주소</td>
-               <td>서울시 금천구 호서대벤처타워</td>
+               <td><input type="text" placeholder="서울시 금천구 호서대벤처타워 9층"/></td>
                </tr>
                
                <tr>
                <td>진료시간</td>
-               <td>09:00~18:00</td>
+               <td><input type="text" placeholder="09:00~18:00"/></td>
                </tr>
                <tr>
                <td>점심시간</td>
-               <td>13:00~14:00</td>
+               <td><input type="text" placeholder="12:00~14:00"/></td>
                </tr>
                
                </table>
