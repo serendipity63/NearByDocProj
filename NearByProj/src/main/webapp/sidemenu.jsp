@@ -13,7 +13,7 @@
 
 body{
 	height:1000px;
-	background-color:rgb(213,238,255);
+	background-color:lightgray;
 	}
 
 
@@ -52,7 +52,7 @@ h2 {
 }
 #list>p>a{
 	text-decoration:none;
-	font-size:30px;
+	font-size:15px;
 	color:black;
 	
 }
@@ -72,7 +72,7 @@ h2 {
 			<h2>병원마이페이지</h2>
 			<br>
 	
-			<h2><img src="webapp/image/home.png">니어바이닥의원</h2>
+			<h2><img src="/image/home.png">니어바이닥의원</h2>
 			<h5>nearbydoc@email.com</h5>
 		<div id="list">
 			<p><a href="#">홈</a></p>			
