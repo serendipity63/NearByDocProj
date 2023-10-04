@@ -1,10 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%><!--  uri core를 c로 설정 -->
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>오늘의 예약</title>
 <style>
 
 	body {
@@ -19,7 +20,7 @@
         }
 
         .row {
-            height: 20px;
+            height: 30px;
         }
 
         .title {
@@ -34,21 +35,15 @@
         }
 
         .container {
-            /* padding:10px; */
+            padding:10px; 
             border: 1px solid;
             width: 1300px;
             margin-left:200px;
+            
         }
 
-        .input {
-            float: left;
-        }
 
-        input[type='submit'] {
-            font-weight: bold;
-            width:120px;
-            background-color: lightgrey;
-        }
+      
 
 </style>
 </head>
