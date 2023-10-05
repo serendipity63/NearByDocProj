@@ -100,7 +100,7 @@ button{
 
 </style>
 <body>
-<% pageContext.include("sidemenu.jsp");%>
+<% pageContext.include("main.jsp");%>
 	
 	<center>
         <form action="reserveinfo" method="post">

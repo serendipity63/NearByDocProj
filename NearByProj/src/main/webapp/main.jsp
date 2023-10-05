@@ -13,13 +13,15 @@
 
 body{
 	height:1000px;
-	background-color:lightgray;
+	background-color:rgb(245,245,245);
 	}
 
 
-#iconbox {
-	position: relative;
-	width:200px;
+#header {
+	
+	width:2000px;
+	height:100px;
+	background-color:rgb(25,25,112);
 }
 
 #iconbox.img {
@@ -39,7 +41,7 @@ h2 {
 	margin-height:100px;
 	float: left;
 	height:1000px;
-	background-color:lightblue;
+	background-color:white;
 	width:300px;
 	position:relative;
 }
@@ -60,22 +62,24 @@ h2 {
 </style>
 </head>
 <body>
-	<div id="iconbox">
+	<div id="header">
 
-		<a href="hmypage.jsp"> <img src="/webapp/image/logo.jpg" width:100px; height:100px;>
-		</a>
+		    <a href="reserve_t.jsp"><img src="image?file=icon.png"  width="100px" height="100px" alt="로고 이미지"/></a>
+		
 
 	</div>
 
 	<div id="sidemenubox">
 		
-			<h2>병원마이페이지</h2>
-			<br>
+			
+			
 	
-			<h2><img src="/image/home.png">니어바이닥의원</h2>
+			<h2><img src="image?file=home.png" width="50px" height="50px">니어바이닥의원</h2><br>
+			
+			<h4>로그아웃</h4><br>
 			<h5>nearbydoc@email.com</h5>
 		<div id="list">
-			<p><a href="#">홈</a></p>			
+			<p><a href="reserve_t.jsp">홈</a></p>			
 			<h2>조회</h2>
 			<p><a href="reserveinfo_d.jsp">일정</a></p>
 			<p><a href="reserveinfo_p.jsp">환자</a></p>
