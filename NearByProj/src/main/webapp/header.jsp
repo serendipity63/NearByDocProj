@@ -1,12 +1,26 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%
-String id = (String) session.getAttribute("id");
-%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link
+	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap"
+	rel="stylesheet">
+<title>NearByDocHeader</title>
+
 <style>
 * {
-	margin: 0 auto;
+	margin: 0;
+	padding: 0;
 }
 
 a {
@@ -14,31 +28,70 @@ a {
 }
 
 .outerDiv {
-	width: 100%;
-	height: 100px;
-	background-color: orange;
+	width: 430px;
+	height: 212px;
+	background-color: #CFE8F7;
+	margin: 0 auto;
+	text-align: center;
+	padding: 10px 0;
+	position: relative;
+	margin-top: 0;
+}
+
+.outerDiv .logo img {
+	width: 150px;
+	height: 115px;
+	vertical-align: middle;
+	display: inline-block;
+	margin-right: 10px;
+	margin-top: 60px;
+}
+
+.outerDiv .loginJoin {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+}
+
+.outerDiv .loginJoin a {
+	margin: 0 10px;
+	background-color: #fff;
+	color: #2188C4;
+	width: 70px;
+	height: 29px;
+	line-height: 29px;
+	border-radius: 20px;
+	text-align: center;
+	display: inline-block;
+	font-family: "Noto Sans kr", sans-serif;
+	transition: background-color 0.3s;
+}
+
+.outerDiv .loginJoin a:hover {
+	background-color: #0056b3;
 }
 </style>
-<div class="outerDiv">
-	<i><h1 style="text-align: center;">kosta bank</h1></i><br>
-	<div class="innerDiv">
-		<div style="float: left; margin-right: 10px;">
-			<a href="makeaccount">계좌개설 </a> &nbsp;&nbsp; 
-			<a href="deposit">입금 </a> &nbsp;&nbsp; 
-			<a href="withdraw">출금 </a> &nbsp;&nbsp; 
-			<a href="accountinfo">계좌조회 </a> &nbsp;&nbsp; 
-			<a href="allaccountinfo">전체계좌조회 </a>&nbsp;&nbsp;
-		</div>
-		<div style="float: right; margin-right: 10px;">
-			<%
-			if (id == null) {
-			%>
-			<a href="login">로그인</a> &nbsp;&nbsp;
-			<%} else { %>
-			<%=id%>님 환영합니다&nbsp;&nbsp; 
-			<a href="logout">로그아웃</a>&nbsp;&nbsp;
-			<%} %>
-			<a href="join">회원가입</a>&nbsp;&nbsp;
+</head>
+
+<body>
+	<!-- 헤더 -->
+	<div class="outerDiv">
+		<a href="main" class="logo"><img src="image?file=logo.png"
+			alt="로고 이미지"></a>
+		<div class="loginJoin">
+			<c:choose>
+				<c:when test="${empty user}">
+					<a href="login">로그인</a>
+				</c:when>
+				<c:otherwise>
+					<b><a href="mypage">마이페이지</a></b>
+					<a href="logout">로그아웃</a>
+				</c:otherwise>
+			</c:choose>
+			<a href="join">회원가입</a>
 		</div>
 	</div>
-</div>
+
+</body>
+
+</html>

@@ -1,18 +1,39 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+    
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap"
+        rel="stylesheet">
     <title>Select Type</title>
     <style>
-        /* CSS 스타일링 작성 */
+        body {
+            font-family: 'Noto Sans kr', sans-serif;
+
+        }
+
+        li {
+            list-style: none;
+        }
     </style>
 </head>
+
 <body>
-    <h2>진료과목을 선택하세요:</h2>
+    <h2>진료과목을 선택하세요</h2>
     <ul>
         <li><input type="checkbox" name="type" value="내과"> 내과</li>
+        <li><input type="checkbox" name="type" value="내과"> 정형외과</li>
         <li><input type="checkbox" name="type" value="외과"> 외과</li>
+        <li><input type="checkbox" name="type" value="내과"> 피부과</li>
+        <li><input type="checkbox" name="type" value="내과"> 산부인과</li>
+        <li><input type="checkbox" name="type" value="내과"> 비뇨의학과</li>
+        <li><input type="checkbox" name="type" value="내과"> 정신건강의학과</li>
         <li><input type="checkbox" name="type" value="이비인후과"> 이비인후과</li>
         <li><input type="checkbox" name="type" value="소아과"> 소아과</li>
         <li>
@@ -20,7 +41,6 @@
             기타
             <input type="text" id="otherTypeInput" placeholder="기타 진료과목 입력" disabled>
         </li>
-        <!-- 원하는 진료과목 목록을 추가하세요 -->
     </ul>
     <button onclick="selectTypes()">선택 완료</button>
     <script>
@@ -58,6 +78,7 @@
             window.close(); // 새로운 페이지 닫기
         }
     </script>
-</body>
-</html>
 
+</body>
+
+</html>
