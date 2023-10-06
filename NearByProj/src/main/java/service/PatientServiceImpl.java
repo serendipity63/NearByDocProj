@@ -19,13 +19,15 @@ public class PatientServiceImpl implements PatientService {
 		if (patient.getPpassword().equals(ppassword) == false)
 			throw new Exception("비밀번호 오류");
 
-		return null;
+		return patient;
 	}
 
 	@Override
 	public void patientjoin(Patient patient) throws Exception {
-		// TODO Auto-generated method stub
-
+		Patient spatient = patientDao.selectPatient(patient.getPemail());
+		if (spatient != null)
+			throw new Exception("이메일 중복오류");
+		patientDao.insertPatient(patient);
 	}
 
 }

@@ -11,7 +11,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap"
         rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic" rel="stylesheet">
-	<link href="joinh.css" rel="stylesheet" type="text/css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
     
@@ -205,7 +204,7 @@ input[type='submit']:hover {
                     <input type="submit" value="병 원 등 록">
                 </div>
                 <div>
-                    니어바이닥 병원회원이신가요? <a href="login">로그인</a>
+                    니어바이닥 병원회원이신가요? <a href="hospitalmain">로그인</a>
                 </div>
             </form>
         </div>

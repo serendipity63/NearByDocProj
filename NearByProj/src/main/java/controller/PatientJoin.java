@@ -56,7 +56,8 @@ public class PatientJoin extends HttpServlet {
 			patientService.patientjoin(patient);
 			request.getRequestDispatcher("login.jsp").forward(request, response);
 		} catch (Exception e) {
-			e.printStackTrace();
+			request.setAttribute("err", e.getMessage());
+			request.getRequestDispatcher("error404.jsp").forward(request, response); // 에러 페이지 따로 만들거에요
 		}
 	}
 

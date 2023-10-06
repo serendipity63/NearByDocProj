@@ -9,21 +9,21 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import dto.Patient;
-import service.PatientService;
-import service.PatientServiceImpl;
+import dto.Hospital;
+import service.HospitalService;
+import service.HospitalServiceImpl;
 
 /**
- * Servlet implementation class Login
+ * Servlet implementation class HospitalMain
  */
-@WebServlet("/login")
-public class Login extends HttpServlet {
+@WebServlet("/hospitalmain")
+public class HospitalMain extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public Login() {
+	public HospitalMain() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -34,7 +34,8 @@ public class Login extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		request.getRequestDispatcher("login.jsp").forward(request, response);
+		request.getRequestDispatcher("hospitalmain.jsp").forward(request, response);
+
 	}
 
 	/**
@@ -44,16 +45,15 @@ public class Login extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
-		String pemail = request.getParameter("pemail");
-		String ppassword = request.getParameter("ppassword");
+		String hemail = request.getParameter("hemail");
+		String hpassword = request.getParameter("hpassword");
 
 		try {
-			PatientService patientService = new PatientServiceImpl();
-			Patient patient = patientService.login(pemail, ppassword);
+			HospitalService hospitalService = new HospitalServiceImpl();
+			Hospital hospital = hospitalService.login(hemail, hpassword);
 			HttpSession session = request.getSession();
-			session.setAttribute("user", patient);
-			request.getRequestDispatcher("patientmain.jsp").forward(request, response);
-
+			session.setAttribute("user", hospital);
+			request.getRequestDispatcher("hmypage.jsp").forward(request, response);
 		} catch (Exception e) {
 			request.setAttribute("err", e.getMessage());
 			request.getRequestDispatcher("error.jsp").forward(request, response);

@@ -73,13 +73,13 @@ a {
             
                 <c:choose>
                     <c:when test="${empty user}">
-                        <a href="login">로그인</a> &nbsp;&nbsp;
+                        <a href="hospitalmain">로그인</a> &nbsp;&nbsp;
                     </c:when>
                     <c:otherwise>
                         <b>${user.id}님 환영합니다</b> &nbsp;&nbsp; <a href="logout">로그아웃</a>&nbsp;&nbsp;
                     </c:otherwise>
                 </c:choose>
-                <a href="join">회원가입</a>&nbsp;&nbsp;
+                <a href="hospitaljoin">회원가입</a>&nbsp;&nbsp;
             </div>
         </div>
     </div>
