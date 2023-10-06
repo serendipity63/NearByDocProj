@@ -7,38 +7,49 @@
 <meta charset="UTF-8">
 <title>오늘의 예약</title>
 <style>
-
-	body {
-            margin: 0 auto;
-            
+   		
+	
+        #center{
+        	
+        	margin-left:180px;
+        
         }
 
         .header {
-            height: 100px;
-            color:blue;
-          	left:100px;
+        	padding:10px;
+            height: 120px;
+            color:rgb(25,25,112);
+          	text-align:center;
+          	
+          	
+          	
         }
 
         .row {
             height: 30px;
+            position:relative;
         }
 
         .title {
             font-weight: bold;
-            background-color: lightblue;
+            background-color: rgb(25,25,112);
             width:100px;
         }
         .colume {
             padding:5px;
             width: 120px;
             float: left;
+            color:white;
+            text-align:center;
         }
 
         .container {
-            padding:10px; 
+           	height:100px;
             border: 1px solid;
             width: 1300px;
             margin-left:200px;
+            position:relative;
+           
             
         }
 
@@ -50,8 +61,8 @@
 
 <body>
 <% pageContext.include("main.jsp");%>
-	<center>
-        <form>
+	
+       <div id="center">
             <div class="header">
                 <h1>오늘의 예약</h1><br><br>
             </div>
@@ -69,22 +80,7 @@
                     <div class="title colume">진료완료처리</div>
                 </div>
                 
-           <%--  <%
-               	for(int i=0; i<accs.size(); i++) {
-            %>
-            
-               	<div class="row">
-                    <div class="colume"><%=i+1 %></div>
-                    <div class="colume"><%=accs.get(i).getId() %></div>
-                    <div class="colume"><%=accs.get(i).getName() %></div>
-                    <div class="colume"><%=accs.get(i).getBalance() %></div>
-                    <div class="colume"><%=accs.get(i).getType() %></div>
-                    <div class="colume"><%=accs.get(i).getGrade() %>&nbsp;</div> --%>
-                    
-               
-            <%-- <%
-            	}
-            %>  --%>
+           
             <c:set var="i" value="1"/>
             <c:forEach var="acc" items="${accs }">
             	<div class="row">
@@ -98,8 +94,7 @@
             	</div>
             </c:forEach>
             </div>
-        </form>
-    </center>
+      </div>
 	
 </body>
 </html>

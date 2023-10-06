@@ -20,10 +20,14 @@
 	margin: 0 auto;
 	position:absolute;
 }
+#center{
+	margin:0 auto;
+
+}
 
 .header {
 	height: 100px;
-	color: blue;
+	color: rgb(25,25,112);
 	left: 100px;
 }
 
@@ -33,7 +37,7 @@
 
 .title {
 	font-weight: bold;
-	background-color: lightblue;
+	background-color: rgb(25,25,112);
 	width: 200px;
 }
 
@@ -84,24 +88,25 @@ select{
 }
 #button{
 	float:right;
-	width:130px;
+	width:100px;
 	height:30px;
-	background-color:#0099ff;
+	background-color:rgb(25,25,112);
 	border:5px solid gray;
+	
 
 }
 #button>a{
 	padding:10px;
 	text-decoration:none;
 	color:white;
+	text-align:center;
 }
 
 </style>
 <body>
 <% pageContext.include("main.jsp");%>
 	
-	<center>
-        <form>
+		<div id="center">
         	
             <div class="header">
                 <h1>병원정보</h1><br><br>
@@ -109,7 +114,7 @@ select{
             <div id="reserveform">
 			
 			<div id="button">
-			<a href="hcorrection_after.jsp">수정하기</a>
+				<a href="hinfo.jsp">수정</a>
 			</div>
 
 			</div>
@@ -147,23 +152,7 @@ select{
                </tr>
                
                </table>
-                
-           <%--  <%
-               	for(int i=0; i<accs.size(); i++) {
-            %>
-            
-               	<div class="row">
-                    <div class="colume"><%=i+1 %></div>
-                    <div class="colume"><%=accs.get(i).getId() %></div>
-                    <div class="colume"><%=accs.get(i).getName() %></div>
-                    <div class="colume"><%=accs.get(i).getBalance() %></div>
-                    <div class="colume"><%=accs.get(i).getType() %></div>
-                    <div class="colume"><%=accs.get(i).getGrade() %>&nbsp;</div> --%>
-                    
-               
-            <%-- <%
-            	}
-            %>  --%>
+           
             <c:set var="i" value="1"/>
             <c:forEach var="acc" items="${accs }">
             	<div class="row">
@@ -177,7 +166,6 @@ select{
             	</div>
             </c:forEach>
             </div>
-        </form>
-    </center>
+    </div>
 </body>
 </html>

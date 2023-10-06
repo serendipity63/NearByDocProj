@@ -5,25 +5,26 @@
 <head>
 <meta charset="UTF-8">
 <title>니어닥병원정보</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
+
 </head>
 
 <style>
-*{
-	font-family: 'Nanum Gothic', sans-serif;
 
-}
-	body {
+body {
 	margin: 0 auto;
-	position:absolute;
+
+}
+#center{
+	margin-left:200px;
 }
 
-.header {
+#center.header {
+	text-align:center;
 	height: 100px;
-	color: blue;
-	left: 100px;
+	color:rgb(25,25,112) ;
+	justify-content:center;
+	
+	
 }
 
 .row {
@@ -43,14 +44,15 @@
 }
 
 .container {
-	margin-top:50px;
-
-	width: 1500px;
-	margin-left: 400px;
+	margin: 0 auto;
+	
+	width: 1000px;
+	
 }
 table{
 	width:1000px;
 	height:500px;
+	margin-right:100px;
 }
 
 
@@ -87,7 +89,7 @@ select{
 	float:right;
 	width:130px;
 	height:30px;
-	background-color:#0099ff;
+	background-color:rgb(25,25,112);
 	border:5px solid gray;
 
 }
@@ -101,8 +103,8 @@ select{
 <body>
 <% pageContext.include("main.jsp");%>
 	
-	<center>
-        <form>
+		<div id="center">
+        
         	
             <div class="header">
                 <h1>병원정보</h1><br><br>
@@ -110,7 +112,7 @@ select{
             <div id="reserveform">
 			
 			<div id="button">
-			<a href="hcorrection_after.jsp">수정하기</a>
+			<a href="hcorrection.jsp">수정하기</a>
 			</div>
 
 			</div>
@@ -149,22 +151,7 @@ select{
                
                </table>
                 
-           <%--  <%
-               	for(int i=0; i<accs.size(); i++) {
-            %>
-            
-               	<div class="row">
-                    <div class="colume"><%=i+1 %></div>
-                    <div class="colume"><%=accs.get(i).getId() %></div>
-                    <div class="colume"><%=accs.get(i).getName() %></div>
-                    <div class="colume"><%=accs.get(i).getBalance() %></div>
-                    <div class="colume"><%=accs.get(i).getType() %></div>
-                    <div class="colume"><%=accs.get(i).getGrade() %>&nbsp;</div> --%>
-                    
-               
-            <%-- <%
-            	}
-            %>  --%>
+          
             <c:set var="i" value="1"/>
             <c:forEach var="acc" items="${accs }">
             	<div class="row">
@@ -178,7 +165,7 @@ select{
             	</div>
             </c:forEach>
             </div>
-        </form>
-    </center>
+        </div>
+    
 </body>
 </html>
