@@ -8,6 +8,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import dto.Patient;
+import service.PatientService;
+import service.PatientServiceImpl;
+
 /**
  * Servlet implementation class PatientJoin
  */
@@ -38,8 +42,22 @@ public class PatientJoin extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		request.setCharacterEncoding("utf-8");
+		String pemail = request.getParameter("pemail");
+		String ppassword = request.getParameter("ppassword");
+		String pname = request.getParameter("pname");
+		Integer ptel = Integer.parseInt(request.getParameter("ptel"));
+		Integer pidnum = Integer.parseInt(request.getParameter("pidnum"));
+		String paddress = request.getParameter("paddress");
+		Patient patient = new Patient(pemail, ppassword, pname, ptel, pidnum, paddress);
 
-		doGet(request, response);
+		try {
+			PatientService patientService = new PatientServiceImpl();
+			patientService.patientjoin(patient);
+			request.getRequestDispatcher("login.jsp").forward(request, response);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 }
