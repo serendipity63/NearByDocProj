@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 
 <!DOCTYPE html>
 <html lang="en">
@@ -44,7 +44,7 @@ a {
 	vertical-align: middle;
 	display: inline-block;
 	margin-right: 10px;
-	margin-top: 60px;
+	margin-top: 55px;
 }
 
 .outerDiv .loginJoin {
@@ -76,7 +76,7 @@ a {
 <body>
 	<!-- 헤더 -->
 	<div class="outerDiv">
-		<a href="main" class="logo"><img src="image?file=logo.png"
+		<a href="patientmain" class="logo"><img src="image?file=logo.png"
 			alt="로고 이미지"></a>
 		<div class="loginJoin">
 			<c:choose>
@@ -88,7 +88,7 @@ a {
 					<a href="logout">로그아웃</a>
 				</c:otherwise>
 			</c:choose>
-			<a href="join">회원가입</a>
+			<a href="patientjoin">회원가입</a>
 		</div>
 	</div>
 

@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
     
 <!DOCTYPE html>
 <html lang="en">
@@ -75,7 +75,7 @@
             // 선택한 진료과목을 부모 페이지로 전달
             var selectedTypesStr = selectedTypes.join(', ');
             window.opener.postMessage(selectedTypesStr, "*"); // '*'는 모든 도메인에서 메시지를 수신할 수 있도록 함
-            window.close(); // 새로운 페이지 닫기
+            window.close();
         }
     </script>
 

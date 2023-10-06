@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapper.patient">
+
+	<select id="selectPatient" parameterType="String"
+		resultType="Patient">
+	<![CDATA[
+		select * from patient where pemail=#{pemail}
+	]]>
+	</select>
+	
+	<insert id="insertPatient" parameterType="Patient">
+	<![CDATA[
+	insert into patient (pidnum,pname,ppassword,pemail,paddress,ptel) values (#{pidnum},#{pname},#{ppassword},#{pemail},#{paddress},#{ptel}) 
+	]]>
+	</insert>
+</mapper>

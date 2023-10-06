@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <!DOCTYPE html>
 <html lang="en">
 
@@ -35,8 +35,8 @@ a {
 }
 
 .outerDiv .logo img {
-    width: 143px;
-    height: 85px;
+    width: 150px;
+    height: 115px;
     vertical-align: middle;
     display: inline-block;
     margin-right: 10px;
@@ -59,7 +59,7 @@ input {
     padding-left: 40px;
 }
 
-button.login-button {
+button.loginbutton {
     height: 40px;
     width: 100%;
     border-radius: 4px;
@@ -68,7 +68,7 @@ button.login-button {
     border: none;
     background: #CFE8F7;
     color: #333333;
-    font-weight: normal;
+    font-weight: bold;
     font-size: 14pt;
     display: inline-block;
 }
@@ -119,7 +119,7 @@ button {
     font-size: 12pt;
 }
 
-.login-button:hover {
+.loginbutton:hover {
     cursor: pointer;
 }
 
@@ -142,7 +142,8 @@ button {
 
 <body>
     <div class="outerDiv">
-        <a href="home" class="logo"><img src="logo.svg" alt="로고 이미지"></a>
+        <a href="home" class="logo"><img src="image?file=logo.png"
+			alt="로고 이미지"></a>
     </div>
 
     <div class="myform">
@@ -157,18 +158,18 @@ button {
                     <span class="icon material-symbols-outlined">
                         mail
                     </span>
-                    <input type="email" placeholder="이메일 주소" />
+                    <input type="email" name= "pemail" placeholder="이메일 주소" />
                 </div>
 
                 <div class="input-container">
                     <span class="icon material-symbols-outlined">
                         lock
                     </span>
-                    <input type="password" placeholder="비밀번호" required />
+                    <input type="password" name= "ppassword" placeholder="비밀번호" required />
                 </div>
 
-                <button type="submit" class="login-button">로그인</button>
-                <div>니어바이닥이 처음이신가요? <a href="join">회원가입</a></div>
+                <button type="submit" class="loginbutton">로그인</button>
+                <div>니어바이닥이 처음이신가요? <a href="patientjoin">회원가입</a></div>
             </form>
         </center>
     </div>

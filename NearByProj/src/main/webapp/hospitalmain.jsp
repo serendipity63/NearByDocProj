@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
     
 <!DOCTYPE html>
 <html>
@@ -28,34 +28,6 @@
 		body {
 			font-family: 'Noto Sans kr', sans-serif;
 		}
-
-		.outerDiv {
-			width: 100%;
-			height: 100px;
-			background-color: #191970;
-			color: #D3D3D3;
-			text-align: center;
-			padding-top: 10px;
-			padding-bottom: 15px;
-			/* 상단 여백 추가 */
-		}
-
-		.innerDiv {
-			margin-top: 0px;
-			/* 내부 요소 상단 여백 추가 */
-		}
-
-		.innerDiv a {
-			color: #D3D3D3;
-			/* 링크 색상 변경 */
-			margin-right: 10px;
-
-		}
-
-		.innerDiv a:hover {
-			color: #fff;
-		}
-
 		/* 로그인 폼 스타일 */
 		form.login-form {
 			float: right;
@@ -134,33 +106,12 @@
 			margin-left: 10px;
 		}
 
-		.logo img {
-			width: 450px;
-			height: 80px;
-			vertical-align: middle;
-			margin-right: 10px;
-			margin-top: 5px;
-		}
 	</style>
 </head>
 
 <body>
-	<div class="outerDiv">
-		<a href="home" class="logo"><img src="image?file=hospitaldoc.png" alt="로고 이미지"></a>
-		<div class="innerDiv">
-			<div style="float: right; margin-right: 10px;">
-				<c:choose>
-					<c:when test="${empty user}">
-						<a href="login">로그인</a> &nbsp;&nbsp;
-					</c:when>
-					<c:otherwise>
-						<b>${user.id}님 환영합니다</b> &nbsp;&nbsp; <a href="logout">로그아웃</a>&nbsp;&nbsp;
-					</c:otherwise>
-				</c:choose>
-				<a href="join">회원가입</a>&nbsp;&nbsp;
-			</div>
-		</div>
-	</div>
+
+<% pageContext.include("hospitalheader.jsp"); %>
 
 	<center>
 
@@ -182,7 +133,7 @@
 				</div>
 				<button type="submit" class="login-button">로그인</button>
 
-				<div class="new">니어바이닥이 처음이신가요? <a href="join">회원가입</a></div>
+				<div class="new">니어바이닥이 처음이신가요? <a href="hospitaljoin">회원가입</a></div>
 
 		</div>
 	</center>

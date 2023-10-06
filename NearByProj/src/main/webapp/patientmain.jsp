@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
     
 <!DOCTYPE html>
 <html lang="en">
@@ -24,51 +24,6 @@
 
         a {
             text-decoration: none;
-        }
-
-        .outerDiv {
-            width: 430px;
-            height: 212px;
-            background-color: #cfe8f7;
-            margin: 0 auto;
-            text-align: center;
-            padding: 10px 0;
-            position: relative;
-            margin-top: 0;
-
-        }
-
-        .outerDiv .logo img {
-            width: 143px;
-            height: 85px;
-            vertical-align: middle;
-            display: inline-block;
-            margin-right: 10px;
-            margin-top: 70px;
-        }
-
-        .outerDiv .loginJoin {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-        }
-
-        .outerDiv .loginJoin a {
-            margin: 0 10px;
-            background-color: #fff;
-            color: #007bff;
-            width: 70px;
-            height: 29px;
-            line-height: 29px;
-            border-radius: 20px;
-            text-align: center;
-            display: inline-block;
-            font-family: "Noto Sans", sans-serif;
-            transition: background-color 0.3s;
-        }
-
-        .outerDiv .loginJoin a:hover {
-            background-color: #0056b3;
         }
 
         .container {
@@ -224,20 +179,7 @@
 
 <body>
     <!-- 헤더 -->
-    <div class="outerDiv">
-        <a href="home" class="logo"><img src="image?file=logo.sgv" alt="로고 이미지"></a>
-        <div class="loginJoin">
-            <c:choose>
-                <c:when test="${empty user}">
-                    <a href="login">로그인</a>
-                </c:when>
-                <c:otherwise>
-                    <b></b> <a href="logout">로그아웃</a>
-                </c:otherwise>
-            </c:choose>
-            <a href="join">회원가입</a>
-        </div>
-    </div>
+<% pageContext.include("header.jsp"); %>
 
     <div class="container">
         <div class="searchbox">
