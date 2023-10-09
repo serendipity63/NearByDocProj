@@ -6,6 +6,7 @@
 <html lang="en">
 
 <head>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script
@@ -75,7 +76,7 @@ a {
 }
 
 #container {
-  background-color: #CFE8F7;
+  background-color: white;
   margin: 10px  auto;
   width:430px;
   height:684;
@@ -149,7 +150,13 @@ button{
   font: bolder;
 }
 
-
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 24
+}
 
 
 </style>
@@ -176,7 +183,9 @@ button{
    <div id="container">
     <div id="famallymanage">
       <span style="text-align: left; margin:10px 0 10px 10px">가족관리</span>
-      <input type="button" value="<-" onClick="history.go(-1)">
+      <span class="material-symbols-outlined" onClick="history.go(-1)" style="margin-left: 310px;">
+        arrow_back
+        </span> 
       <hr>
       <form action="" method="post">
         <textarea name="name" id="name" cols="30">이름을 입력하세요.</textarea>

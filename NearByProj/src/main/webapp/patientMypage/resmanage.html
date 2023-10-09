@@ -6,6 +6,7 @@
 <html lang="en">
 
 <head>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script
@@ -110,6 +111,10 @@ margin-left: 380px;
   margin: 10px auto;
 }
 
+.hsinfo>h2,h3,h4{
+  padding-top: 10px;
+}
+
 .patientinfo{
   margin-top: 10px;
   padding-top: 12px;
@@ -139,9 +144,9 @@ margin-left: 380px;
 
 .resInfo h5{
   width: 80px;
-  background-color: rgb(174, 171, 171);
+  
   margin-top: 5px;
-  margin-left: 10px;
+  
 }
 
 .comment{
@@ -151,7 +156,6 @@ margin-left: 380px;
 
 #content{
   margin-top: 5px;
-  margin-left: 10px;
 }
 
 .rescancel{
@@ -160,6 +164,14 @@ margin-left: 380px;
   color: white;
   width: 377px;
   height: 42px;
+}
+
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 24
 }
 
 </style>
@@ -198,7 +210,9 @@ return false;
 
 
    <div id="sub">
-    <input type="button" value="<-" onClick="history.go(-1)"> 
+    <span class="material-symbols-outlined" onClick="history.go(-1)" style="margin-left: 400px;">
+      arrow_back
+      </span> 
     <br>
     <hr>
   </div>
@@ -207,16 +221,16 @@ return false;
    <div id="container">
     <div id="res">
       <div class="hsinfo">
-        <h4>ㅇㅇㅇ 종합병원</h4>
-        <h5>의원</h5>
-        <h5>서울특별시 금천구 남부순환로 호서대벤처타워</h5>
-        <h5>진료 시간 : 오전 9시 ~ 오후 6시</h5>
-        <h5>02-1234-5678</h5>
+        <h2>ㅇㅇㅇ 종합병원</h2>
+        <h3>의원</h5>
+        <h3>서울특별시 금천구 남부순환로 호서대벤처타워</h3>
+        <h3>진료 시간 : 오전 9시 ~ 오후 6시</h3>
+        <h3>02-1234-5678</h3>
         <br>
         <hr>
     </div>
     <div class="patientinfo">
-      <h4>진료 대상 : 박행복</h4>
+      <h4>진료 대상 : 홍길동</h4>
       <br>
       <hr>
     </div>
@@ -242,8 +256,8 @@ return false;
     </div>
 
     <div class="comment">
-      <h5>원장님께 하고 싶은 말 :</h5>
-      <textarea name="" id="content" cols="40">증상을 입력해주세요.</textarea>
+      <h4>원장님께 하고 싶은 말 :</h4>
+      <textarea disabled="true" name="" id="content" cols="40">증상을 입력해주세요.</textarea>
     </div>
 
     <button  class="rescancel" onclick="checkCancel()"><h2>예약 취소</h2></button> 
