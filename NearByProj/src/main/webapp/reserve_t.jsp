@@ -13,15 +13,10 @@
 }
 
 h1{
-	width:300px;
-	height:100px;
-	margin-left:600px;
-	color: rgb(25, 25, 112);
+	width: 300px;
+    color: rgb(25, 25, 112);
+    margin: 29px 0px 80px 900px;
 
-}
-
-.row {
-	height: 30px;
 }
 
 .title {
@@ -32,7 +27,7 @@ h1{
 
 .colume {
 	padding: 5px;
-	width: 120px;
+	width: 150px;
 	float: left;
 	color: white;
 	text-align: center;
@@ -40,20 +35,20 @@ h1{
 }
 
 .container {
-	height: 800px;
+	height: 600px;
 	border: 1px solid;
-	width: 1310px;
-	margin: 200px 100px 0 -850px
+	width: 1449px;
+	margin-top:20px;
 }
 </style>
 </head>
 
 <body>
 	<% pageContext.include("main.jsp");%>
-
+	<h1>오늘의 예약내역</h1>
 	<div id="center">
 		
-			<h1>오늘의 예약내역</h1>
+			
 		
 		<div class="container" id="container">
 			<div class="row">
@@ -65,9 +60,9 @@ h1{
 				<div class="title colume">주소</div>
 				<div class="title colume">요청사항</div>
 				<div class="title colume">진료과목</div>
-				<div class="title colume">담당의사</div>
 				<div class="title colume">진료완료처리</div>
 			</div>
+		
 
 
 			<c:set var="i" value="1" />

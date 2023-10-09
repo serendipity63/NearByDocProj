@@ -1,8 +1,8 @@
-package bean;
+package dto;
 
 import java.util.Date;
 
-public class Check {
+public class Reservation {
 	private Date date;
 	private Date time;
 	private String name;
@@ -11,11 +11,11 @@ public class Check {
 	private String address;
 	private String opinion;
 	private String subject;
-	private String doctor;
+	private String complete;
 	
 	
-	public Check() {}
-	public Check(Date date, Date time , String name, String number, String phone, String address, String opinion, String subject, String doctor) {
+	public  Reservation(){}
+	public Reservation(Date date, Date time , String name, String number, String phone, String address, String opinion, String subject,String complete) {
 		this.date=date;
 		this.time=time;
 		this.name=name;
@@ -24,7 +24,7 @@ public class Check {
 		this.address=address;
 		this.opinion=opinion;
 		this.subject=subject;
-		this.doctor=doctor;
+		this.complete=complete;
 
 	}
 	
@@ -76,12 +76,13 @@ public class Check {
 	public void setSubject(String subject) {
 		this.subject = subject;
 	}
-	public String getDoctor() {
-		return doctor;
+	public String getComplete() {
+		return complete;
 	}
-	public void setDoctor(String doctor) {
-		this.doctor = doctor;
+	public void setComplete(String complete) {
+		this.complete = complete;
 	}
+	
 	
 	
 	

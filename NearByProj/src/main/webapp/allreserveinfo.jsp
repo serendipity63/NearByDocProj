@@ -46,13 +46,14 @@ body {
 
 #center {
 	display: flex;
+	justify-content: center;
 }
 
-h1 {
-	width: 200px;
-	height: 50px;
-	margin-left: 680px;
-	color: rgb(25, 25, 112);
+h1{
+	width: 150px;
+    color: rgb(25, 25, 112);
+    margin: 29px 0px 80px 900px;
+
 }
 
 .row {
@@ -78,9 +79,8 @@ h1 {
 .container {
 	height: 600px;
     border: 1px solid;
-    width: 1326px;
-    margin-top: 200px;
-    margin-left: -1360px;
+    width: 1734px;
+    margin: 48px 229px 0px -1284px
 }
 
 input {
@@ -98,10 +98,10 @@ select {
 }
 
 .reserveform {
-	margin-top: 120px;
-    width: 1300px;
-    height: 50px;
-    margin-left: -690px;
+	width: 1574px;
+    height: 100px;
+    margin-left: 203px;
+    margin-top:-40px;
 }
 .reserveform>button{
 	width: 100px;
@@ -120,13 +120,12 @@ select {
 </style>
 <body>
 	<% pageContext.include("main.jsp");%>
+	<h1>전체 조회</h1>
 	<div id="center">
 
 
 
-		<h1>전체 조회</h1>
-		<br>
-		<br>
+	
 
 
 		<div class="reserveform">

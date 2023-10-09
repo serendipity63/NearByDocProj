@@ -54,8 +54,9 @@ function submit(){
 </head>
 <body>
 	<h1>담당의소견</h1>
+	<form action="opinion" method="post" enctype="multipart/form-data" name="opinionform">
 	<div id="content">
-
+	
 	<textarea rows="20" cols="100" placeholder="담당의 소견을 남겨주세요"></textarea>
 	</div>
 	<br>
@@ -63,5 +64,6 @@ function submit(){
 	<a href="#" class="submit" onClick="javascript:submit();">제출</a>
 	<a href="#" class="reset" onClick="javascript:reset();">취소</a>
 	</div>
+	</form>
 </body>
 </html>

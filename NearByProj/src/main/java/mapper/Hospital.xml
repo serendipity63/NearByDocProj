@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.hospital">
+	<insert id="insertHospital" parameterType="Hospital"
+      useGeneratedKeys="true" keyProperty="number">
+    <![CDATA[
+       insert into Hospital (date,time,name,phone,address,opinion,subject,complete) values 
+       (#{date},#{time},#{name},#{phone},#{address},#{opinion},#{subject},#{complete}) 
+    ]]>
+   </insert>
+   
+  
+
+
+
+</mapper>

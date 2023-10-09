@@ -5,7 +5,11 @@
 
 <configuration>
 	<typeAliases>
-		<typeAlias type="bean.Patient" alias="Patient" />
+		<typeAlias type="dto.Patient" alias="Patient" />
+		<typeAlias type="dto.Check" alias="Check" />
+		<typeAlias type="dto.Check" alias="Reservation" />
+		
+		
 	</typeAliases>
 
 	<environments default="development">
@@ -13,7 +17,7 @@
 			<transactionManager type="JDBC" />
 			<dataSource type="POOLED"> 
 				<property name="driver" value="org.mariadb.jdbc.Driver"/> 
-				<property name="url" value="jdbc:mariadb://localhost:3306/testdb"/> 
+				<property name="url" value="jdbc:mariadb://localhost:3306/nearbydoc"/> 
 				<property name="username" value="root"/> 
 				<property name="password" value="1234"/>
 
@@ -29,6 +33,8 @@
 
 	<mappers>
 		<mapper resource="mapper/Patient.xml" />
+		<mapper resource="mapper/Reservation.xml"/>
+		<mapper resource="mapper/Hospital.xml"/>
 
 	</mappers>
 </configuration>

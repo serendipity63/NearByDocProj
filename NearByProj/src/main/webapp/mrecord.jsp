@@ -62,9 +62,6 @@ h1 {
 	color: rgb(25, 25, 112);
 }
 
-.row {
-	height: 30px;
-}
 .row>a{
 	background-color: rgb(25, 25, 112);
     padding: 5px;
@@ -87,7 +84,7 @@ h1 {
 
 .colume {
 	padding: 5px;
-	width: 134px;
+	width: 156px;
 	float: left;
 	color: white;
 	text-align: center;
@@ -98,7 +95,7 @@ h1 {
 .container {
 	height: 800px;
     border: 1px solid;
-    width: 1310px;
+    width: 1486px;
     margin-top: 200px;
     margin-left: -1590px
 }
@@ -177,9 +174,8 @@ button {
                     <div class="title colume">주민등록번호</div>
                     <div class="title colume">연락처</div>
                     <div class="title colume">주소</div>
-                    
                     <div class="title colume">진료과목</div>
-                    <div class="title colume">담당의사</div>
+                    <div class="title colume">진료완료처리</div>
                     <a href="javascript:Opinion()" target="_self" >담당의소견</a>
                 </div>
                 

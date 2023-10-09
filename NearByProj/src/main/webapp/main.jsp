@@ -67,7 +67,7 @@ h3>p{
 	
 	
 	float: left;
-	height: 800px;
+	height: 900px;
 	background-color: rgb(9, 76, 165);
 	width: 200px;
 	
@@ -122,6 +122,7 @@ h3>p{
 	margin-left:20px;
 	margin-top:15px;
 }
+
 </style>
 </head>
 <body>
@@ -191,11 +192,14 @@ h3>p{
 
 		</div>
 
-
+	<div id="footer">
+	<img src="image?file=img.png" width="1900px" height="200px">
+	
+	</div>
 
 	</div>
 
-	<footer> </footer>
+	
 
 
 
