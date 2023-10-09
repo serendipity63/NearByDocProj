@@ -13,44 +13,43 @@
 body {
 	
 	background-color: rgb(245, 245, 245);
-
+	margin:0 auto;
+	
 	
 	
 }
 
 #header {
-	width: 2000px;
-	height: 100px;
+	width: 1900px;
+	height: 120px;
 	background-color: rgb(25, 25, 112);
 }
-#header>p{
+#header>span{
 	color:white;
-	margin-top:-50px;
-	margin-left:100px;
-	
-
+	font-size:30px;
+	margin-right:200px;
+	margin-top:40px;
+	float:right;
+	}
+#header>a>img{
+	margin-left:40px;
+	margin-top:10px;
 }
-
-#iconbox.img {
-	width: 200px;
-	height: 100px;
-}
-#header>h2{
-	color:white;
-}
-
-h2 {
-	color: white;
-	margin-left:10px;
+h2{
+		background-color: rgb(9, 76, 165);
+		margin-left:20px;
+		color:rgb(25, 25, 112);
 }
 
 h3>img{
 	
 	background-color:white;
+	margin-left:50px;
 }
 h3{
 	color: white;
 	margin-left:10px;
+	
 }
 h3>a{
 
@@ -59,14 +58,24 @@ h3>a{
 	text-decoration:none;
 
 }
+h3>p{
+	background-color: rgb(9, 76, 165);
+	margin-left:10px;
+}
 
 #sidemenubox {
-	margin-height: 100px;
+	
+	
 	float: left;
 	height: 800px;
 	background-color: rgb(9, 76, 165);
 	width: 200px;
 	
+	
+}
+#list{
+	height:600px;
+
 }
 
 #list>span {
@@ -83,6 +92,14 @@ h3>a{
 	color: white;
 	margin-left:20px;
 }
+#list>p>a{
+	padding: 10px;
+	text-decoration:none;
+	color: white;
+	background-color: rgb(25, 25, 112);
+	border: 1px solid black;
+	margin-left:40px;
+}
 
 #list>h2>button{
 	background-color:rgb(12, 66, 132);
@@ -91,14 +108,28 @@ h3>a{
 #list>h2>button>img{
 	color:rgb(12, 66, 132);
 }
+.check{
+	background-color: rgb(25, 25, 112);
+	
+}
+
+.check>span>a{
+	color:white;
+	text-decoration:none;
+	display:inline-block;
+	width: 300px;
+	height: 50px;
+	margin-left:20px;
+	margin-top:15px;
+}
 </style>
 </head>
 <body>
 	<div id="header">
 
 		<a href="reserve_t.jsp"><img src="image?file=icon.png"
-			width="100px" height="100px" alt="로고 이미지"/></a>&nbsp;&nbsp;
-			<p>병원매니저</p>
+			width="150px" height="100px" alt="로고 이미지"/></a>
+			<span>병원매니저</span>
 		
 
 
@@ -110,7 +141,7 @@ h3>a{
 
 
 		<h3>
-			<img src="image?file=home.png" width="50px" height="50px">니어바이닥의원
+			<img src="image?file=home.png" width="50px" height="50px"><p>니어바이닥의원</p>
 		</h3>
 		<br>
 		<h3>
@@ -122,22 +153,24 @@ h3>a{
 		<div id="list">
 			<hr>
 			<h2>
-				조회<img src="image?file=list.png" width="15px" height="10px"></button>
+				조회
+				
 			</h2>
 			<hr>
+			<div class="check">
+				<span>
+					<a href="allreserveinfo.jsp" >전체 조회</a>
+				</span>
+				
 			
-			<span>
-				<a href="allreserveinfo.jsp">전체 조회</a>
-			</span>
-			
-			<hr>
-			<span>
-				<a href="reserveinfo_d.jsp">일정</a>
-			</span>
-			<hr>
-			<span>
-				<a href="reserveinfo_p.jsp">환자</a>
-			</span>
+				<span>
+					<a href="reserveinfo_d.jsp" >일정별 조회</a>
+				</span>
+				
+				<span>
+					<a href="reserveinfo_p.jsp" >환자별 조회</a>
+				</span>
+			</div>
 			<hr>
 			<br> <br>
 			
@@ -146,11 +179,15 @@ h3>a{
 				<a href="hinfo.jsp">병원 정보</a>
 			</span>
 			<hr>
-
 			<span>
-				<a href="hlogin.jsp">로그아웃</a>
+				<a href="mrecord.jsp">진료 기록</a>
 			</span>
 			<hr>
+			<br>
+			<p>
+				<a href="hlogin.jsp">로그아웃</a>
+			</p>
+			
 
 		</div>
 

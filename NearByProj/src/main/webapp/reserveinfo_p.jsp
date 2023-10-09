@@ -10,13 +10,17 @@
 <style>
 body {
 	margin: 0 auto;
-	position:relative;
 }
 
-.header {
-	height: 100px;
-	color: blue;
-	left: 100px;
+#center {
+	display: flex;
+}
+
+h1 {
+	width: 300px;
+    height: 100px;
+    margin-left: 680px;
+    color: rgb(25, 25, 112);
 }
 
 .row {
@@ -25,102 +29,84 @@ body {
 
 .title {
 	font-weight: bold;
-	background-color: lightblue;
-	width: 200px;
+	background-color: rgb(25, 25, 112);
+	width: 100px;
 }
 
 .colume {
 	padding: 5px;
-	width: 140px;
+	width: 210px;
 	float: left;
+	color: white;
+	text-align: center;
+	border-right:1px solid white;
 }
 
 .container {
-	/* padding:10px; */
-	border: 1px solid;
-	width: 1500px;
-	margin-left: 400px;
+	height: 500px;
+    border: 1px solid;
+    width: 1326px;
+    margin-left: -1560px;
+    margin-top: 200px;
 }
 
-.input {
-	float: left;
-}
-
-
-#reserveform{
-	width:700px;
-	margin-right:500px;
-
-	
-}
 select{
-	width:150px;
-	height:30px;
-	
+	width:200px;
+	height:35px;
+
 }
-input{
-	width:300px;
-	height:30px;
-	
-}
-button{
-	width:150px;
-	height:30px;
-	background-color:#0099ff;
+input {
+	width: 200px;
+	height: 30px;
 }
 
+#reserveform {
+	margin-top: 120px;
+    width: 1500px;
+    height: 50px;
+    margin-left: -790px;
+}
+
+button {
+	width: 100px;
+	height: 30px;
+	background-color: rgb(25, 25, 112);
+}
+#search{
+	color:white;
+}
 </style>
 <body>
 <% pageContext.include("main.jsp");%>
 	
-	<center>
-        <form>
+	<div id="center">
         	
-            <div class="header">
+           
                 <h1>환자별 조회</h1><br><br>
-            </div>
-            <div id="reserveform">
+            
+            
 
-		
+		<div id="reserveform">
 			<select name="patient">
 				<option value="patient">환자명</option>
 				<option value="number">주민등록번호</option>
 			</select> <input type="text">
-			<button onclick="#">검색</button>
+			<button onclick="#" id="search">검색</button>
 		
-
-			</div>
+		</div>
+		
 			<br><br>
             <div class="container" id="container">
                 <div class="row">
-                    <div class="title colume">일자</div>
-                    <div class="title colume">시간</div>
-                    <div class="title colume">예약자명</div>
-                    <div class="title colume">주민등록번호</div>
-                    <div class="title colume">연락처</div>
-                    <div class="title colume">주소</div>
-                    <div class="title colume">요청사항</div>
-                    <div class="title colume">진료과목</div>
-                    <div class="title colume">담당의사</div>
-                    <div class="title colume">진료완료처리</div>
+                   <div class="title colume">일자</div>
+					<div class="title colume">시간</div>
+					<div class="title colume">환자명</div>
+					<div class="title colume">주민등록번호</div>
+					<div class="title colume">연락처</div>
+					<div class="title colume">주소</div>
                 </div>
                 
-           <%--  <%
-               	for(int i=0; i<accs.size(); i++) {
-            %>
-            
-               	<div class="row">
-                    <div class="colume"><%=i+1 %></div>
-                    <div class="colume"><%=accs.get(i).getId() %></div>
-                    <div class="colume"><%=accs.get(i).getName() %></div>
-                    <div class="colume"><%=accs.get(i).getBalance() %></div>
-                    <div class="colume"><%=accs.get(i).getType() %></div>
-                    <div class="colume"><%=accs.get(i).getGrade() %>&nbsp;</div> --%>
-                    
-               
-            <%-- <%
-            	}
-            %>  --%>
+        
             <c:set var="i" value="1"/>
             <c:forEach var="acc" items="${accs }">
             	<div class="row">
@@ -134,7 +120,7 @@ button{
             	</div>
             </c:forEach>
             </div>
-        </form>
-    </center>
+           
+    </div>
 </body>
 </html>

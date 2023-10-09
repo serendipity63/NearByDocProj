@@ -7,10 +7,11 @@
 <meta charset="UTF-8">
 <title>진료 기록 조회</title>
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-
+<script type="text/javascript"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
 <script>
 $(function() {
 //input을 datepicker로 선언
@@ -36,100 +37,125 @@ dateFormat: 'yy-mm-dd' //달력 날짜 형태
 //초기값을 오늘 날짜로 설정해줘야 합니다.
 $('#datepicker').datepicker('setDate', 'today'); //(-1D:하루전, -1M:한달전, -1Y:일년전), (+1D:하루후, -1M:한달후, -1Y:일년후)
 });
+
+
+function Opinion(){
+   window.open("<%=request.getContextPath()%>/opinion.jsp", '의사소견', 'width=750px,height=470px,scrollbars=yes');
+}
+
+
 </script>
 </head>
 <style>
-	body {
+body {
 	margin: 0 auto;
-	position:absolute;
 }
 
-.header {
-	height: 100px;
-	color: blue;
-	left: 100px;
+#center {
+	display: flex;
+}
+
+h1 {
+	width: 300px;
+	height: 50px;
+	margin-left: 680px;
+	color: rgb(25, 25, 112);
 }
 
 .row {
-	height: 20px;
+	height: 30px;
+}
+.row>a{
+	background-color: rgb(25, 25, 112);
+    padding: 5px;
+    color: white;
+    text-align: center;
+    /* border-right: 1px solid white; */
+    display: inline-block;
+    width: 139px;
+    text-decoration: none;
+    font-weight: bold;
+	
 }
 
 .title {
 	font-weight: bold;
-	background-color: lightblue;
-	width: 200px;
+	background-color: rgb(25, 25, 112);
+	width: 100px;
+
 }
 
 .colume {
 	padding: 5px;
-	width: 140px;
+	width: 134px;
 	float: left;
+	color: white;
+	text-align: center;
+	border-right:1px solid white;
+	
 }
 
 .container {
-	margin-top:50px;
-	border: 1px solid;
+	height: 800px;
+    border: 1px solid;
+    width: 1310px;
+    margin-top: 200px;
+    margin-left: -1590px
+}
+
+input {
+	width: 200px;
+	height: 30px;
+}
+
+select {
+	width: 200px;
+	height: 35px;
+}
+
+button {
+	width: 100px;
+	height: 30px;
+	background-color: rgb(25, 25, 112);
+}
+
+#search {
+	color: white;
+}
+
+.reserveform {
+	margin-top: 70px;
 	width: 1500px;
-	margin-left: 400px;
+	height: 50px;
+	margin-left: -760px;
 }
-
-
-
-input{
-	width:300px;
-	height:30px;
-	
+#datepicker1{
+	margin-top:50px;
+	margin-left:70px;
 
 }
-
-.reserveform1{
-	margin-top:100px;
-	float:left;
-	margin-left:100px;
-	margin-top:-40px;
-	height:50px;
-	
+#datepicker2{
+	margin-left:20px;
 }
-.reserveform2{
-	margin-top:100px;
-	float:right;
-	margin-right:30px;
-	margin-top:-40px;
-	height:50px;
-}
-.reserveform2 input{
-	background-img : url('images/calendar.png');
-}
-select{
-	width:200px;
-	height:30px;
-}
-button{
-	width:100px;
-	height:30px;
-	background-color:#0099ff;
-}
-
 </style>
 <body>
 <% pageContext.include("main.jsp");%>
-	<center>
-        <form>
+	<div id="center">
         	
-            <div class="header">
+           
                 <h1>진료 기록 조회</h1><br><br>
-            </div>
             
-            <div class="reserveform1">
+            
+            <div class="reserveform">
             
 			<select name="patient">
 				<option value="patient">환자명</option>
 				<option value="number">주민등록번호</option>
 			</select> <input type="text">
-			<button onclick="#">검색</button>
-			</div>
+			<button onclick="#"id="search">검색</button>
 			
-			<div class="reserveform2">
+			
+		
 			
 
 			<input type="text" id="datepicker1" placeholder="0000-00-00">
@@ -137,42 +163,27 @@ button{
 			<input type="text" id="datepicker2" placeholder="0000-00-00">
 
 		
-			<button onclick="#">검색</button> 
+			<button onclick="#" id="search">검색</button> 
 
+		
+			
 			</div>
-			
-			
 		
             <div class="container" id="container">
                 <div class="row">
                     <div class="title colume">일자</div>
                     <div class="title colume">시간</div>
-                    <div class="title colume">예약자명</div>
+                    <div class="title colume">환자명</div>
                     <div class="title colume">주민등록번호</div>
                     <div class="title colume">연락처</div>
                     <div class="title colume">주소</div>
-                    <div class="title colume">요청사항</div>
+                    
                     <div class="title colume">진료과목</div>
                     <div class="title colume">담당의사</div>
-                    <div class="title colume">진료완료처리</div>
+                    <a href="javascript:Opinion()" target="_self" >담당의소견</a>
                 </div>
                 
-           <%--  <%
-               	for(int i=0; i<accs.size(); i++) {
-            %>
-            
-               	<div class="row">
-                    <div class="colume"><%=i+1 %></div>
-                    <div class="colume"><%=accs.get(i).getId() %></div>
-                    <div class="colume"><%=accs.get(i).getName() %></div>
-                    <div class="colume"><%=accs.get(i).getBalance() %></div>
-                    <div class="colume"><%=accs.get(i).getType() %></div>
-                    <div class="colume"><%=accs.get(i).getGrade() %>&nbsp;</div> --%>
-                    
-               
-            <%-- <%
-            	}
-            %>  --%>
+         
             <c:set var="i" value="1"/>
             <c:forEach var="acc" items="${accs }">
             	<div class="row">
@@ -186,7 +197,6 @@ button{
             	</div>
             </c:forEach>
             </div>
-        </form>
-    </center>
+     </div>
 </body>
 </html>

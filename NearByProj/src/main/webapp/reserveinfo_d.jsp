@@ -1,12 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%><!--  uri core를 c로 설정 -->
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>일정으로 환자 조회</title>
-<link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet"
+	href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 
@@ -42,131 +43,119 @@ $('#datepicker').datepicker('setDate', 'today'); //(-1D:하루전, -1M:한달전
 <style>
 body {
 	margin: 0 auto;
-
 }
 
-.header {
-	height: 100px;
-	color: blue;
-	left: 100px;
+#center {
+	display: flex;
+}
+
+h1 {
+	width: 200px;
+    height: 50px;
+    margin-left: 680px;
+    color: rgb(25, 25, 112);
 }
 
 .row {
-	height: 20px;
+	height: 30px;
 }
 
 .title {
 	font-weight: bold;
-	background-color: lightblue;
-	width: 200px;
+	background-color: rgb(25, 25, 112);
+	width: 100px;
 }
 
 .colume {
 	padding: 5px;
-	width: 140px;
+	width: 210px;
 	float: left;
+	color: white;
+	text-align: center;
+	border-right:1px solid white;
 }
 
 .container {
-	/* padding:10px; */
-	border: 1px solid;
-	width: 1500px;
-	margin-left: 200px;
-}
-#reserveform>a{
-	width:10px;
-	height:100px;
-}
-input{
-	width:300px;
-	height:30px;
-
+	height: 600px;
+    border: 1px solid;
+    width: 1326px;
+    margin-left: 130px;
+    margin-top:-13px;
 }
 
 
-
-
-#reserveform{
-	width:800px;
-	margin-right:500px;
-	
-	
-}
-button{
-	width:100px;
-	height:30px;
-	background-color:#0099ff;
+input {
+	width: 200px;
+	height: 30px;
 }
 
+#reserveform {
+	margin-top: 50px;
+    width: 1500px;
+    height: 50px;
+    margin-left: 190px;
+}
+
+button {
+	width: 100px;
+	height: 30px;
+	background-color: rgb(25, 25, 112);
+}
+#search{
+	color:white;
+}
 </style>
 <body>
-<% pageContext.include("main.jsp");%>
-	
-	<center>
-        <form action="reserveinfo" method="post">
-        	
-            <div class="header">
-                <h1>일정별 조회</h1><br><br>
-            </div>
-            <div id="reserveform">
+	<% pageContext.include("main.jsp");%>
+
+	<div id="center">
+		<form action="reserveinfo" method="post">
 
 		
+				<h1>일정별 조회</h1>
 			
+			
+			<div id="reserveform">
 
-			<input type="text" id="datepicker1" placeholder="0000-00-00">
 
-			<input type="text" id="datepicker2" placeholder="0000-00-00">
 
-		
-			<button onclick="#">검색</button>
-		
+
+				<input type="text" id="datepicker1" placeholder="0000-00-00">
+
+				<input type="text" id="datepicker2" placeholder="0000-00-00">
+
+
+				<button onclick="#" id="search">검색</button>
+
 
 			</div>
-			<br><br>
-            <div class="container" id="container">
-                <div class="row">
-                    <div class="title colume">일자</div>
-                    <div class="title colume">시간</div>
-                    <div class="title colume">예약자명</div>
-                    <div class="title colume">주민등록번호</div>
-                    <div class="title colume">연락처</div>
-                    <div class="title colume">주소</div>
-                    <div class="title colume">요청사항</div>
-                    <div class="title colume">진료과목</div>
-                    <div class="title colume">담당의사</div>
-                    <div class="title colume">진료완료처리</div>
-                </div>
-                
-           <%--  <%
-               	for(int i=0; i<accs.size(); i++) {
-            %>
-            
-               	<div class="row">
-                    <div class="colume"><%=i+1 %></div>
-                    <div class="colume"><%=accs.get(i).getId() %></div>
-                    <div class="colume"><%=accs.get(i).getName() %></div>
-                    <div class="colume"><%=accs.get(i).getBalance() %></div>
-                    <div class="colume"><%=accs.get(i).getType() %></div>
-                    <div class="colume"><%=accs.get(i).getGrade() %>&nbsp;</div> --%>
-                    
-               
-            <%-- <%
-            	}
-            %>  --%>
-            <c:set var="i" value="1"/>
-            <c:forEach var="acc" items="${accs }">
-            	<div class="row">
-            		<div class="colume">${i }</div>
-            		<div class="colume">${acc.id}</div>
-            		<div class="colume">${acc.name }</div>
-            		<div class="colume">${acc.balance }</div>
-            		<div class="colume">${acc.type }</div>
-            		<div class="colume">${acc.grade }&nbsp;</div>
-            		<c:set var="i" value="${i+1 }"/>
-            	</div>
-            </c:forEach>
-            </div>
-        </form>
-    </center>
+			<br>
+			<br>
+			<div class="container" id="container">
+				<div class="row">
+					<div class="title colume">일자</div>
+					<div class="title colume">시간</div>
+					<div class="title colume">환자명</div>
+					<div class="title colume">주민등록번호</div>
+					<div class="title colume">연락처</div>
+					<div class="title colume">주소</div>
+				</div>
+
+
+				<c:set var="i" value="1" />
+				<c:forEach var="acc" items="${accs }">
+					<div class="row">
+						<div class="colume">${i }</div>
+						<div class="colume">${acc.id}</div>
+						<div class="colume">${acc.name }</div>
+						<div class="colume">${acc.balance }</div>
+						<div class="colume">${acc.type }</div>
+						<div class="colume">${acc.grade }&nbsp;</div>
+						<c:set var="i" value="${i+1 }" />
+					</div>
+				</c:forEach>
+			</div>
+		</form>
+	</div>
 </body>
 </html>

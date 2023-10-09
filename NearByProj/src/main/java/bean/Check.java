@@ -2,7 +2,7 @@ package bean;
 
 import java.util.Date;
 
-public class Patient {
+public class Check {
 	private Date date;
 	private Date time;
 	private String name;
@@ -14,8 +14,8 @@ public class Patient {
 	private String doctor;
 	
 	
-	public Patient() {}
-	public Patient(Date date, Date time , String name, String number, String phone, String address, String opinion, String subject, String doctor) {
+	public Check() {}
+	public Check(Date date, Date time , String name, String number, String phone, String address, String opinion, String subject, String doctor) {
 		this.date=date;
 		this.time=time;
 		this.name=name;
