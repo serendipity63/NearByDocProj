@@ -20,7 +20,7 @@
 		.container {
             max-width: 425px;
             width: 100%;
-            margin: 70px auto 20px auto;
+            margin: 30px auto 20px auto;
             padding: 10px;
             border: 2px solid #16151562;
             border-radius: 10px;
@@ -113,7 +113,7 @@
 </head>
 
 <body>
-    <% pageContext.include("header.jsp"); %>
+    <% pageContext.include("thinheader.jsp"); %>
     <div class="container">
         <div class="searchbox">
             <div class="inner">
@@ -190,9 +190,8 @@
                 <br>
             </div>
         </div>
-        <h1>푸터</h1>
     </div>
-    
+    <br><br><br>
 </body>
 
 </html>
