@@ -160,7 +160,7 @@
         </div>
     
         <div class="button">
-            <button type="button" class="btn-primary" onclick="location.href='main.jsp';">메인화면으로</button>
+            <button type="button" class="btn-primary" onclick="location.href='patientmain.jsp';">메인화면으로</button>
         </div>
     </div>
     <br><br><br>
