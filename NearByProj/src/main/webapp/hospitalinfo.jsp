@@ -84,7 +84,7 @@
 
 <body>
     <div class="main">
-    <% pageContext.include("header.jsp"); %>
+    <% pageContext.include("thinheader.jsp"); %>
     <br>
         <div class="info">
             <table>
@@ -196,8 +196,8 @@
         <div class="button">
             <button type="button" class="btn-primary" onclick="location.href='reservation.jsp';">예약하기</button>
         </div>
-        <h1>푸터</h1>
     </div>
+    <br><br><br>
 </body>
 
 </html>
