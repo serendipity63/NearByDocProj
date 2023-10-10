@@ -1,44 +1,36 @@
 package dto;
 
-import java.util.Date;
 
 public class Reservation {
-	private Date date;
-	private Date time;
+	
+	private String pidnum;
+	private String resdate;
+	private String restime;
 	private String name;
 	private String number;
 	private String phone;
 	private String address;
-	private String opinion;
+	private String comment;
 	private String subject;
-	private String complete;
-	
-	
-	public  Reservation(){}
-	public Reservation(Date date, Date time , String name, String number, String phone, String address, String opinion, String subject,String complete) {
-		this.date=date;
-		this.time=time;
-		this.name=name;
-		this.number=number;
-		this.phone=phone;
-		this.address=address;
-		this.opinion=opinion;
-		this.subject=subject;
-		this.complete=complete;
-
+	private String status;
+	private String doccomment;
+	public String getPidnum() {
+		return pidnum;
 	}
-	
-	public Date getDate() {
-		return date;
+	public void setPidnum(String pidnum) {
+		this.pidnum = pidnum;
 	}
-	public void setDate(Date date) {
-		this.date = date;
+	public String getResdate() {
+		return resdate;
 	}
-	public Date getTime() {
-		return time;
+	public void setResdate(String resdate) {
+		this.resdate = resdate;
 	}
-	public void setTime(Date time) {
-		this.time = time;
+	public String getRestime() {
+		return restime;
+	}
+	public void setRestime(String restime) {
+		this.restime = restime;
 	}
 	public String getName() {
 		return name;
@@ -64,11 +56,11 @@ public class Reservation {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	public String getOpinion() {
-		return opinion;
+	public String getComment() {
+		return comment;
 	}
-	public void setOpinion(String opinion) {
-		this.opinion = opinion;
+	public void setComment(String comment) {
+		this.comment = comment;
 	}
 	public String getSubject() {
 		return subject;
@@ -76,12 +68,20 @@ public class Reservation {
 	public void setSubject(String subject) {
 		this.subject = subject;
 	}
-	public String getComplete() {
-		return complete;
+	public String getStatus() {
+		return status;
 	}
-	public void setComplete(String complete) {
-		this.complete = complete;
+	public void setStatus(String status) {
+		this.status = status;
 	}
+	public String getDoccomment() {
+		return doccomment;
+	}
+	public void setDoccomment(String doccomment) {
+		this.doccomment = doccomment;
+	}
+	
+	
 	
 	
 	
