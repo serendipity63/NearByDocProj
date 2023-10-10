@@ -119,7 +119,7 @@ select {
 
 </style>
 <body>
-	<% pageContext.include("main.jsp");%>
+	<% pageContext.include("hmain.jsp");%>
 	<h1>전체 조회</h1>
 	<div id="center">
 

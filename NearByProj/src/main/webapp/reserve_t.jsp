@@ -44,7 +44,7 @@ h1{
 </head>
 
 <body>
-	<% pageContext.include("main.jsp");%>
+	<% pageContext.include("hmain.jsp");%>
 	<h1>오늘의 예약내역</h1>
 	<div id="center">
 		
