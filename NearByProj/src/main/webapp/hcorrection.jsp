@@ -79,7 +79,7 @@ input {
 }
 </style>
 <body>
-	<% pageContext.include("main.jsp");%>
+	<% pageContext.include("hmain.jsp");%>
 
 	<div id="center">
 

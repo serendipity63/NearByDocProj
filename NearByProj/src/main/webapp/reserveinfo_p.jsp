@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+-<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%><!--  uri core를 c로 설정 -->
 <!DOCTYPE html>
@@ -21,10 +21,11 @@ h1 {
     margin-left: 680px;
     color: rgb(25, 25, 112);
 }
-
-.row {
+table { margin: auto; width: 800px }
+#row {
 	height: 30px;
 }
+h5{text-align:center;}
 
 .title {
 	font-weight: bold;
@@ -63,7 +64,7 @@ input {
 	margin-top: 120px;
     width: 1500px;
     height: 50px;
-    margin-left: -790px;
+    margin 0 auto;
 }
 
 #search{
@@ -86,16 +87,17 @@ input {
 </script>
 </head>
 <body>
-<% pageContext.include("main.jsp");%>
-	
+<% pageContext.include("hmain.jsp");%>
+	 <h1>환자별 조회</h1>
 	<div id="center">
         	
            
-                <h1>환자별 조회</h1><br><br>
+              
             
             
 	<form action="patientsearch" method="post" id="searchform">
 		<div id="reserveform">
+		<h5>
 			<select name="type">
 				<option value="all">선택</option>
 				<option value="pname" ${res.type eq 'pname'? 'selected':'' }>환자명</option>
@@ -103,9 +105,11 @@ input {
 			</select> 
 			<input type="text" name="keyword" id="keyword" value="${res.keyword }"/>
 			<input type="submit" id="search" value="검색"/>
-		
+		</h5>
 		</div>
+		
 	</form>
+	
 			<table>
 				<tr id="row"><th>일자</th><th>시간</th><th>환자명</th><th>주민등록번호</th><th>연락처</th><th>주소</th>
 				<c:forEach items="${res.patientList }" var="patient">
@@ -116,6 +120,8 @@ input {
 						<td>${patient.number }</td>
 						<td>${patient.ptel }</td>
 						<td>${patient.paddress }</td>
+						
+					
 					</tr>
 				</c:forEach>
 			</table>

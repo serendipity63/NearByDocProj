@@ -6,6 +6,8 @@
 <html lang="en">
 
 <head>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script
@@ -79,7 +81,7 @@ a {
 }
 
 #container {
-  background-color: #CFE8F7;
+  background-color: white;
   margin: 10px  auto;
   width:430px;
   height:600;
@@ -107,33 +109,45 @@ margin-left: 280px;
 
 
 table{
+  border: 1px solid;
   margin: 5px auto;
   width: 400px;
   height: 150px;
+  border-radius: 10px;
 }
 
 #res{
-margin: 10px auto;
+margin: 15px auto 20px;
+
 }
 
 #res:nth-child(1)>table{
-  background-color: white;
+  background-color: #CFE8F7;
 }
 
 #res:nth-child(2)>table{
-  background-color: grey;
+  background-color: white;
 }
 
 #res:nth-child(3)>table{
-  background-color: grey;
+  background-color: white;
 }
 
 #res:nth-child(4)>table{
-  background-color: grey;
+  background-color: white;
 }
 
 .restable{
   background-color: white;
+}
+
+
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 24
 }
 
 </style>
@@ -159,7 +173,9 @@ margin: 10px auto;
    </div>
    <div id="sub">
     <span>예약 내역</span> 
-    <input type="button" value="<-" onClick="history.go(-1)"> 
+    <span class="material-symbols-outlined" onClick="history.go(-1)" style="margin-left: 280px;">
+      arrow_back
+      </span>
     <br>
     <hr>
   </div>
@@ -167,7 +183,7 @@ margin: 10px auto;
     <div id="res">
       <span>2023.09.27</span>
       <span><a href="resmanage.html">예약 관리</a></span>
-      <table class="restable" border="1px">
+      <table class="restable">
         <tr>
         <th rowspan="2">
           <h4>ㅇㅇㅇ 종합병원</h4>
@@ -191,7 +207,7 @@ margin: 10px auto;
     <div id="res">
       <span>2023.09.01</span>
       <span><a href="resmanage.html">진료 완료</a></span>
-      <table class="restable" border="1px">
+      <table class="restable">
         <tr>
         <th rowspan="2">
           <h4>ㅇㅇㅇ 종합병원</h4>
@@ -215,7 +231,7 @@ margin: 10px auto;
     <div id="res">
       <span>2023.08.17</span>
       <span><a href="resmanage.html">진료 완료</a></span>
-      <table class="restable" border="1px">
+      <table class="restable">
         <tr>
         <th rowspan="2">
           <h4>ㅇㅇㅇ 종합병원</h4>
@@ -239,7 +255,7 @@ margin: 10px auto;
     <div id="res">
       <span>2023.08.01</span>
       <span><a href="resmanage.html">진료 완료</a></span>
-      <table class="restable" border="1px">
+      <table class="restable">
         <tr>
         <th rowspan="2">
           <h4>ㅇㅇㅇ 종합병원</h4>

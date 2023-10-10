@@ -15,13 +15,15 @@ body {
 
 #center {
 	display: flex;
-	justify-content: center;
+    margin-left: 1400px;
+    margin-top: -150px;
 }
+
 
 h1 {
 	width: 400px;
     height: 100px;
-    margin-left: 680px;
+    margin-left: 821px;
     color: rgb(25, 25, 112);
 
 }
@@ -55,10 +57,7 @@ table {
 }
 
 #button {
-	margin-top: 100px;
-	margin-left: 400px;
-	width: 250px;
-	height: 50px;
+	margin-left:850px;
 }
 
 #button>a {
@@ -70,24 +69,11 @@ table {
 }
 </style>
 <body>
-	<% pageContext.include("main.jsp");%>
-
+	<% pageContext.include("hmain.jsp");%>
+	<h1>병원정보</h1>
 	<div id="center">
+		
 
-
-	
-			<h1>병원정보</h1>
-			
-	
-
-
-		<div id="button">
-			<a href="hcorrection.jsp">수정하기</a>
-		</div>
-
-
-		<br>
-		<br>
 		<div class="container">
 			<table border="1" id="title">
 				<tr>
@@ -121,8 +107,8 @@ table {
 				</tr>
 
 			</table>
-
-
+			
+		
 			<c:set var="i" value="1" />
 			<c:forEach var="acc" items="${accs }">
 				<div class="row">
@@ -137,6 +123,8 @@ table {
 			</c:forEach>
 		</div>
 	</div>
-
+	<div id="button">
+		<a href="hcorrection.jsp">수정하기</a>
+		</div>
 </body>
 </html>
