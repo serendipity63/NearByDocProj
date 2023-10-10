@@ -56,7 +56,7 @@
 
 <body>
     <div class="main">
-        <% pageContext.include("header.jsp"); %>
+        <% pageContext.include("thinheader.jsp"); %>
         <br>
         <div class="top">
             <h3>리뷰 작성</h3>
@@ -108,8 +108,8 @@
         <div class="button">
             <button type="button" class="btn-primary">리뷰작성</button>
         </div>
-        <h1>푸터</h1>
     </div>
+    <br><br><br>
 </body>
 
 </html>

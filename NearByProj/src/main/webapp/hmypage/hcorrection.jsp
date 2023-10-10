@@ -95,53 +95,51 @@ input {
 
 
 		<br> <br>
+		<form action="hinfomodify" method="post" enctype="maltipart/form-data">
 		<div class="container" id="container">
+		<input type="hidden" name="num" value=${hospital.num }"/>
 			<table border="1" id="title">
 				<tr>
 					<td>진료 과목</td>
-					<td><input type="text" placeholder="이비인후과" /></td>
+					<td><input type="text" name="subject" 
+					id="subject"  value="${hospital.subject }" placeholder="이비인후과" /></td>
 				</tr>
 				<tr>
 					<td>병원명</td>
-					<td><input type="text" placeholder="니어바이닥의원" /></td>
+					<td><input type="text" name="name" 
+					id="name" readonly="readonly" value="${hospital.name }" placeholder="니어바이닥의원" /></td>
 				</tr>
 				<tr>
 					<td>E-Mail</td>
-					<td><input type="text" placeholder="ch2488@naver.com" /></td>
+					<td><input type="text" name="email"
+					id="email" placeholder="ch2488@naver.com" /></td>
 				</tr>
 				<tr>
 					<td>전화번호</td>
-					<td><input type="text" placeholder="02-1234-5678" /></td>
+					<td><input type="text" name="number"
+					id="number" placeholder="02-1234-5678" /></td>
 				</tr>
 				<tr>
 					<td>주소</td>
-					<td><input type="text" placeholder="서울시 금천구 호서대벤처타워" /></td>
+					<td><input type="text" name="address"
+					id="address" placeholder="서울시 금천구 호서대벤처타워" /></td>
 				</tr>
 
 				<tr>
 					<td>진료시간</td>
-					<td><input type="text" placeholder="09:00~18:00" /></td>
+					<td><input type="text" name="clinictime"
+					id="clinictime" placeholder="09:00~18:00" /></td>
 				</tr>
 				<tr>
 					<td>점심시간</td>
-					<td><input type="text" placeholder="13:00~14:00" /></td>
+					<td><input type="text" name="lunchtime"
+					id="lunchtime" placeholder="13:00~14:00" /></td>
 				</tr>
 
 			</table>
 
-			<c:set var="i" value="1" />
-			<c:forEach var="acc" items="${accs }">
-				<div class="row">
-					<div class="colume">${i }</div>
-					<div class="colume">${acc.id}</div>
-					<div class="colume">${acc.name }</div>
-					<div class="colume">${acc.balance }</div>
-					<div class="colume">${acc.type }</div>
-					<div class="colume">${acc.grade }&nbsp;</div>
-					<c:set var="i" value="${i+1 }" />
-				</div>
-			</c:forEach>
-		</div>
+			</div>
+		</form>
 	</div>
 </body>
 </html>
