@@ -13,7 +13,7 @@
 	
 	<insert id="insertPatient" parameterType="Patient">
 	<![CDATA[
-	insert into patient (pidnum,pname,ppassword,pemail,paddress,ptel) values (#{pidnum},#{pname},#{ppassword},#{pemail},#{paddress},#{ptel}) 
+	insert into patient (pidnum,pemail,ppassword,pname,ptel,proadaddress,ppostcode,pdetailaddress) values (#{pidnum},#{pemail},#{ppassword},#{pname},#{ptel},#{proadaddress},#{ppostcode},#{pdetailaddress}) 
 	]]>
 	</insert>
 </mapper>

@@ -3,17 +3,17 @@ package dto;
 public class Hospital {
 	private String hname;
 	private String hpassword;
-	private Integer comnum;
+	private String comnum;
 	private String hemail;
 	private String haddress;
-	private Integer htel;
+	private String htel;
 	private String department;
 
 	public Hospital() {
 
 	}
 
-	public Hospital(String hname, String hpassword, Integer comnum, String hemail, String haddress, Integer htel,
+	public Hospital(String hname, String hpassword, String comnum, String hemail, String haddress, String htel,
 			String department) {
 		this.hname = hname;
 		this.hpassword = hpassword;
@@ -32,11 +32,11 @@ public class Hospital {
 		this.hname = hname;
 	}
 
-	public Integer getComnum() {
+	public String getComnum() {
 		return comnum;
 	}
 
-	public void setComnum(Integer comnum) {
+	public void setComnum(String comnum) {
 		this.comnum = comnum;
 	}
 
@@ -56,11 +56,11 @@ public class Hospital {
 		this.haddress = haddress;
 	}
 
-	public Integer getHtel() {
+	public String getHtel() {
 		return htel;
 	}
 
-	public void setHtel(Integer htel) {
+	public void setHtel(String htel) {
 		this.htel = htel;
 	}
 

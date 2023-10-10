@@ -16,7 +16,7 @@ import service.HospitalServiceImpl;
 /**
  * Servlet implementation class HospitalMain
  */
-@WebServlet("/hospitalmain")
+@WebServlet("/hmain")
 public class HospitalMain extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

@@ -57,7 +57,7 @@ a {
 	margin: 0 10px;
 	background-color: #fff;
 	color: #2188C4;
-	width: 70px;
+	width: 75px;
 	height: 29px;
 	line-height: 29px;
 	border-radius: 20px;
@@ -69,6 +69,7 @@ a {
 
 .outerDiv .loginJoin a:hover {
 	background-color: #0056b3;
+	text-decoration:none;
 }
 </style>
 </head>
@@ -82,13 +83,13 @@ a {
 			<c:choose>
 				<c:when test="${empty user}">
 					<a href="login">로그인</a>
+					<a href="pjoin">회원가입</a>
 				</c:when>
 				<c:otherwise>
-					<b><a href="mypage">마이페이지</a></b>
+					<a href="mypage">마이페이지</a>
 					<a href="logout">로그아웃</a>
 				</c:otherwise>
 			</c:choose>
-			<a href="patientjoin">회원가입</a>
 		</div>
 	</div>
 

@@ -7,7 +7,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans:400,700&display=swap">
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap"
@@ -116,7 +115,7 @@
 	<center>
 
 		<div class="container" id='form'>
-			<form action="mainh" method="post" id='form'>
+			<form action="hmain" method="post" id='form'>
 				<div class="log">
 					<span class="large-text">반갑습니다</span> <br>
 					<span class="small-text">더 나은 병원 정보 확인, 예약을 향한 지름길</span>
@@ -133,7 +132,7 @@
 				</div>
 				<button type="submit" class="login-button">로그인</button>
 
-				<div class="new">니어바이닥이 처음이신가요? <a href="hospitaljoin">회원가입</a></div>
+				<div class="new">니어바이닥이 처음이신가요? <a href="hjoin">회원가입</a></div>
 
 		</div>
 	</center>

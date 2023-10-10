@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
-	
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -122,10 +122,12 @@ a {
 	<div class="outerDiv">
 		<div class="locationset">
 			<div class="juso">
-				<button>
-					<span class="icon-text-wrapper"> <span
-						class="material-symbols-outlined"> arrow_back </span>
+				<button class="back">
+
+					<span class="icon-text-wrapper"> <a href="main"> <span
+							class="material-symbols-outlined"> arrow_back </span>
 					</span> 주소 설정
+					</a>
 				</button>
 			</div>
 		</div>
@@ -133,7 +135,7 @@ a {
 			어디에 있는 병원을 찾으세요?
 
 			<div class="currentloc">
-				<button class="current">
+				<button class="current" onclick="getCurrentLocation()"> <%-- 현재위치 가져오기 --%>
 					<span class="icon-text-wrapper"> <span
 						class="material-symbols-outlined"> location_searching </span>
 					</span> 현재 위치에서 병원 찾기
@@ -141,9 +143,9 @@ a {
 			</div>
 
 			<div class="otherloc">
-				<button class="other">
-					<img src="image?file=hospital.jpg" height="250" width="150" alt="병원이미지">
-					다른 위치에서 병원 찾기 <br> <br>
+				<button class="other" onclick="location.href='execDaumPostcode()'">
+					<img src="image?file=hospital.jpg" height="250" width="150"
+						alt="병원이미지"> 다른 위치에서 병원 찾기 <br> <br>
 				</button>
 			</div>
 		</div>

@@ -4,21 +4,26 @@ public class Patient {
 	private String pemail;
 	private String ppassword;
 	private String pname;
-	private Integer ptel;
-	private Integer pidnum;
-	private String paddress;
+	private String ptel;
+	private String pidnum;
+	private String proadaddress;
+	private String ppostcode;
+	private String pdetailaddress;
 
 	public Patient() {
 
 	}
 
-	public Patient(String pemail, String ppassword, String pname, Integer ptel, Integer pidnum, String paddress) {
+	public Patient(String pemail, String ppassword, String pname, String ptel, String pidnum, String proadaddress,
+			String ppostcode, String pdetailaddress) {
 		this.pemail = pemail;
 		this.ppassword = ppassword;
 		this.pname = pname;
 		this.ptel = ptel;
 		this.pidnum = pidnum;
-		this.paddress = paddress;
+		this.proadaddress = proadaddress;
+		this.ppostcode = ppostcode;
+		this.pdetailaddress = pdetailaddress;
 	}
 
 	public String getPemail() {
@@ -45,28 +50,44 @@ public class Patient {
 		this.pname = pname;
 	}
 
-	public Integer getPtel() {
+	public String getPtel() {
 		return ptel;
 	}
 
-	public void setPtel(Integer ptel) {
+	public void setPtel(String ptel) {
 		this.ptel = ptel;
 	}
 
-	public Integer getPidnum() {
+	public String getPidnum() {
 		return pidnum;
 	}
 
-	public void setPidnum(Integer pidnum) {
+	public void setPidnum(String pidnum) {
 		this.pidnum = pidnum;
 	}
 
-	public String getPaddress() {
-		return paddress;
+	public String getProadaddress() {
+		return proadaddress;
 	}
 
-	public void setPaddress(String paddress) {
-		this.paddress = paddress;
+	public void setProadaddress(String proadaddress) {
+		this.proadaddress = proadaddress;
+	}
+
+	public String getPpostcode() {
+		return ppostcode;
+	}
+
+	public void setPpostcode(String ppostcode) {
+		this.ppostcode = ppostcode;
+	}
+
+	public String getPdetailaddress() {
+		return pdetailaddress;
+	}
+
+	public void setPdetailaddress(String pdetailaddress) {
+		this.pdetailaddress = pdetailaddress;
 	}
 
 }

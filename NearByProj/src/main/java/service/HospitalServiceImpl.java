@@ -23,7 +23,7 @@ public class HospitalServiceImpl implements HospitalService {
 	}
 
 	@Override
-	public void Hospitaljoin(Hospital hospital) throws Exception {
+	public void hospitaljoin(Hospital hospital) throws Exception {
 		Hospital shospital = hospitalDao.selectHospital(hospital.getHemail());
 		if (shospital != null)
 			throw new Exception("이메일 중복오류");

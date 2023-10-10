@@ -6,7 +6,9 @@
 <meta charset="UTF-8">
 <title>error404</title>
 <style type="text/css">
+h2{
 
+}
 </style>
 </head>
 <body>

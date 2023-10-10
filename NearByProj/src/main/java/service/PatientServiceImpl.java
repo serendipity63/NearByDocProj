@@ -30,4 +30,13 @@ public class PatientServiceImpl implements PatientService {
 		patientDao.insertPatient(patient);
 	}
 
+	@Override
+	public String pemailcheck(String pemail) throws Exception {
+		Patient patient = patientDao.selectPatient(pemail);
+		if (patient == null)
+			return "notexist";
+
+		return "exist";
+	}
+
 }

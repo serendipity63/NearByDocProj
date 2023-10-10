@@ -50,7 +50,6 @@ a {
     /* 가운데 정렬 */
     font-size: 20px;
     margin-bottom: 20px;
-    /* 아래 여백 추가 */
 
 }
 
@@ -73,13 +72,14 @@ a {
             
                 <c:choose>
                     <c:when test="${empty user}">
-                        <a href="hospitalmain">로그인</a> &nbsp;&nbsp;
+                        <a href="hmain">로그인</a> &nbsp;&nbsp;
+                        
                     </c:when>
                     <c:otherwise>
                         <b>${user.id}님 환영합니다</b> &nbsp;&nbsp; <a href="logout">로그아웃</a>&nbsp;&nbsp;
                     </c:otherwise>
                 </c:choose>
-                <a href="hospitaljoin">회원가입</a>&nbsp;&nbsp;
+                <a href="hjoin">회원가입</a>&nbsp;&nbsp;
             </div>
         </div>
     </div>

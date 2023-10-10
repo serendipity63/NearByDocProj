@@ -7,4 +7,5 @@ public interface PatientService {
 
 	void patientjoin(Patient patient) throws Exception;
 
+	String pemailcheck(String pemail) throws Exception;
 }

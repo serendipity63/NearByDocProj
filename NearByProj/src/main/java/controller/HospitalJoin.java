@@ -8,21 +8,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dto.Patient;
-import service.PatientService;
-import service.PatientServiceImpl;
+import dto.Hospital;
+import service.HospitalService;
+import service.HospitalServiceImpl;
 
 /**
- * Servlet implementation class PatientJoin
+ * Servlet implementation class HospitalJoin
  */
-@WebServlet("/pjoin")
-public class PatientJoin extends HttpServlet {
+@WebServlet("/hjoin")
+public class HospitalJoin extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public PatientJoin() {
+	public HospitalJoin() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -33,7 +33,8 @@ public class PatientJoin extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		request.getRequestDispatcher("patientjoin.jsp").forward(request, response);
+		request.getRequestDispatcher("hospitaljoin.jsp").forward(request, response);
+
 	}
 
 	/**
@@ -43,22 +44,19 @@ public class PatientJoin extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
+		String hname = request.getParameter("hname");
+		String hpassword = request.getParameter("hpassword");
+		String comnum = request.getParameter("comnum");
+		String hemail = request.getParameter("hemail");
+		String haddress = request.getParameter("haddress");
+		String htel = request.getParameter("htel");
+		String department = request.getParameter("department");
 
-		String pemail = request.getParameter("pemail");
-		String ppassword = request.getParameter("ppassword");
-		String pname = request.getParameter("pname");
-		String ptel = request.getParameter("ptel");
-		String pidnum = request.getParameter("pidnum");
-		String proadaddress = request.getParameter("proadaddress");
-		String ppostcode = request.getParameter("ppostcode");
-		String pdetailaddress = request.getParameter("pdetailaddress");
-
-		Patient patient = new Patient(pemail, ppassword, pname, ptel, pidnum, proadaddress, ppostcode, pdetailaddress);
-
+		Hospital hospital = new Hospital(hname, hpassword, comnum, hemail, haddress, htel, department);
 		try {
-			PatientService patientService = new PatientServiceImpl();
-			patientService.patientjoin(patient);
-			request.getRequestDispatcher("login.jsp").forward(request, response);
+			HospitalService hospitalService = new HospitalServiceImpl();
+			hospitalService.hospitaljoin(hospital);
+			request.getRequestDispatcher("hospitalmain.jsp").forward(request, response);
 		} catch (Exception e) {
 			request.setAttribute("err", e.getMessage());
 			request.getRequestDispatcher("error404.jsp").forward(request, response); // 에러 페이지 따로 만들거에요
