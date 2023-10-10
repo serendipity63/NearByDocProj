@@ -52,7 +52,7 @@
 
 <body>
     <div class="main">
-        <% pageContext.include("header.jsp"); %>
+        <% pageContext.include("thinheader.jsp"); %>
         <br>
         <div class="top">
             <table>
@@ -195,9 +195,8 @@
             </div>
         </div>
         <br>
-
-        <h1>푸터</h1>
     </div>
+    <br><br><br>
 </body>
 
 </html>

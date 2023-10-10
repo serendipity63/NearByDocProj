@@ -6,10 +6,6 @@
 <head>
 <meta charset="UTF-8">
 <title>니어닥환자조회</title>
-<<<<<<< Updated upstream
-</head>
-=======
->>>>>>> Stashed changes
 <style>
 body {
 	margin: 0 auto;
@@ -70,22 +66,12 @@ input {
     margin-left: -790px;
 }
 
-<<<<<<< Updated upstream
-button {
-=======
 #search{
 	color:white;
->>>>>>> Stashed changes
 	width: 100px;
 	height: 30px;
 	background-color: rgb(25, 25, 112);
 }
-<<<<<<< Updated upstream
-#search{
-	color:white;
-}
-</style>
-=======
 </style>
 <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
 <script>
@@ -99,7 +85,6 @@ button {
 	}
 </script>
 </head>
->>>>>>> Stashed changes
 <body>
 <% pageContext.include("main.jsp");%>
 	
@@ -109,21 +94,6 @@ button {
                 <h1>환자별 조회</h1><br><br>
             
             
-<<<<<<< Updated upstream
-
-		<div id="reserveform">
-			<select name="patient">
-				<option value="patient">환자명</option>
-				<option value="number">주민등록번호</option>
-			</select> <input type="text">
-			<button onclick="#" id="search">검색</button>
-		
-		</div>
-		
-			<br><br>
-            <div class="container" id="container">
-                <div class="row">
-=======
 	<form action="patientsearch" method="post" id="searchform">
 		<div id="reserveform">
 			<select name="type">
@@ -153,32 +123,12 @@ button {
                 <div class="row">
                 
                 	
->>>>>>> Stashed changes
                    <div class="title colume">일자</div>
 					<div class="title colume">시간</div>
 					<div class="title colume">환자명</div>
 					<div class="title colume">주민등록번호</div>
 					<div class="title colume">연락처</div>
 					<div class="title colume">주소</div>
-<<<<<<< Updated upstream
-                </div>
-                
-        
-            <c:set var="i" value="1"/>
-            <c:forEach var="acc" items="${accs }">
-            	<div class="row">
-            		<div class="colume">${i }</div>
-            		<div class="colume">${acc.id}</div>
-            		<div class="colume">${acc.name }</div>
-            		<div class="colume">${acc.balance }</div>
-            		<div class="colume">${acc.type }</div>
-            		<div class="colume">${acc.grade }&nbsp;</div>
-            		<c:set var="i" value="${i+1 }"/>
-            	</div>
-            </c:forEach>
-            </div>
-           
-=======
               </div>
                 
         
@@ -232,7 +182,6 @@ button {
 			&nbsp;&nbsp;
            
     	</div>
->>>>>>> Stashed changes
     </div>
 </body>
 </html>
