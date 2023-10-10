@@ -150,7 +150,7 @@
                             <td rowspan="4">
                                 <center>
                                     <br><br>
-                                    <div onclick="window.open('https://map.naver.com', 'window_name','width=600, height=400, location=no, status=no, scrollbars=yes')" style="cursor:pointer;">
+                                    <div onclick="window.open('map.jsp', 'window_name','width=600, height=400, location=no, status=no, scrollbars=yes')" style="cursor:pointer;">
                                         <span class="material-symbols-outlined" >
                                             map
                                             </span>
