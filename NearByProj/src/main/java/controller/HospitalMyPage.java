@@ -2,34 +2,31 @@ package controller;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebFilter;
-import javax.servlet.annotation.WebListener;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.websocket.server.PathParam;
 
 /**
- * Servlet implementation class Mypage
+ * Servlet implementation class HospitalMyPage
  */
-@WebServlet({ "/reslist", "/addfamally", "/modifamally", "/modiprofile", "/myreview", "/profile", "/resmanage" })
-public class Mypage extends HttpServlet {
+@WebServlet("/hmypage")
+public class HospitalMyPage extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Mypage() {
+    public HospitalMyPage() {
         super();
         // TODO Auto-generated constructor stub
     }
+
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		request.getRequestDispatcher("reserve_t.jsp").forward(request, response);
 	}
 
 	/**

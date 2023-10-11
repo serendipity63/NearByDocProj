@@ -33,24 +33,15 @@ body {
 
 footer {
   position: absolute;
-
-  bottom: 0;
-
-  left: 0;
-
-  right: 0;
-
-  background: darkblue;
-
-  height: auto;
-
-  width: 99vw;
-
-  padding-top: 40px;
-
-  color: #fff;
-  
-  margin:-209px 0px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgb(25, 25, 112);
+    height: 120px;
+    width: 99vw;
+    padding-top: -11px;
+    color: #fff;
+    margin: -106px 0px;
 }
 
 .footer-content {
@@ -133,10 +124,9 @@ footer {
 
 .footer-bottom p {
   float: left;
-
-  font-size: 14px;
-
-  word-spacing: 2px;
+    font-size: 14px;
+    word-spacing: 2px;
+    margin-top: -20px;
 }
 
 .footer-bottom p a {
@@ -152,8 +142,9 @@ footer {
 }
 
 .footer-menu {
-  float: right;
-  margin-right:30px;
+ 	float: right;
+    margin-right: 30px;
+    margin-top: -30px;
 }
 
 .footer-menu ul {
