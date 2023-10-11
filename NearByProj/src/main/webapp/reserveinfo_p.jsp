@@ -25,6 +25,10 @@ table { margin: auto; width: 800px }
 #row {
 	height: 30px;
 }
+th{
+	width:200px;
+	height:50px;
+}
 h5{text-align:center;}
 
 .title {

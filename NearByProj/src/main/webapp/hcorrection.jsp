@@ -20,13 +20,15 @@ body {
 
 #center {
 	display: flex;
-	justify-content: center;
+   
 }
+
 
 h1 {
 	width: 500px;
 	height: 100px;
-	margin-left: 680px;
+	margin-left: 1000px;
+	margin-top:50px;
 	color: rgb(25, 25, 112);
 }
 
@@ -47,27 +49,16 @@ h1 {
 	
 }
 
-.container {
-	height: 800px;
-	width: 1000px;
-}
 
 table {
 	width: 1000px;
-	height: 500px;
-	margin: 200px -1030px;
-}
-
-input {
-	width: 210px;
-	height: 30px;
+    height: 500px;
+    margin: 25px -500px;
 }
 
 #button {
-	margin-top: 100px;
-	margin-left: 400px;
-	width: 250px;
-	height: 50px;
+	margin-top: 600px;
+    margin-left: 840px;
 }
 
 #button>a {
@@ -76,17 +67,14 @@ input {
 	color: white;
 	background-color: rgb(25, 25, 112);
 	border: 1px solid black;
+	display: inline-block;
+    width: 60px;
 }
 </style>
 <body>
 	<% pageContext.include("hmain.jsp");%>
-
-	<div id="center">
-
-
 		<h1>병원정보</h1>
-
-
+	<div id="center">
 
 
 		<div id="button">
@@ -95,9 +83,10 @@ input {
 
 
 		<br> <br>
+		
 		<form action="hinfomodify" method="post" enctype="maltipart/form-data">
-		<div class="container" id="container">
-		<input type="hidden" name="num" value=${hospital.num }"/>
+		
+		
 			<table border="1" id="title">
 				<tr>
 					<td>진료 과목</td>
@@ -138,7 +127,6 @@ input {
 
 			</table>
 
-			</div>
 		</form>
 	</div>
 </body>

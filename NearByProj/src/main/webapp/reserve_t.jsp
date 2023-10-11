@@ -15,7 +15,7 @@
 h1{
 	width: 300px;
     color: rgb(25, 25, 112);
-    margin: 29px 0px 80px 900px;
+    margin: 29px 0px 80px 1038px;
 
 }
 
@@ -36,9 +36,9 @@ h1{
 
 .container {
 	height: 600px;
-	border: 1px solid;
-	width: 1449px;
-	margin-top:20px;
+    border: 1px solid;
+    width: 1353px;
+    margin-top: 20px;
 }
 </style>
 </head>

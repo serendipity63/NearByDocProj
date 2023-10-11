@@ -47,6 +47,8 @@ body {
 
 #center {
 	display: flex;
+	margin-left:400px;
+	margin-top:30px;
 }
 
 h1 {
@@ -78,7 +80,7 @@ h1 {
 .container {
 	height: 600px;
     border: 1px solid;
-    width: 1326px;
+    width: 1263px;
     margin-left: 130px;
     margin-top:-13px;
 }

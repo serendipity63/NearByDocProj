@@ -52,7 +52,7 @@ body {
 h1{
 	width: 150px;
     color: rgb(25, 25, 112);
-    margin: 29px 0px 80px 900px;
+    margin: 29px 0px 80px 1097px;
 
 }
 
@@ -79,8 +79,8 @@ h1{
 .container {
 	height: 600px;
     border: 1px solid;
-    width: 1734px;
-    margin: 48px 229px 0px -1284px
+    width: 1500px;
+    margin: 45px 319px 0px -1403px;
 }
 
 input {
@@ -100,8 +100,8 @@ select {
 .reserveform {
 	width: 1574px;
     height: 100px;
-    margin-left: 203px;
-    margin-top:-40px;
+    margin-left: 432px;
+    margin-top: -40px;
 }
 .reserveform>button{
 	width: 100px;
