@@ -15,13 +15,13 @@
 h1{
 	width: 300px;
     color: rgb(25, 25, 112);
-    margin: 29px 0px 80px 900px;
+    margin: 29px 0px 80px 1038px;
 
 }
 
 .title {
 	font-weight: bold;
-	background-color: rgb(25, 25, 112);
+	background-color: lightgray;
 	width: 100px;
 }
 
@@ -29,16 +29,32 @@ h1{
 	padding: 5px;
 	width: 150px;
 	float: left;
-	color: white;
+	color: black;
 	text-align: center;
 	border-right:1px solid white;
 }
 
 .container {
 	height: 600px;
-	border: 1px solid;
-	width: 1449px;
-	margin-top:20px;
+    border: 1px solid;
+    width: 1353px;
+    margin-top: 20px;
+}
+#emptyArea { width: 708px;
+    text-align: center;
+    margin-top: 600px;
+    margin-left: 700px; }
+#emptyArea a {
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	text-decoration: none;
+}
+#emptyArea .btn {
+	background: lightgray;
+}
+#emptyArea .select {
+	background: lightblue;
 }
 </style>
 </head>
@@ -79,6 +95,41 @@ h1{
 			</c:forEach>
 		</div>
 	</div>
+	<div id="emptyArea">
+			<c:choose>  
+				<c:when test="${res.pageInfo.curPage>1}">
+					<a href="boardlist?page=${res.pageInfo.curPage-1}">&lt;</a>
+				</c:when>
+				<c:otherwise>
+					&lt;
+				</c:otherwise>
+			</c:choose>
+			&nbsp;&nbsp;
+
+			<c:forEach begin="${res.pageInfo.startPage}" end="${res.pageInfo.endPage}" var="i">
+				<c:choose>
+					<c:when test="${res.pageInfo.curPage==i}">
+						<a href="boardlist?page=${i}" class="select" onclick="callBtn(${i});return ${res.keyword==null};">${i}</a>&nbsp;
+					</c:when>
+					<c:otherwise>
+						<a href="boardlist?page=${i}" class="btn" onclick="callBtn(${i});return ${res.keyword==null};">${i}</a>&nbsp;
+					</c:otherwise>
+					
+				</c:choose>
+				
+			</c:forEach>
+
+			<c:choose>  
+				<c:when test="${res.pageInfo.curPage<res.pageInfo.allPage}">
+					<a href="boardlist?page=${res.pageInfo.curPage+1}">&gt;</a>
+				</c:when>
+				<c:otherwise>
+					&gt;
+				</c:otherwise>
+			</c:choose>
+			&nbsp;&nbsp;
+           
+    	</div>
 
 </body>
 </html>

@@ -26,4 +26,5 @@ public class HospitalDaoImpl implements HospitalDao {
 		sqlSession.commit();
 	}
 
+
 }

@@ -47,6 +47,8 @@ body {
 
 #center {
 	display: flex;
+	margin-left:400px;
+	margin-top:30px;
 }
 
 h1 {
@@ -62,7 +64,7 @@ h1 {
 
 .title {
 	font-weight: bold;
-	background-color: rgb(25, 25, 112);
+	background-color: lightgray;
 	width: 100px;
 }
 
@@ -70,7 +72,7 @@ h1 {
 	padding: 5px;
 	width: 210px;
 	float: left;
-	color: white;
+	color: black;
 	text-align: center;
 	border-right:1px solid white;
 }
@@ -78,10 +80,11 @@ h1 {
 .container {
 	height: 600px;
     border: 1px solid;
-    width: 1326px;
+    width: 1263px;
     margin-left: 130px;
     margin-top:-13px;
 }
+
 
 
 input {

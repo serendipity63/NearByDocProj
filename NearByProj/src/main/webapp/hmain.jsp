@@ -23,8 +23,6 @@ body {
    background-color: rgb(245, 245, 245);
    margin:0 auto;
    
-   
-   
 }
 
 #header {
@@ -44,9 +42,7 @@ body {
    margin-top:10px;
 }
 h2{
-   background-color: none;
    margin-left:20px;
-   color:rgb(25, 25, 112);
 }
 
 h3>img{
@@ -55,19 +51,20 @@ h3>img{
    margin-left:50px;
 }
 h3{
-   color: #D9D9D9;
+   color: white;
    margin-left:10px;
+   margin-top:80px;
    
 }
 h3>a{
 
-   color: #D9D9D9;
+   color: black;
    margin-left:10px;
    text-decoration:none;
 
 }
 h3>p{
-   background-color: #191970;
+   color: black;
    margin-left:10px;
 }
 
@@ -75,67 +72,39 @@ h3>p{
    
    
    float: left;
-   height: 900px;
+   height:960px;
    width: 180px;
    border:1px solid gray;
    
 }
 #list{
    height:600px;
-
+	
+}
+#list>p{
+	margin-top:20px;
 }
 
-#list>span {
-   
-   width: 300px;
-   height: 50px;
-   
-   
-}
-
-#list>span>a {
-   text-decoration: none;
-   font-size: 14px;
-   color: white;
-   margin-left:20px;
-}
 #list>p>a{
    padding: 10px;
    text-decoration:none;
-   color: white;
-   background-color: rgb(25, 25, 112);
-   border: 1px solid black;
+   color: black;
    margin-left:40px;
+   margin-top:40px;
 }
 
-#list>h2>button{
-   background-color:rgb(12, 66, 132);
-   margin-left:100px;
-}
-#list>h2>button>img{
-   color:rgb(12, 66, 132);
-}
-.check{
-   background-color: rgb(25, 25, 112);
-   
-}
 
-.check>span>a{
-   color:white;
-   text-decoration:none;
-   display:inline-block;
-   width: 300px;
-   height: 50px;
-   margin-left:20px;
-   margin-top:15px;
-}
+
+
+
 
 </style>
 </head>
 <body>
+<% pageContext.include("footer.jsp");%>
    <div id="header">
 
-      <a href="reserve_t.jsp"><img src="image?file=navylogo.png"
+      <a href="reserve_t.jsp"><img src="image?file=icon.png"
          width="50px" height="50px" alt="로고 이미지"/></a>
          <span>병원매니저</span>
       
@@ -165,35 +134,39 @@ h3>p{
             
          </h2>
          <hr>
-         <div class="check">
-            <span>
+         
+            <p>
                <a href="allreserveinfo.jsp" >전체 조회</a>
-            </span>
+            </p>
             
          
-            <span>
+            <p>
                <a href="reserveinfo_d.jsp" >일정별 조회</a>
-            </span>
+            </p>
             
-            <span>
+            <p>
                <a href="reserveinfo_p.jsp" >환자별 조회</a>
-            </span>
-         </div>
+            </p>
+            <br>
+        
          <hr>
-         <br> <br>
-         
+         <br>
+         <br>
          <hr>
-         <span>
+         <p>
             <a href="hinfo.jsp">병원 정보</a>
-         </span>
+         </p>
+         <br>
          <hr>
-         <span>
+         
+         <p>
             <a href="mrecord.jsp">진료 기록</a>
-         </span>
+         </p>
+         <br>
          <hr>
          <br>
          <p>
-            <a href="hlogin.jsp">로그아웃</a>
+            <a href="login.jsp">로그아웃</a>
          </p>
          
 
