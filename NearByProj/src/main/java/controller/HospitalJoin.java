@@ -54,7 +54,7 @@ public class HospitalJoin extends HttpServlet {
 		String hroad = request.getParameter("hroad");
 		String hdetail = request.getParameter("hdetail");
 		String hpostcode = request.getParameter("hpostcode");
-		String hrul=request.getParameter("hrul");
+		String hurl=request.getParameter("hurl");
 				
 
 		Hospital hospital = new Hospital(hname,hpassword, comnum, htel, department,lunch,

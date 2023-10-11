@@ -166,7 +166,7 @@ h3>p{
          <hr>
          <br>
          <p>
-            <a href="login.jsp">로그아웃</a>
+            <a href="hospitallogin.jsp">로그아웃</a>
          </p>
          
 
