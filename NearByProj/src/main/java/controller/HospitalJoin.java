@@ -58,7 +58,7 @@ public class HospitalJoin extends HttpServlet {
 				
 
 		Hospital hospital = new Hospital(hname,hpassword, comnum, htel, department,lunch,
-				clinic, hroad, hdetail, hpostcode, hrul);
+				clinic, hroad, hdetail, hpostcode, hurl);
 		try {
 			HospitalService hospitalService = new HospitalServiceImpl();
 			hospitalService.hospitaljoin(hospital);
