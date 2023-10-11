@@ -206,7 +206,7 @@ a {
 					</div>
 				</div>
 				<div class="button">
-					<button class="search-button" onclick="location.href='#'">병원 찾기</button>
+					<button class="search-button" onclick="location.href='searchhospital.jsp'">병원 찾기</button>
 				</div>
 			</div>
 		</div>
