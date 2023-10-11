@@ -59,7 +59,7 @@ h1{
    <div id="container">
     <div class="whitebox">
     <!-- <a href="myPageMain?page=resList">계좌개설</a>&nbsp;&nbsp; -->
-      <h1><a href="Mypage/reslist">예약 내역</a></h1>
+      <h1><a href="reslist">예약 내역</a></h1>
     </div>
     <div class="whitebox">
       <h1><a href="addfamally">자녀 추가</a></h1>
