@@ -25,22 +25,17 @@
   box-sizing: border-box;
 }
 
-body {
-  background: #fcfcfc;
-
-  font-family: sans-serif;
-}
 
 footer {
-position: absolute;
+	position: absolute;
     bottom: 0;
     left: 0;
     right: 0;
-    background: rgb(25, 25, 112);
-    height: 86px;
-    width: 80vw;
+    background: #05053f;
+    height: 120px;
+    width: 81vw;
     color: #fff;
-    margin: 43px 79px;
+    margin: 0 auto;
 }
 
 .footer-content {
@@ -218,7 +213,7 @@ year.textContent = new Date().getFullYear();
 
     <div class="footer-bottom">
 
-      <p>Copyright &copy <span id="year"></span> <a href="#">@coding_dev_</a> </p>
+      <p>Copyright &copy <span id="year"></span> <a href="login">@nearbydoc</a> </p>
 
       <div class="footer-menu">
 

@@ -19,76 +19,79 @@ body {
 }
 
 
-#center {
-	display: flex;
-   
-}
-
 
 h1 {
-	width: 500px;
-	height: 100px;
-	margin-left: 1000px;
-	margin-top:50px;
-	color: rgb(25, 25, 112);
+	width: 120px;
+    
+    margin: 0 auto;
+    /* margin-top: 50px; */
+    color: rgb(25, 25, 112);
 }
 
-.row {
-	height: 20px;
-}
-
-.title {
-	font-weight: bold;
-	background-color: rgb(25, 25, 112);
-	width: 200px;
-}
-
-.colume {
-	padding: 5px;
-	width: 140px;
-	float: left;
-	
-}
 
 
 table {
-	width: 1000px;
-    height: 500px;
-    margin: 25px -500px;
+	width: 1020px;
+	height: 500px;
+	margin: 50px 0px 0px 450px;
+	
+}
+td{
+	width:63px;
+	background-color:lightblue;
+	color:black;
+	text-align:center;
+}
+input[type="text"]{
+	width: 241px;
+    height: 42px;
+    text-align: center;
 }
 
 #button {
-	margin-top: 600px;
-    margin-left: 840px;
+	margin-top: 50px;
+    margin-left: 904px;
 }
 
 #button>a {
 	padding: 10px;
-	text-decoration: none;
-	color: white;
-	background-color: rgb(25, 25, 112);
-	border: 1px solid black;
-	display: inline-block;
-    width: 60px;
+    text-decoration: none;
+    color: white;
+    background-color: #0a0a4d;
+    border-radius:10px;
+    display: inline-block;
+    width: 81px;
+}
+#button>a:hover{
+	 background-color:blue;
+      transition: 0.7s;
+}
+.ear{
+	background-color:#c1f3ea;
+	color:black;
+}
+.num{
+	background-color:#c1f3ea;
+	color:black;
+}
+.add{
+	background-color:#c1f3ea;
+	color:black;
+}
+.lun{
+	background-color:#c1f3ea;
+	color:black;
 }
 </style>
 <body>
 	<% pageContext.include("hmain.jsp");%>
 		<h1>병원정보</h1>
-	<div id="center">
-
-
-		<div id="button">
-			<a href="hinfo.jsp">수정</a>
-		</div>
-
-
-		<br> <br>
+	
 		
 		<form action="hinfomodify" method="post" enctype="maltipart/form-data">
 		
 		
-			<table border="1" id="title">
+			<table>
 				<tr>
 					<td>진료 과목</td>
 					<td><input type="text" name="subject" 
@@ -100,7 +103,7 @@ table {
 					id="name" readonly="readonly" value="${hospital.name }" placeholder="니어바이닥의원" /></td>
 				</tr>
 				<tr>
-					<td>E-Mail</td>
+					<td>사업자등록번호</td>
 					<td><input type="text" name="email"
 					id="email" placeholder="ch2488@naver.com" /></td>
 				</tr>
@@ -127,8 +130,11 @@ table {
 				</tr>
 
 			</table>
-
+			
 		</form>
-	</div>
+		<div id="button">
+			<a href="hinfo.jsp">수정완료</a>
+		</div>
+	
 </body>
 </html>

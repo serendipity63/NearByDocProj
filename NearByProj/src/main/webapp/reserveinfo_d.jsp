@@ -45,16 +45,12 @@ body {
 	margin: 0 auto;
 }
 
-#center {
-	display: flex;
-	margin-left:400px;
-	margin-top:30px;
-}
+
 
 h1 {
 	width: 200px;
     height: 50px;
-    margin-left: 680px;
+    margin:44px auto;
     color: rgb(25, 25, 112);
 }
 
@@ -78,11 +74,10 @@ h1 {
 }
 
 .container {
-	height: 600px;
+	height: 412px;
     border: 1px solid;
     width: 1263px;
-    margin-left: 130px;
-    margin-top:-13px;
+    margin-left: 377px;
 }
 
 
@@ -94,9 +89,9 @@ input {
 
 #reserveform {
 	margin-top: 50px;
-    width: 1500px;
+    width: 1000px;
     height: 50px;
-    margin-left: 190px;
+    margin-left: 662px;
 }
 
 button {
@@ -111,7 +106,7 @@ button {
 <body>
 	<% pageContext.include("hmain.jsp");%>
 
-	<div id="center">
+	
 		<form action="reserveinfo" method="post">
 
 		
@@ -159,6 +154,6 @@ button {
 				</c:forEach>
 			</div>
 		</form>
-	</div>
+	
 </body>
 </html>
