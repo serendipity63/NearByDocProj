@@ -45,15 +45,21 @@
             text-align: center;
         }
         .btn-primary {
-            width: 410px;
+            padding: 20px 20px;
             background-color: #cfe8f7;
+            color: #333333;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-family: 'Noto Sans', sans-serif;
+            text-decoration: none;
             border-radius: 10px;
-            border-color: white;
-
-            padding: 15px 30px;
-            text-align: center;
-            font-size: 16px;
-            margin: auto;
+            width: 100%;
+            font-weight:bold;
+			font-size: 18px;
+        }
+        .btn-primary:hover {
+        	background-color: #0056b3;
         }
         .sub {
             font-weight: bold;

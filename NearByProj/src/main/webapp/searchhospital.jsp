@@ -63,6 +63,8 @@
             width: 100%;
             margin-top: 20px;
             margin-bottom: 10px;
+            font-weight:bold;
+			font-size: 18px;
         }
 
         .search-button:hover {
@@ -153,6 +155,135 @@
                 <p>설정 조건과 가까운 병원 검색 결과입니다.</p>
         </div>
         <div class="hoslist">
+            <div class="hos">
+                <div class="hosinfo" onclick="location.href='hospitalinfo.jsp';" style="cursor:pointer;">
+                <table>
+                	<tbody>
+                        <tr>
+                            <td colspan="3" width="330"><h4 style="font-size: 24px;">KOSTA치과의원</h4></td>
+                        </tr>
+                        <tr>
+                            <td width="110">
+                                15km
+                            </td>
+                            <td width="110">
+                                종합병원
+                            </td>
+                            <td width="110">
+                                02)1234-5678
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" width="330">서울특별시 금천구 남부순환로 1252</td>
+
+                        </tr>
+                        <tr>
+                            <td colspan="2">5.0
+                                <img src="image?file=star.png" alt="별" width="15">
+                                <img src="image?file=star.png" alt="별" width="15">
+                                <img src="image?file=star.png" alt="별" width="15">
+                                <img src="image?file=star.png" alt="별" width="15">
+                                <img src="image?file=star.png" alt="별" width="15">
+                            </td>
+                            <td>리뷰 10건</td>
+                        </tr>
+                    </tbody>
+                </table>
+                </div>
+                <div class="hosmap" onclick="window.open('map.jsp', 'window_name','width=600, height=400, location=no, status=no, scrollbars=yes')" style="cursor:pointer;">
+                                        <center><br><span class="material-symbols-outlined" >
+                                            map
+                                            </span>
+                                            <p>지도보기</p></center>
+                                    </div>
+                <br>
+            </div>
+            <div class="hos">
+                <div class="hosinfo" onclick="location.href='hospitalinfo.jsp';" style="cursor:pointer;">
+                <table>
+                	<tbody>
+                        <tr>
+                            <td colspan="3" width="330"><h4 style="font-size: 24px;">KOSTA치과의원</h4></td>
+                        </tr>
+                        <tr>
+                            <td width="110">
+                                15km
+                            </td>
+                            <td width="110">
+                                종합병원
+                            </td>
+                            <td width="110">
+                                02)1234-5678
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" width="330">서울특별시 금천구 남부순환로 1252</td>
+
+                        </tr>
+                        <tr>
+                            <td colspan="2">5.0
+                                <img src="image?file=star.png" alt="별" width="15">
+                                <img src="image?file=star.png" alt="별" width="15">
+                                <img src="image?file=star.png" alt="별" width="15">
+                                <img src="image?file=star.png" alt="별" width="15">
+                                <img src="image?file=star.png" alt="별" width="15">
+                            </td>
+                            <td>리뷰 10건</td>
+                        </tr>
+                    </tbody>
+                </table>
+                </div>
+                <div class="hosmap" onclick="window.open('map.jsp', 'window_name','width=600, height=400, location=no, status=no, scrollbars=yes')" style="cursor:pointer;">
+                                        <center><br><span class="material-symbols-outlined" >
+                                            map
+                                            </span>
+                                            <p>지도보기</p></center>
+                                    </div>
+                <br>
+            </div>
+            <div class="hos">
+                <div class="hosinfo" onclick="location.href='hospitalinfo.jsp';" style="cursor:pointer;">
+                <table>
+                	<tbody>
+                        <tr>
+                            <td colspan="3" width="330"><h4 style="font-size: 24px;">KOSTA치과의원</h4></td>
+                        </tr>
+                        <tr>
+                            <td width="110">
+                                15km
+                            </td>
+                            <td width="110">
+                                종합병원
+                            </td>
+                            <td width="110">
+                                02)1234-5678
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" width="330">서울특별시 금천구 남부순환로 1252</td>
+
+                        </tr>
+                        <tr>
+                            <td colspan="2">5.0
+                                <img src="image?file=star.png" alt="별" width="15">
+                                <img src="image?file=star.png" alt="별" width="15">
+                                <img src="image?file=star.png" alt="별" width="15">
+                                <img src="image?file=star.png" alt="별" width="15">
+                                <img src="image?file=star.png" alt="별" width="15">
+                            </td>
+                            <td>리뷰 10건</td>
+                        </tr>
+                    </tbody>
+                </table>
+                </div>
+                <div class="hosmap" onclick="window.open('map.jsp', 'window_name','width=600, height=400, location=no, status=no, scrollbars=yes')" style="cursor:pointer;">
+                                        <center><br><span class="material-symbols-outlined" >
+                                            map
+                                            </span>
+                                            <p>지도보기</p></center>
+                                    </div>
+                <br>
+            </div>
             <div class="hos">
                 <div class="hosinfo" onclick="location.href='hospitalinfo.jsp';" style="cursor:pointer;">
                 <table>

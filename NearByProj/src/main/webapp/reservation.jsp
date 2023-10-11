@@ -36,7 +36,7 @@
             border-bottom: 1px solid;
             border-color: gainsboro;
         }
-        button {
+        .tbutton {
             margin-left: 20px;
         }
         .button {
@@ -49,15 +49,21 @@
             margin: 5px 5px 5px 5px;
         }
         .btn-primary {
-            width: 410px;
-            background-color: #1376F8;
+            padding: 20px 20px;
+            background-color: #cfe8f7;
+            color: #333333;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-family: 'Noto Sans', sans-serif;
+            text-decoration: none;
             border-radius: 10px;
-            border-color: white;
-            color: white;
-            padding: 15px 30px;
-            text-align: center;
-            font-size: 16px;
-            margin: auto;
+            width: 100%;
+            font-weight:bold;
+			font-size: 18px;
+        }
+        .btn-primary:hover {
+        	background-color: #0056b3;
         }
 		.sub {
             font-weight: bold;
@@ -122,7 +128,7 @@
         <div class="selecttime">
             <p class="sub">시간선택 : <input type="text"></p>
             <br>
-            <button>09:00</button><button>09:30</button><button>10:00</button><button>10:30</button><button>11:00</button><button>11:30</button><button>13:00</button><button>13:30</button><button>14:00</button><button>14:30</button><button>15:00</button><button>15:30</button><button>16:00</button><button>16:30</button><button>17:00</button><button>17:30</button>
+            <button class="tbutton">09:00</button><button class="tbutton">09:30</button><button class="tbutton">10:00</button><button class="tbutton">10:30</button><button class="tbutton">11:00</button><button class="tbutton">11:30</button><button class="tbutton">13:00</button><button class="tbutton">13:30</button><button class="tbutton">14:00</button><button class="tbutton">14:30</button><button class="tbutton">15:00</button><button class="tbutton">15:30</button><button class="tbutton">16:00</button><button class="tbutton">16:30</button><button class="tbutton">17:00</button><button class="tbutton">17:30</button>
             <br><br>
         </div>
         <br>
