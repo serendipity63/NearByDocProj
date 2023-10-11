@@ -169,7 +169,7 @@ button {
                 </div>
 
                 <button type="submit" class="loginbutton">로그인</button>
-                <div>니어바이닥이 처음이신가요? <a href="patientjoin">회원가입</a></div>
+                <div>니어바이닥이 처음이신가요? <a href="pjoin">회원가입</a></div>
             </form>
         </center>
     </div>
