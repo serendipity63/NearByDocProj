@@ -53,21 +53,22 @@ body {
 
 #center {
 	display: flex;
+	margin-top:20px;
+	margin-left:20px;
 }
 
 h1 {
 	width: 300px;
 	height: 50px;
-	margin-left: 680px;
+	margin-left: 800px;
 	color: rgb(25, 25, 112);
 }
 
 .row>a{
-	background-color: rgb(25, 25, 112);
+	background-color: lightgray;
     padding: 5px;
-    color: white;
+    color: black;
     text-align: center;
-    /* border-right: 1px solid white; */
     display: inline-block;
     width: 139px;
     text-decoration: none;
@@ -77,7 +78,7 @@ h1 {
 
 .title {
 	font-weight: bold;
-	background-color: rgb(25, 25, 112);
+	background-color: lightgray;
 	width: 100px;
 
 }
@@ -86,18 +87,18 @@ h1 {
 	padding: 5px;
 	width: 156px;
 	float: left;
-	color: white;
+	color: black;
 	text-align: center;
 	border-right:1px solid white;
 	
 }
 
 .container {
-	height: 800px;
+	height: 600px;
     border: 1px solid;
-    width: 1486px;
+    width: 1390px;
     margin-top: 200px;
-    margin-left: -1590px
+    margin-left: -1590px;
 }
 
 input {
@@ -124,7 +125,7 @@ button {
 	margin-top: 70px;
 	width: 1500px;
 	height: 50px;
-	margin-left: -760px;
+	margin-left: -750px;
 }
 #datepicker1{
 	margin-top:50px;
@@ -180,18 +181,7 @@ button {
                 </div>
                 
          
-            <c:set var="i" value="1"/>
-            <c:forEach var="acc" items="${accs }">
-            	<div class="row">
-            		<div class="colume">${i }</div>
-            		<div class="colume">${acc.id}</div>
-            		<div class="colume">${acc.name }</div>
-            		<div class="colume">${acc.balance }</div>
-            		<div class="colume">${acc.type }</div>
-            		<div class="colume">${acc.grade }&nbsp;</div>
-            		<c:set var="i" value="${i+1 }"/>
-            	</div>
-            </c:forEach>
+           
             </div>
      </div>
 </body>

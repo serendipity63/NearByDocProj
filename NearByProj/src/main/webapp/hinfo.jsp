@@ -15,17 +15,17 @@ body {
 
 #center {
 	display: flex;
-    margin-left: 1400px;
+    margin-left: 2000px;
     margin-top: -150px;
 }
 
 
 h1 {
-	width: 400px;
-    height: 100px;
-    margin-left: 821px;
-    color: rgb(25, 25, 112);
-
+	width: 500px;
+	height: 100px;
+	margin-left: 1000px;
+	margin-top:50px;
+	color: rgb(25, 25, 112);
 }
 
 .row {
@@ -45,19 +45,21 @@ h1 {
 	
 }
 
-.container {
-	height: 800px;
-	width: 1000px;
-}
 
 table {
 	width: 1000px;
 	height: 500px;
-	margin: 200px -1000px;
+	margin: 200px -1400px;
+}
+td{
+	width:30px;
 }
 
 #button {
-	margin-left:850px;
+	margin-top: 750px;
+	margin-left: 810px;
+	width: 250px;
+	height: 50px;
 }
 
 #button>a {
@@ -66,6 +68,8 @@ table {
 	color: white;
 	background-color: rgb(25, 25, 112);
 	border: 1px solid black;
+	display: inline-block;
+    width: 90px;
 }
 </style>
 <body>
@@ -73,8 +77,8 @@ table {
 	<h1>병원정보</h1>
 	<div id="center">
 		
-
-		<div class="container">
+		
+		
 			<table border="1" id="title">
 				<tr>
 					<td>진료 과목</td>
@@ -85,8 +89,8 @@ table {
 					<td>니어바이닥의원</td>
 				</tr>
 				<tr>
-					<td>E-Mail</td>
-					<td>ch2488@naver.com</td>
+					<td>사업자등록번호</td>
+					<td>123-45-67890</td>
 				</tr>
 				<tr>
 					<td>전화번호</td>
@@ -105,26 +109,15 @@ table {
 					<td>점심시간</td>
 					<td>13:00~14:00</td>
 				</tr>
-
+				
 			</table>
-			
-		
-			<c:set var="i" value="1" />
-			<c:forEach var="acc" items="${accs }">
-				<div class="row">
-					<div class="colume">${i }</div>
-					<div class="colume">${acc.id}</div>
-					<div class="colume">${acc.name }</div>
-					<div class="colume">${acc.balance }</div>
-					<div class="colume">${acc.type }</div>
-					<div class="colume">${acc.grade }&nbsp;</div>
-					<c:set var="i" value="${i+1 }" />
+				<div id="button">
+				<a href="hcorrection.jsp">수정하기</a>
 				</div>
-			</c:forEach>
+			
+			
 		</div>
-	</div>
-	<div id="button">
-		<a href="hcorrection.jsp">수정하기</a>
-		</div>
+	
+	
 </body>
 </html>

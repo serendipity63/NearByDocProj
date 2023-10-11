@@ -13,17 +13,29 @@ body {
 
 #center {
 	display: flex;
+	margin-left:244px;
 }
 
 h1 {
-	width: 300px;
+	width: 200px;
     height: 100px;
-    margin-left: 680px;
+    margin-left: 1036px;
+    margin-top: 50px;
     color: rgb(25, 25, 112);
 }
-table { margin: auto; width: 800px }
+table { margin-left: -1254px;
+    width: 1276px;
+    margin-top: 100px;
+    background-color: lightgray;
+ }
 #row {
 	height: 30px;
+	
+}
+th{
+	width:300px;
+	height:30px;
+	border:1px solid black;
 }
 h5{text-align:center;}
 
@@ -44,7 +56,6 @@ h5{text-align:center;}
 
 .container {
 	height: 500px;
-    border: 1px solid;
     width: 1326px;
     margin-left: -1560px;
     margin-top: 200px;
@@ -55,23 +66,42 @@ select{
 	height:35px;
 
 }
+
 input {
 	width: 200px;
 	height: 30px;
+	
 }
 
 #reserveform {
-	margin-top: 120px;
+	
     width: 1500px;
     height: 50px;
-    margin 0 auto;
+    margin: 0 auto;
 }
 
 #search{
-	color:white;
+	color:black;
 	width: 100px;
 	height: 30px;
-	background-color: rgb(25, 25, 112);
+	background-color: lightgray;
+	border-radius:10px;
+}
+#emptyArea { width: 708px;
+    text-align: center;
+    margin-top: 600px;
+    margin-left: 700px; }
+#emptyArea a {
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	text-decoration: none;
+}
+#emptyArea .btn {
+	background: lightgray;
+}
+#emptyArea .select {
+	background: lightblue;
 }
 </style>
 <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
@@ -104,14 +134,14 @@ input {
 				<option value="number">${res.type eq 'number'? 'selected':'' }주민등록번호</option>
 			</select> 
 			<input type="text" name="keyword" id="keyword" value="${res.keyword }"/>
-			<input type="submit" id="search" value="검색"/>
+			<input type="submit" id="search"  value="검색"/>
 		</h5>
 		</div>
 		
 	</form>
 	
 			<table>
-				<tr id="row"><th>일자</th><th>시간</th><th>환자명</th><th>주민등록번호</th><th>연락처</th><th>주소</th>
+				<tr id="row"><th>일자</th><th>시간</th><th>환자명</th><th>주민등록번호</th><th>연락처</th><th>주소</th></tr>
 				<c:forEach items="${res.patientList }" var="patient">
 					<tr>
 						<td>${patient.date }</td>
@@ -125,35 +155,10 @@ input {
 					</tr>
 				</c:forEach>
 			</table>
-            <%-- <div class="container" id="container">
-                <div class="row">
-                
-                	
-                   <div class="title colume">일자</div>
-					<div class="title colume">시간</div>
-					<div class="title colume">환자명</div>
-					<div class="title colume">주민등록번호</div>
-					<div class="title colume">연락처</div>
-					<div class="title colume">주소</div>
-              </div>
-                
-        
-            <c:set var="i" value="1"/>
-            <c:forEach var="patient" items="${patients }">
-            	<div class="row">
-            		<div class="colume">${i }</div>
-            		<div class="colume">${patient.date}</div>
-            		<div class="colume">${patient.time }</div>
-            		<div class="colume">${patient.pname }</div>
-            		<div class="colume">${patient.number }</div>
-            		<div class="colume">${patient.ptel }</div>
-            		<div class="colume">${patient.paddress }</div>
-            		
-            	</div>
-            </c:forEach>
-           </div>  --%>
            
-            <div id="emptyArea">
+           
+    </div>
+    <div id="emptyArea">
 			<c:choose>  
 				<c:when test="${res.pageInfo.curPage>1}">
 					<a href="boardlist?page=${res.pageInfo.curPage-1}">&lt;</a>
@@ -188,6 +193,5 @@ input {
 			&nbsp;&nbsp;
            
     	</div>
-    </div>
 </body>
 </html>
