@@ -58,9 +58,9 @@ body {
 }
 
 h1 {
-	width: 300px;
+	width: 202px;
 	height: 50px;
-	margin-left: 800px;
+	margin:44px auto;
 	color: rgb(25, 25, 112);
 }
 
@@ -85,7 +85,7 @@ h1 {
 
 .colume {
 	padding: 5px;
-	width: 156px;
+	width: 144px;
 	float: left;
 	color: black;
 	text-align: center;
@@ -94,11 +94,10 @@ h1 {
 }
 
 .container {
-	height: 600px;
+	height: 400px;
     border: 1px solid;
-    width: 1390px;
-    margin-top: 200px;
-    margin-left: -1590px;
+    width: 1295px;
+   	margin:150px 368px;
 }
 
 input {
@@ -122,10 +121,10 @@ button {
 }
 
 .reserveform {
-	margin-top: 70px;
+	
 	width: 1500px;
 	height: 50px;
-	margin-left: -750px;
+	margin: -87px 401px;
 }
 #datepicker1{
 	margin-top:50px;
@@ -138,7 +137,7 @@ button {
 </style>
 <body>
 <% pageContext.include("hmain.jsp");%>
-	<div id="center">
+	
         	
            
                 <h1>진료 기록 조회</h1><br><br>
@@ -183,6 +182,6 @@ button {
          
            
             </div>
-     </div>
+    
 </body>
 </html>

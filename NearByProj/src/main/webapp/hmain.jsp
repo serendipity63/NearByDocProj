@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%><!--  uri core를 c로 설정 -->
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%> 
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,6 +9,8 @@
 <link
    href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap"
    rel="stylesheet">
+      <link rel="stylesheet" href="css/my_mouseover.css" />
+   
 <title>니어닥병원마이페이지</title>
 
 
@@ -21,27 +24,36 @@
 
 body {
    
-   background-color: rgb(245, 245, 245);
-  	min-width:50vw;
+   	background-color: #eee;
+  	width:100%;
+  	height:100%;
    
 }
 
 #header {
-   width: 75%;
+   	width: 81%;
     height: 75px;
     background-color: #191970;
-    margin-left: 80px;
+   	margin:0 auto;
+   
 }
 #header>span{
-   color:#191970;
+   color:white;
    font-size:27px;
-   margin-right:200px;
+   margin-right: 100px;
    margin-top:25px;
    float:right;
    }
 #header>a>img{
-   margin-left:40px;
-   margin-top:10px;
+   margin-left: 33px;
+   margin-top: 13px;
+   width: 60px;
+   filter:brightness(0.8);
+}
+#header>a>img:hover{
+  
+   filter:brightness(1.5);
+
 }
 h2{
    margin-left:20px;
@@ -65,18 +77,19 @@ h3>a{
    text-decoration:none;
 
 }
+h3>a:hover{color:red;}
 h3>p{
    color: black;
    margin-left:10px;
 }
 
 #sidemenubox {
-   
-  float: left;
-    height: 800px;
+  
+  	float: left;
+    height: 738px;
     width: 180px;
-    border: 1px solid gray;
-    margin-left: 80px;
+    border-right: 1px solid gray;
+    margin-left: 182px;
 }
 }
 #list{
@@ -84,7 +97,7 @@ h3>p{
 	
 }
 #list>p{
-	margin-top:20px;
+	margin-top:15px;
 }
 
 #list>p>a{
@@ -94,6 +107,10 @@ h3>p{
    margin-left:40px;
    margin-top:40px;
 }
+#list>p>a:hover{
+   color:red;
+
+}
 
 
 
@@ -102,9 +119,9 @@ h3>p{
 
 </style>
 </head>
-<body>
+<body style="overflow-x: hidden">
 
-<% pageContext.include("hfooter.jsp");%>
+
    <div id="header">
 
       <a href="reserve_t.jsp"><img src="image?file=icon.png"
@@ -123,7 +140,7 @@ h3>p{
       <h3>
          <img src="image?file=home.png" width="50px" height="50px"><p>니어바이닥의원</p>
       </h3>
-      <br>
+    
       <h3>
          <a href="reserve_t.jsp" >오늘의 예약내역</a>
       </h3>
@@ -153,9 +170,7 @@ h3>p{
             <br>
         
          <hr>
-         <br>
-         <br>
-         <hr>
+         
          <p>
             <a href="hinfo.jsp">병원 정보</a>
          </p>
@@ -178,7 +193,7 @@ h3>p{
    </div>
 
    
-
+	<% pageContext.include("hfooter.jsp");%>
 
 
 
