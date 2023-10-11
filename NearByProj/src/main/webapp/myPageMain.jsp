@@ -55,6 +55,7 @@ button {
 	border: none;
 	font-size: 26px;
 	font-weight: bold;
+	cursor: pointer; 
 }
 </style>
 </head>
