@@ -29,7 +29,7 @@ a {
 
 .outerDiv {
    width: 430px;
-   height: 170px;
+   height: 120px;
    background-color: #CFE8F7;
    margin: 0 auto;
    text-align: center;
@@ -43,7 +43,7 @@ a {
    height: 115px;
    display: inline-block;
    margin-right: 10px;
-   margin-top: 55px;
+   margin-top: 10px;
 
 }
 
