@@ -10,6 +10,7 @@
 #center {
 	display: flex;
 	justify-content: center;
+	width:1500px;
 }
 
 h1{
@@ -35,15 +36,14 @@ h1{
 }
 
 .container {
-	height: 600px;
+	height: 400px;
     border: 1px solid;
     width: 1353px;
     margin-top: 20px;
 }
 #emptyArea { width: 708px;
     text-align: center;
-    margin-top: 600px;
-    margin-left: 700px; }
+    margin-left: 765px; }
 #emptyArea a {
 	display: inline-block;
 	width: 20px;
