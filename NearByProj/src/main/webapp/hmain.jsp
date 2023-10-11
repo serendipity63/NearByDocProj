@@ -101,7 +101,7 @@ h3>p{
 </style>
 </head>
 <body>
-<% pageContext.include("footer.jsp");%>
+<% pageContext.include("hfooter.jsp");%>
    <div id="header">
 
       <a href="reserve_t.jsp"><img src="image?file=icon.png"
@@ -166,7 +166,7 @@ h3>p{
          <hr>
          <br>
          <p>
-            <a href="login.jsp">로그아웃</a>
+            <a href="hospitallogin.jsp">로그아웃</a>
          </p>
          
 

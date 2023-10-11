@@ -144,7 +144,7 @@ a {
 
 			<div class="otherloc">
 				<button class="other" onclick="location.href='execDaumPostcode()'">
-					<img src="image?file=hospital.jpg" height="250" width="150"
+					<img src="image?file=hospital1.jpg" height="250" width="150"
 						alt="병원이미지"> 다른 위치에서 병원 찾기 <br> <br>
 				</button>
 			</div>

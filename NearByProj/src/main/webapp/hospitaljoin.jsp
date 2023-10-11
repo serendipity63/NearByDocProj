@@ -16,7 +16,7 @@
 	rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic"
 	rel="stylesheet">
-	
+
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 
@@ -49,7 +49,6 @@ a {
 	width: 100%;
 	float: left;
 	width: 70px;
-	
 	text-align: center;
 	/* 가운데 정렬 */
 	font-size: 20px;
@@ -75,7 +74,7 @@ form.join-form input[type="text"], form.join-form input[type="password"],
 	padding: 10px;
 	border: 2px solid;
 	width: 500px;
-	height: 700px;
+	height: 750px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -114,7 +113,7 @@ input[type='submit'] {
 
 input[type='text'], input[type='number'], input[type='password'], input[type='submit']
 	{
-	margin-bottom: 25px;
+	margin-bottom: 23px;
 }
 
 input[type='submit']:hover {
@@ -122,12 +121,12 @@ input[type='submit']:hover {
 }
 
 /* 우편번호 입력 칸 스타일 */
-.input input[name='postcode'] {
+.input input[name='hpostcode'] {
 	width: 130px;
 	margin-bottom: 10px;
 }
 
-.input input[name='roadAddress'] {
+.input input[name='hroadAddress'] {
 	margin-bottom: 10px;
 }
 
@@ -143,7 +142,62 @@ input[type='submit']:hover {
 	cursor: pointer;
 	border-radius: 3px;
 }
+
+
+#info_comnum button {
+	position: absolute;
+	width: 90px;
+	height: 29.5px;
+	border-radius: 3px;
+	border: none;
+	background: #191970;
+	display:inline;
+	color: #fff;
+	cursor: pointer;
+	margin-left:-90px;
+}
 </style>
+<!-- 사업자번호 중복검사  기능 -->
+<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+<script type="text/javascript">
+	$(function() {
+		let isComnumCheck = false;
+		$('#comnumcheck').click(function() {
+			$.ajax({
+				url : "comnumcheck",
+				type : "post",
+				data : {
+					pemail : $("#comnum").val()
+				},
+				success : function(res) {
+					console.log(res);
+					if (res == "notexist") {
+						isComnumCheck = true;
+						alert("사용 가능합니다")
+					} else {
+						alert("사업자등록번호가 중복됩니다.")
+
+					}
+				},
+				error : function(err) {
+					console.log(err);
+					alert("사업자번호 중복체크 오류")
+				}
+			})
+		})
+		$("#comnum").change(function() {
+			isComnumCheck = false;
+		})
+
+		$("#form").submit(function(e) {
+			if (isComnumCheck == false) {
+				alert("사업자번호 중복체크하세요");
+				e.preventDefault();
+			}
+		})
+	})
+</script>
+
 <%--주소불러오기  --%>
 <script
 	src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
@@ -191,10 +245,10 @@ input[type='submit']:hover {
 				} */
 
 				// 우편번호와 주소 정보를 해당 필드에 넣는다.
-				document.getElementById('postcode').value = data.zonecode;
-				document.getElementById("address").value = addr;
+				document.getElementById('hpostcode').value = data.zonecode;
+				document.getElementById("haddress").value = addr;
 				// 커서를 상세주소 필드로 이동한다.
-				document.getElementById("detailAddress").focus();
+				document.getElementById("hdetailAddress").focus();
 			}
 		}).open();
 	}
@@ -205,7 +259,6 @@ input[type='submit']:hover {
 <title>병원등록</title>
 </head>
 
-<%-- 사업자등록번호 유효성 검사  --%>
 <body>
 	<%
 	pageContext.include("hospitalheader.jsp");
@@ -215,28 +268,44 @@ input[type='submit']:hover {
 		<div class="container" id='query'>
 			<form action="hjoin" method="post" id='form'>
 				<div class="title">병원등록</div>
+
 				<div class="row">
 					<div class="input">
 						<input type="text" id="hname" name="hname" placeholder="병원명">
 					</div>
 				</div>
+
+
+				<div id="info_comnum">
+					<div class="row">
+						<div class="input">
+							<input type="number" id="comnum" name="comnum"
+								placeholder="사업자등록번호">
+							<button id="comnumcheck">중복 확인</button>
+
+						</div>
+					</div>
+				</div>
+
+
+
 				<div class="row">
 					<div class="input">
-						<input type="text" id="hemail" name="hemail" placeholder="이메일">
+						<input type="password" id="hpassword" name="hpassword"
+							placeholder="비밀번호">
 					</div>
 				</div>
 				<div class="row">
 					<div class="input">
-						<input type="number" id="comnum" name="comnum"
-							placeholder="사업자등록번호">
+						<input type="password" placeholder="비밀번호 재확인">
 					</div>
 				</div>
 
-<%-- 주소시작 --%>
+				<%-- 주소시작 --%>
 
 				<div class="row">
 					<div class="input">
-						<input type="text" id="postcode" name="postcode"
+						<input type="text" id="hpostcode" name="hpostcode"
 							placeholder="우편번호" readonly>
 					</div>
 					<div class="input">
@@ -248,42 +317,46 @@ input[type='submit']:hover {
 
 				<div class="row">
 					<div class="input">
-						<input type="text" id="address" name="roadAddress"
+						<input type="text" id="haddress" name="hroadaddress"
 							placeholder="도로명 주소">
 					</div>
 				</div>
 				<div class="row">
 					<div class="input">
-						<input type="text" id="detailAddress" name="detailAddress"
+						<input type="text" id="hdetailAddress" name="hdetailaddress"
 							placeholder="상세주소">
 					</div>
 				</div>
-<%-- 주소끝 --%>
+				<%-- 주소끝 --%>
 
 				<div class="row">
 					<div class="input">
-						<input type="number" name="phonenumber" placeholder="전화번호">
+						<input type="number" name="htel" placeholder="전화번호">
 					</div>
 				</div>
-				
+
 				<div class="row">
 					<div class="input">
-						<input type="password" id="hpassword" name="password" placeholder="비밀번호">
-					</div>
-				</div>
-				
-				<div class="row">
-					<div class="input">
-						<input name="type" type="text" class="type" placeholder="진료과목명"
+						<input name="type" type="text" class="type" name="department" placeholder="진료과목명"
 							onclick="openTypeSelectionPage()">
 					</div>
 				</div>
-				
+
+				<div class="row">
+					<div class="input">
+						<input type="text" name="clinic" placeholder="진료시간">
+					</div>
+				</div>
+				<div class="row">
+					<div class="input">
+						<input type="text" name="lunch" placeholder="점심시간">
+					</div>
+				</div>
 				<div class="button">
 					<input type="submit" value="병 원 등 록">
 				</div>
 				<div>
-					니어바이닥 병원회원이신가요? <a href="hospitalmain">로그인</a>
+					니어바이닥 병원회원이신가요? <a href="hlogin">로그인</a>
 				</div>
 			</form>
 		</div>
