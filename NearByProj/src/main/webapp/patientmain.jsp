@@ -211,7 +211,7 @@ a {
 			</div>
 		</div>
 	</div>
-	<a class="hospital" href="hmain">
+	<a class="hospital" href="hlogin">
 		<div class="hospital">
 			혹시 병원 관계자이신가요? <br>병원페이지 바로가기
 		</div>
