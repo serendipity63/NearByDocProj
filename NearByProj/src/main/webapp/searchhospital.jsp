@@ -88,7 +88,7 @@
         }
         .condition {
             width: 430px;
-            height: 60px;
+            height: 80px;
             border-bottom: 1px solid;
         }
        
@@ -104,10 +104,21 @@
         .btn-text-right {
             width: 115px;
         }
-
+		.hoslist {
+			border-bottom: 1px solid;
+		}
         .hos {
             border-bottom: 1px solid;
             border-color: gainsboro;
+            display: flex;
+        }
+        .hosinfo {
+        	width: 330px;
+        	height:115px;
+        }
+        .hosmap {
+        	width: 100px;
+        	height:115px;
         }
     </style>
 </head>
@@ -138,41 +149,30 @@
     <div class="main">
     	
         <div class="condition">
-                <h3>검색 조건 "독산동" / "내과" 검색결과(총 20건)</h2>
+                <h3>검색 조건 "독산동" / "내과" 검색결과(총 20건)</h2><br>
                 <p>설정 조건과 가까운 병원 검색 결과입니다.</p>
         </div>
         <div class="hoslist">
-            <div class="hos" onclick="location.href='hospitalinfo.jsp';" style="cursor:pointer;">
-                <table class="hosinfosum" width="430">
-                    <tbody>
+            <div class="hos">
+                <div class="hosinfo" onclick="location.href='hospitalinfo.jsp';" style="cursor:pointer;">
+                <table>
+                	<tbody>
                         <tr>
                             <td colspan="3" width="330"><h4 style="font-size: 24px;">KOSTA치과의원</h4></td>
-                            <td rowspan="4">
-                                <center>
-                                    <br><br>
-                                    <div onclick="window.open('map.jsp', 'window_name','width=600, height=400, location=no, status=no, scrollbars=yes')" style="cursor:pointer;">
-                                        <span class="material-symbols-outlined" >
-                                            map
-                                            </span>
-                                            <p>지도보기</p>
-                                    </div>
-                                    
-                            </center>
-                            </td>
                         </tr>
                         <tr>
-                            <td>
+                            <td width="110">
                                 15km
                             </td>
-                            <td>
+                            <td width="110">
                                 종합병원
                             </td>
-                            <td>
+                            <td width="110">
                                 02)1234-5678
                             </td>
                         </tr>
                         <tr>
-                            <td colspan="3">서울특별시 금천구 남부순환로 1252</td>
+                            <td colspan="3" width="330">서울특별시 금천구 남부순환로 1252</td>
 
                         </tr>
                         <tr>
@@ -187,6 +187,13 @@
                         </tr>
                     </tbody>
                 </table>
+                </div>
+                <div class="hosmap" onclick="window.open('map.jsp', 'window_name','width=600, height=400, location=no, status=no, scrollbars=yes')" style="cursor:pointer;">
+                                        <center><br><span class="material-symbols-outlined" >
+                                            map
+                                            </span>
+                                            <p>지도보기</p></center>
+                                    </div>
                 <br>
             </div>
         </div>
