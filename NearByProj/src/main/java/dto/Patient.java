@@ -1,36 +1,29 @@
 package dto;
 
 public class Patient {
-	private String pidnum;
 	private String pemail;
 	private String ppassword;
-	private String date;
-	private String time;
 	private String pname;
-	private String number;
 	private String ptel;
-	private String paddress;
+	private String pidnum;
+	private String proadaddress;
+	private String ppostcode;
+	private String pdetailaddress;
 
-	public Patient() {}
-	public Patient(String pidnum, String pemail, String ppassword, String date, String time, String pname,
-			String number, String ptel, String paddress) {
-		this.pidnum = pidnum;
+	public Patient() {
+
+	}
+
+	public Patient(String pemail, String ppassword, String pname, String ptel, String pidnum, String proadaddress,
+			String ppostcode, String pdetailaddress) {
 		this.pemail = pemail;
 		this.ppassword = ppassword;
-		this.date = date;
-		this.time = time;
 		this.pname = pname;
-		this.number = number;
 		this.ptel = ptel;
-		this.paddress = paddress;
-	}
-
-	public String getPidnum() {
-		return pidnum;
-	}
-
-	public void setPidnum(String pidnum) {
 		this.pidnum = pidnum;
+		this.proadaddress = proadaddress;
+		this.ppostcode = ppostcode;
+		this.pdetailaddress = pdetailaddress;
 	}
 
 	public String getPemail() {
@@ -49,36 +42,12 @@ public class Patient {
 		this.ppassword = ppassword;
 	}
 
-	public String getDate() {
-		return date;
-	}
-
-	public void setDate(String date) {
-		this.date = date;
-	}
-
-	public String getTime() {
-		return time;
-	}
-
-	public void setTime(String time) {
-		this.time = time;
-	}
-
 	public String getPname() {
 		return pname;
 	}
 
 	public void setPname(String pname) {
 		this.pname = pname;
-	}
-
-	public String getNumber() {
-		return number;
-	}
-
-	public void setNumber(String number) {
-		this.number = number;
 	}
 
 	public String getPtel() {
@@ -89,12 +58,36 @@ public class Patient {
 		this.ptel = ptel;
 	}
 
-	public String getPaddress() {
-		return paddress;
+	public String getPidnum() {
+		return pidnum;
 	}
 
-	public void setPaddress(String paddress) {
-		this.paddress = paddress;
+	public void setPidnum(String pidnum) {
+		this.pidnum = pidnum;
+	}
+
+	public String getProadaddress() {
+		return proadaddress;
+	}
+
+	public void setProadaddress(String proadaddress) {
+		this.proadaddress = proadaddress;
+	}
+
+	public String getPpostcode() {
+		return ppostcode;
+	}
+
+	public void setPpostcode(String ppostcode) {
+		this.ppostcode = ppostcode;
+	}
+
+	public String getPdetailaddress() {
+		return pdetailaddress;
+	}
+
+	public void setPdetailaddress(String pdetailaddress) {
+		this.pdetailaddress = pdetailaddress;
 	}
 
 }
