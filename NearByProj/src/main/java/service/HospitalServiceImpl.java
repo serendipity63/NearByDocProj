@@ -5,6 +5,7 @@ import dao.HospitalDaoImpl;
 import dto.Hospital;
 
 public class HospitalServiceImpl implements HospitalService {
+
    private HospitalDao hospitalDao;
    
    public HospitalServiceImpl() {
@@ -48,3 +49,4 @@ public class HospitalServiceImpl implements HospitalService {
    }
 
 }
+
