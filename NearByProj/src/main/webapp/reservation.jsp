@@ -115,79 +115,12 @@
         </div>
         <br>
         <div class="selectdate">
-            <p class="sub">날짜선택</p>
+            <p class="sub">날짜선택 : <input type="text" id="datepicker"></p>
             <br>
-            <div class="calendar-wrap">
-                <h2 class="month-year">January 2020</h2>
-              
-                <table class="calendar">
-                  <thead>
-                    <tr>
-                      <th class="day-title" scope="col">Sun</th>
-                      <th class="day-title" scope="col">Mon</th>
-                      <th class="day-title" scope="col">Tue</th>
-                      <th class="day-title" scope="col">Wed</th>
-                      <th class="day-title" scope="col">Thu</th>
-                      <th class="day-title" scope="col">Fri</th>
-                      <th class="day-title" scope="col">Sat</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr class="week">
-                      
-                      <td class="day prev-mon" tabindex="0"><span class="day-number">29</span></td>
-                      <td class="day prev-mon" tabindex="0"><span class="day-number">30</span></td>
-                      <td class="day prev-mon" tabindex="0"><span class="day-number">31</span></td>
-                      <td class="day" tabindex="0"><span class="day-number">1</span></td>
-                      <td class="day today" tabindex="0"><span class="day-number">2</span></td>
-                      <td class="day" tabindex="0"><span class="day-number">3</span></td>
-                      <td class="day" tabindex="0"><span class="day-number">4</span></td>
-                    </tr>
-                    <tr class="week">
-                      <td class="day" tabindex="0"><span class="day-number">5</span></td>
-                      <td class="day" tabindex="0"><span class="day-number">6</span></td>
-                      <td class="day" tabindex="0"><span class="day-number">7</span></td>
-                      <td class="day" tabindex="0"><span class="day-number">8</span></td>
-                      <td class="day" tabindex="0"><span class="day-number">9</span></td>
-                      <td class="day" tabindex="0"><span class="day-number">10</span></td>
-                      <td class="day" tabindex="0"><span class="day-number">11</span></td>
-                    </tr>
-                    <tr class="week">
-                      <td class="day" tabindex="0"><span class="day-number">12</span></td>
-                      <td class="day" tabindex="0"><span class="day-number">13</span></td>
-                      <td class="day" tabindex="0"><span class="day-number">14</span></td>
-                      <td class="day" tabindex="0"><span class="day-number">15</span></td>
-                      <td class="day" tabindex="0"><span class="day-number">16</span></td>
-                      <td class="day" tabindex="0"><span class="day-number">17</span></td>
-                      <td class="day" tabindex="0"><span class="day-number">18</span></td>
-                    </tr>
-                    <tr class="week">
-                      <td class="day" tabindex="0"><span class="day-number">19</span></td>
-                      <td class="day" tabindex="0"><span class="day-number">20</span></td>
-                      <td class="day" tabindex="0"><span class="day-number">21</span></td>
-                      <td class="day" tabindex="0"><span class="day-number">22</span></td>
-                      <td class="day" tabindex="0"><span class="day-number">23</span></td>
-                      <td class="day" tabindex="0"><span class="day-number">24</span></td>
-                      <td class="day" tabindex="0"><span class="day-number">25</span></td>
-                    </tr>
-                    <tr class="week">
-                      <td class="day" tabindex="0"><span class="day-number">26</span></td>
-                      <td class="day" tabindex="0"><span class="day-number">27</span></td>
-                      <td class="day" tabindex="0"><span class="day-number">28</span></td>
-                      <td class="day" tabindex="0"><span class="day-number">29</span></td>
-                      <td class="day" tabindex="0"><span class="day-number">30</span></td>
-                      <td class="day" tabindex="0"><span class="day-number">31</span></td>
-                      <td class="day next-mon" tabindex="0"><span class="day-number">1</span></td>
-                    </tr>
-                  </tbody>
-                </table>
-                
-                <br>
-              </div>
         </div>
         <br>
         <div class="selecttime">
-            <p class="sub">시간선택</p>
+            <p class="sub">시간선택 : <input type="text"></p>
             <br>
             <button>09:00</button><button>09:30</button><button>10:00</button><button>10:30</button><button>11:00</button><button>11:30</button><button>13:00</button><button>13:30</button><button>14:00</button><button>14:30</button><button>15:00</button><button>15:30</button><button>16:00</button><button>16:30</button><button>17:00</button><button>17:30</button>
             <br><br>
