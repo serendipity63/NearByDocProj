@@ -19,7 +19,7 @@ body {
 h1 {
 	width: 200px;
     height: 100px;
-    margin-left: 1036px;
+    margin-left: 935px;
     margin-top: 50px;
     color: rgb(25, 25, 112);
 }

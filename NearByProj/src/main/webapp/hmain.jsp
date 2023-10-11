@@ -18,17 +18,19 @@
       font-family: 'Noto Sans kr', sans-serif;
 
 }
+
 body {
    
    background-color: rgb(245, 245, 245);
-   margin:0 auto;
+  	min-width:50vw;
    
 }
 
 #header {
-   width: 100%;
-   height: 75px;
-   background-color: #191970;
+   width: 75%;
+    height: 75px;
+    background-color: #191970;
+    margin-left: 80px;
 }
 #header>span{
    color:#191970;
@@ -70,12 +72,12 @@ h3>p{
 
 #sidemenubox {
    
-   
-   float: left;
-   height:960px;
-   width: 180px;
-   border:1px solid gray;
-   
+  float: left;
+    height: 800px;
+    width: 180px;
+    border: 1px solid gray;
+    margin-left: 80px;
+}
 }
 #list{
    height:600px;
@@ -101,6 +103,7 @@ h3>p{
 </style>
 </head>
 <body>
+
 <% pageContext.include("hfooter.jsp");%>
    <div id="header">
 

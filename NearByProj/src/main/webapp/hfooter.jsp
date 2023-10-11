@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 
-<html lang="en">
+<html >
 
 <head>
 
@@ -32,16 +32,15 @@ body {
 }
 
 footer {
-  position: absolute;
+position: absolute;
     bottom: 0;
     left: 0;
     right: 0;
     background: rgb(25, 25, 112);
-    height: 120px;
-    width: 99vw;
-    padding-top: -11px;
+    height: 86px;
+    width: 80vw;
     color: #fff;
-    margin: -106px 0px;
+    margin: 43px 79px;
 }
 
 .footer-content {
@@ -123,10 +122,11 @@ footer {
 }
 
 .footer-bottom p {
-  float: left;
+      float: left;
     font-size: 14px;
     word-spacing: 2px;
-    margin-top: -20px;
+    margin-top: -57px;
+}
 }
 
 .footer-bottom p a {
@@ -143,9 +143,8 @@ footer {
 
 .footer-menu {
  	float: right;
-    margin-right: 30px;
-    margin-top: -30px;
-}
+    margin-right: 380px;
+    margin-top: -61px;}
 
 .footer-menu ul {
   display: flex;

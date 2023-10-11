@@ -46,7 +46,7 @@ body {
 
 #center {
 	display: flex;
-	justify-content: center;
+	
 }
 
 h1{
@@ -104,7 +104,7 @@ select {
 .reserveform {
 	width: 1574px;
     height: 100px;
-    margin-left: 432px;
+    margin-left: 256px;
     margin-top: -40px;
 }
 .reserveform>button{
