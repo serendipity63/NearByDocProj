@@ -65,11 +65,10 @@ h1 {
 }
 
 .row>a{
-	background-color: rgb(25, 25, 112);
+	background-color: lightgray;
     padding: 5px;
-    color: white;
+    color: black;
     text-align: center;
-    /* border-right: 1px solid white; */
     display: inline-block;
     width: 139px;
     text-decoration: none;
@@ -79,7 +78,7 @@ h1 {
 
 .title {
 	font-weight: bold;
-	background-color: rgb(25, 25, 112);
+	background-color: lightgray;
 	width: 100px;
 
 }
@@ -88,7 +87,7 @@ h1 {
 	padding: 5px;
 	width: 156px;
 	float: left;
-	color: white;
+	color: black;
 	text-align: center;
 	border-right:1px solid white;
 	

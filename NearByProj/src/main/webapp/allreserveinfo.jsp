@@ -63,7 +63,7 @@ h1{
 
 .title {
 	font-weight: bold;
-	background-color: rgb(25, 25, 112);
+	background-color: lightgray;
 
 }
 
@@ -71,7 +71,7 @@ h1{
 	padding: 5px;
 	width: 210px;
 	float: left;
-	color: white;
+	color: black;
 	text-align: center;
 	border-right:1px solid white;
 }
@@ -94,7 +94,11 @@ select {
 }
 
 #search {
-	color: white;
+	color:black;
+	width: 100px;
+	height: 30px;
+	background-color: lightgray;
+	border-radius:10px;
 }
 
 .reserveform {
