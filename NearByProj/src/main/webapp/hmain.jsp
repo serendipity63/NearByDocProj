@@ -101,7 +101,7 @@ h3>p{
 </style>
 </head>
 <body>
-<% pageContext.include("footer.jsp");%>
+<% pageContext.include("hfooter.jsp");%>
    <div id="header">
 
       <a href="reserve_t.jsp"><img src="image?file=icon.png"
