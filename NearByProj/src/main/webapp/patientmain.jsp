@@ -20,7 +20,29 @@
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
+
+<script>
+	function openTypeSelectionPage() {
+		// 진료과목 선택 페이지 열기
+		var typeSelectionPage = window.open("department.jsp", "TypeSelection",
+				"width=400,height=300");
+		window.addEventListener("message", function(event) {
+			document.querySelector(".type").value = event.data;
+		});
+	}
+</script>
+<script>
+	function openLocationSelectionPage() {
+		// 주소 설정 페이지 열기
+		var locationSelectionPage = window.open("location.jsp", "LocationSelection",
+				"width=500,height=600");
+		window.addEventListener("message", function(event) {
+			document.querySelector(".type").value = event.data;
+		});
+	}
+</script>
 <style>
 * {
 	margin: 0;
@@ -188,21 +210,25 @@ a {
 	%>
 
 	<div class="container">
+	
+	
+	<%-- 진료과 입력값이 없으면 그냥 내 위치 기반으로 찾아지게? default가 내 위치 기반 --%>
 		<div class="searchbox">
 			<div class="inner">
 				<div class="container-2">
 					<div class="type">
 						<span class="icon"><i class="material-icons">search</i></span>
 						&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" placeholder="진료과"
-							class="search-input">
+							class="search-input" onclick="openTypeSelectionPage()" readonly>
 					</div>
+	<%-- hospital db에서 입력된 값만 호출되게.. --%>
+					
 				</div>
 				<div class="container-3">
 					<div class="address">
-					<a href="location.jsp">
 						<span class="icon"><i class="material-icons">location_on</i></span>
 						&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" placeholder="주소설정"
-							class="address-input" id="address-input" readonly></a>
+							class="address-input" id="address-input" onclick="openLocationSelectionPage()" readonly>
 					</div>
 				</div>
 				<div class="button">

@@ -5,8 +5,8 @@
 
 	<insert id="insertHospital" parameterType="Hospital">
 	<![CDATA[
-	insert into hospital (hname, comnum, htel, department, hpassword, lunch, clinic, hroad, hdong, hdetail, hpostcode, hrul ) values 
-	(#{hname},#{comnum},#{htel},#{department},#{hpassword},#{lunch},#{clinic},#{hroad},#{hdong},#{hdetail},#{hpostcode} #{hrul} ) 
+	insert into hospital (hname, comnum, htel, department, hpassword, lunch, clinic, hroad, hdong, hdetail, hpostcode, hurl ) values 
+	(#{hname},#{comnum},#{htel},#{department},#{hpassword},#{lunch},#{clinic},#{hroad},#{hdong},#{hdetail},#{hpostcode},#{hurl} ) 
 	]]>
 	</insert>
 
@@ -28,8 +28,23 @@
 		</trim>
 		where num=#{num}
 	</update>
-
-
-
+	
+	
+	<select id="selectHospitalBydong" parameterType="String"
+		resultType="Hospital">
+	<![CDATA[
+		select * from hospital 
+		where department=#{department} 
+		and hdong like '%#{si}%'
+		and hdong like '%#{gu}%'
+		and hdong like '%#{dong}%'
+	]]>
+	</select>
+	
+	<select id="selectAllHospital" resultType="Hospital">
+	<![CDATA[
+		select * from hospital 
+	]]>
+	</select>
 
 </mapper>

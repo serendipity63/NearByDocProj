@@ -49,25 +49,24 @@ public class HospitalJoin extends HttpServlet {
 		String comnum = request.getParameter("comnum");
 		String htel = request.getParameter("htel");
 		String department = request.getParameter("department");
-		String lunch= request.getParameter("lunch");
-		String clinic= request.getParameter("clinic");
+		String lunch = request.getParameter("lunch");
+		String clinic = request.getParameter("clinic");
 		String hroad = request.getParameter("hroad");
-		String hdong=request.getParameter("hdong");
+		String hdong = request.getParameter("hdong");
 		String hdetail = request.getParameter("hdetail");
 		String hpostcode = request.getParameter("hpostcode");
-		
-		String hurl=request.getParameter("hurl");
-				
+		String hurl = request.getParameter("hurl");
 
-		Hospital hospital = new Hospital(hname,hpassword, comnum, htel, department,lunch,
-				clinic, hroad, hdong, hdetail, hpostcode, hurl);
+		Hospital hospital = new Hospital(hname, hpassword, comnum, htel, department, lunch, clinic, hroad, hdong,
+				hdetail, hpostcode, hurl);
 		try {
 			HospitalService hospitalService = new HospitalServiceImpl();
 			hospitalService.hospitaljoin(hospital);
 			request.getRequestDispatcher("hospitallogin.jsp").forward(request, response);
 		} catch (Exception e) {
 			request.setAttribute("err", e.getMessage());
-			request.getRequestDispatcher("herror404.jsp").forward(request, response); // 에러 페이지 따로 만들거에요
+			request.getRequestDispatcher("herror.jsp").forward(request, response); 
+			// 에러 페이지 따로 만들거에요
 		}
 	}
 
