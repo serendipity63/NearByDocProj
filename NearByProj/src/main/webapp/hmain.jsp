@@ -31,7 +31,7 @@ body {
 }
 
 #header {
-   	width: 81%;
+   	width: 100%;
     height: 75px;
     background-color: #191970;
    	margin:0 auto;
@@ -86,10 +86,10 @@ h3>p{
 #sidemenubox {
   
   	float: left;
-    height: 738px;
+    height: 900px;
     width: 180px;
     border-right: 1px solid gray;
-    margin-left: 182px;
+    margin-left: 4px;
 }
 }
 #list{

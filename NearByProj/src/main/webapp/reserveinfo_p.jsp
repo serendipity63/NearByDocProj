@@ -11,23 +11,21 @@ body {
 	margin: 0 auto;
 }
 
-#center {
-	display: flex;
-}
+
 
 h1 {
-	width: 200px;
-	height: 55px;
-	margin-left: 935px;
-	margin-top: 55px;
-	color: rgb(25, 25, 112);
+	width: 163px;
+    height: 55px;
+    margin-left: 949px;
+    margin-top: 55px;
+    color: rgb(25, 25, 112);
 }
 
 table {
-	margin-left: -1232px;
-	width: 1276px;
-	margin-top: 117px;
-	background-color: lightgray;
+	margin-left: 400px;
+    width: 1276px;
+    margin-top: 55px;
+    background-color: lightgray;
 }
 
 #row {
@@ -68,17 +66,20 @@ h5 {
 
 select {
 	width: 200px;
-	height: 35px;
+	height: 38px;
 	cursor: pointer;
 }
 
 input {
 	width: 200px;
-	height: 30px;
+	height: 38px;
 }
 
 #reserveform {
-	margin: 30px 400px;
+	margin-top: 40px;
+    width: 1000px;
+    height: 50px;
+    margin-left: 129px;
 }
 
 #search {
@@ -94,7 +95,7 @@ input {
 	width: 708px;
 	text-align: center;
 	margin-top: 401px;
-	margin-left: 657px;
+	margin-left: 673px;
 }
 
 #emptyArea a {
@@ -128,7 +129,7 @@ input {
 <body>
 	<% pageContext.include("hmain.jsp");%>
 	<h1>환자별 조회</h1>
-	<div id="center">
+	
 
 
 
@@ -173,7 +174,7 @@ input {
 		</table>
 
 
-	</div>
+	
 	<div id="emptyArea">
 		<c:choose>
 			<c:when test="${res.pageInfo.curPage>1}">
