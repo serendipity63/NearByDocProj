@@ -143,7 +143,6 @@ input[type='submit']:hover {
 	border-radius: 3px;
 }
 
-
 #info_comnum button {
 	position: absolute;
 	width: 90px;
@@ -151,10 +150,10 @@ input[type='submit']:hover {
 	border-radius: 3px;
 	border: none;
 	background: #191970;
-	display:inline;
+	display: inline;
 	color: #fff;
 	cursor: pointer;
-	margin-left:-90px;
+	margin-left: -90px;
 }
 </style>
 <!-- 사업자번호 중복검사  기능 -->
@@ -337,8 +336,8 @@ input[type='submit']:hover {
 
 				<div class="row">
 					<div class="input">
-						<input name="type" type="text" class="type" name="department" placeholder="진료과목명"
-							onclick="openTypeSelectionPage()">
+						<input name="type" type="text" class="type" name="department"
+							placeholder="진료과목명" onclick="openTypeSelectionPage()">
 					</div>
 				</div>
 
@@ -352,6 +351,11 @@ input[type='submit']:hover {
 						<input type="text" name="lunch" placeholder="점심시간">
 					</div>
 				</div>
+
+				<%--디자인은 수정할게요  --%>
+				<input type="file" name="file" id="file" accept="image/*" />
+
+
 				<div class="button">
 					<input type="submit" value="병 원 등 록">
 				</div>
