@@ -9,15 +9,17 @@ public class Hospital {
 	private String lunch;
 	private String clinic;
 	private String hroad;
+	private String hdong;
 	private String hdetail;
-	private String hpostcode;
+	private String hpostcode;	
 	private String hurl;
+	
 	public Hospital() {
 
 	}
 
 	public Hospital(String hname, String hpassword, String comnum, String htel, String department, String lunch,
-			String clinic, String hroad, String hdetail, String hpostcode, String hurl) {
+			String clinic, String hroad, String hdong, String hdetail, String hpostcode, String hurl) {
 		this.hname = hname;
 		this.hpassword = hpassword;
 		this.comnum = comnum;
@@ -25,6 +27,7 @@ public class Hospital {
 		this.department = department;
 		this.lunch = lunch;
 		this.clinic = clinic;
+		this.hdong=hdong;
 		this.hroad = hroad;
 		this.hdetail = hdetail;
 		this.hpostcode = hpostcode;
@@ -93,6 +96,14 @@ public class Hospital {
 
 	public void setHroad(String hroad) {
 		this.hroad = hroad;
+	}
+
+	public String getHdong() {
+		return hdong;
+	}
+
+	public void setHdong(String hdong) {
+		this.hdong = hdong;
 	}
 
 	public String getHdetail() {
