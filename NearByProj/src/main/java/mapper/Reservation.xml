@@ -31,6 +31,7 @@
         , r.resdate as date
         , r.restime as time
         , r.`status` as status
+        , r.id as id
     from reservation r
        , hospital h
    where 1=1
