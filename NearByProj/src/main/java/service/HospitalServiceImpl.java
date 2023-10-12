@@ -1,5 +1,7 @@
 package service;
 
+import java.util.List;
+
 import dao.HospitalDao;
 import dao.HospitalDaoImpl;
 import dto.Hospital;
@@ -48,5 +50,13 @@ public class HospitalServiceImpl implements HospitalService {
       return "exist";
    }
 
+   @Override
+   public List<Hospital> hospitalList() throws Exception {   
+	   return hospitalDao.selectHospitalList();
+   }
+   @Override
+	public Hospital selectHospitalBycomnum(String comnum) throws Exception {
+	   return hospitalDao.selectHospital(comnum);
+	}
 }
 

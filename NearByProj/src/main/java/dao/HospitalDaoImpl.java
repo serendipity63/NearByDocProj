@@ -1,5 +1,7 @@
 package dao;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 
 import dto.Hospital;
@@ -26,5 +28,9 @@ public class HospitalDaoImpl implements HospitalDao {
 		sqlSession.commit();
 	}
 
+	@Override
+	public List<Hospital> selectHospitalList() throws Exception {
 
+		return sqlSession.selectList("mapper.hospital.selectHospitalList");
+	}
 }

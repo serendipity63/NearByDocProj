@@ -104,7 +104,7 @@
 			<table>
 				<tr>
 					<td><span class="material-symbols-outlined"
-						onclick="location.href='searchhospital.jsp'"
+						onClick="history.go(-1)"
 						style="cursor: pointer;"> arrow_back </span></td>
 					<td>
 						<h3>${hospital.hname}</h3>
@@ -114,7 +114,9 @@
 		</div>
 		<br>
 		<div class="info">
-			<img src="image?file=${hospital.url}" alt="병원" width="420">
+
+			<img src="image?file=${hospital.hurl}" alt="병원" width="420">
+
 
 			<table class="hosinfo">
 				<tr>
@@ -146,7 +148,7 @@
 		<table>
 			<td style="text-align: left" width="215">&nbsp;&nbsp;&nbsp;리뷰 ${hospital.hreviewcnt}</td>
 			<td style="text-align: right" width="215"><a
-				href="readreview.jsp">전체보기 ></a></td>
+				href="readreview">전체보기 ></a></td>
 		</table>
 		<br>
 		<div class="review">
@@ -198,7 +200,9 @@
 		 // 지도를 생성합니다    
 		var map = new kakao.maps.Map(mapContainer, mapOption);
 		 
-		var coords = new kakao.maps.LatLng(${hospital.lat}, ${hospital.lat});
+
+		var coords = new kakao.maps.LatLng(${hospital.lat}, ${hospital.lon});
+
 
 		// 결과값으로 받은 위치를 마커로 표시합니다
 		var marker = new kakao.maps.Marker({
