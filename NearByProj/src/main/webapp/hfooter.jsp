@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 
-<html lang="en">
+<html >
 
 <head>
 
@@ -25,23 +25,17 @@
   box-sizing: border-box;
 }
 
-body {
-  background: #fcfcfc;
-
-  font-family: sans-serif;
-}
 
 footer {
-  position: absolute;
+	position: absolute;
     bottom: 0;
     left: 0;
     right: 0;
-    background: rgb(25, 25, 112);
+    background: #05053f;
     height: 120px;
-    width: 99vw;
-    padding-top: -11px;
+    width: 81vw;
     color: #fff;
-    margin: -106px 0px;
+    margin: 0 auto;
 }
 
 .footer-content {
@@ -123,10 +117,11 @@ footer {
 }
 
 .footer-bottom p {
-  float: left;
+      float: left;
     font-size: 14px;
     word-spacing: 2px;
-    margin-top: -20px;
+    margin-top: -57px;
+}
 }
 
 .footer-bottom p a {
@@ -143,9 +138,8 @@ footer {
 
 .footer-menu {
  	float: right;
-    margin-right: 30px;
-    margin-top: -30px;
-}
+    margin-right: 380px;
+    margin-top: -61px;}
 
 .footer-menu ul {
   display: flex;
@@ -219,7 +213,7 @@ year.textContent = new Date().getFullYear();
 
     <div class="footer-bottom">
 
-      <p>Copyright &copy <span id="year"></span> <a href="#">@coding_dev_</a> </p>
+      <p>Copyright &copy <span id="year"></span> <a href="login">@nearbydoc</a> </p>
 
       <div class="footer-menu">
 
