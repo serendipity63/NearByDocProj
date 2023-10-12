@@ -5,8 +5,8 @@
 	<insert id="insertReservation" parameterType="Reservation"
       useGeneratedKeys="true" keyProperty="number">
     <![CDATA[
-       insert into Reservation (date,time,name,phone,address,opinion,subject,complete) values 
-       (#{date},#{time},#{name},#{phone},#{address},#{opinion},#{subject},#{complete}) 
+       insert into Reservation (pidnum,resdate,restime,name,phone,address,comment,subject,status,doccomment) values 
+       (#{pidnum},#{resdate},#{restime},#{name},#{phone},#{address},#{comment},#{subject},#{status},#{doccomment}) 
     ]]>
    </insert>
    

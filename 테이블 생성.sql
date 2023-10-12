@@ -32,8 +32,8 @@ CREATE TABLE hospital (
   hdetail varchar(200),
   hpostcode varchar(200),
   hurl VARCHAR(200),
-  latitude VARCHAR(200),
-  longitude VARCHAR(200)
+  hgrade DECIMAL(2,1),
+  hreviewcnt INT(8) DEFAULT 0
 );
 
 CREATE TABLE reservation (
@@ -42,7 +42,7 @@ CREATE TABLE reservation (
   resdate varchar(200),
   restime varchar(200),
   `comment` varchar(200),
-  `status` boolean,
+  `status` BOOLEAN,
   doccomment varchar(200)
 );
 
@@ -51,7 +51,8 @@ CREATE TABLE review (
   pidnum varchar(200) REFERENCES patient(pidnum),
   comnum varchar(200) REFERENCES hospital(comnum),
   content varchar(200),
-  star varchar(200)
+  star varchar(200),
+  birth TIMESTAMP NOT NULL DEFAULT NOW()
 );
 
 
@@ -61,4 +62,14 @@ DROP TABLE hospital;
 DROP TABLE family;
 DROP TABLE patient;
 
+
+-- 병원 테스트 데이터 입력
+INSERT INTO hospital ( hname,  comnum,     htel,   department, hpassword, lunch,     clinic,            hroad,                                hdong,              hdetail, hpostcode, hurl, hgrade)
+              VALUES ('kosta', '12345', '02123456', '정형외과', '12',   '12001300', '09001800', '서울 금천구 가산디지털1로 70', '서울특별시 금천구 가산동 319',      '101',  '08590' ,  'image' , 0.233333);
+
+
+DELETE FROM hospital WHERE hname = 'kosta';
+
+SELECT * 
+FROM hospital;
 
