@@ -46,13 +46,13 @@ body {
 
 #center {
 	display: flex;
-	justify-content: center;
+	
 }
 
 h1{
 	width: 150px;
     color: rgb(25, 25, 112);
-    margin: 29px 0px 80px 1097px;
+    margin:44px auto;
 
 }
 
@@ -77,10 +77,10 @@ h1{
 }
 
 .container {
-	height: 600px;
+	height: 400px;
     border: 1px solid;
-    width: 1500px;
-    margin: 45px 319px 0px -1403px;
+    width: 1262px;
+    margin: 1px 400px;
 }
 
 input {
@@ -91,6 +91,7 @@ input {
 select {
 	width: 200px;
 	height: 35px;
+	cursor:pointer;
 }
 
 #search {
@@ -99,13 +100,14 @@ select {
 	height: 30px;
 	background-color: lightgray;
 	border-radius:10px;
+	cursor:pointer;
 }
 
 .reserveform {
 	width: 1574px;
     height: 100px;
-    margin-left: 432px;
-    margin-top: -40px;
+    margin-left: 407px;
+    margin-top: 57px;
 }
 .reserveform>button{
 	width: 100px;
@@ -125,7 +127,7 @@ select {
 <body>
 	<% pageContext.include("hmain.jsp");%>
 	<h1>전체 조회</h1>
-	<div id="center">
+	
 
 
 
@@ -168,20 +170,9 @@ select {
 			</div>
 
 
-			<c:set var="i" value="1" />
-			<c:forEach var="acc" items="${accs }">
-				<div class="row">
-					<div class="colume">${i }</div>
-					<div class="colume">${acc.id}</div>
-					<div class="colume">${acc.name }</div>
-					<div class="colume">${acc.balance }</div>
-					<div class="colume">${acc.type }</div>
-					<div class="colume">${acc.grade }&nbsp;</div>
-					<c:set var="i" value="${i+1 }" />
-				</div>
-			</c:forEach>
+
 		</div>
 
-	</div>
+
 </body>
 </html>

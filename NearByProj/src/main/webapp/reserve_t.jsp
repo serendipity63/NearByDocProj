@@ -7,15 +7,12 @@
 <meta charset="UTF-8">
 <title>오늘의 예약내역</title>
 <style>
-#center {
-	display: flex;
-	justify-content: center;
-}
+
 
 h1{
 	width: 300px;
     color: rgb(25, 25, 112);
-    margin: 29px 0px 80px 1038px;
+    margin:44px auto;
 
 }
 
@@ -35,15 +32,14 @@ h1{
 }
 
 .container {
-	height: 600px;
+	height: 400px;
     border: 1px solid;
     width: 1353px;
-    margin-top: 20px;
+    margin:60px 362px;
 }
 #emptyArea { width: 708px;
     text-align: center;
-    margin-top: 600px;
-    margin-left: 700px; }
+    margin-left: 607px; }
 #emptyArea a {
 	display: inline-block;
 	width: 20px;
@@ -62,7 +58,7 @@ h1{
 <body>
 	<% pageContext.include("hmain.jsp");%>
 	<h1>오늘의 예약내역</h1>
-	<div id="center">
+	
 		
 			
 		
@@ -94,7 +90,7 @@ h1{
 				</div>
 			</c:forEach>
 		</div>
-	</div>
+	
 	<div id="emptyArea">
 			<c:choose>  
 				<c:when test="${res.pageInfo.curPage>1}">

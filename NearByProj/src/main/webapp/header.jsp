@@ -88,7 +88,7 @@ a {
 					<a href="pjoin">회원가입</a>
 				</c:when>
 				<c:otherwise>
-					<a href="mypage">마이페이지</a>
+					<a href="myPageMain.jsp">마이페이지</a>
 					<a href="logout">로그아웃</a>
 				</c:otherwise>
 			</c:choose>
