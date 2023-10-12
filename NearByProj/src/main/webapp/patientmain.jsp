@@ -33,6 +33,16 @@
 		});
 	}
 </script>
+<script>
+	function openLocationSelectionPage() {
+		// 진료과목 선택 페이지 열기
+		var locationSelectionPage = window.open("location.jsp", "LocationSelection",
+				"width=500,height=600");
+		window.addEventListener("message", function(event) {
+			document.querySelector(".type").value = event.data;
+		});
+	}
+</script>
 <style>
 * {
 	margin: 0;
@@ -216,10 +226,9 @@ a {
 				</div>
 				<div class="container-3">
 					<div class="address">
-					<a href="location.jsp">
 						<span class="icon"><i class="material-icons">location_on</i></span>
 						&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" placeholder="주소설정"
-							class="address-input" id="address-input" readonly></a>
+							class="address-input" id="address-input" onclick="openLocationSelectionPage()" readonly>
 					</div>
 				</div>
 				<div class="button">

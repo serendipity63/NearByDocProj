@@ -42,6 +42,7 @@
         </li>
     </ul>
     <button onclick="selectTypes()">선택 완료</button>
+    
     <script>
         function toggleOtherTypeInput() {
             var otherTypeInput = document.getElementById("otherTypeInput");

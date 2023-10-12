@@ -9,41 +9,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
 <title>location setting</title>
 
-<script type="text/javascript">
-//아직 미완성
-function clickBtn(){
-    // BOM의 navigator객체의 하위에 geolocation객체가 새로 추가되었음.
-    window.navigator.geolocation.getCurrentPosition( function(position){ //OK
-        var lat= position.coords.latitude;
-        var lng= position.coords.longitude;
-
-        document.getElementById('target').innerHTML=lat+", "+lng;
-    } ,
-    function(error){ //error
-        switch(error.code){
-            case error.PERMISSION_DENIED:
-                str="사용자 거부";
-                break;
-            case error.POSITION_UNAVAILABLE:
-                str="지리정보 없음";
-                break;
-            case error.TIMEOUT:
-                str="시간 초과";
-                break;
-            case error.UNKNOWN_ERROR:
-                str="알수없는 에러";
-                break;
-        }
-        document.getElementById('target').innerHTML=str;
-    });
-}
-
-
-</script>
 
 <style>
 * {
@@ -159,9 +126,7 @@ a {
 				<button class="back">
 
 					<span class="icon-text-wrapper"> <a href="main"> <span
-							class="material-symbols-outlined"> arrow_back </span>
-					</span> 주소 설정
-					</a>
+							class="material-symbols-outlined"> arrow_back </span></span> 주소 설정 </a>
 				</button>
 			</div>
 		</div>
@@ -169,17 +134,51 @@ a {
 			어디에 있는 병원을 찾으세요?
 
 			<div class="currentloc">
-				<button class="current" onclick="clickBtn()"> <%-- 현재위치 가져오기 --%>
+				<button class="current" id="currentAddress">
+					<%-- 현재위치 가져오기 --%>
 					<span class="icon-text-wrapper"> <span
 						class="material-symbols-outlined"> location_searching </span>
 					</span> 현재 위치에서 병원 찾기
 				</button>
 			</div>
-    <h3 id="target">location</h3>
+
+			<script type="text/javascript"
+				src="//dapi.kakao.com/v2/maps/sdk.js?appkey=0f92754065fd18fb9b2450d8077e930c&libraries=services"></script>
+			<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+			<script>
+var geocoder = new kakao.maps.services.Geocoder();
+
+function success({ coords, timestamp }) {
+    const latitude = coords.latitude;   // 위도
+    const longitude = coords.longitude; // 경도
+    
+    console.log(`위도: \${latitude}, 경도: \${longitude}, 위치 반환 시간: \${timestamp}`);
+    var coord = new kakao.maps.LatLng(latitude, longitude);
+    geocoder.coord2Address(coord.getLng(), coord.getLat(), callback);
+}
+
+function getUserLocation() {
+    if (!navigator.geolocation) {
+        throw "위치 정보가 지원되지 않습니다.";
+    }
+    navigator.geolocation.getCurrentPosition(success);
+}
+
+var callback = function(result, status) {
+    if (status === kakao.maps.services.Status.OK) {
+    	alert((result[0].address.address_name));
+    }
+};
+
+$("#currentAddress").click(function() {
+	getUserLocation();	
+})
+</script>
+
+					<%-- 현재위치 가져오기 끝 --%>
 
 
-			
-			
+
 
 			<div class="otherloc">
 				<button class="other" onclick="location.href='execDaumPostcode()'">
