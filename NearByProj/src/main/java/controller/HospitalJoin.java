@@ -52,13 +52,14 @@ public class HospitalJoin extends HttpServlet {
 		String lunch= request.getParameter("lunch");
 		String clinic= request.getParameter("clinic");
 		String hroad = request.getParameter("hroad");
+		String hdong=request.getParameter("hdong");
 		String hdetail = request.getParameter("hdetail");
 		String hpostcode = request.getParameter("hpostcode");
 		String hurl=request.getParameter("hurl");
 				
 
 		Hospital hospital = new Hospital(hname,hpassword, comnum, htel, department,lunch,
-				clinic, hroad, hdetail, hpostcode, hurl);
+				clinic, hroad, hdong, hdetail, hpostcode, hurl);
 		try {
 			HospitalService hospitalService = new HospitalServiceImpl();
 			hospitalService.hospitaljoin(hospital);
