@@ -31,7 +31,9 @@ CREATE TABLE hospital (
   hdong VARCHAR(200),
   hdetail varchar(200),
   hpostcode varchar(200),
-  hurl VARCHAR(200)
+  hurl VARCHAR(200),
+  latitude VARCHAR(200),
+  longitude VARCHAR(200)
 );
 
 CREATE TABLE reservation (
