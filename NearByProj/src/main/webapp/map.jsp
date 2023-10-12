@@ -7,7 +7,6 @@
 <title>병원 지도</title>
 </head>
 <body>
-
 	<div id="map" style="width: 100%; height: 350px;"></div>
 
 	<script type="text/javascript"
@@ -22,7 +21,7 @@
 		 // 지도를 생성합니다    
 		var map = new kakao.maps.Map(mapContainer, mapOption);
 		 
-		var coords = new kakao.maps.LatLng(${hospital.lat}, ${hospital.lat});
+		var coords = new kakao.maps.LatLng(${hospital.lat}, ${hospital.lon});
 
 		// 결과값으로 받은 위치를 마커로 표시합니다
 		var marker = new kakao.maps.Marker({

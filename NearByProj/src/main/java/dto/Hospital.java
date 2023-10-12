@@ -1,5 +1,7 @@
 package dto;
 
+import java.math.BigDecimal;
+
 public class Hospital {
 	private String hname;
 	private String hpassword;
@@ -13,13 +15,17 @@ public class Hospital {
 	private String hdetail;
 	private String hpostcode;	
 	private String hurl;
+	private BigDecimal hgrade;
+	private Integer hreviewcnt;
+	private BigDecimal lat;
+	private BigDecimal lon;
 	
 	public Hospital() {
 
 	}
 
 	public Hospital(String hname, String hpassword, String comnum, String htel, String department, String lunch,
-			String clinic, String hroad, String hdong, String hdetail, String hpostcode, String hurl) {
+			String clinic, String hroad, String hdong, String hdetail, String hpostcode, String hurl, BigDecimal hgrade, Integer hreviewcnt, BigDecimal lat, BigDecimal lon) {
 		this.hname = hname;
 		this.hpassword = hpassword;
 		this.comnum = comnum;
@@ -32,6 +38,10 @@ public class Hospital {
 		this.hdetail = hdetail;
 		this.hpostcode = hpostcode;
 		this.hurl=hurl;
+		this.hgrade=hgrade;
+		this.hreviewcnt=hreviewcnt;
+		this.lat = lat;
+		this.lon = lon;
 	}
 
 	public String getHname() {
@@ -128,6 +138,38 @@ public class Hospital {
 
 	public void setHurl(String hurl) {
 		this.hurl = hurl;
+	}
+
+	public BigDecimal getHgrade() {
+		return hgrade;
+	}
+
+	public void setHgrade(BigDecimal hgrade) {
+		this.hgrade = hgrade;
+	}
+
+	public Integer getHreviewcnt() {
+		return hreviewcnt;
+	}
+
+	public void setHreviewcnt(Integer hreviewcnt) {
+		this.hreviewcnt = hreviewcnt;
+	}
+
+	public BigDecimal getLat() {
+		return lat;
+	}
+
+	public void setLat(BigDecimal lat) {
+		this.lat = lat;
+	}
+
+	public BigDecimal getLon() {
+		return lon;
+	}
+
+	public void setLon(BigDecimal lon) {
+		this.lon = lon;
 	}
 	
 	

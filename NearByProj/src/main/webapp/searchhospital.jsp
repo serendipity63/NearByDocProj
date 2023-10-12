@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -155,42 +156,42 @@
                 <p>설정 조건과 가까운 병원 검색 결과입니다.</p>
         </div>
         <div class="hoslist">
+        	<c:forEach items="${hoslist}" var="hospital">
             <div class="hos">
-                <div class="hosinfo" onclick="location.href='hospitalinfo.jsp';" style="cursor:pointer;">
+                <div class="hosinfo" onclick="location.href='hospitalinfo?comnum=${hospital.comnum}';" style="cursor:pointer;">
                 <table>
                 	<tbody>
                         <tr>
-                            <td colspan="3" width="330"><h4 style="font-size: 24px;">KOSTA치과의원</h4></td>
+                            <td colspan="3" width="330"><h4 style="font-size: 24px;">${hospital.hname}</h4></td>
                         </tr>
                         <tr>
-                            <td width="110">
-                                15km
-                            </td>
-                            <td width="110">
-                                종합병원
-                            </td>
-                            <td width="110">
-                                02)1234-5678
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="3" width="330">서울특별시 금천구 남부순환로 1252</td>
+                            <td colspan="3" width="330">${hospital.hroad} ${hospital.hdetail}</td>
 
                         </tr>
                         <tr>
-                            <td colspan="2">5.0
-                                <img src="image?file=star.png" alt="별" width="15">
-                                <img src="image?file=star.png" alt="별" width="15">
-                                <img src="image?file=star.png" alt="별" width="15">
-                                <img src="image?file=star.png" alt="별" width="15">
-                                <img src="image?file=star.png" alt="별" width="15">
+                            <td width="110">
+                                진료시간:
                             </td>
-                            <td>리뷰 10건</td>
+                            <td width="110">
+                                ${hospital.clinic}
+                            </td>
+                            <td width="110">
+                                ${hospital.htel}
+                            </td>
+                        </tr>
+                        
+                        <tr>
+                            <td colspan="2">${hospital.hgrade}
+                                <c:forEach begin="1" end="${hospital.hgrade}">
+								<img src="image?file=star.png" alt="별"width="15"> 
+								</c:forEach>
+                            </td>
+                            <td>리뷰 ${hospital.hreviewcnt}건</td>
                         </tr>
                     </tbody>
                 </table>
                 </div>
-                <div class="hosmap" onclick="window.open('map.jsp', 'window_name','width=600, height=400, location=no, status=no, scrollbars=yes')" style="cursor:pointer;">
+                <div class="hosmap" onclick="window.open('map?comnum=${hospital.comnum}', 'window_name','width=600, height=400, location=no, status=no, scrollbars=yes')" style="cursor:pointer;">
                                         <center><br><span class="material-symbols-outlined" >
                                             map
                                             </span>
@@ -198,135 +199,7 @@
                                     </div>
                 <br>
             </div>
-            <div class="hos">
-                <div class="hosinfo" onclick="location.href='hospitalinfo.jsp';" style="cursor:pointer;">
-                <table>
-                	<tbody>
-                        <tr>
-                            <td colspan="3" width="330"><h4 style="font-size: 24px;">KOSTA치과의원</h4></td>
-                        </tr>
-                        <tr>
-                            <td width="110">
-                                15km
-                            </td>
-                            <td width="110">
-                                종합병원
-                            </td>
-                            <td width="110">
-                                02)1234-5678
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="3" width="330">서울특별시 금천구 남부순환로 1252</td>
-
-                        </tr>
-                        <tr>
-                            <td colspan="2">5.0
-                                <img src="image?file=star.png" alt="별" width="15">
-                                <img src="image?file=star.png" alt="별" width="15">
-                                <img src="image?file=star.png" alt="별" width="15">
-                                <img src="image?file=star.png" alt="별" width="15">
-                                <img src="image?file=star.png" alt="별" width="15">
-                            </td>
-                            <td>리뷰 10건</td>
-                        </tr>
-                    </tbody>
-                </table>
-                </div>
-                <div class="hosmap" onclick="window.open('map.jsp', 'window_name','width=600, height=400, location=no, status=no, scrollbars=yes')" style="cursor:pointer;">
-                                        <center><br><span class="material-symbols-outlined" >
-                                            map
-                                            </span>
-                                            <p>지도보기</p></center>
-                                    </div>
-                <br>
-            </div>
-            <div class="hos">
-                <div class="hosinfo" onclick="location.href='hospitalinfo.jsp';" style="cursor:pointer;">
-                <table>
-                	<tbody>
-                        <tr>
-                            <td colspan="3" width="330"><h4 style="font-size: 24px;">KOSTA치과의원</h4></td>
-                        </tr>
-                        <tr>
-                            <td width="110">
-                                15km
-                            </td>
-                            <td width="110">
-                                종합병원
-                            </td>
-                            <td width="110">
-                                02)1234-5678
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="3" width="330">서울특별시 금천구 남부순환로 1252</td>
-
-                        </tr>
-                        <tr>
-                            <td colspan="2">5.0
-                                <img src="image?file=star.png" alt="별" width="15">
-                                <img src="image?file=star.png" alt="별" width="15">
-                                <img src="image?file=star.png" alt="별" width="15">
-                                <img src="image?file=star.png" alt="별" width="15">
-                                <img src="image?file=star.png" alt="별" width="15">
-                            </td>
-                            <td>리뷰 10건</td>
-                        </tr>
-                    </tbody>
-                </table>
-                </div>
-                <div class="hosmap" onclick="window.open('map.jsp', 'window_name','width=600, height=400, location=no, status=no, scrollbars=yes')" style="cursor:pointer;">
-                                        <center><br><span class="material-symbols-outlined" >
-                                            map
-                                            </span>
-                                            <p>지도보기</p></center>
-                                    </div>
-                <br>
-            </div>
-            <div class="hos">
-                <div class="hosinfo" onclick="location.href='hospitalinfo.jsp';" style="cursor:pointer;">
-                <table>
-                	<tbody>
-                        <tr>
-                            <td colspan="3" width="330"><h4 style="font-size: 24px;">KOSTA치과의원</h4></td>
-                        </tr>
-                        <tr>
-                            <td width="110">
-                                15km
-                            </td>
-                            <td width="110">
-                                종합병원
-                            </td>
-                            <td width="110">
-                                02)1234-5678
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="3" width="330">서울특별시 금천구 남부순환로 1252</td>
-
-                        </tr>
-                        <tr>
-                            <td colspan="2">5.0
-                                <img src="image?file=star.png" alt="별" width="15">
-                                <img src="image?file=star.png" alt="별" width="15">
-                                <img src="image?file=star.png" alt="별" width="15">
-                                <img src="image?file=star.png" alt="별" width="15">
-                                <img src="image?file=star.png" alt="별" width="15">
-                            </td>
-                            <td>리뷰 10건</td>
-                        </tr>
-                    </tbody>
-                </table>
-                </div>
-                <div class="hosmap" onclick="window.open('map.jsp', 'window_name','width=600, height=400, location=no, status=no, scrollbars=yes')" style="cursor:pointer;">
-                                        <center><br><span class="material-symbols-outlined" >
-                                            map
-                                            </span>
-                                            <p>지도보기</p></center>
-                                    </div>
-                <br>
-            </div>
+			</c:forEach>
         </div>
     </div>
     <br><br><br>
