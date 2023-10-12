@@ -104,7 +104,7 @@
 			<table>
 				<tr>
 					<td><span class="material-symbols-outlined"
-						onclick="location.href='searchhospital.jsp'"
+						onClick="history.go(-1)"
 						style="cursor: pointer;"> arrow_back </span></td>
 					<td>
 						<h3>${hospital.hname}</h3>
@@ -148,7 +148,7 @@
 		<table>
 			<td style="text-align: left" width="215">&nbsp;&nbsp;&nbsp;리뷰 ${hospital.hreviewcnt}</td>
 			<td style="text-align: right" width="215"><a
-				href="readreview.jsp">전체보기 ></a></td>
+				href="readreview">전체보기 ></a></td>
 		</table>
 		<br>
 		<div class="review">
