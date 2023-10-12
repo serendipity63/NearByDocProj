@@ -44,15 +44,13 @@ body {
 	margin: 0 auto;
 }
 
-#center {
-	display: flex;
-	
-}
+
 
 h1{
 	width: 150px;
     color: rgb(25, 25, 112);
-    margin:44px auto;
+    margin-left:970px;
+    margin-top:50px;
 
 }
 
@@ -79,18 +77,18 @@ h1{
 .container {
 	height: 400px;
     border: 1px solid;
-    width: 1262px;
-    margin: 1px 400px;
+    width: 1263px;
+    margin: 1px 412px;
 }
 
 input {
 	width: 200px;
-	height: 30px;
+	height: 38px;
 }
 
 select {
 	width: 200px;
-	height: 35px;
+	height: 38px;
 	cursor:pointer;
 }
 
@@ -106,7 +104,7 @@ select {
 .reserveform {
 	width: 1574px;
     height: 100px;
-    margin-left: 407px;
+    margin-left: 413px;
     margin-top: 57px;
 }
 .reserveform>button{
@@ -116,11 +114,32 @@ select {
 
 }
 #datepicker1{
-	margin-left:80px;
+	margin-left:187px;
 
 }
 #datepicker2{
 	margin-left:20px;
+}
+#emptyArea {
+	width: 708px;
+    text-align: center;
+    margin-top: 35px;
+    margin-left: 674px;
+}
+
+#emptyArea a {
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	text-decoration: none;
+}
+
+#emptyArea .btn {
+	background: lightgray;
+}
+
+#emptyArea .select {
+	background: lightblue;
 }
 
 </style>
@@ -128,11 +147,6 @@ select {
 	<% pageContext.include("hmain.jsp");%>
 	<h1>전체 조회</h1>
 	
-
-
-
-	
-
 
 		<div class="reserveform">
 
@@ -172,7 +186,44 @@ select {
 
 
 		</div>
+	<div id="emptyArea">
+		<c:choose>
+			<c:when test="${res.pageInfo.curPage>1}">
+				<a href="boardlist?page=${res.pageInfo.curPage-1}">&lt;</a>
+			</c:when>
+			<c:otherwise>
+					&lt;
+				</c:otherwise>
+		</c:choose>
+		&nbsp;&nbsp;
 
+		<c:forEach begin="${res.pageInfo.startPage}"
+			end="${res.pageInfo.endPage}" var="i">
+			<c:choose>
+				<c:when test="${res.pageInfo.curPage==i}">
+					<a href="boardlist?page=${i}" class="select"
+						onclick="callBtn(${i});return ${res.keyword==null};">${i}</a>&nbsp;
+					</c:when>
+				<c:otherwise>
+					<a href="boardlist?page=${i}" class="btn"
+						onclick="callBtn(${i});return ${res.keyword==null};">${i}</a>&nbsp;
+					</c:otherwise>
+
+			</c:choose>
+
+		</c:forEach>
+
+		<c:choose>
+			<c:when test="${res.pageInfo.curPage<res.pageInfo.allPage}">
+				<a href="boardlist?page=${res.pageInfo.curPage+1}">&gt;</a>
+			</c:when>
+			<c:otherwise>
+					&gt;
+				</c:otherwise>
+		</c:choose>
+		&nbsp;&nbsp;
+
+	</div>
 
 </body>
 </html>

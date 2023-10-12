@@ -10,7 +10,7 @@
 
 
 h1{
-	width: 300px;
+	width: 220px;
     color: rgb(25, 25, 112);
     margin:44px auto;
 
@@ -35,11 +35,11 @@ h1{
 	height: 400px;
     border: 1px solid;
     width: 1353px;
-    margin:60px 362px;
+    margin:86px 379px;
 }
 #emptyArea { width: 708px;
     text-align: center;
-    margin-left: 607px; }
+    margin-left: 696px; }
 #emptyArea a {
 	display: inline-block;
 	width: 20px;

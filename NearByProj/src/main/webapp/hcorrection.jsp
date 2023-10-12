@@ -19,7 +19,6 @@ body {
 }
 
 
-
 h1 {
 	width: 120px;
     

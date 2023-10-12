@@ -77,21 +77,21 @@ h1 {
 	height: 412px;
     border: 1px solid;
     width: 1263px;
-    margin-left: 377px;
+    margin-left: 413px;
 }
 
 
 
 input {
 	width: 200px;
-	height: 30px;
+	height: 38px;
 }
 
 #reserveform {
 	margin-top: 50px;
     width: 1000px;
     height: 50px;
-    margin-left: 662px;
+    margin-left: 414px;
 }
 
 button {
@@ -100,7 +100,34 @@ button {
 	background-color: rgb(25, 25, 112);
 }
 #search{
-	color:white;
+	color: black;
+	width: 100px;
+	height: 30px;
+	background-color: lightgray;
+	border-radius: 10px;
+	cursor: pointer;
+	
+}
+#emptyArea {
+	width: 708px;
+	text-align: center;
+	margin-top: 20px;
+	margin-left: 673px;
+}
+
+#emptyArea a {
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	text-decoration: none;
+}
+
+#emptyArea .btn {
+	background: lightgray;
+}
+
+#emptyArea .select {
+	background: lightblue;
 }
 </style>
 <body>
@@ -154,6 +181,43 @@ button {
 				</c:forEach>
 			</div>
 		</form>
-	
+	<div id="emptyArea">
+		<c:choose>
+			<c:when test="${res.pageInfo.curPage>1}">
+				<a href="boardlist?page=${res.pageInfo.curPage-1}">&lt;</a>
+			</c:when>
+			<c:otherwise>
+					&lt;
+				</c:otherwise>
+		</c:choose>
+		&nbsp;&nbsp;
+
+		<c:forEach begin="${res.pageInfo.startPage}"
+			end="${res.pageInfo.endPage}" var="i">
+			<c:choose>
+				<c:when test="${res.pageInfo.curPage==i}">
+					<a href="boardlist?page=${i}" class="select"
+						onclick="callBtn(${i});return ${res.keyword==null};">${i}</a>&nbsp;
+					</c:when>
+				<c:otherwise>
+					<a href="boardlist?page=${i}" class="btn"
+						onclick="callBtn(${i});return ${res.keyword==null};">${i}</a>&nbsp;
+					</c:otherwise>
+
+			</c:choose>
+
+		</c:forEach>
+
+		<c:choose>
+			<c:when test="${res.pageInfo.curPage<res.pageInfo.allPage}">
+				<a href="boardlist?page=${res.pageInfo.curPage+1}">&gt;</a>
+			</c:when>
+			<c:otherwise>
+					&gt;
+				</c:otherwise>
+		</c:choose>
+		&nbsp;&nbsp;
+
+	</div>
 </body>
 </html>
