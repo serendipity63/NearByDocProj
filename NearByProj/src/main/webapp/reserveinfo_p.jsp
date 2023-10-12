@@ -141,10 +141,10 @@ input {
 					<select name="type">
 						<option value="all">선택</option>
 						<option value="pname" ${res.type eq 'pname'? 'selected':'' }>환자명</option>
-						<option value="number">${res.type eq 'number'? 'selected':'' }주민등록번호</option>
-					</select> <input type="text" name="keyword" id="keyword"
-						value="${res.keyword }" /> <input type="submit" id="search"
-						value="검색" />
+						<option value="pidnum">${res.type eq 'pidnum'? 'selected':'' }주민등록번호</option>
+					</select> 
+					<input type="text" name="keyword" id="keyword" value="${res.keyword }" /> 
+					<input type="submit" id="search" value="검색" />
 				</h5>
 			</div>
 
@@ -152,33 +152,34 @@ input {
 
 		<table>
 			<tr id="row">
-				<th>일자</th>
-				<th>시간</th>
 				<th>환자명</th>
-				<th>주민등록번호</th>
-				<th>연락처</th>
+				<th>이메일</th>
+				<th>휴대폰</th>
 				<th>주소</th>
+				<th>우편번호</th>
+				<th>상세주소</th>
 			</tr>
 			<c:forEach items="${res.patientList }" var="patient">
 				<tr>
-					<td>${patient.date }</td>
-					<td>${patient.time }</td>
+					<td>${patient.pidnum }</td>
+					<td>${patient.pemail }</td>
 					<td>${patient.pname }</td>
-					<td>${patient.number }</td>
 					<td>${patient.ptel }</td>
-					<td>${patient.paddress }</td>
-
-
+					<td>${patient.proaddaddress }</td>
+					<td>${patient.ppostcode }</td>
+					<td>${patient.pdetailaddress }</td>
+					<td>
+					<c:if test="${user.id == patient.pidnum }">
+						<a href="patientdelete?num=${patient.pidnum }&page=${res.pageInfo.curPage}">삭제</a>
+					</c:if>
+					</td>
 				</tr>
 			</c:forEach>
 		</table>
-
-
-	
 	<div id="emptyArea">
 		<c:choose>
 			<c:when test="${res.pageInfo.curPage>1}">
-				<a href="boardlist?page=${res.pageInfo.curPage-1}">&lt;</a>
+				<a href="patientlist?page=${res.pageInfo.curPage-1}">&lt;</a>
 			</c:when>
 			<c:otherwise>
 					&lt;
@@ -190,11 +191,11 @@ input {
 			end="${res.pageInfo.endPage}" var="i">
 			<c:choose>
 				<c:when test="${res.pageInfo.curPage==i}">
-					<a href="boardlist?page=${i}" class="select"
+					<a href="patientlist?page=${i}" class="select"
 						onclick="callBtn(${i});return ${res.keyword==null};">${i}</a>&nbsp;
 					</c:when>
 				<c:otherwise>
-					<a href="boardlist?page=${i}" class="btn"
+					<a href="patientlist?page=${i}" class="btn"
 						onclick="callBtn(${i});return ${res.keyword==null};">${i}</a>&nbsp;
 					</c:otherwise>
 
@@ -204,7 +205,7 @@ input {
 
 		<c:choose>
 			<c:when test="${res.pageInfo.curPage<res.pageInfo.allPage}">
-				<a href="boardlist?page=${res.pageInfo.curPage+1}">&gt;</a>
+				<a href="patientlist?page=${res.pageInfo.curPage+1}">&gt;</a>
 			</c:when>
 			<c:otherwise>
 					&gt;
