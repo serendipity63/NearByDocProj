@@ -26,7 +26,7 @@ public class HospitalLogout extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getSession().removeAttribute("user");
+		request.getSession().removeAttribute("hospitaluser");
 		request.getRequestDispatcher("hospitalmain.jsp").forward(request, response);
 	}
 
