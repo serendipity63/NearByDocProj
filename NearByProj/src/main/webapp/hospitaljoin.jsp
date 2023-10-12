@@ -113,7 +113,7 @@ input[type='submit'] {
 
 input[type='text'], input[type='number'], input[type='password'], input[type='submit']
 	{
-	margin-bottom: 23px;
+	margin-bottom: 22px;
 }
 
 input[type='submit']:hover {
@@ -279,7 +279,7 @@ input[type='submit']:hover {
 					<div class="row">
 						<div class="input">
 							<input type="number" id="comnum" name="comnum"
-								placeholder="사업자등록번호">
+								placeholder="사업자등록번호" required>
 							<button id="comnumcheck">중복 확인</button>
 
 						</div>
@@ -351,11 +351,12 @@ input[type='submit']:hover {
 						<input type="text" name="lunch" placeholder="점심시간">
 					</div>
 				</div>
-
-				<%--디자인은 수정할게요  --%>
-				<input type="file" name="file" id="file" accept="image/*" />
-
-
+				<div class="row">
+					<div class="input">
+						<%--디자인은 수정할게요  --%>
+						<input type="file" name="file" id="file" accept="image/*" />
+					</div>
+				</div>
 				<div class="button">
 					<input type="submit" value="병 원 등 록">
 				</div>
