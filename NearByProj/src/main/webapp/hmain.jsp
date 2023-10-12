@@ -9,7 +9,7 @@
 <link
    href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap"
    rel="stylesheet">
-      <link rel="stylesheet" href="css/my_mouseover.css" />
+<link rel="stylesheet" href="my_mouseover.css" />
    
 <title>니어닥병원마이페이지</title>
 
@@ -77,7 +77,7 @@ h3>a{
    text-decoration:none;
 
 }
-h3>a:hover{color:red;}
+h3>a:hover{color:blue;}
 h3>p{
    color: black;
    margin-left:10px;
@@ -86,12 +86,12 @@ h3>p{
 #sidemenubox {
   
   	float: left;
-    height: 900px;
+    height: 850px;
     width: 180px;
     border-right: 1px solid gray;
     margin-left: 4px;
 }
-}
+
 #list{
    height:600px;
 	
@@ -108,8 +108,13 @@ h3>p{
    margin-top:40px;
 }
 #list>p>a:hover{
-   color:red;
+   color:blue;
 
+}
+#logout>a{text-decoration:none;margin-left:50px;}
+#logout>a:hover{
+	color:red;
+	
 }
 
 
@@ -183,9 +188,10 @@ h3>p{
          <br>
          <hr>
          <br>
-         <p>
+         
+         <div id="logout">
             <a href="hospitallogin.jsp">로그아웃</a>
-         </p>
+         </div>
          
 
       </div>

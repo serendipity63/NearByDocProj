@@ -48,42 +48,37 @@ body {
 
 
 h1 {
-	width: 200px;
+	width: 162px;
     height: 50px;
-    margin:44px auto;
+    margin:44px 944px;
     color: rgb(25, 25, 112);
 }
 
-.row {
-	height: 30px;
-}
-
-.title {
-	font-weight: bold;
-	background-color: lightgray;
-	width: 100px;
-}
-
-.colume {
+#center>th{
 	padding: 5px;
-	width: 210px;
+	width: 225px;
 	float: left;
 	color: black;
 	text-align: center;
-	border-right:1px solid white;
+	border:1px solid black;
+	font-weight: bold;
+	
+	
 }
 
-.container {
-	height: 412px;
+#center {
+	
     border: 1px solid;
-    width: 1263px;
-    margin-left: 413px;
+    width: 1356px;
+    margin:40px 337px;
+    background-color: lightgray;
 }
+
 
 
 
 input {
-	width: 200px;
+	width: 224px;
 	height: 38px;
 }
 
@@ -91,7 +86,7 @@ input {
 	margin-top: 50px;
     width: 1000px;
     height: 50px;
-    margin-left: 414px;
+    margin-left: 336px;
 }
 
 button {
@@ -134,7 +129,7 @@ button {
 	<% pageContext.include("hmain.jsp");%>
 
 	
-		<form action="reserveinfo" method="post">
+		
 
 		
 				<h1>일정별 조회</h1>
@@ -154,33 +149,32 @@ button {
 
 
 			</div>
-			<br>
-			<br>
-			<div class="container" id="container">
-				<div class="row">
-					<div class="title colume">일자</div>
-					<div class="title colume">시간</div>
-					<div class="title colume">환자명</div>
-					<div class="title colume">주민등록번호</div>
-					<div class="title colume">연락처</div>
-					<div class="title colume">주소</div>
-				</div>
-
-
-				<c:set var="i" value="1" />
-				<c:forEach var="acc" items="${accs }">
-					<div class="row">
-						<div class="colume">${i }</div>
-						<div class="colume">${acc.id}</div>
-						<div class="colume">${acc.name }</div>
-						<div class="colume">${acc.balance }</div>
-						<div class="colume">${acc.type }</div>
-						<div class="colume">${acc.grade }&nbsp;</div>
-						<c:set var="i" value="${i+1 }" />
-					</div>
-				</c:forEach>
-			</div>
-		</form>
+			<table id="center">	
+			<tr class="row">
+				<th>일자</th>
+				<th>시간</th>
+				<th>환자명</th>
+				<th>주민등록번호</th>
+				<th>연락처</th>
+				<th>주소</th>
+			</tr>
+		
+			<c:forEach items="${res.reserveList }" var="reserve">
+			<tr>
+				<td>${reserve.resdate }</td>
+				<td>${reserve.restime }</td>
+				<td>${reserve.name }</td>
+				<td>${reserve.number }</td>
+				<td>${reserve.phone }</td>
+				<td>${reserve.address }</td>
+				<td>
+					<c:if test="${hospitaluser.id == hospital.comnum }">
+						<a href="patientdelete?num=${patient.pidnum }&page=${res.pageInfo.curPage}">삭제</a>
+					</c:if>
+				</td>
+			</tr>
+			</c:forEach>
+		</table>
 	<div id="emptyArea">
 		<c:choose>
 			<c:when test="${res.pageInfo.curPage>1}">

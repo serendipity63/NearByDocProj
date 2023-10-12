@@ -12,34 +12,31 @@
 h1{
 	width: 220px;
     color: rgb(25, 25, 112);
-    margin:44px auto;
+    margin:44px 933px;
 
 }
 
-.title {
-	font-weight: bold;
-	background-color: lightgray;
-	width: 100px;
-}
-
-.colume {
+th{
 	padding: 5px;
 	width: 150px;
 	float: left;
 	color: black;
 	text-align: center;
 	border-right:1px solid white;
+	font-weight: bold;
+	background-color: lightblue;
+	
 }
 
-.container {
-	height: 400px;
+table {
+	
     border: 1px solid;
-    width: 1353px;
-    margin:86px 379px;
+    width: 1356px;
+    margin:86px 357px;
 }
 #emptyArea { width: 708px;
     text-align: center;
-    margin-left: 696px; }
+    margin-left: 660px; }
 #emptyArea a {
 	display: inline-block;
 	width: 20px;
@@ -62,35 +59,39 @@ h1{
 		
 			
 		
-		<div class="container" id="container">
-			<div class="row">
-				<div class="title colume">일자</div>
-				<div class="title colume">시간</div>
-				<div class="title colume">환자명</div>
-				<div class="title colume">주민등록번호</div>
-				<div class="title colume">연락처</div>
-				<div class="title colume">주소</div>
-				<div class="title colume">요청사항</div>
-				<div class="title colume">진료과목</div>
-				<div class="title colume">진료완료처리</div>
-			</div>
 		
-
-
-			<c:set var="i" value="1" />
-			<c:forEach var="acc" items="${accs }">
-				<div class="row">
-					<div class="colume">${i }</div>
-					<div class="colume">${acc.id}</div>
-					<div class="colume">${acc.name }</div>
-					<div class="colume">${acc.balance }</div>
-					<div class="colume">${acc.type }</div>
-					<div class="colume">${acc.grade }&nbsp;</div>
-					<c:set var="i" value="${i+1 }" />
-				</div>
+		<table>	
+			<tr class="row">
+				<th>일자</th>
+				<th>시간</th>
+				<th>환자명</th>
+				<th>주민등록번호</th>
+				<th>연락처</th>
+				<th>주소</th>
+				<th>요청사항</th>
+				<th>진료과목</th>
+				<th>진료완료처리</th>
+			</tr>
+		
+			<c:forEach items="${res.reserveList }" var="reserve">
+			<tr>
+				<td>${reserve.resdate }</td>
+				<td>${reserve.restime }</td>
+				<td>${reserve.name }</td>
+				<td>${reserve.number }</td>
+				<td>${reserve.phone }</td>
+				<td>${reserve.address }</td>
+				<td>${reserve.comment }</td>
+				<td>${reserve.subject }</td>
+				<td>${reserve.status }</td>
+				<td>
+					<c:if test="${hospitaluser.id == hospital.comnum }">
+						<a href="patientdelete?num=${patient.pidnum }&page=${res.pageInfo.curPage}">삭제</a>
+					</c:if>
+				</td>
+			</tr>
 			</c:forEach>
-		</div>
-	
+		</table>
 	<div id="emptyArea">
 			<c:choose>  
 				<c:when test="${res.pageInfo.curPage>1}">
