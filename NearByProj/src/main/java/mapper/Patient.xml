@@ -16,4 +16,34 @@
 	insert into patient (pidnum,pemail,ppassword,pname,ptel,proadaddress,ppostcode,pdetailaddress) values (#{pidnum},#{pemail},#{ppassword},#{pname},#{ptel},#{proadaddress},#{ppostcode},#{pdetailaddress}) 
 	]]>
 	</insert>
+	
+	<select id="selectPatientList" parameterType="Integer" resultType="Patient">
+	<![CDATA[
+	select pidnum,pemail,pname,ptel,proadaddress,ppostcode,pdetailaddress from patient order by num desc
+	limit #{row},10
+	]]>
+	</select>
+	
+	
+   <select id="selectSearchCount" resultType="Integer">
+      <![CDATA[
+         select count(num) from patient
+      ]]>
+      
+   </select>
+	
+	<select id="searchPatientList" parameterType="hashmap" resultType="Patient">
+	
+	select * from patient
+	where ${type} like '%${keyword}%' order by num desc
+	limit #{row},10
+	
+	</select>
+	
+   <select id="searchPatientCount" parameterType="hashmap" resultType="Integer">
+   	select count(*) from patient
+   	where ${type} like '%${keyword}%' 
+   </select>
+	
+	
 </mapper>
