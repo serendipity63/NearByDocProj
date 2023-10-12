@@ -35,7 +35,7 @@
 </script>
 <script>
 	function openLocationSelectionPage() {
-		// 진료과목 선택 페이지 열기
+		// 주소 설정 페이지 열기
 		var locationSelectionPage = window.open("location.jsp", "LocationSelection",
 				"width=500,height=600");
 		window.addEventListener("message", function(event) {
