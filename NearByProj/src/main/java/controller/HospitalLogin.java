@@ -46,8 +46,8 @@ public class HospitalLogin extends HttpServlet {
 			HospitalService hospitalService = new HospitalServiceImpl();
 			Hospital hospital = hospitalService.login(comnum, hpassword);
 			HttpSession session = request.getSession();
-			session.setAttribute("user", hospital);
-			request.getRequestDispatcher("hospitallogin.jsp").forward(request, response);
+			session.setAttribute("hospitaluser", hospital);
+			request.getRequestDispatcher("reserve_t.jsp").forward(request, response);
 		} catch (Exception e) {
 			request.setAttribute("err", e.getMessage());
 			request.getRequestDispatcher("herror.jsp").forward(request, response);

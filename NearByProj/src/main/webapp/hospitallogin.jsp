@@ -123,12 +123,12 @@
 
 				<div class="input-container">
 					<span class="icon material-symbols-outlined">local_hospital</span>
-					<input type="number" placeholder="사업자등록번호" />
+					<input type="number" placeholder="사업자등록번호" name="comnum" />
 				</div>
 
 				<div class="input-container">
 					<span class="icon material-symbols-outlined">lock</span>
-					<input type="password" placeholder="비밀번호" required />
+					<input type="password" placeholder="비밀번호" name="hpassword" required />
 				</div>
 				<button type="submit" class="login-button">로그인</button>
 

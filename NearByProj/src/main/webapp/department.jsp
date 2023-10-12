@@ -27,12 +27,12 @@
     <h2>진료과목을 선택하세요</h2>
     <ul>
         <li><input type="checkbox" name="type" value="내과"> 내과</li>
-        <li><input type="checkbox" name="type" value="내과"> 정형외과</li>
+        <li><input type="checkbox" name="type" value="정형외과"> 정형외과</li>
         <li><input type="checkbox" name="type" value="외과"> 외과</li>
-        <li><input type="checkbox" name="type" value="내과"> 피부과</li>
-        <li><input type="checkbox" name="type" value="내과"> 산부인과</li>
-        <li><input type="checkbox" name="type" value="내과"> 비뇨의학과</li>
-        <li><input type="checkbox" name="type" value="내과"> 정신건강의학과</li>
+        <li><input type="checkbox" name="type" value="피부과"> 피부과</li>
+        <li><input type="checkbox" name="type" value="산부인과"> 산부인과</li>
+        <li><input type="checkbox" name="type" value="비뇨의학과"> 비뇨의학과</li>
+        <li><input type="checkbox" name="type" value="정신건강의학과"> 정신건강의학과</li>
         <li><input type="checkbox" name="type" value="이비인후과"> 이비인후과</li>
         <li><input type="checkbox" name="type" value="소아과"> 소아과</li>
         <li>
@@ -42,6 +42,7 @@
         </li>
     </ul>
     <button onclick="selectTypes()">선택 완료</button>
+    
     <script>
         function toggleOtherTypeInput() {
             var otherTypeInput = document.getElementById("otherTypeInput");

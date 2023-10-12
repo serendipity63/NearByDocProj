@@ -113,7 +113,7 @@ input[type='submit'] {
 
 input[type='text'], input[type='number'], input[type='password'], input[type='submit']
 	{
-	margin-bottom: 23px;
+	margin-bottom: 22px;
 }
 
 input[type='submit']:hover {
@@ -143,7 +143,6 @@ input[type='submit']:hover {
 	border-radius: 3px;
 }
 
-
 #info_comnum button {
 	position: absolute;
 	width: 90px;
@@ -151,10 +150,10 @@ input[type='submit']:hover {
 	border-radius: 3px;
 	border: none;
 	background: #191970;
-	display:inline;
+	display: inline;
 	color: #fff;
 	cursor: pointer;
-	margin-left:-90px;
+	margin-left: -90px;
 }
 </style>
 <!-- 사업자번호 중복검사  기능 -->
@@ -280,7 +279,7 @@ input[type='submit']:hover {
 					<div class="row">
 						<div class="input">
 							<input type="number" id="comnum" name="comnum"
-								placeholder="사업자등록번호">
+								placeholder="사업자등록번호" required>
 							<button id="comnumcheck">중복 확인</button>
 
 						</div>
@@ -337,8 +336,8 @@ input[type='submit']:hover {
 
 				<div class="row">
 					<div class="input">
-						<input name="type" type="text" class="type" name="department" placeholder="진료과목명"
-							onclick="openTypeSelectionPage()">
+						<input name="type" type="text" class="type" name="department"
+							placeholder="진료과목명" onclick="openTypeSelectionPage()">
 					</div>
 				</div>
 
@@ -350,6 +349,12 @@ input[type='submit']:hover {
 				<div class="row">
 					<div class="input">
 						<input type="text" name="lunch" placeholder="점심시간">
+					</div>
+				</div>
+				<div class="row">
+					<div class="input">
+						<%--디자인은 수정할게요  --%>
+						<input type="file" name="file" id="file" accept="image/*" />
 					</div>
 				</div>
 				<div class="button">
