@@ -14,6 +14,15 @@ public class Reservation {
 	private String subject;
 	private String status;
 	private String doccomment;
+	private Integer id;
+	
+	
+	public Integer getId() {
+		return id;
+	}
+	public void setId(Integer id) {
+		this.id = id;
+	}
 	public String getPidnum() {
 		return pidnum;
 	}
@@ -80,10 +89,4 @@ public class Reservation {
 	public void setDoccomment(String doccomment) {
 		this.doccomment = doccomment;
 	}
-	
-	
-	
-	
-	
-	
 }
