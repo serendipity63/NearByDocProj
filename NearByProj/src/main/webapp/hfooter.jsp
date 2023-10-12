@@ -33,7 +33,7 @@ footer {
     right: 0;
     background: #05053f;
     height: 120px;
-    width: 81vw;
+    width: 100vw;
     color: #fff;
     margin: 0 auto;
 }
@@ -138,7 +138,7 @@ footer {
 
 .footer-menu {
  	float: right;
-    margin-right: 380px;
+    margin-right: 70px;
     margin-top: -61px;}
 
 .footer-menu ul {
