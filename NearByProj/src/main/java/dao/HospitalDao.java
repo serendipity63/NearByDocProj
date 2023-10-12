@@ -1,5 +1,7 @@
 package dao;
 
+import java.util.List;
+
 import dto.Hospital;
 
 public interface HospitalDao {
@@ -7,4 +9,5 @@ public interface HospitalDao {
 
 	void insertHospital(Hospital hospital) throws Exception;
 	void updateHospital(Hospital hospital) throws Exception;
+	List<Hospital> selectHospitalList() throws Exception;
 }

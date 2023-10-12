@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="EUC-KR">
-<title>º´¿ø Áöµµ</title>
+<title>ë³‘ì› ì§€ë„</title>
 </head>
 <body>
 
@@ -13,31 +13,32 @@
 	<script type="text/javascript"
 		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=5d95a6f2314398f89e05ca9f4f2fc27e&libraries=services"></script>
 	<script>
-		var mapContainer = document.getElementById('map'), // Áöµµ¸¦ Ç¥½ÃÇÒ div 
+		var mapContainer = document.getElementById('map'), // ì§€ë„ë¥¼ í‘œì‹œí•  div 
 		mapOption = {
-			center : new kakao.maps.LatLng(33.450701, 126.570667), // ÁöµµÀÇ Áß½ÉÁÂÇ¥
+			center : new kakao.maps.LatLng(33.450701, 126.570667), // ì§€ë„ì˜ ì¤‘ì‹¬ì¢Œí‘œ
 			level : 3
-		// ÁöµµÀÇ È®´ë ·¹º§
+		// ì§€ë„ì˜ í™•ëŒ€ ë ˆë²¨
 		};
-		 // Áöµµ¸¦ »ı¼ºÇÕ´Ï´Ù    
+		 // ì§€ë„ë¥¼ ìƒì„±í•©ë‹ˆë‹¤    
 		var map = new kakao.maps.Map(mapContainer, mapOption);
 		 
-		var coords = new kakao.maps.LatLng(${hospital.lat}, ${hospital.lat});
+		var coords = new kakao.maps.LatLng(${hospital.lat}, ${hospital.lon});
 
-		// °á°ú°ªÀ¸·Î ¹ŞÀº À§Ä¡¸¦ ¸¶Ä¿·Î Ç¥½ÃÇÕ´Ï´Ù
+
+		// ê²°ê³¼ê°’ìœ¼ë¡œ ë°›ì€ ìœ„ì¹˜ë¥¼ ë§ˆì»¤ë¡œ í‘œì‹œí•©ë‹ˆë‹¤
 		var marker = new kakao.maps.Marker({
 			map : map,
 			position : coords
 		});
 
-		// ÀÎÆ÷À©µµ¿ì·Î Àå¼Ò¿¡ ´ëÇÑ ¼³¸íÀ» Ç¥½ÃÇÕ´Ï´Ù
+		// ì¸í¬ìœˆë„ìš°ë¡œ ì¥ì†Œì— ëŒ€í•œ ì„¤ëª…ì„ í‘œì‹œí•©ë‹ˆë‹¤
 		var infowindow = new kakao.maps.InfoWindow(
 				{
 					content : '<div style="width:150px;text-align:center;padding:6px 0;">${hospital.hname}</div>'
 				});
 		infowindow.open(map, marker);
 		
-		// ÁöµµÀÇ Áß½ÉÀ» °á°ú°ªÀ¸·Î ¹ŞÀº À§Ä¡·Î ÀÌµ¿½ÃÅµ´Ï´Ù
+		// ì§€ë„ì˜ ì¤‘ì‹¬ì„ ê²°ê³¼ê°’ìœ¼ë¡œ ë°›ì€ ìœ„ì¹˜ë¡œ ì´ë™ì‹œí‚µë‹ˆë‹¤
 		map.setCenter(coords);
 
 	</script>
