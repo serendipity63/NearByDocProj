@@ -55,6 +55,7 @@ public class HospitalJoin extends HttpServlet {
 		String hdong=request.getParameter("hdong");
 		String hdetail = request.getParameter("hdetail");
 		String hpostcode = request.getParameter("hpostcode");
+		
 		String hurl=request.getParameter("hurl");
 				
 
@@ -66,7 +67,7 @@ public class HospitalJoin extends HttpServlet {
 			request.getRequestDispatcher("hospitallogin.jsp").forward(request, response);
 		} catch (Exception e) {
 			request.setAttribute("err", e.getMessage());
-			request.getRequestDispatcher("error404.jsp").forward(request, response); // 에러 페이지 따로 만들거에요
+			request.getRequestDispatcher("herror404.jsp").forward(request, response); // 에러 페이지 따로 만들거에요
 		}
 	}
 
