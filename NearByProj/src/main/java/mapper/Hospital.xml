@@ -42,6 +42,7 @@
 	</select>
 	
 	<select id="selectHospitalList" resultType="Hospital">
+
 	<![CDATA[
 		select * from hospital 
 	]]>

@@ -114,7 +114,9 @@
 		</div>
 		<br>
 		<div class="info">
+
 			<img src="image?file=${hospital.hurl}" alt="병원" width="420">
+
 
 			<table class="hosinfo">
 				<tr>
@@ -198,7 +200,9 @@
 		 // 지도를 생성합니다    
 		var map = new kakao.maps.Map(mapContainer, mapOption);
 		 
+
 		var coords = new kakao.maps.LatLng(${hospital.lat}, ${hospital.lon});
+
 
 		// 결과값으로 받은 위치를 마커로 표시합니다
 		var marker = new kakao.maps.Marker({
