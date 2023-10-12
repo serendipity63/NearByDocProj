@@ -425,12 +425,13 @@ input:focus {
 
 				<div id="info_pemail">
 
-					<input type="text" id="pemail" name="pemail"
+					<input type="email" id="pemail" name="pemail"
 						placeholder="nearbydoc@abc.com 형식으로 입력" required="required">
 
 					<button id="pemailcheck">중복 확인</button>
 
 				</div>
+				<%-- 이메일 형식으로 입력 안하면 안되는거 추가하기 --%>
 
 				<br> 비밀번호<br>
 
