@@ -14,11 +14,7 @@ public class HospitalServiceImpl implements HospitalService {
       hospitalDao= new HospitalDaoImpl();
    }
 
-   @Override
-   public void hospitalModify(Hospital hospital) throws Exception {
-      hospitalDao.updateHospital(hospital);
-      
-   }
+   
    @Override
    public Hospital hospitalHinfo(Integer num) throws Exception {
       return null;
@@ -58,5 +54,19 @@ public class HospitalServiceImpl implements HospitalService {
 	public Hospital selectHospitalBycomnum(String comnum) throws Exception {
 	   return hospitalDao.selectHospital(comnum);
 	}
+
+
+@Override
+public Hospital hospitalModify(String comnum) {
+	// TODO Auto-generated method stub
+	return null;
+}
+
+
+
+
+
+
+   
 }
 

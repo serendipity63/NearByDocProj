@@ -84,16 +84,7 @@ public class HospitalModify extends HttpServlet {
 		hospital.setLunch(lunch);
 		
 		
-		try {
-			HospitalService hospitalService=new HospitalServiceImpl();
-			hospitalService.hospitalModify(hospital);
-			response.sendRedirect("hinfo?num="+hospital.getComnum());
-			
-		}catch(Exception e) {
-			e.printStackTrace();
-			request.setAttribute("err", "병원 정보 수정 오류");
-			request.getRequestDispatcher("herror.jsp").forward(request, response);
-		}
+		
 	}
 
 }
