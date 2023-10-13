@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.math.BigDecimal;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -56,9 +57,13 @@ public class HospitalJoin extends HttpServlet {
 		String hdetail = request.getParameter("hdetail");
 		String hpostcode = request.getParameter("hpostcode");
 		String hurl = request.getParameter("hurl");
-
+		BigDecimal hgrade = null;		
+		Integer hreviewcnt = null;
+		BigDecimal lat = null;
+		BigDecimal lon = null;
+		
 		Hospital hospital = new Hospital(hname, hpassword, comnum, htel, department, lunch, clinic, hroad, hdong,
-				hdetail, hpostcode, hurl);
+				hdetail, hpostcode, hurl,hgrade,hreviewcnt,lat,lon);
 		try {
 			HospitalService hospitalService = new HospitalServiceImpl();
 			hospitalService.hospitaljoin(hospital);
