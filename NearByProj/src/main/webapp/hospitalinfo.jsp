@@ -155,14 +155,14 @@
 			<div class="reviewinfo1">
 				<table>
 					<tr>
-						<td style="text-align: left" width="185">&nbsp;${res.patient.pname}</td>
-						<td style="text-align: right" width="185">${res.review.birth}&nbsp;</td>
+						<td style="text-align: left" width="185">&nbsp;${lastreview.name}</td>
+						<td style="text-align: right" width="185">${lastreview.birth}&nbsp;</td>
 					</tr>
 					<tr>
 						<td></td>
 					</tr>
 					<tr>
-						<td colspan="2">&nbsp;${res.review.content}</td>
+						<td colspan="2">&nbsp;${lastreview.content}</td>
 					</tr>
 				</table>
 			</div>
@@ -170,7 +170,7 @@
 				<table>
 					<tr>
 						<td>사용자 별점&nbsp;&nbsp;</td>
-						<td><c:forEach begin="1" end="${res.review.star}">
+						<td><c:forEach begin="1" end="${lastreview.star}">
 								<img src="image?file=star.png" alt="별" width="15">
 							</c:forEach></td>
 					</tr>
@@ -183,7 +183,7 @@
 			<p>이 병원에서 진료 경험, 어떠셨나요?</p>
 			<br>
 			<button
-				onclick="window.open('review.jsp', 'window_name','width=800, height=1000, location=no, status=no, scrollbars=yes')">리뷰하기</button>
+				onclick="window.open('insertreview', 'window_name','width=800, height=1000, location=no, status=no, scrollbars=yes')">리뷰하기</button>
 		</div>
 		<br> 병원 위치 정보
 		<div id="map" style="width: 100%; height: 350px;"></div>
@@ -224,7 +224,7 @@
 
 		<br>
 		<br>
-		<div class="button">
+		<div>
 			<button type="button" class="btn-primary"
 				onclick="location.href='reservation.jsp';">예약하기</button>
 		</div>

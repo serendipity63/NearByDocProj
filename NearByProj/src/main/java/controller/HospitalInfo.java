@@ -1,15 +1,21 @@
 package controller;
 
 import java.io.IOException;
+import java.util.Map;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import dto.Hospital;
+import dto.Review;
 import service.HospitalService;
 import service.HospitalServiceImpl;
+import service.ReviewService;
+import service.ReviewServiceImpl;
 
 /**
  * Servlet implementation class HospitalInfo
@@ -33,9 +39,14 @@ public class HospitalInfo extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		String comnum = request.getParameter("comnum");
 		HospitalService hospitalservice = new HospitalServiceImpl();
+		ReviewService reviewservice = new ReviewServiceImpl();
 		try {
 			Hospital hospital = hospitalservice.selectHospitalBycomnum(comnum);
-			request.setAttribute("hospital", hospital);
+			HttpSession session = request.getSession();
+			session.setAttribute("hospital", hospital);
+			Map<String, Object> lastreview = reviewservice.selectLastReview(comnum);
+			System.out.println(lastreview);
+			session.setAttribute("lastreview", lastreview);
 			request.getRequestDispatcher("hospitalinfo.jsp").forward(request, response);
 		
 		} catch(Exception e) {

@@ -26,15 +26,14 @@
 <body>
     <h2>진료과목을 선택하세요</h2>
     <ul>
-        <li><input type="checkbox" name="type" value="내과"> 내과</li>
-        <li><input type="checkbox" name="type" value="정형외과"> 정형외과</li>
-        <li><input type="checkbox" name="type" value="외과"> 외과</li>
-        <li><input type="checkbox" name="type" value="피부과"> 피부과</li>
-        <li><input type="checkbox" name="type" value="산부인과"> 산부인과</li>
-        <li><input type="checkbox" name="type" value="비뇨의학과"> 비뇨의학과</li>
-        <li><input type="checkbox" name="type" value="정신건강의학과"> 정신건강의학과</li>
-        <li><input type="checkbox" name="type" value="이비인후과"> 이비인후과</li>
-        <li><input type="checkbox" name="type" value="소아과"> 소아과</li>
+        <li><input type="checkbox" name="type" value="내과" id="type" > 내과</li>
+        <li><input type="checkbox" name="type" value="정형외과" id="type"> 정형외과</li>
+        <li><input type="checkbox" name="type" value="외과" id="type"> 외과</li>
+        <li><input type="checkbox" name="type" value="피부과" id="type"> 피부과</li>
+        <li><input type="checkbox" name="type" value="산부인과" id="type"> 산부인과</li>
+        <li><input type="checkbox" name="type" value="정신건강의학과" id="type"> 정신건강의학과</li>
+        <li><input type="checkbox" name="type" value="이비인후과" id="type"> 이비인후과</li>
+        <li><input type="checkbox" name="type" value="소아과" id="type"> 소아과</li>
         <li>
             <input type="checkbox" name="type" id="otherTypeCheckbox" value="기타" onchange="toggleOtherTypeInput()">
             기타
@@ -73,7 +72,7 @@
             });
 
             // 선택한 진료과목을 부모 페이지로 전달
-            var selectedTypesStr = selectedTypes.join(', ');
+            var selectedTypesStr = selectedTypes.join(',');
             window.opener.postMessage(selectedTypesStr, "*"); // '*'는 모든 도메인에서 메시지를 수신할 수 있도록 함
             window.close();
         }

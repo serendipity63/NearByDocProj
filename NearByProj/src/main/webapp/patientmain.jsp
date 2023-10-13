@@ -8,7 +8,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NearByDoc for Hospital</title>
+<title>NearByDoc</title>
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
 <link rel="stylesheet"
@@ -32,16 +32,29 @@
 			document.querySelector(".type").value = event.data;
 		});
 	}
+	
 </script>
 <script>
 	function openLocationSelectionPage() {
 		// 주소 설정 페이지 열기
 		var locationSelectionPage = window.open("location.jsp", "LocationSelection",
 				"width=500,height=600");
-		window.addEventListener("message", function(event) {
-			document.querySelector(".type").value = event.data;
-		});
+	/* 	window.addEventListener("message", function(event) {
+			var addressInput= document.getElementById("address-input");
+			addressInput.value=event.data;
+		}); */
 	}
+</script>
+<script>
+window.addEventListener("message", function(event) {
+    // event.data에 보내진 데이터가 포함
+    var addressName = event.data;
+
+    // 이제 이 값을 사용할 수 있음.
+    var addressInput = document.getElementById("address-input");
+    addressInput.value = addressName;
+});
+
 </script>
 <style>
 * {
@@ -219,7 +232,7 @@ a {
 					<div class="type">
 						<span class="icon"><i class="material-icons">search</i></span>
 						&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" placeholder="진료과"
-							class="search-input" onclick="openTypeSelectionPage()" readonly>
+							class="search-input" id="department-input" onclick="openTypeSelectionPage()" readonly>
 					</div>
 	<%-- hospital db에서 입력된 값만 호출되게.. --%>
 					
