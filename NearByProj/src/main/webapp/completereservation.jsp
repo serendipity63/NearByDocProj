@@ -139,7 +139,7 @@
             <p>목감기가 심해요.</p>
         </div>
         <br>
-        <div class="button">
+        <div>
             <button type="button" class="btn-return" onclick="location.href='reservation.jsp';">돌아가기</button>
             <button type="button" class="btn-primary" onclick="location.href='confirmreservation.jsp';">예약완료하기</button>
         </div>

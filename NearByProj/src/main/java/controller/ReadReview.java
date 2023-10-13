@@ -38,14 +38,10 @@ public class ReadReview extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		String comnum = request.getParameter("comnum");
-		HospitalService hospitalservice = new HospitalServiceImpl();
-		
 		ReviewService reviewservice = new ReviewServiceImpl();
 		try {
 			List<Map<String, Object>> reviewlist = reviewservice.reviewListByHos(comnum);
 			request.setAttribute("reviewlist", reviewlist);
-			Hospital hospital = hospitalservice.selectHospitalBycomnum(comnum);
-			request.setAttribute("hospital", hospital);
 			request.getRequestDispatcher("readreview.jsp").forward(request, response);
 		
 		} catch(Exception e) {
