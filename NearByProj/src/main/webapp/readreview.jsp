@@ -64,18 +64,18 @@
 		</div>
 		<br>
 
-		<c:forEach items="${reviewList}" var="res">
+		<c:forEach items="${reviewlist}" var="res">
 			<div>
-				<p>&nbsp;${res.review.birth}</p>
+				<p>&nbsp;&nbsp;${res.birth}</p>
 				<div class="review">
 					<div class="reviewinfo">
 						<table>
 							<tr>
-								<td width="100">${res.patient.pname}</td>
+								<td width="100">${res.name}</td>
 								<td width="100">진료 과목:&nbsp;</td>
 								<td width="80">${hospital.department}</td>
 								<td width="120">
-								<c:forEach begin="1" end="${res.review.star}">
+								<c:forEach begin="1" end="${res.star}">
 								<img src="image?file=star.png" alt="별"width="15"> 
 								</c:forEach>
 								</td>
@@ -84,12 +84,13 @@
 								<td></td>
 							</tr>
 							<tr>
-								<td colspan="4">${res.review.content}</td>
+								<td colspan="4">${res.content}</td>
 							</tr>
 						</table>
 					</div>
 				</div>
 			</div>
+			<br>
 		</c:forEach>
 
 	</div>

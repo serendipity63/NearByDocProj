@@ -202,104 +202,94 @@ input:focus {
 }
 </style>
 
-<!-- 아이디 중복검사 기능 -->
+<!-- 이메일 중복검사 기능 -->
 
 <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
 
 <script type="text/javascript">
 	$(function() {
-
 		let isPemailCheck = false;
 
+		// 이메일 중복 검사 버튼 클릭 시
 		$('#pemailcheck').click(function() {
-
 			$.ajax({
-
 				url : "pemailcheck",
-
 				type : "post",
-
 				data : {
-
 					pemail : $("#pemail").val()
-
 				},
-
 				success : function(res) {
-
 					console.log(res);
-
-					if (res == "notexist") {
-
+					if (res === "notexist") {
 						isPemailCheck = true;
-
 						$("#pemailMessage").text("사용 가능합니다").show();
-
 					} else {
-
+						isPemailCheck = false;
 						$("#pemailMessage").text("이메일이 중복됩니다").show();
-
 					}
-
 				},
-
 				error : function(err) {
-
 					console.log(err);
-
 					$("#pemailMessage").text("이메일 중복체크 오류").show();
-
 				}
-
 			});
-
 		});
 
-		$("#pemail").change(function() {
+		// 이메일 입력 필드에서 입력 변화 감지
+		$("#pemail")
+				.on(
+						"input",
+						function() {
+							const pemail = $("#pemail").val();
+							const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+							const isValid = emailRegex.test(pemail);
 
-			isPemailCheck = false;
-
-			$("#pemailMessage").hide();
-
-		});
+							if (!isValid) {
+								$("#pemailMessage").text("올바른 이메일 형식으로 입력하세요")
+										.show();
+								isPemailCheck = false; // 이메일 형식이 아닌 경우 중복 확인도 통과하지 않도록
+							} else {
+								$("#pemailMessage").hide();
+							}
+						});
 
 		$("#form").submit(function(e) {
-
-			if (isPemailCheck == false) {
-
+			if (!isPemailCheck) {
 				$("#pemailMessage").text("이메일 중복체크하세요").show();
-
 				e.preventDefault();
-
 			}
-
 		});
-
 	});
 </script>
 
 <script>
+	// 비밀번호 확인과 비밀번호 필드의 입력이 변경될 때 확인 함수 실행
+
+	$("#ppasswordcheck, #ppassword").on("input", check);
+
 	function check() {
 
-		let ppassword = $("#ppassword").val();
+		const ppassword = $("#ppassword").val();
 
-		let ppasswordcheck = $("#ppasswordcheck").val();
+		const ppasswordcheck = $("#ppasswordcheck").val();
 
 		if (ppassword !== ppasswordcheck) {
 
 			$("#check").show();
 
-			$("#join-button").prop('disabled', true); // 비밀번호 불일치 시 회원가입 버튼 비활성화
+			$("#join-button").prop('disabled', true);
 
 		} else {
 
 			$("#check").hide();
 
-			$("#join-button").prop('disabled', false); // 비밀번호 일치 시 회원가입 버튼 활성화
+			$("#join-button").prop('disabled', false);
 
 		}
 
 	}
+
+	// 문서가 준비되면 "비밀번호 확인" 표시를 숨김
 
 	$(document).ready(function() {
 
@@ -425,20 +415,19 @@ input:focus {
 
 				<div id="info_pemail">
 
-					<input type="email" id="pemail" name="pemail"
+					<input type="text" id="pemail" name="pemail"
 						placeholder="nearbydoc@abc.com 형식으로 입력" required="required">
 
 					<button id="pemailcheck">중복 확인</button>
 
 				</div>
-				<%-- 이메일 형식으로 입력 안하면 안되는거 추가하기 --%>
 
 				<br> 비밀번호<br>
 
 				<div class="input-container">
 
 					<input type="password" id="ppassword" name="ppassword"
-						class="form-control" placeholder="" required /> <span
+						class="form-control" placeholder="" required="required" /> <span
 						class="icon material-symbols-outlined"> lock </span>
 
 				</div>
@@ -459,9 +448,13 @@ input:focus {
 				</div>
 
 				이름<br> <input type="text" id="pname" name="pname"
-					placeholder="" required /> 휴대전화<br> <input type="number"
-					id="ptel" name="ptel" placeholder="-없이 숫자만 입력" /> 주민번호<br> <input
-					type="number" id="pidnum" name="pidnum" placeholder="-없이 숫자만 입력"
+					placeholder="" required />
+					 
+				휴대전화<br> <input type="number"
+					id="ptel" name="ptel" placeholder="-없이 숫자만 입력" /> 
+					
+				주민번호<br> 
+				<input type="number" id="pidnum" name="pidnum" placeholder="-없이 숫자만 입력"
 					required /> 주소<br>
 
 				<div class="row">
@@ -505,5 +498,4 @@ input:focus {
 </body>
 
 </html>
-
 

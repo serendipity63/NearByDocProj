@@ -92,7 +92,8 @@ a {
 	width: 150px;
 	height: 115px;
 	display: inline-block;
-	vertical-align: middle; margin-right : 10px;
+	vertical-align: middle;
+	margin-right: 10px;
 	margin-top: 10px;
 	margin-right: 10px;
 }
@@ -103,24 +104,23 @@ a {
 	right: 10px;
 }
 
-.outerDiv .loginJoin a {
-	margin: 0 10px;
-	background-color: #fff;
-	color: #2188C4;
-	width: 70px;
-	height: 29px;
-	line-height: 29px;
-	border-radius: 20px;
-	text-align: center;
-	display: inline-block;
-	font-family: "Noto Sans kr", sans-serif;
-	transition: background-color 0.3s;
-}
+  .button {
+    background-color: #fff;
+    color: #2188C4;
+    width: 70px;
+    height: 29px;
+    line-height: 29px;
+    border-radius: 20px;
+    text-align: center;
+    display: inline-block;
+    font-family: "Noto Sans kr", sans-serif;
+    transition: background-color 0.3s;
+  }
 
-.outerDiv .loginJoin a:hover {
-	background-color: #0056b3;
-	text-decoration: none;
-}
+  .button:hover {
+    background-color: #0056b3;
+    text-decoration: none;
+  }
 </style>
 </head>
 
@@ -133,12 +133,12 @@ a {
 		<div class="loginJoin">
 			<c:choose>
 				<c:when test="${empty user}">
-					<a href="login">로그인</a>
-					<a href="patientjoin">회원가입</a>
+					<a href="login" class="button">로그인</a>
+					<a href="patientjoin" class="button">회원가입</a>
 				</c:when>
 				<c:otherwise>
-					<b><a href="mypage">마이페이지</a></b>
-					<a href="logout">로그아웃</a>
+					<a href="mypage" class="button">마이페이지</a>
+					<a href="logout" class="button">로그아웃</a>
 				</c:otherwise>
 			</c:choose>
 		</div>
