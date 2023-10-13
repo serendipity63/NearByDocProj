@@ -6,7 +6,12 @@
 	<select id="reviewListByHos" parameterType="String"
 		resultType="hashmap">
 	<![CDATA[
-
+		select 	p.pname as name, 
+				r.content as content,
+				r.star as star, 
+				r.birth as birth
+		from review r, patient p 
+		where r.comnum=#{comnum} AND r.pidnum=p.pidnum
 	]]>
 	</select>
 

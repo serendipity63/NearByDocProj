@@ -8,6 +8,7 @@
 		<typeAlias type="dto.Hospital" alias="Hospital" />
 		<typeAlias type="dto.Patient" alias="Patient" />
 		<typeAlias type="dto.Reservation" alias="Reservation" />
+		<typeAlias type="dto.Review" alias="Review" />
 
 
 	</typeAliases>
@@ -36,5 +37,6 @@
 		<mapper resource="mapper/Hospital.xml" />
 		<mapper resource="mapper/Patient.xml" />
 		<mapper resource="mapper/Reservation.xml" />
+		<mapper resource="mapper/Review.xml" />
 	</mappers>
 </configuration>
