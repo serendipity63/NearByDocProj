@@ -68,33 +68,24 @@
                 var dong = jQuery('#dong option:selected').val();
                 var dongCode = sido + sigugun + dong + '00';
 
-                //동네예보 URL
-                var url = 'https://www.weather.go.kr/weather/process/timeseries-dfs-body-ajax.jsp?myPointCode=' + dongCode + '&unit=K';
 
-                //iframe으로 결과 보기
-                fn_iframe(url);
             });
         });
 
         function fn_option(code, name){
             return '<option value="' + code +'">' + name +'</option>';
         }
-        function fn_iframe(url){
-            jQuery('#iframe').attr('src', url);
-        }
+
     </script>
 </head>
 <body>
-    <h3>Example page</h3>
     <div>
         <div id="selectbox">
             <select id="sido"></select>
             <select id="sigugun"></select>
             <select id="dong"></select>
         </div>
-        <div>
-            <iframe id="iframe" style="width:100%; height:500px;"></iframe>
-        </div>
+
     </div>
 </body>
 </html>
