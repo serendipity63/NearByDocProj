@@ -112,8 +112,11 @@ td{
 				
 			</table>
 				<div id="button">
-				<a href="hcorrection.jsp">수정하기</a>
+				<c:if test="${hospitaluser.id eq hospital.hname }">
+				<a href="hospitalmodify?comnum=${hospital.comnum }">수정하기</a>
+				</c:if>
 				</div>
+				
 			
 	
 	

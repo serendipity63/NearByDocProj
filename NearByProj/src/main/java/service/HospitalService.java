@@ -15,8 +15,12 @@ public interface HospitalService {
 	Hospital hospitalHinfo(Integer num) throws Exception;
 
 
-	void HospitalModify(Hospital hospital) throws Exception;
+	Hospital hospitalModify(String comnum) throws Exception;
 	
 	List<Hospital> hospitalList() throws Exception;
 	Hospital selectHospitalBycomnum(String comnum) throws Exception;
+
+	void hospitalModify(Hospital hospital) throws Exception;
+
+	
 }

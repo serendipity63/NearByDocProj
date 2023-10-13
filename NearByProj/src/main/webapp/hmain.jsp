@@ -30,6 +30,7 @@ body {
    
 }
 
+
 #header {
    	width: 100%;
     height: 75px;
@@ -116,6 +117,14 @@ h3>p{
 	color:red;
 	
 }
+#user{
+	text-align:center;
+	
+}
+b{
+	
+	color:blue;
+}
 
 
 
@@ -143,7 +152,18 @@ h3>p{
 
 
       <h3>
-         <img src="image?file=home.png" width="50px" height="50px"><p>니어바이닥의원</p>
+         <img src="image?file=home.png" width="50px" height="50px">
+         <br>
+         <c:choose>
+			<c:when test="${hospitaluser eq Empty}">
+				<a href="hlogin" >로그인</a>&nbsp;&nbsp;
+			</c:when>
+		<c:otherwise>
+			<div id="user">
+			<b>${hospitaluser.hname }</b>
+			</div>
+		</c:otherwise>
+</c:choose>
       </h3>
     
       <h3>

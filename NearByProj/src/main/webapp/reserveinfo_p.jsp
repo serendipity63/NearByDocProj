@@ -129,7 +129,6 @@ input {
 			<th>휴대폰</th>
 			<th>주소</th>
 			<th>우편번호</th>
-			<th>상세주소</th>
 		</tr>
 		<c:forEach items="${res.patientList }" var="patient">
 			<tr>
@@ -137,12 +136,11 @@ input {
 				<td>${patient.pemail }</td>
 				<td>${patient.pidnum }</td>
 				<td>${patient.ptel }</td>
-				<td>${patient.proaddaddress }</td>
+				<td>${patient.address }</td>
 				<td>${patient.ppostcode }</td>
-				<td>${patient.pdetailaddress }</td>
 				<td><c:if test="${hospitaluser.id == hospital.comnum }">
 						<a
-							href="patientdelete?num=${patient.pidnum }&page=${res.pageInfo.curPage}">삭제</a>
+							href="patientdelete?pidnum=${patient.pidnum }&page=${res.pageInfo.curPage}">삭제</a>
 					</c:if></td>
 			</tr>
 		</c:forEach>

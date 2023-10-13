@@ -95,7 +95,7 @@ table {
 	<div id="emptyArea">
 			<c:choose>  
 				<c:when test="${res.pageInfo.curPage>1}">
-					<a href="boardlist?page=${res.pageInfo.curPage-1}">&lt;</a>
+					<a href="reslist?page=${res.pageInfo.curPage-1}">&lt;</a>
 				</c:when>
 				<c:otherwise>
 					&lt;
@@ -106,10 +106,10 @@ table {
 			<c:forEach begin="${res.pageInfo.startPage}" end="${res.pageInfo.endPage}" var="i">
 				<c:choose>
 					<c:when test="${res.pageInfo.curPage==i}">
-						<a href="boardlist?page=${i}" class="select" onclick="callBtn(${i});return ${res.keyword==null};">${i}</a>&nbsp;
+						<a href="reslist?page=${i}" class="select" onclick="callBtn(${i});return ${res.keyword==null};">${i}</a>&nbsp;
 					</c:when>
 					<c:otherwise>
-						<a href="boardlist?page=${i}" class="btn" onclick="callBtn(${i});return ${res.keyword==null};">${i}</a>&nbsp;
+						<a href="reslist?page=${i}" class="btn" onclick="callBtn(${i});return ${res.keyword==null};">${i}</a>&nbsp;
 					</c:otherwise>
 					
 				</c:choose>
@@ -118,7 +118,7 @@ table {
 
 			<c:choose>  
 				<c:when test="${res.pageInfo.curPage<res.pageInfo.allPage}">
-					<a href="boardlist?page=${res.pageInfo.curPage+1}">&gt;</a>
+					<a href="reslist?page=${res.pageInfo.curPage+1}">&gt;</a>
 				</c:when>
 				<c:otherwise>
 					&gt;

@@ -15,8 +15,8 @@ public class HospitalServiceImpl implements HospitalService {
    }
 
    @Override
-   public void HospitalModify(Hospital hospital) throws Exception {
-      
+   public void hospitalModify(Hospital hospital) throws Exception {
+      hospitalDao.updateHospital(hospital);
       
    }
    @Override

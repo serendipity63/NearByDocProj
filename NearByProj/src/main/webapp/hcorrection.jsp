@@ -132,7 +132,7 @@ input[type="text"]{
 			
 		</form>
 		<div id="button">
-			<a href="hinfo.jsp">수정완료</a>
+			<input type="submit" value="수정완료">
 		</div>
 	
 </body>
