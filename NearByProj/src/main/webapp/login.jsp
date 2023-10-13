@@ -158,14 +158,14 @@ button {
                     <span class="icon material-symbols-outlined">
                         mail
                     </span>
-                    <input type="email" name= "pemail" placeholder="이메일 주소" />
+                    <input type="email" name= "pemail" placeholder="이메일 주소" required="required" />
                 </div>
 
                 <div class="input-container">
                     <span class="icon material-symbols-outlined">
                         lock
                     </span>
-                    <input type="password" name= "ppassword" placeholder="비밀번호" required />
+                    <input type="password" name= "ppassword" placeholder="비밀번호" required="required" />
                 </div>
 
                 <button type="submit" class="loginbutton">로그인</button>
