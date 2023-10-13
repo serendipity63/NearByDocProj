@@ -277,7 +277,7 @@ input[type='submit']:hover {
 					<div class="row">
 						<div class="input">
 							<input type="number" id="comnum" name="comnum"
-								placeholder="사업자등록번호" required>
+								placeholder="사업자등록번호" required="required"/>
 							<button id="comnumcheck">중복 확인</button>
 
 						</div>
@@ -289,12 +289,12 @@ input[type='submit']:hover {
 				<div class="row">
 					<div class="input">
 						<input type="password" id="hpassword" name="hpassword"
-							placeholder="비밀번호">
+							placeholder="비밀번호" required="required"/ >
 					</div>
 				</div>
 				<div class="row">
 					<div class="input">
-						<input type="password" placeholder="비밀번호 재확인">
+						<input type="password" placeholder="비밀번호 재확인" required="required"/>
 					</div>
 				</div>
 
@@ -336,7 +336,7 @@ input[type='submit']:hover {
 					<div class="input">
 						<input type="text" class="type" 
 							placeholder="진료과목명" onclick="openTypeSelectionPage()"
-							name="department" id="department"/>
+							name="department" id="department" required="required"/>
 					</div>
 				</div>
 
