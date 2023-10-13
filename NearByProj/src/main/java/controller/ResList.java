@@ -38,7 +38,6 @@ public class ResList extends HttpServlet {
 		HttpSession session = request.getSession();
 		Patient patient = (Patient)session.getAttribute("user");
 		String pidnum = patient.getPidnum();
-		System.out.println(pidnum);
 		
 		ReservationService resService = new ReservationServiceImpl();
 		try {

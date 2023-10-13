@@ -67,8 +67,21 @@ table {
 .material-symbols-outlined {
 	font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24
 }
+
+button {
+	background: white;
+	border: none;
+	font-size: 16px;
+}
 </style>
 <script>
+function confirmReservation(reservationId) {
+    // Create a URL with the reservation ID as a query parameter
+    const url = `/near/resmanage?reservationId=${reservation.id}`; // Update the path accordingly
+
+    // Redirect the page to the new URL
+    window.location.href = "resmanage";
+}
 
 
 </script>
@@ -85,46 +98,38 @@ table {
 			arrow_back </span> <br>
 		<hr>
 	</div>
-	
-	
+
+
 	<div id="container">
 		<c:forEach items="${reservations}" var="reservation">
 			<div id="res">
 				<span>${reservation.date }</span> 
-				<span> <c:choose>
-						  <c:when test="${reservation.status eq true}"><button id="goResManage" onclick="goResManage(reservation)">예약 확인</button></a></c:when>
-						  <c:when test="${reservation.status eq false}">진료 완료</c:when>
-					   </c:choose>
+				<span> 
+				<c:if test="${reservation.status eq true}"><button id="goResManageConfirm" onclick="confirmReservation(${reservation.id})">예약 확인</button></c:if> 
+				<c:if test="${reservation.status eq false}"><button id="goResManageComplete"onclick="confirmReservation(${reservation.id})">진료 완료</button></c:if>
 				</span>
-				<c:choose>
-						  <c:when test="${reservation.status eq true}"><table class="restable"  ></c:when>
-						  <c:when test="${reservation.status eq false}"><table class="restable"style="background-color: #CFE8F7"></c:when>
-					   </c:choose>
-				<!-- <table class="restable" border="1"> -->
-				
-					<tr>
-						<th rowspan="2">
-							<h4>${reservation.name }</h4>
-							<h5>${reservation.address }</h5>
-							<h5>${reservation.tel }</h5>
-						</th>
-						<th>
-							<h5>예약 일자</h5>
-							<h5>${reservation.date }</h5>
-						</th>
-					</tr>
-					<tr>
-						<th>
-							<h5>예약 시간</h5>
-							<h5>${reservation.time }</h5>
-						</th>
-					</tr>
-				</table>
+					<c:if test="${reservation.status eq true}"><table class="restable"></c:if>
+					<c:if test="${reservation.status eq false}"><table class="restable" style="background-color: #CFE8F7"></c:if>									<tr>
+										<th rowspan="2">
+											<h4>${reservation.name }</h4>
+											<h5>${reservation.address }</h5>
+											<h5>${reservation.tel }</h5>
+										</th>
+										<th>
+											<h5>예약 일자</h5>
+											<h5>${reservation.date }</h5>
+										</th>
+									</tr>
+									<tr>
+										<th>
+											<h5>예약 시간</h5>
+											<h5>${reservation.time }</h5>
+										</th>
+									</tr>
+								</table>
 			</div>
 		</c:forEach>
-		<div></div>
 	</div>
-
 </body>
 
 </html>

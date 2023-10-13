@@ -44,4 +44,9 @@ public class PatientDaoImpl implements PatientDao {
 		return sqlSession.selectOne("mapper.patient.searchPatientCount",param);
 	}
 
+	@Override
+	public Patient selectPatientByPidnum(String pidnum) throws Exception {
+		return sqlSession.selectOne("mapper.patient.selectPatientByPidnum",pidnum);
+	}
+
 }

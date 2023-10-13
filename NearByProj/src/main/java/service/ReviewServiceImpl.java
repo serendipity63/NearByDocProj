@@ -17,6 +17,12 @@ public class ReviewServiceImpl implements ReviewService {
 		return reviewDao.reviewListByHos(comnum);
 	}
 	@Override
+
+	public List<Map<String, Object>> myReviews(String pidnum) throws Exception {
+		return reviewDao.myReviewListByid(pidnum);
+	}
+}
+
 	public void insertReview(Review review) throws Exception {
 		reviewDao.insertReview(review);
 	}
@@ -25,3 +31,4 @@ public class ReviewServiceImpl implements ReviewService {
 		return reviewDao.selectLastReview(comnum);
 	}
 }
+
