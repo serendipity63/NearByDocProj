@@ -202,12 +202,42 @@ input:focus {
 }
 </style>
 
-<!-- 이메일 중복검사 기능 -->
+<!-- 이메일 중복검사 기능 pemailcheck -->
 
 <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
 
 <script type="text/javascript">
-	$(function() {
+
+
+/* function check(){
+
+	if(document.fr.pemail.val)
+	
+	
+}
+ */
+// 이메일 입력 필드에서 입력 변화 감지
+$("#pemail")
+		.on(
+				"input",
+				function() {
+					const pemail = $("#pemail").val();
+					const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+					const isValid = emailRegex.test(pemail);
+
+					if (!isValid) {
+						$("#pemailMessage").text("올바른 이메일 형식으로 입력하세요")
+								.show();
+						isPemailCheck = false; // 이메일 형식이 아닌 경우 중복 확인도 통과하지 않도록
+					} else {
+						$("#pemailMessage").hide();
+					}
+				});
+
+
+
+
+	$(function() {				
 		let isPemailCheck = false;
 
 		// 이메일 중복 검사 버튼 클릭 시
@@ -222,10 +252,10 @@ input:focus {
 					console.log(res);
 					if (res === "notexist") {
 						isPemailCheck = true;
-						$("#pemailMessage").text("사용 가능합니다").show();
+						$("#pemailMessage").text("사용 가능한 이메일입니다").show();
 					} else {
 						isPemailCheck = false;
-						$("#pemailMessage").text("이메일이 중복됩니다").show();
+						$("#pemailMessage").text("이미 사용중인 이메일입니다").show();
 					}
 				},
 				error : function(err) {
@@ -235,24 +265,8 @@ input:focus {
 			});
 		});
 
-		// 이메일 입력 필드에서 입력 변화 감지
-		$("#pemail")
-				.on(
-						"input",
-						function() {
-							const pemail = $("#pemail").val();
-							const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
-							const isValid = emailRegex.test(pemail);
 
-							if (!isValid) {
-								$("#pemailMessage").text("올바른 이메일 형식으로 입력하세요")
-										.show();
-								isPemailCheck = false; // 이메일 형식이 아닌 경우 중복 확인도 통과하지 않도록
-							} else {
-								$("#pemailMessage").hide();
-							}
-						});
-
+ 
 		$("#form").submit(function(e) {
 			if (!isPemailCheck) {
 				$("#pemailMessage").text("이메일 중복체크하세요").show();
@@ -261,6 +275,7 @@ input:focus {
 		});
 	});
 </script>
+
 
 <script>
 	// 비밀번호 확인과 비밀번호 필드의 입력이 변경될 때 확인 함수 실행
@@ -418,6 +433,7 @@ input:focus {
 					<input type="text" id="pemail" name="pemail"
 						placeholder="nearbydoc@abc.com 형식으로 입력" required="required">
 
+<%-- 이메일중복검사및 이메일 유효성검사 --%>
 					<button id="pemailcheck">중복 확인</button>
 
 				</div>
@@ -451,19 +467,17 @@ input:focus {
 					placeholder="" required />
 					 
 				휴대전화<br> <input type="number"
-					id="ptel" name="ptel" placeholder="-없이 숫자만 입력" /> 
+					id="ptel" name="ptel" size="15" placeholder="-없이 숫자만 입력" /> 
 					
 				주민번호<br> 
-				<input type="number" id="pidnum" name="pidnum" placeholder="-없이 숫자만 입력"
-					required /> 주소<br>
-
+				<input type="number" id="pidnum" name="pidnum" size="12" placeholder="-없이 숫자만 입력"
+					required /> 
+				
+				주소<br>
 				<div class="row">
-
 					<div class="input">
-
 						<input type="text" id="ppostcode" name="ppostcode"
 							placeholder="우편번호" readonly>
-
 					</div>
 
 					<div class="input">

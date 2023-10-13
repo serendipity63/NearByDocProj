@@ -14,6 +14,27 @@
 		where r.comnum=#{comnum} AND r.pidnum=p.pidnum
 	]]>
 	</select>
+	
+	
+	<select id="myReviewListByid" parameterType="String" resultType="hashmap">
+	<![CDATA[
+	SELECT h.hname as name
+     	 , res.resdate as date
+     	 , h.department as department
+     	 , r.star as star
+     	 , r.content as content 
+	  FROM patient p
+   	   	 , review r
+   		 , hospital h
+   		 , reservation res
+ 	 WHERE 1=1
+	  AND r.pidnum = #{pidnum}
+	  AND r.comnum = h.comnum
+	  AND res.pidnum = #{pidnum}
+	  AND h.comnum = res.comnum
+	  ORDER BY res.resdate desc
+	]]>
+	</select>
 
 	<insert id="insertReview" parameterType="Review">
 	<![CDATA[
@@ -25,10 +46,10 @@
 	<select id="selectLastReview" parameterType="String"
 		resultType="hashmap">
 	<![CDATA[
-		select 	p.pname, 
-				r.content,
-				r.star,
-				r.birth
+		select 	p.pname as name, 
+				r.content as content,
+				r.star as star,
+				r.birth as birth
 		from review r
 		JOIN patient p 
 		on r.pidnum=p.pidnum

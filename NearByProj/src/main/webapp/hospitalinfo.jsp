@@ -155,14 +155,14 @@
 			<div class="reviewinfo1">
 				<table>
 					<tr>
-						<td style="text-align: left" width="185">&nbsp;${res.patient.pname}</td>
-						<td style="text-align: right" width="185">${res.review.birth}&nbsp;</td>
+						<td style="text-align: left" width="185">&nbsp;${lastreview.name}</td>
+						<td style="text-align: right" width="185">${lastreview.birth}&nbsp;</td>
 					</tr>
 					<tr>
 						<td></td>
 					</tr>
 					<tr>
-						<td colspan="2">&nbsp;${res.review.content}</td>
+						<td colspan="2">&nbsp;${lastreview.content}</td>
 					</tr>
 				</table>
 			</div>
@@ -170,7 +170,7 @@
 				<table>
 					<tr>
 						<td>사용자 별점&nbsp;&nbsp;</td>
-						<td><c:forEach begin="1" end="${res.review.star}">
+						<td><c:forEach begin="1" end="${lastreview.star}">
 								<img src="image?file=star.png" alt="별" width="15">
 							</c:forEach></td>
 					</tr>
