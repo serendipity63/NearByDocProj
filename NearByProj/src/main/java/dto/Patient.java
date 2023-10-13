@@ -1,20 +1,18 @@
 package dto;
 
 public class Patient {
-	private String pemail;
+	private String pidnum;
 	private String ppassword;
 	private String pname;
 	private String ptel;
-	private String pidnum;
+	private String pemail;
 	private String proadaddress;
 	private String ppostcode;
 	private String pdetailaddress;
 
-	public Patient() {
+	public Patient() {}
 
-	}
-
-	public Patient(String pemail, String ppassword, String pname, String ptel, String pidnum, String proadaddress,
+	public Patient(String pidnum, String ppassword, String pname, String ptel, String pemail, String proadaddress,
 			String ppostcode, String pdetailaddress) {
 		this.pemail = pemail;
 		this.ppassword = ppassword;

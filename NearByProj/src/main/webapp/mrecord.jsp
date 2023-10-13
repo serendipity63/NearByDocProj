@@ -1,12 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%><!--  uri core를 c로 설정 -->
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>진료 기록 조회</title>
-<link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet"
+	href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script type="text/javascript"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 
@@ -53,56 +54,41 @@ body {
 
 #center {
 	display: flex;
-	margin-top:20px;
-	margin-left:20px;
+	margin-top: 20px;
+	margin-left: 20px;
 }
 
 h1 {
 	width: 202px;
 	height: 50px;
-	margin:44px auto;
+	margin: 44px 944px;
 	color: rgb(25, 25, 112);
 }
 
-.row>a{
-	background-color: lightgray;
-    padding: 5px;
-    color: black;
-    text-align: center;
-    display: inline-block;
-    width: 139px;
-    text-decoration: none;
-    font-weight: bold;
-	
-}
-
-.title {
-	font-weight: bold;
-	background-color: lightgray;
-	width: 100px;
-
-}
-
-.colume {
+#center>th {
 	padding: 5px;
-	width: 144px;
+	width: 150px;
 	float: left;
 	color: black;
 	text-align: center;
-	border-right:1px solid white;
-	
+	border-right: 1px solid white;
+	font-weight: bold;
+	background-color: lightblue;
 }
 
-.container {
-	height: 400px;
-    border: 1px solid;
-    width: 1295px;
-   	margin:150px 398px;
+#center {
+	border: 1px solid;
+	width: 1356px;
+	margin: 170px 357px;
+	
+}
+tr{
+	width:100px;
 }
 
 input {
 	width: 200px;
-	height: 30px;
+	height: 38px;
 }
 
 select {
@@ -126,19 +112,20 @@ button {
 }
 
 .reserveform {
-	
 	width: 1500px;
 	height: 50px;
-	margin: -86px 398px;
+	margin: -86px 358px;
 }
-#datepicker1{
-    margin-top: 50px;
-    margin-left: 222px;
 
+#datepicker1 {
+	margin-top: 50px;
+	margin-left: 282px;
 }
-#datepicker2{
-	margin-left:20px;
+
+#datepicker2 {
+	margin-left: 20px;
 }
+
 #emptyArea {
 	width: 708px;
 	text-align: center;
@@ -162,53 +149,71 @@ button {
 }
 </style>
 <body>
-<% pageContext.include("hmain.jsp");%>
-	
-        	
-           
-                <h1>진료 기록 조회</h1><br><br>
-            
-            
-            <div class="reserveform">
-            
-			<select name="patient">
-				<option value="patient">환자명</option>
-				<option value="number">주민등록번호</option>
-			</select> <input type="text">
-			<button onclick="#"id="search">검색</button>
-			
-			
-		
-			
+	<% pageContext.include("hmain.jsp");%>
 
-			<input type="text" id="datepicker1" placeholder="0000-00-00">
 
-			<input type="text" id="datepicker2" placeholder="0000-00-00">
 
-		
-			<button onclick="#" id="search">검색</button> 
+	<h1>진료 기록 조회</h1>
+	<br>
+	<br>
 
-		
-			
-			</div>
-		
-            <div class="container" id="container">
-                <div class="row">
-                    <div class="title colume">일자</div>
-                    <div class="title colume">시간</div>
-                    <div class="title colume">환자명</div>
-                    <div class="title colume">주민등록번호</div>
-                    <div class="title colume">연락처</div>
-                    <div class="title colume">주소</div>
-                    <div class="title colume">진료과목</div>
-                    <div class="title colume">진료완료처리</div>
-                    <a href="javascript:Opinion()" target="_self" >담당의소견</a>
-                </div>
-                
-         
-           
-            </div>
-    <div id="emptyArea">
+
+	<div class="reserveform">
+
+		<select name="patient">
+			<option value="patient">환자명</option>
+			<option value="number">주민등록번호</option>
+		</select> <input type="text">
+		<button onclick="#" id="search">검색</button>
+
+
+
+
+
+		<input type="text" id="datepicker1" placeholder="0000-00-00">
+
+		<input type="text" id="datepicker2" placeholder="0000-00-00">
+
+
+		<button onclick="#" id="search">검색</button>
+
+
+
+	</div>
+
+
+	<table id="center">
+		<tr>
+			<th>일자</th>
+			<th>시간</th>
+			<th>환자명</th>
+			<th>주민등록번호</th>
+			<th>연락처</th>
+			<th>주소</th>
+			<th>요청사항</th>
+			<th>진료과목</th>
+			<th>진료완료처리</th>
+		</tr>
+
+		<c:forEach items="${res.reserveList }" var="reserve">
+			<tr>
+				<td>${reserve.resdate }</td>
+				<td>${reserve.restime }</td>
+				<td>${reserve.name }</td>
+				<td>${reserve.number }</td>
+				<td>${reserve.phone }</td>
+				<td>${reserve.address }</td>
+				<td>${reserve.comment }</td>
+				<td>${reserve.subject }</td>
+				<td>${reserve.status }</td>
+				<td><c:if test="${hospitaluser.id == hospital.comnum }">
+						<a
+							href="patientdelete?num=${patient.pidnum }&page=${res.pageInfo.curPage}">삭제</a>
+					</c:if></td>
+			</tr>
+		</c:forEach>
+	</table>
+	<div id="emptyArea">
 		<c:choose>
 			<c:when test="${res.pageInfo.curPage>1}">
 				<a href="boardlist?page=${res.pageInfo.curPage-1}">&lt;</a>

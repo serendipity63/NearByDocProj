@@ -17,6 +17,31 @@ public class PatientServiceImpl implements PatientService {
    }
    
 
+   @Override
+   public Map<String, Object> patientListByPage(Integer page) throws Exception {
+	   PageInfo pageInfo = new PageInfo();
+		Integer patientCount = patientDao.selectPatientCount();
+		int maxPage = (int) Math.ceil((double) patientCount / 10); // ceil 반올림 floor 반내림
+		int startPage = (page - 1) / 10 * 10 + 1; // 1,11,21,31...
+		int endPage = startPage + 10 - 1;
+		if (endPage > maxPage)
+			endPage = maxPage;
+		if (page > maxPage)
+			page = maxPage; // 2페이지 1개 일때 삭제하면 현재페이지랑 max페이지를 같게 1페이지로
+
+		pageInfo.setAllPage(maxPage);
+		pageInfo.setCurPage(page);
+		pageInfo.setStartPage(startPage);
+		pageInfo.setEndPage(endPage);
+
+		int row = (page - 1) * 10 + 1; // 현재 페이지의 시작 row
+		List<Patient> patientList = patientDao.selectPatientList(row - 1);
+
+		Map<String, Object> map = new HashMap<>();
+		map.put("pageInfo", pageInfo);
+		map.put("patientList", patientList);
+		return map;
+   }
    
    
    @Override
@@ -49,11 +74,11 @@ public class PatientServiceImpl implements PatientService {
 
       int row = (page - 1) * 10 + 1; // 현재 페이지의 시작 row
       param.put("row", row - 1);
-      List<Patient> boardList = patientDao.searchPatientList(param);
+      List<Patient> patientList = patientDao.searchPatientList(param);
 
       map.put("type", type);
       map.put("keyword", keyword);
-      map.put("boardList", boardList);
+      map.put("patientList", patientList);
       return map;
 
    }
@@ -85,6 +110,7 @@ public class PatientServiceImpl implements PatientService {
 
       return "exist";
    }
+
 
 
 
@@ -121,4 +147,5 @@ public class PatientServiceImpl implements PatientService {
 public Patient myInfo(String pidnum) throws Exception {
 	return patientDao.selectPatientByPidnum(pidnum);
 }
+
 }

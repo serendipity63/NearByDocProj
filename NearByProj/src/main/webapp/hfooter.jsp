@@ -117,11 +117,11 @@ footer {
 }
 
 .footer-bottom p {
-      float: left;
-    font-size: 14px;
-    word-spacing: 2px;
+  float: left;
+    font-size: 18px;
+    word-spacing: 4px;
     margin-top: -57px;
-}
+    margin-left: 20px;
 }
 
 .footer-bottom p a {

@@ -4,6 +4,8 @@
 
 <mapper namespace="mapper.patient">
 
+
+
 	<select id="selectPatient" parameterType="String"
 		resultType="Patient">
 	<![CDATA[
@@ -23,31 +25,39 @@
 	
 	
 	
+
 	<insert id="insertPatient" parameterType="Patient">
+	
 	<![CDATA[
-	insert into patient (pidnum,pemail,ppassword,pname,ptel,proadaddress,ppostcode,pdetailaddress) values (#{pidnum},#{pemail},#{ppassword},#{pname},#{ptel},#{proadaddress},#{ppostcode},#{pdetailaddress}) 
+	insert into patient (pidnum,pemail,ppassword,pname,ptel,proadaddress,pdetailaddress,ppostcode) values (#{pidnum},#{pemail},#{ppassword},#{pname},#{ptel},#{proadaddress},#{pdetailaddress},#{ppostcode}) 
 	]]>
 	</insert>
 	
 	<select id="selectPatientList" parameterType="Integer" resultType="Patient">
 	<![CDATA[
-	select pidnum,pemail,pname,ptel,proadaddress,ppostcode,pdetailaddress from patient order by num desc
+	select pidnum,pemail,ppassword,pname,ptel,ppostcode,(concat(proadaddress,pdetailaddress)as address)) from patient order by pidnum
 	limit #{row},10
 	]]>
 	</select>
 	
-	
-   <select id="selectSearchCount" resultType="Integer">
+	<select id="selectPatientCount" resultType="Integer">
       <![CDATA[
          select count(num) from patient
       ]]>
       
    </select>
 	
+	<select id="selectPatient" parameterType="Integer"
+		resultType="Patient">
+	<![CDATA[
+		select * from patient where pidnum=#{pidnum}
+	]]>
+	</select>
+	
 	<select id="searchPatientList" parameterType="hashmap" resultType="Patient">
 	
 	select * from patient
-	where ${type} like '%${keyword}%' order by num desc
+	where ${type} like '%${keyword}%' order by pidnum desc
 	limit #{row},10
 	
 	</select>
@@ -56,6 +66,16 @@
    	select count(*) from patient
    	where ${type} like '%${keyword}%' 
    </select>
+   
+   
+   <delete id="deletePatient" parameterType="Integer">
+   <![CDATA[
+   
+   	delete from patient where pidnum=#{pidnum} 
+   ]]>
+   
+   
+   </delete>
 	
 	
 </mapper>

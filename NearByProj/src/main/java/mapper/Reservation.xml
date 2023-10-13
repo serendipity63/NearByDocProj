@@ -40,6 +40,16 @@
 order by r.resdate desc
      ]]>
 	</select>
+	<select id='selectTodayReservation' parameterType="String" resultType="hashmap">
+	<![CDATA[
+		select id,resdate,restime,p.pname,comment,h.department,status
+		from reservation r,patient p,hospital h
+		where r.pidnum=p,pidnum
+		and h.comnum=r.comnum
+		order by id desc
+	]]>
+	</select>
+	
 
 
 

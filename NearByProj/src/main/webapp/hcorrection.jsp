@@ -93,46 +93,46 @@ input[type="text"]{
 			<table>
 				<tr>
 					<td>진료 과목</td>
-					<td><input type="text" name="subject" 
-					id="subject"  value="${hospital.subject }" placeholder="이비인후과" /></td>
+					<td><input type="text" name="department" 
+					id="department"  value="${hospital.department }" placeholder="이비인후과" /></td>
 				</tr>
 				<tr>
 					<td>병원명</td>
-					<td><input type="text" name="name" 
-					id="name" readonly="readonly" value="${hospital.name }" placeholder="니어바이닥의원" /></td>
+					<td><input type="text" name="hname" 
+					id="hname"  value="${hospital.hname }" placeholder="니어바이닥의원" /></td>
 				</tr>
 				<tr>
 					<td>사업자등록번호</td>
-					<td><input type="text" name="email"
-					id="email" placeholder="ch2488@naver.com" /></td>
+					<td><input type="text" name="comnum"
+					id="comnum" value="${hospital.comnum }" placeholder="ch2488@naver.com" /></td>
 				</tr>
 				<tr>
 					<td>전화번호</td>
-					<td><input type="text" name="number"
-					id="number" placeholder="02-1234-5678" /></td>
+					<td><input type="text" name="htel"
+					id="htel" value="${hospital.htel }"placeholder="02-1234-5678" /></td>
 				</tr>
 				<tr>
 					<td>주소</td>
 					<td><input type="text" name="address"
-					id="address" placeholder="서울시 금천구 호서대벤처타워" /></td>
+					id="address" value="${hospital.address }"placeholder="서울시 금천구 호서대벤처타워" /></td>
 				</tr>
 
 				<tr>
 					<td>진료시간</td>
-					<td><input type="text" name="clinictime"
-					id="clinictime" placeholder="09:00~18:00" /></td>
+					<td><input type="text" name="clinic"
+					id="clinic" value="${hospital.clinic }"placeholder="09:00~18:00" /></td>
 				</tr>
 				<tr>
 					<td>점심시간</td>
-					<td><input type="text" name="lunchtime"
-					id="lunchtime" placeholder="13:00~14:00" /></td>
+					<td><input type="text" name="lunch"
+					id="lunch" value="${hospital.lunch }"placeholder="13:00~14:00" /></td>
 				</tr>
 
 			</table>
 			
 		</form>
 		<div id="button">
-			<a href="hinfo.jsp">수정완료</a>
+			<input type="submit" value="수정완료">
 		</div>
 	
 </body>
