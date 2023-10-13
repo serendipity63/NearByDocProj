@@ -202,7 +202,7 @@ input:focus {
 }
 </style>
 
-<!-- 아이디 중복검사 기능 -->
+<!-- 이메일 중복검사 기능 -->
 
 <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
 
@@ -427,7 +427,7 @@ input:focus {
 				<div class="input-container">
 
 					<input type="password" id="ppassword" name="ppassword"
-						class="form-control" placeholder="" required /> <span
+						class="form-control" placeholder="" required="required" /> <span
 						class="icon material-symbols-outlined"> lock </span>
 
 				</div>
@@ -448,9 +448,13 @@ input:focus {
 				</div>
 
 				이름<br> <input type="text" id="pname" name="pname"
-					placeholder="" required /> 휴대전화<br> <input type="number"
-					id="ptel" name="ptel" placeholder="-없이 숫자만 입력" /> 주민번호<br> <input
-					type="number" id="pidnum" name="pidnum" placeholder="-없이 숫자만 입력"
+					placeholder="" required />
+					 
+				휴대전화<br> <input type="number"
+					id="ptel" name="ptel" placeholder="-없이 숫자만 입력" /> 
+					
+				주민번호<br> 
+				<input type="number" id="pidnum" name="pidnum" placeholder="-없이 숫자만 입력"
 					required /> 주소<br>
 
 				<div class="row">
