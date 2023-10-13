@@ -143,7 +143,7 @@
                         &nbsp;&nbsp;&nbsp;&nbsp;<input type="text" placeholder="주소설정" class="address-input">
                     </div>
                 </div>
-                <div class="button">
+                <div>
                     <button class="search-button">병원 재검색</button>
                 </div>
             </div>

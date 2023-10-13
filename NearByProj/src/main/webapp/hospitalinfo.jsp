@@ -183,7 +183,7 @@
 			<p>이 병원에서 진료 경험, 어떠셨나요?</p>
 			<br>
 			<button
-				onclick="window.open('review.jsp', 'window_name','width=800, height=1000, location=no, status=no, scrollbars=yes')">리뷰하기</button>
+				onclick="window.open('insertreview', 'window_name','width=800, height=1000, location=no, status=no, scrollbars=yes')">리뷰하기</button>
 		</div>
 		<br> 병원 위치 정보
 		<div id="map" style="width: 100%; height: 350px;"></div>
@@ -224,7 +224,7 @@
 
 		<br>
 		<br>
-		<div class="button">
+		<div>
 			<button type="button" class="btn-primary"
 				onclick="location.href='reservation.jsp';">예약하기</button>
 		</div>
