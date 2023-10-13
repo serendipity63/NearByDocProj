@@ -1,17 +1,21 @@
 package dto;
 
+import java.sql.Timestamp;
+
 public class Review {
 	private String pidnum;
 	private String comnum;
 	private String content;
 	private String star;
+	private Timestamp birth;
 	
 	public Review() {}
-	public Review(String pidnum, String comnum,String content,String star) {
+	public Review(String pidnum, String comnum,String content,String star,Timestamp birth) {
 		this.pidnum=pidnum;
 		this.comnum=comnum;
 		this.content=content;
 		this.star=star;
+		this.birth=birth;
 	}
 	public String getPidnum() {
 		return pidnum;
@@ -36,6 +40,12 @@ public class Review {
 	}
 	public void setStar(String star) {
 		this.star = star;
+	}
+	public Timestamp getBirth() {
+		return birth;
+	}
+	public void setBirth(Timestamp birth) {
+		this.birth = birth;
 	}
 	
 	

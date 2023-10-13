@@ -138,7 +138,7 @@
             <textarea cols="58" rows="2" placeholder="증상을 입력해주세요."></textarea>
         </div>
         <br>
-        <div class="button">
+        <div>
             <button type="button" class="btn-primary" onclick="location.href='completereservation.jsp';">예약하기</button>
         </div>
     </div>
