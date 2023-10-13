@@ -165,7 +165,7 @@
             <br>
         </div>
     
-        <div class="button">
+        <div>
             <button type="button" class="btn-primary" onclick="location.href='patientmain.jsp';">메인화면으로</button>
         </div>
     </div>

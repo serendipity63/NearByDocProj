@@ -15,4 +15,28 @@
 	]]>
 	</select>
 
+	<insert id="insertReview" parameterType="Review">
+	<![CDATA[
+	insert into review (pidnum,comnum,content,star,birth) 
+	values (#{pidnum},#{comnum},#{content},#{star},now()) 
+	]]>
+	</insert>
+	
+	<select id="selectLastReview" parameterType="String"
+		resultType="hashmap">
+	<![CDATA[
+		select 	p.pname, 
+				r.content,
+				r.star,
+				r.birth
+		from review r
+		JOIN patient p 
+		on r.pidnum=p.pidnum
+		where r.comnum=#{comnum}  AND r.birth = (SELECT MAX(birth) from review r
+		JOIN patient p 
+		on r.pidnum=p.pidnum
+		where r.comnum=#{comnum})
+	]]>
+	</select>
+	
 </mapper>

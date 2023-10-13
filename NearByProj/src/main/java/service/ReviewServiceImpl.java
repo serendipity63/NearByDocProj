@@ -5,6 +5,7 @@ import java.util.Map;
 
 import dao.ReviewDao;
 import dao.ReviewDaoImpl;
+import dto.Review;
 
 public class ReviewServiceImpl implements ReviewService {
 	private ReviewDao reviewDao;
@@ -14,5 +15,13 @@ public class ReviewServiceImpl implements ReviewService {
 	@Override
 	public List<Map<String, Object>> reviewListByHos(String comnum) throws Exception {
 		return reviewDao.reviewListByHos(comnum);
+	}
+	@Override
+	public void insertReview(Review review) throws Exception {
+		reviewDao.insertReview(review);
+	}
+	@Override
+	public Map<String,Object> selectLastReview(String comnum) throws Exception {
+		return reviewDao.selectLastReview(comnum);
 	}
 }
