@@ -44,6 +44,7 @@ public class HospitalJoin extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+
 		request.setCharacterEncoding("utf-8");
 		String hname = request.getParameter("hname");
 		String hpassword = request.getParameter("hpassword");
@@ -57,20 +58,20 @@ public class HospitalJoin extends HttpServlet {
 		String hdetail = request.getParameter("hdetail");
 		String hpostcode = request.getParameter("hpostcode");
 		String hurl = request.getParameter("hurl");
-		BigDecimal hgrade = null;		
+		BigDecimal hgrade = null;
 		Integer hreviewcnt = null;
 		BigDecimal lat = null;
 		BigDecimal lon = null;
-		
+
 		Hospital hospital = new Hospital(hname, hpassword, comnum, htel, department, lunch, clinic, hroad, hdong,
-				hdetail, hpostcode, hurl,hgrade,hreviewcnt,lat,lon);
+				hdetail, hpostcode, hurl, hgrade, hreviewcnt, lat, lon);
 		try {
 			HospitalService hospitalService = new HospitalServiceImpl();
 			hospitalService.hospitaljoin(hospital);
 			request.getRequestDispatcher("hospitallogin.jsp").forward(request, response);
 		} catch (Exception e) {
 			request.setAttribute("err", e.getMessage());
-			request.getRequestDispatcher("herror.jsp").forward(request, response); 
+			request.getRequestDispatcher("herror.jsp").forward(request, response);
 			// 에러 페이지 따로 만들거에요
 		}
 	}
