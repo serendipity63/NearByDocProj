@@ -14,8 +14,6 @@
 <link
 	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap"
 	rel="stylesheet">
-<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic"
-	rel="stylesheet">
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
@@ -26,7 +24,7 @@
 		var typeSelectionPage = window.open("department.jsp", "TypeSelection",
 				"width=400,height=300");
 		window.addEventListener("message", function(event) {
-			document.querySelector(".type").value = event.data;
+			document.querySelector("#department").value = event.data;
 		});
 	}
 </script>
@@ -201,7 +199,7 @@ input[type='submit']:hover {
 <script
 	src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
-	function execDaumPostcode() {
+	function execDaumPostcode1() {
 		new daum.Postcode({
 			oncomplete : function(data) {
 				// 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
@@ -309,20 +307,20 @@ input[type='submit']:hover {
 					</div>
 					<div class="input">
 						<button type="button" name="postcode-button"
-							onclick="execDaumPostcode()">우편번호 찾기</button>
+							onclick="execDaumPostcode1()">우편번호 찾기</button>
 					</div>
 				</div>
 
 
 				<div class="row">
 					<div class="input">
-						<input type="text" id="haddress" name="hroadaddress"
+						<input type="text" id="haddress" name="hroad"
 							placeholder="도로명 주소">
 					</div>
 				</div>
 				<div class="row">
 					<div class="input">
-						<input type="text" id="hdetailAddress" name="hdetailaddress"
+						<input type="text" id="hdetailAddress" name="hdetail"
 							placeholder="상세주소">
 					</div>
 				</div>
@@ -336,8 +334,9 @@ input[type='submit']:hover {
 
 				<div class="row">
 					<div class="input">
-						<input name="type" type="text" class="type" name="department"
-							placeholder="진료과목명" onclick="openTypeSelectionPage()">
+						<input type="text" class="type" 
+							placeholder="진료과목명" onclick="openTypeSelectionPage()"
+							name="department" id="department"/>
 					</div>
 				</div>
 
