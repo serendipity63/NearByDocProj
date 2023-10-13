@@ -11,6 +11,6 @@ public class ReviewDaoImpl implements ReviewDao{
 	SqlSession sqlSession = MybatisSqlSessionFactory.getSqlSessionFactory().openSession();
 @Override
 public List<Map<String, Object>> reviewListByHos(String comnum) throws Exception {
-	return sqlSession.selectList("mapper.review.reviewListByHos");
+	return sqlSession.selectList("mapper.review.reviewListByHos",comnum);
 }
 }

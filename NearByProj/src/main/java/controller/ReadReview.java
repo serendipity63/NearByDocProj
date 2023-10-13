@@ -1,7 +1,9 @@
 package controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,6 +11,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import dto.Hospital;
+import service.HospitalService;
+import service.HospitalServiceImpl;
 import service.ReviewService;
 import service.ReviewServiceImpl;
 
@@ -33,10 +38,14 @@ public class ReadReview extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		String comnum = request.getParameter("comnum");
+		HospitalService hospitalservice = new HospitalServiceImpl();
+		
 		ReviewService reviewservice = new ReviewServiceImpl();
 		try {
 			List<Map<String, Object>> reviewlist = reviewservice.reviewListByHos(comnum);
 			request.setAttribute("reviewlist", reviewlist);
+			Hospital hospital = hospitalservice.selectHospitalBycomnum(comnum);
+			request.setAttribute("hospital", hospital);
 			request.getRequestDispatcher("readreview.jsp").forward(request, response);
 		
 		} catch(Exception e) {

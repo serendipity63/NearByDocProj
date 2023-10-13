@@ -148,7 +148,7 @@
 		<table>
 			<td style="text-align: left" width="215">&nbsp;&nbsp;&nbsp;리뷰 ${hospital.hreviewcnt}</td>
 			<td style="text-align: right" width="215"><a
-				href="readreview">전체보기 ></a></td>
+				href="readreview?comnum=${hospital.comnum}">전체보기 ></a></td>
 		</table>
 		<br>
 		<div class="review">
