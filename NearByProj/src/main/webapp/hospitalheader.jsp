@@ -66,13 +66,13 @@ a {
 </head>
 <body>
  <div class="outerDiv">
-        <a href="home" class="logo"><img src="image?file=hospitaldoc.png" alt="로고 이미지"></a>
+        <a href="hlogin" class="logo"><img src="image?file=hospitaldoc.png" alt="로고 이미지"></a>
         <div class="innerDiv">
             <div style="float: right; margin-right: 10px;">
             
                 <c:choose>
                     <c:when test="${empty hospitaluser}">
-                        <a href="hmain">로그인</a> &nbsp;&nbsp;
+                        <a href="hlogin">로그인</a> &nbsp;&nbsp;
                     </c:when>
                     <c:otherwise>
                         <b>${hospitaluser.id}님 환영합니다</b> &nbsp;&nbsp; <a href="logout">로그아웃</a>&nbsp;&nbsp;
