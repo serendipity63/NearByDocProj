@@ -28,8 +28,24 @@
 		</trim>
 		where num=#{num}
 	</update>
+	
+	
+	<select id="selectHospitalBydong" parameterType="String"
+		resultType="Hospital">
+	<![CDATA[
+		select * from hospital 
+		where department=#{department} 
+		and hdong like '%#{si}%'
+		and hdong like '%#{gu}%'
+		and hdong like '%#{dong}%'
+	]]>
+	</select>
+	
+	<select id="selectHospitalList" resultType="Hospital">
 
-
-
+	<![CDATA[
+		select * from hospital 
+	]]>
+	</select>
 
 </mapper>

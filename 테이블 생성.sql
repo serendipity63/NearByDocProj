@@ -39,6 +39,7 @@ CREATE TABLE hospital (
 );
 
 CREATE TABLE reservation (
+  id INT(8) PRIMARY KEY AUTO_INCREMENT,
   pidnum varchar(200) REFERENCES patient(pidnum),
   comnum varchar(200) REFERENCES hospital(comnum),
   resdate varchar(200),
@@ -66,23 +67,32 @@ DROP TABLE patient;
 
 
 -- 병원 테스트 데이터 입력
-INSERT INTO hospital ( hname,  comnum,     htel,   department, hpassword, lunch,     clinic,            hroad,                                hdong,              hdetail, hpostcode, hurl, hgrade)
-              VALUES ('kosta', '12345', '02123456',  '외과', '12',   '12001300', '09001800', '서울 금천구 가산디지털1로 70', '서울특별시 금천구 가산동 319',      '101',  '08590' ,  'image' , 0.233333);
+INSERT INTO hospital ( hname,  comnum,     htel,   department, hpassword, lunch,     clinic,            hroad,                                hdong,              hdetail, hpostcode, hurl, hgrade, lat, lon)
+              VALUES ('kosta', '12345', '02123456',  '외과', '12',   '12001300', '09001800', '서울 금천구 가산디지털1로 70', '서울특별시 금천구 가산동 319',      '101',  '08590' ,  'image' , 0.233333, 37.47226015848, 126.88588356963);
 
 
-INSERT INTO hospital ( hname,  comnum,     htel,   department, hpassword, lunch,     clinic,            hroad,                                hdong,              hdetail, hpostcode, hurl, hgrade)
-              VALUES ('kosta', '67890', '02123456',  '외과', '12',   '12001300', '09001800', '서울 금천구 가산디지털1로 70', '서울특별시 금천구 가산동 319',      '101',  '08590' ,  'image' , 0.233333);
+INSERT INTO hospital ( hname,  comnum,     htel,   department, hpassword, lunch,     clinic,            hroad,                                hdong,              hdetail, hpostcode, hurl, hgrade,  lat, lon)
+              VALUES ('kosta', '67890', '02123456',  '외과', '12',   '12001300', '09001800', '서울 금천구 가산디지털1로 70', '서울특별시 금천구 가산동 319',      '101',  '08590' ,  'image' , 0.233333,  37.47226015848, 126.88588356963);
               
 -- 예약 테스트 데이터 입력
 INSERT INTO reservation (      pidnum,      comnum,     resdate,   restime,   `comment`,       `status`, doccomment)
-                 VALUES ( '96050211111111' , '67890',  '20231012',    '1200',      '목이아파요',    '1',     '꾀병');
+                 VALUES ( '9605021111111' , '12345',  '20231012',    '1200',      '목이아파요',    '1',     '꾀병');
 
+
+
+INSERT INTO reservation (      pidnum,      comnum,     resdate,   restime,   `comment`,       `status`, doccomment)
+                 VALUES ( '9605021111111' , '67890',  '20231012',    '1200',      '목이아파요',    '1',     '꾀병');
+
+
+UPDATE reservation SET resdate = '20231010' WHERE comnum = '67890';
 
 DELETE FROM hospital WHERE hname = 'kosta';
 
 SELECT * 
 FROM hospital;
 
+SELECT * 
+FROM reservation;
 
 
 

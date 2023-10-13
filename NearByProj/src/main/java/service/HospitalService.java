@@ -1,5 +1,7 @@
 package service;
 
+import java.util.List;
+
 import dto.Hospital;
 
 public interface HospitalService {
@@ -14,4 +16,7 @@ public interface HospitalService {
 
 
 	void HospitalModify(Hospital hospital) throws Exception;
+	
+	List<Hospital> hospitalList() throws Exception;
+	Hospital selectHospitalBycomnum(String comnum) throws Exception;
 }
