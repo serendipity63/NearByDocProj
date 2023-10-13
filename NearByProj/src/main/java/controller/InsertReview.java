@@ -37,7 +37,6 @@ public class InsertReview extends HttpServlet {
 		String comnum = "12345";
 		String content = request.getParameter("content");
 		String star = request.getParameter("star");
-		/* if((star=="2" || star=="3" || star=="4" || star=="5")) star="1"; */
 		Timestamp birth = null;
 		Review review = new Review(pidnum,comnum,content,star,birth);
 		
