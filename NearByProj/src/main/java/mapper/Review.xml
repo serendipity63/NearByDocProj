@@ -25,10 +25,10 @@
 	<select id="selectLastReview" parameterType="String"
 		resultType="hashmap">
 	<![CDATA[
-		select 	p.pname, 
-				r.content,
-				r.star,
-				r.birth
+		select 	p.pname as name, 
+				r.content as content,
+				r.star as star,
+				r.birth as birth
 		from review r
 		JOIN patient p 
 		on r.pidnum=p.pidnum
