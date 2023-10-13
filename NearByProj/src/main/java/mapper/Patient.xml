@@ -11,6 +11,18 @@
 	]]>
 	</select>
 	
+	<!-- 환자 내 정보 조회 -->
+	<select id="selectPatientByPidnum" parameterType="String" resultType="Patient">
+	<![CDATA[
+		select * 
+		 from patient 
+		where 1=1
+		  and pidnum=#{pidnum}
+	]]>
+	</select>
+	
+	
+	
 	<insert id="insertPatient" parameterType="Patient">
 	<![CDATA[
 	insert into patient (pidnum,pemail,ppassword,pname,ptel,proadaddress,ppostcode,pdetailaddress) values (#{pidnum},#{pemail},#{ppassword},#{pname},#{ptel},#{proadaddress},#{ppostcode},#{pdetailaddress}) 

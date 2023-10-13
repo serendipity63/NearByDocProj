@@ -113,4 +113,12 @@ public class PatientServiceImpl implements PatientService {
 		map.put("patientList", patientList);
 		return map;
    }
+
+
+
+
+@Override
+public Patient myInfo(String pidnum) throws Exception {
+	return patientDao.selectPatientByPidnum(pidnum);
+}
 }

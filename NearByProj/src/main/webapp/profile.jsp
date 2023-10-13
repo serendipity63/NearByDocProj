@@ -53,7 +53,8 @@ table{
   width: 52px;
   height: 36px;
   border-radius: 10px;
-  color: #2188C4;
+  background : #CFE8F7;
+  color: #black;
   font-size: 17px;
   text-align: left;
   margin-left:360px; 
@@ -111,9 +112,10 @@ input{
 </style>
 <script>
   function out(){
-   if (confirm("정말 탈퇴하시겠습니까??") == true){    //확인
+	  window.open()
+   /* if (confirm("정말 탈퇴하시겠습니까??") == true){    //확인
  
- }else{   //취소
+ }else{   //취소 */
  
  return false;
  
@@ -148,18 +150,29 @@ input{
    <div id="container">
     <div>
       <p class="col">이름</p>
-      <p><input type="text" id="pname" value="홍길동" disabled="flase"></p>
+      <p><input type="text" id="pname" value="${myinfo.getPname()}" disabled="disabled"></p>
       <p class="col">전화번호</p>
-      <p><input type="text" id="tel"  value="010-1234-5678" disabled="flase"  ></p>
+      <p><input type="text" id="tel"  value="${myinfo.getPtel() };" disabled="disabled"  ></p>
       <p class="col">이메일</p>
-      <p><input type="text" id="address"value="kosta@gmail.com" disabled="false"></p>
+      <p><input type="text" id="address"value="${myinfo.getPemail() }" disabled="disabled"></p>
       <p class="col">주소</p>
-      <p><input type="text" id="idnum" value="서울특별시 금천구" disabled="false" ></p>
+      <p><input type="text" id="idnum" value="${myinfo.getProadaddress() }" disabled="disabled" ></p>
     </div>
+    
+    
+     <%-- <div>
+      <p class="col">이름</p>
+      <p><input type="text" id="pname" value="${myinfo.getPname()}" disabled="disabled"></p>
+      <p class="col">전화번호</p>
+      <p><input type="text" id="tel"  value="${myinfo.getPtel() };" disabled="disabled"  ></p>
+      <p class="col">이메일</p>
+      <p><input type="text" id="address"value="${myinfo.getPemail() }" disabled="disabled"></p>
+      <p class="col">주소</p>
+      <p><input type="text" id="idnum" value="${myinfo.getProadaddress() } + ${myinfo.getPdetailaddress}" disabled="disabled" ></p>
+    </div> --%>
 
    
     <div id="out">
-      <!-- <input type="button" value="회원탈퇴" onclick="out()"> -->
       <button onclick="out()"><h5>회원탈퇴</h5></button>
      </div>
    </div>

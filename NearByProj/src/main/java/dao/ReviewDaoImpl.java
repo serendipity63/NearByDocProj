@@ -13,4 +13,10 @@ public class ReviewDaoImpl implements ReviewDao{
 public List<Map<String, Object>> reviewListByHos(String comnum) throws Exception {
 	return sqlSession.selectList("mapper.review.reviewListByHos",comnum);
 }
+
+// 나의 리뷰 리스트
+@Override
+public List<Map<String, Object>> myReviewListByid(String pidnum) throws Exception {
+	return sqlSession.selectList("mapper.review.myReviewListByid",pidnum);
+}
 }
