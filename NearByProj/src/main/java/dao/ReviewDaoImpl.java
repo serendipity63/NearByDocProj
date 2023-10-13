@@ -21,6 +21,7 @@ public List<Map<String, Object>> reviewListByHos(String comnum) throws Exception
 @Override
 public List<Map<String, Object>> myReviewListByid(String pidnum) throws Exception {
 	return sqlSession.selectList("mapper.review.myReviewListByid",pidnum);
+}
 
 @Override
 public void insertReview(Review review) throws Exception {
