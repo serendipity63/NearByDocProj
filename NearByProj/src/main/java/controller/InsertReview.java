@@ -32,18 +32,16 @@ public class InsertReview extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
-		
-		String pidnum = "1111112222222";
-		String comnum = "12345";
+		String pidnum = request.getParameter("pidnum");
+		String comnum = request.getParameter("comnum");
 		String content = request.getParameter("content");
 		String star = request.getParameter("star");
-		/* if((star=="2" || star=="3" || star=="4" || star=="5")) star="1"; */
 		Timestamp birth = null;
 		Review review = new Review(pidnum,comnum,content,star,birth);
-		
 		try {
 			ReviewService reviewservice = new ReviewServiceImpl();
 			reviewservice.insertReview(review);
+			
 
 		} catch (Exception e) {
 			request.setAttribute("err", e.getMessage());
