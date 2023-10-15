@@ -9,7 +9,7 @@
 	<select id="selectPatient" parameterType="String"
 		resultType="Patient">
 	<![CDATA[
-		select * from patient where pidnum=#{pidnum}
+		select * from patient where pemail=#{pemail}
 	]]>
 	</select>
 	

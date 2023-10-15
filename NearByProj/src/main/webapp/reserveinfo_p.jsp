@@ -124,8 +124,8 @@ input {
 	<table id="center">
 		<tr id="row">
 			<th>이름</th>
-			<th>이메일</th>
 			<th>주민번호</th>
+			<th>이메일</th>
 			<th>휴대폰</th>
 			<th>주소</th>
 			<th>우편번호</th>
