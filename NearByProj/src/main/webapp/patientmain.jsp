@@ -23,38 +23,40 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 
-<script>
-	function openTypeSelectionPage() {
+<script type="text/javascript">
+	//function openTypeSelectionPage() {
 		// 진료과목 선택 페이지 열기
-		var typeSelectionPage = window.open("department.jsp", "TypeSelection",
-				"width=400,height=300");
-		window.addEventListener("message", function(event) {
-			document.getElementById("department-input").value = event.data;
-		});
-	}
-	
+	//	var typeSelectionPage = window.open("department.jsp", "TypeSelection",
+	//			"width=400,height=300");
+	//	window.addEventListener("message", function(event) {
+	//		var selectedTypesStr = event.data;
+	//		var departmentInput = document.getElementById("department-input");
+	//		departmentInput.value = selectedTypesStr;
+//
+//		});
+//	}
 </script>
 
-<script>
-function openLocationSelectionPage() {
-    // 주소 설정 페이지 열기
-    var locationSelectionPage = window.open("location.jsp", "LocationSelection", "width=500,height=600");
+<script type="text/javascript">
+	function openLocationSelectionPage() {
+		// 주소 설정 페이지 열기
+		var locationSelectionPage = window.open("location.jsp",
+				"LocationSelection", "width=500,height=600");
 
-    window.addEventListener("message", function(event) {
-        // event.data에 보내진 데이터가 포함
-        var addressName = event.data;
+		window.addEventListener("message", function(event) {
+			// event.data에 보내진 데이터가 포함
+			var addressName = event.data;
+			var addressData = event.data;
 
-        // 이제 이 값을 사용할 수 있음.
-        var addressInput = document.getElementById("address-input");
-        addressInput.value = addressName;
-        
-        var addressData = event.data;
-        var addressInput= document.getElementById("address-input");
-        addressInput.value = addressData;
-        
-    });
-}
-
+			// 이제 이 값을 사용할 수 있음.
+			var addressInput = document.getElementById("address-input");
+		    // addressName 또는 addressData를 선택하여 addressInput에 할당
+		    // 예를 들어 addressName이 있는 경우 addressName을 사용하고, 그렇지 않으면 addressData를 사용
+		    var valueToAssign = addressName ? addressName : addressData;
+		    
+		    addressInput.value = valueToAssign;
+		});
+	}
 </script>
 <style>
 * {
@@ -76,7 +78,7 @@ a {
 	overflow: hidden;
 }
 
-.search-input, .address-input {
+.department-input, .address-input {
 	padding: 13px;
 	border: none;
 	outline: none;
@@ -109,7 +111,7 @@ a {
 	width: 100%;
 	margin-top: 20px;
 	margin-bottom: 10px;
-	font-weight:bold;
+	font-weight: bold;
 	font-size: 18px;
 }
 
@@ -130,18 +132,19 @@ a {
 	cursor: pointer;
 	flex-direction: column;
 	padding-left: 30px;
-	color:#333333;
+	color: #333333;
 }
 
 /*서치박스 안에 있는거? */
 .material-icons {
 	font-size: 24px;
 	color: black;
-	text-decoration:none;
-	opacity:0.75;
+	text-decoration: none;
+	opacity: 0.75;
 }
+
 .material-icons:hover {
-    text-decoration: none;
+	text-decoration: none;
 }
 
 .container-2, .container-3 {
@@ -223,29 +226,32 @@ a {
 	%>
 
 	<div class="container">
-	
-	
-	<%-- 진료과 입력값이 없으면 그냥 내 위치 기반으로 찾아지게? default가 내 위치 기반 --%>
+
+
+		<%-- 진료과 입력값이 없으면 그냥 내 위치 기반으로 찾아지게? default가 내 위치 기반 --%>
 		<div class="searchbox">
 			<div class="inner">
 				<div class="container-2">
 					<div class="type">
 						<span class="icon"><i class="material-icons">search</i></span>
 						&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" placeholder="진료과"
-							class="search-input" id="department-input" onclick="openTypeSelectionPage()" readonly>
+							class="department-input" id="department-input"
+							onclick="openTypeSelectionPage()" readonly>
 					</div>
-	<%-- hospital db에서 입력된 값만 호출되게.. --%>
-					
+					<%-- hospital db에서 입력된 값만 호출되게.. --%>
+
 				</div>
 				<div class="container-3">
 					<div class="address">
 						<span class="icon"><i class="material-icons">location_on</i></span>
 						&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" placeholder="주소설정"
-							class="address-input" id="address-input" onclick="openLocationSelectionPage()" readonly>
+							class="address-input" id="address-input"
+							onclick="openLocationSelectionPage()" readonly>
 					</div>
 				</div>
 				<div class="button">
-					<button class="search-button" onclick="location.href='searchhospital'">병원 찾기</button>
+					<button class="search-button"
+						onclick="location.href='searchhospital'">병원 찾기</button>
 				</div>
 			</div>
 		</div>

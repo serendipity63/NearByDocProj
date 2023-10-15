@@ -15,6 +15,9 @@
 	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap"
 	rel="stylesheet">
 
+<%--sweetalert2  --%>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 
@@ -156,9 +159,13 @@ input[type='submit']:hover {
 </style>
 <!-- 사업자번호 중복검사  기능 -->
 <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
+
 <script type="text/javascript">
 	$(function() {
 		let isComnumCheck = false;
+        let isPasswordMatch = false;
+
 		$('#comnumcheck').click(function() {
 			$.ajax({
 				url : "comnumcheck",
@@ -170,30 +177,54 @@ input[type='submit']:hover {
 					console.log(res);
 					if (res == "notexist") {
 						isComnumCheck = true;
-						alert("사용 가능합니다")
+                        Swal.fire("성공", "사용 가능합니다", "success");
 					} else {
-						alert("사업자등록번호가 중복됩니다.")
+                        Swal.fire("오류", "사업자등록번호가 중복됩니다", "error");
 
 					}
 				},
 				error : function(err) {
 					console.log(err);
-					alert("사업자번호 중복체크 오류")
+                    Swal.fire("오류", "사업자번호 중복체크 오류", "error");
 				}
-			})
-		})
-		$("#comnum").change(function() {
-			isComnumCheck = false;
-		})
+			});
+		});
+		
+        $('#comnum, #hpassword, #hpassword-confirm').change(function() {
+            isComnumCheck = false;
+            isPasswordMatch = false;
+        });
 
-		$("#form").submit(function(e) {
-			if (isComnumCheck == false) {
-				alert("사업자번호 중복체크하세요");
-				e.preventDefault();
-			}
-		})
-	})
+        $("#form").submit(function(e) {
+            const comnum = $("#comnum").val();
+            const password = $("#hpassword").val();
+            const confirmPassword = $("#hpassword-confirm").val();
+
+            if (comnum.length !== 10) {
+                Swal.fire("오류", "사업자등록번호는 10자리여야 합니다", "error");
+                e.preventDefault();
+            } else if (!isComnumCheck) {
+                Swal.fire("오류", "사업자번호 중복체크하세요", "error");
+                e.preventDefault();
+            } else if (password !== confirmPassword) {
+                Swal.fire("오류", "비밀번호가 일치하지 않습니다. 다시 확인해주세요", "error");
+                e.preventDefault();
+            } else{
+            	// 회원가입 성공 메세지
+                e.preventDefault();
+            	
+            	Swal.fire("성공", "회원가입이 성공적으로 완료되었습니다!","success")
+                .then((result) => {
+                    // "확인" 버튼을 누르면 hospitallogin.jsp 페이지로 리디렉션
+                    if (result.isConfirmed) {
+                        window.location.href = "hospitallogin.jsp";
+                    }
+                });
+            }
+        });
+    });
 </script>
+
 
 <%--주소불러오기  --%>
 <script
@@ -294,7 +325,7 @@ input[type='submit']:hover {
 				</div>
 				<div class="row">
 					<div class="input">
-						<input type="password" placeholder="비밀번호 재확인" required="required"/>
+						<input type="password" id="hpassword-confirm" placeholder="비밀번호 재확인" required="required"/>
 					</div>
 				</div>
 
