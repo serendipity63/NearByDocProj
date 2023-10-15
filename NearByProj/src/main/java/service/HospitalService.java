@@ -21,6 +21,4 @@ public interface HospitalService {
 	Hospital hospitalModify(String comnum);
 
 	
-	
-	
 }

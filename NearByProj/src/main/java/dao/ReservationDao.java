@@ -15,4 +15,6 @@ public interface ReservationDao {
 	
 	Integer searchHRecordCount(Map<String,Object>param) throws Exception;
 	List<Reservation> searchHRecordList(Map<String,Object>param) throws Exception;
+	
+	void insertReservation(Reservation reservation) throws Exception;
 }

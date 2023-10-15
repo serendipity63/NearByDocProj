@@ -98,13 +98,8 @@
             <table>
                 <tbody>
                     <tr>
-                        <td width="100">
-                            <img src="image?file=lee.jpg" alt="이강인" width="60">
-                        </td>
-                    </tr>
-                    <tr>
                         <td>
-                            이강인
+                            ${user.pname}
                         </td>
                     </tr>
                 </tbody>
@@ -115,33 +110,36 @@
         <div class="resdate">
             <p class="sub">예약일자</p>
             <br>
-            <p>2023.09.20 (수)</p>
+            <p>${reservation.resdate}</p>
             <br>
         </div>
         <br>
         <div class="restime">
             <p class="sub">예약시간</p>
             <br>
-            <p>10:00 AM</p>
+            <p>${reservation.restime }</p>
             <br>
         </div>
 		<br>
         <div class="service">
             <p class="sub">진료과목</p>
             <br>
-            <p>정형외과</p>
+            <p>${hospital.department}</p>
             <br>
         </div>
         <br>
         <div class="comment">
             <p class="sub">원장님께 하고 싶은 말:</p>
             <br>
-            <p>목감기가 심해요.</p>
+            <p>${reservation.comment}</p>
         </div>
         <br>
         <div>
-            <button type="button" class="btn-return" onclick="location.href='reservation.jsp';">돌아가기</button>
-            <button type="button" class="btn-primary" onclick="location.href='confirmreservation.jsp';">예약완료하기</button>
+        <form action="completereservation" method="post" id='form'>
+            <button type="button" class="btn-return" onclick="location.href='insertreservation';">돌아가기</button>
+            
+            <button type="submit" class="btn-primary">예약완료하기</button>
+        </form>
         </div>
     </div>
     <br><br><br>
