@@ -162,67 +162,73 @@ input[type='submit']:hover {
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
 
 <script type="text/javascript">
-	$(function() {
-		let isComnumCheck = false;
-        let isPasswordMatch = false;
+$(function() {
+    let isComnumCheck = false;
+    let isPasswordMatch = false;
 
-		$('#comnumcheck').click(function() {
-			$.ajax({
-				url : "comnumcheck",
-				type : "post",
-				data : {
-					pemail : $("#comnum").val()
-				},
-				success : function(res) {
-					console.log(res);
-					if (res == "notexist") {
-						isComnumCheck = true;
-                        Swal.fire("성공", "사용 가능합니다", "success");
-					} else {
-                        Swal.fire("오류", "사업자등록번호가 중복됩니다", "error");
+    $('#comnumcheck').click(function() {
+        const comnum = $("#comnum").val().trim(); // 사업자번호 입력에서 공백 제거
+        if (comnum.length !== 10) {
+            Swal.fire("오류", "사업자등록번호는 10자리여야 합니다", "error");
+            return; // 입력 오류가 있으므로 중복 체크를 진행하지 않음
+        }
 
-					}
-				},
-				error : function(err) {
-					console.log(err);
-                    Swal.fire("오류", "사업자번호 중복체크 오류", "error");
-				}
-			});
-		});
-		
-        $('#comnum, #hpassword, #hpassword-confirm').change(function() {
-            isComnumCheck = false;
-            isPasswordMatch = false;
+        $.ajax({
+            url: "comnumcheck",
+            type: "post",
+            data: {
+                pemail: comnum
+            },
+            success: function(res) {
+                console.log(res);
+                if (res == "notexist") {
+                    isComnumCheck = true;
+                    Swal.fire("성공", "사용 가능합니다", "success");
+                } else {
+                    Swal.fire("오류", "사업자등록번호가 중복됩니다", "error");
+                }
+            },
+            error: function(err) {
+                console.log(err);
+                Swal.fire("오류", "사업자번호 중복체크 오류", "error");
+            }
         });
+    });
 
-        $("#form").submit(function(e) {
-            const comnum = $("#comnum").val();
-            const password = $("#hpassword").val();
-            const confirmPassword = $("#hpassword-confirm").val();
+    $('#comnum, #hpassword, #hpassword-confirm').change(function() {
+        isComnumCheck = false;
+        isPasswordMatch = false;
+    });
 
-            if (comnum.length !== 10) {
-                Swal.fire("오류", "사업자등록번호는 10자리여야 합니다", "error");
-                e.preventDefault();
-            } else if (!isComnumCheck) {
-                Swal.fire("오류", "사업자번호 중복체크하세요", "error");
-                e.preventDefault();
-            } else if (password !== confirmPassword) {
-                Swal.fire("오류", "비밀번호가 일치하지 않습니다. 다시 확인해주세요", "error");
-                e.preventDefault();
-            } else{
-            	// 회원가입 성공 메세지
-                e.preventDefault();
-            	
-            	Swal.fire("성공", "회원가입이 성공적으로 완료되었습니다!","success")
+    $("#form").submit(function(e) {
+        const comnum = $("#comnum").val().trim(); // 사업자번호 입력에서 공백 제거
+        const password = $("#hpassword").val();
+        const confirmPassword = $("#hpassword-confirm").val();
+
+        if (comnum.length !== 10) {
+            Swal.fire("오류", "사업자등록번호는 10자리여야 합니다", "error");
+            e.preventDefault();
+        } else if (!isComnumCheck) {
+            Swal.fire("오류", "사업자번호 중복체크하세요", "error");
+            e.preventDefault();
+        } else if (password !== confirmPassword) {
+            Swal.fire("오류", "비밀번호가 일치하지 않습니다. 다시 확인해주세요", "error");
+            e.preventDefault();
+        } else {
+            // 회원가입 성공 메세지
+            e.preventDefault();
+
+            Swal.fire("성공", "회원가입이 성공적으로 완료되었습니다!", "success")
                 .then((result) => {
                     // "확인" 버튼을 누르면 hospitallogin.jsp 페이지로 리디렉션
                     if (result.isConfirmed) {
                         window.location.href = "hospitallogin.jsp";
                     }
                 });
-            }
-        });
+        }
     });
+});
+
 </script>
 
 
