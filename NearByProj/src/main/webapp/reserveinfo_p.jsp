@@ -87,10 +87,10 @@ input {
 <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
 <script>
 	
-	function callBtn(num) {
+	function callBtn(pidnum) {
 		var keyword=$('#keyword').val()
 		if(keyword!=null && keyword.trim()!='') {
-			$('#page').val(num);
+			$('#page').val(pidnum);
 			$('#searchform').submit();
 		}
 	}
@@ -113,9 +113,9 @@ input {
 					<option value="all">선택</option>
 					<option value="pname" ${res.type eq 'pname'? 'selected':'' }>환자명</option>
 					<option value="pidnum">${res.type eq 'pidnum'? 'selected':'' }주민등록번호</option>
-				</select> <input type="text" name="keyword" id="keyword"
-					value="${res.keyword }" /> <input type="submit" id="search"
-					value="검색" />
+				</select> 
+				<input type="text" name="keyword" id="keyword" value="${res.keyword }" /> 
+				<input type="submit" id="search" value="검색" />
 			</h5>
 		</div>
 
