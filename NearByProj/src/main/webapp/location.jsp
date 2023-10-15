@@ -156,6 +156,7 @@ function success({ coords, timestamp }) {
     const longitude = coords.longitude; // 경도
     
     console.log(`위도: \${latitude}, 경도: \${longitude}, 위치 반환 시간: \${timestamp}`);
+    //위도경도
     var coord = new kakao.maps.LatLng(latitude, longitude);
     geocoder.coord2Address(coord.getLng(), coord.getLat(), callback);
 }
@@ -241,7 +242,7 @@ console.log("주소 데이터: " + addressData);
 
 // 주소 데이터를 부모 창에 전달
 window.opener.postMessage(addressData, "*");
-
+//opener.document.getElementById('address-input').value=$('#addressData').val();
 // 주소 검색 완료 후 자동으로 다이얼로그를 닫음
 if (data.autoClose) {
     window.close();
