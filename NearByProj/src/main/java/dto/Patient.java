@@ -1,24 +1,24 @@
 package dto;
 
 public class Patient {
+	private String pemail;
 	private String pidnum;
 	private String ppassword;
 	private String pname;
 	private String ptel;
-	private String pemail;
 	private String proadaddress;
 	private String ppostcode;
 	private String pdetailaddress;
 
 	public Patient() {}
 
-	public Patient(String pidnum, String ppassword, String pname, String ptel, String pemail, String proadaddress,
+	public Patient(String pemail, String pidnum, String ppassword, String pname, String ptel, String proadaddress,
 			String ppostcode, String pdetailaddress) {
 		this.pemail = pemail;
+		this.pidnum = pidnum;
 		this.ppassword = ppassword;
 		this.pname = pname;
 		this.ptel = ptel;
-		this.pidnum = pidnum;
 		this.proadaddress = proadaddress;
 		this.ppostcode = ppostcode;
 		this.pdetailaddress = pdetailaddress;
@@ -30,6 +30,14 @@ public class Patient {
 
 	public void setPemail(String pemail) {
 		this.pemail = pemail;
+	}
+
+	public String getPidnum() {
+		return pidnum;
+	}
+
+	public void setPidnum(String pidnum) {
+		this.pidnum = pidnum;
 	}
 
 	public String getPpassword() {
@@ -56,14 +64,6 @@ public class Patient {
 		this.ptel = ptel;
 	}
 
-	public String getPidnum() {
-		return pidnum;
-	}
-
-	public void setPidnum(String pidnum) {
-		this.pidnum = pidnum;
-	}
-
 	public String getProadaddress() {
 		return proadaddress;
 	}
@@ -88,4 +88,5 @@ public class Patient {
 		this.pdetailaddress = pdetailaddress;
 	}
 
+	
 }
