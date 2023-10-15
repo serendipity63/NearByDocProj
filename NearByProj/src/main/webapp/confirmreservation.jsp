@@ -79,20 +79,20 @@
             <table>
                 <tr>
                     <td>
-                        <h4>OOO종합병원</h4>
+                        <h4>${hospital.hname }</h4>
                     </td>
                     <td rowspan="2">
-                        <img src="image?file=hospital.jpg" alt="병원" width="150">
+                        <img src="image?file=${hospital.hurl}" alt="병원" width="150">
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <p>종합병원</p>
+                        <p>${hospital.department }</p>
                     </td>
                 </tr>
                 <tr>
                     <td colspan="2">
-                        <p>서울특별시 금천구 남부순환로 호서대벤처타워</p>
+                        <p>${hospital.hroad }</p>
                     </td>
                 </tr>
                 <tr>
@@ -100,7 +100,7 @@
                         진료 시간:
                     </td>
                     <td>
-                        오전 9시 ~ 오후 6시
+                        ${hospital.clinic }
                     </td>
                 </tr>
                 <tr>
@@ -108,7 +108,7 @@
                         전화 번호:
                     </td>
                     <td>
-                        02)1234-5678
+                        ${hospital.htel }
                     </td>
                 </tr>
             </table>
@@ -121,13 +121,8 @@
             <table>
                 <tbody>
                     <tr>
-                        <td width="100">
-                            <img src="image?file=lee.jpg" alt="이강인" width="60">
-                        </td>
-                    </tr>
-                    <tr>
                         <td>
-                            이강인
+                            ${user.pname}
                         </td>
                     </tr>
                 </tbody>
@@ -138,14 +133,14 @@
         	<br>
             <p class="sub">예약일자</p>
             <br>
-            <p>2023.09.20 (수)</p>
+            <p>${reservation.resdate }</p>
             <br>
         </div>
         <div class="restime">
         	<br>
             <p class="sub">예약시간</p>
             <br>
-            <p>10:00 AM</p>
+            <p>${reservation.restime }</p>
             <br>
         </div>
 
@@ -153,7 +148,7 @@
         	<br>
             <p class="sub">진료과목</p>
             <br>
-            <p>정형외과</p>
+            <p>${hospital.department }</p>
             <br>
         </div>
    
@@ -161,7 +156,7 @@
         	<br>
             <p class="sub">원장님께 하고 싶은 말:</p>
             <br>
-            <p>목감기가 심해요.</p>
+            <p>${reservation.comment }</p>
             <br>
         </div>
     

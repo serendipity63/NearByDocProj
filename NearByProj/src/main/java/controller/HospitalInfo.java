@@ -45,7 +45,7 @@ public class HospitalInfo extends HttpServlet {
 			HttpSession session = request.getSession();
 			session.setAttribute("hospital", hospital);
 			Map<String, Object> lastreview = reviewservice.selectLastReview(comnum);
-			session.setAttribute("lastreview", lastreview);
+			request.setAttribute("lastreview", lastreview);
 			request.getRequestDispatcher("hospitalinfo.jsp").forward(request, response);
 		
 		} catch(Exception e) {

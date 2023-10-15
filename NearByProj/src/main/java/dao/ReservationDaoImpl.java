@@ -47,6 +47,10 @@ public class ReservationDaoImpl implements ReservationDao{
 	public List<Reservation> searchHRecordList(Map<String, Object> param) throws Exception {
 		return sqlSession.selectList("mapper.reservation.searchHRecordList",param);
 	}
-
+	@Override
+	public void insertReservation(Reservation reservation) throws Exception {
+		sqlSession.insert("mapper.reservation.insertReservation",reservation);
+		sqlSession.commit();
+	}
 
 }
