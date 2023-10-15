@@ -302,7 +302,7 @@ input:focus {
 							const pidnum = $("#pidnum").val();
 							const ptel = $("#ptel").val();
 							const pidnumPattern = /^[0-9]{12}$/;
-							const ptelPattern = /^[0-9]{15}$/;
+							const ptelPattern = /^[0-9]{11}$/;
 
 							if (!pidnumPattern.test(pidnum)) {
 								alert("주민번호는 12자리 숫자여야 합니다.");
@@ -310,7 +310,7 @@ input:focus {
 							}
 
 							if (!ptelPattern.test(ptel)) {
-								alert("휴대전화 번호는 15자리 숫자여야 합니다.");
+								alert("휴대전화 번호는 11자리 숫자여야 합니다.");
 								e.preventDefault();
 							}
 						});
@@ -429,16 +429,14 @@ input:focus {
 
 			<div class="join">
 
-				이메일
-
-				<span id="pemailMessage" class="error-message" ></span>
+				이메일 <span id="pemailMessage" class="error-message"></span>
 
 				<div id="info_pemail">
 
 					<input type="text" id="pemail" name="pemail"
 						placeholder="nearbydoc@abc.com 형식으로 입력" required="required">
 
-<%-- 이메일중복검사및 이메일 유효성검사 --%>
+					<%-- 이메일중복검사및 이메일 유효성검사 --%>
 					<button id="pemailcheck">중복 확인</button>
 
 				</div>
@@ -463,22 +461,16 @@ input:focus {
 				<div class="input-container">
 
 					<input type="password" id="ppasswordcheck" class="form-control"
-						onchange="check()" placeholder="" required /> <span
-						class="icon material-symbols-outlined"> lock </span>
+						onchange="check()" placeholder="" required /> 
+						<span class="icon material-symbols-outlined"> lock </span>
 
 				</div>
 
 				이름<br> <input type="text" id="pname" name="pname"
-					placeholder="" required />
-					 
-				휴대전화<br> <input type="number"
-					id="ptel" name="ptel" size="15" placeholder="-없이 숫자만 입력" /> 
-					
-				주민번호<br> 
-				<input type="number" id="pidnum" name="pidnum" size="12" placeholder="-없이 숫자만 입력"
-					required /> 
-				
-				주소<br>
+					placeholder="" required /> 휴대전화<br> <input type="number"
+					id="ptel" name="ptel" size="15" placeholder="-없이 숫자만 입력" /> 주민번호<br>
+				<input type="number" id="pidnum" name="pidnum" size="12"
+					placeholder="-없이 숫자만 입력" required /> 주소<br>
 				<div class="row">
 					<div class="input">
 						<input type="text" id="ppostcode" name="ppostcode"
