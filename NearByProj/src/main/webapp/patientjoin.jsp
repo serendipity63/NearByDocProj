@@ -429,9 +429,9 @@ input:focus {
 
 			<div class="join">
 
-				이메일<br>
+				이메일
 
-				<div id="pemailMessage" class="error-message"></div>
+				<span id="pemailMessage" class="error-message" ></span>
 
 				<div id="info_pemail">
 
@@ -456,7 +456,7 @@ input:focus {
 				<div>
 
 					비밀번호 확인 <span id="check" class="invalid-feedback"
-						style="margin-left: 10px;">비밀번호가 동일하지 않습니다.</span>
+						style="margin-left: 3px;">비밀번호가 동일하지 않습니다.</span>
 
 				</div>
 
