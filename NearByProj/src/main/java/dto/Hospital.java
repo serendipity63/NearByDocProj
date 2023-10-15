@@ -20,6 +20,7 @@ public class Hospital {
 	private BigDecimal lat;
 	private BigDecimal lon;
 	
+	
 	public Hospital() {
 
 	}
@@ -171,6 +172,8 @@ public class Hospital {
 	public void setLon(BigDecimal lon) {
 		this.lon = lon;
 	}
+
+	
 	
 	
 }

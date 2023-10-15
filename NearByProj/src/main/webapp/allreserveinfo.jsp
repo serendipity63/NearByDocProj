@@ -44,41 +44,29 @@ body {
 	margin: 0 auto;
 }
 
-
-
-h1{
+h1 {
 	width: 150px;
-    color: rgb(25, 25, 112);
-    margin-left:970px;
-    margin-top:50px;
-
+	color: rgb(25, 25, 112);
+	margin: 44px 944px;
 }
 
-.row {
-	height: 30px;
-	
-}
-
-.title {
-	font-weight: bold;
-	background-color: lightgray;
-
-}
-
-.colume {
+#center>tr>th {
 	padding: 5px;
-	width: 210px;
+	width: 225px;
 	float: left;
 	color: black;
 	text-align: center;
-	border-right:1px solid white;
+	border: 1px solid black;
+	font-weight: bold;
+	background-color: lightblue;
 }
 
-.container {
-	height: 400px;
-    border: 1px solid;
-    width: 1263px;
-    margin: 1px 412px;
+
+#center {
+	border: 1px solid;
+	width: 1356px;
+	margin: 0px 337px;
+	
 }
 
 input {
@@ -89,42 +77,44 @@ input {
 select {
 	width: 200px;
 	height: 38px;
-	cursor:pointer;
+	cursor: pointer;
 }
 
 #search {
-	color:black;
+	color: black;
 	width: 100px;
 	height: 30px;
 	background-color: lightgray;
-	border-radius:10px;
-	cursor:pointer;
+	border-radius: 10px;
+	cursor: pointer;
 }
 
 .reserveform {
 	width: 1574px;
-    height: 100px;
-    margin-left: 413px;
-    margin-top: 57px;
+	height: 100px;
+	margin-left: 339px;
+	margin-top: 57px;
 }
-.reserveform>button{
+
+.reserveform>button {
 	width: 100px;
 	height: 30px;
 	background-color: rgb(25, 25, 112);
+}
 
+#datepicker1 {
+	margin-left: 280px;
 }
-#datepicker1{
-	margin-left:187px;
 
+#datepicker2 {
+	margin-left: 20px;
 }
-#datepicker2{
-	margin-left:20px;
-}
+
 #emptyArea {
 	width: 708px;
-    text-align: center;
-    margin-top: 35px;
-    margin-left: 674px;
+	text-align: center;
+	margin-top: 35px;
+	margin-left: 674px;
 }
 
 #emptyArea a {
@@ -141,51 +131,60 @@ select {
 #emptyArea .select {
 	background: lightblue;
 }
-
 </style>
 <body>
 	<% pageContext.include("hmain.jsp");%>
 	<h1>전체 조회</h1>
-	
-
-		<div class="reserveform">
-
-			<select name="patient">
-				<option value="patient">환자명</option>
-				<option value="number">주민등록번호</option>
-			</select> <input type="text">
-			<button onclick="#" id="search">검색</button>
-		
-
-		
 
 
-			<input type="text" id="datepicker1" placeholder="0000-00-00">
+	<div class="reserveform">
 
-			<input type="text" id="datepicker2" placeholder="0000-00-00">
-
-
-			<button onclick="#" id="search">검색</button>
-
-		</div>
+		<select name="patient">
+			<option value="patient">환자명</option>
+			<option value="number">주민등록번호</option>
+		</select> <input type="text">
+		<button onclick="#" id="search">검색</button>
 
 
 
-		<div class="container" id="container">
-			<div class="row">
-				<div class="title colume">일자</div>
-				<div class="title colume">시간</div>
-				<div class="title colume">환자명</div>
-				<div class="title colume">주민등록번호</div>
-				<div class="title colume">연락처</div>
-				<div class="title colume">주소</div>
-				
-				
-			</div>
+
+
+		<input type="text" id="datepicker1" placeholder="0000-00-00">
+
+		<input type="text" id="datepicker2" placeholder="0000-00-00">
+
+
+		<button onclick="#" id="search">검색</button>
+
+	</div>
 
 
 
-		</div>
+	<table id="center">
+		<tr>
+			<th>일자</th>
+			<th>시간</th>
+			<th>환자명</th>
+			<th>주민등록번호</th>
+			<th>연락처</th>
+			<th>주소</th>
+		</tr>
+
+		<c:forEach items="${res.reserveList }" var="reserve">
+			<tr>
+				<td>${reserve.resdate }</td>
+				<td>${reserve.restime }</td>
+				<td>${reserve.name }</td>
+				<td>${reserve.number }</td>
+				<td>${reserve.phone }</td>
+				<td>${reserve.address }</td>
+				<td><c:if test="${hospitaluser.id == hospital.comnum }">
+						<a
+							href="patientdelete?num=${patient.pidnum }&page=${res.pageInfo.curPage}">삭제</a>
+					</c:if></td>
+			</tr>
+		</c:forEach>
+	</table>
 	<div id="emptyArea">
 		<c:choose>
 			<c:when test="${res.pageInfo.curPage>1}">

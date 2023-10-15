@@ -75,5 +75,4 @@ public class HospitalJoin extends HttpServlet {
 			// 에러 페이지 따로 만들거에요
 		}
 	}
-
 }

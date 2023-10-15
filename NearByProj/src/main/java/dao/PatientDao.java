@@ -15,4 +15,6 @@ public interface PatientDao {
 	List<Patient> searchPatientList(Map<String,Object>param) throws Exception;
 	Integer searchPatientCount(Map<String,Object> param) throws Exception;
 	
+	Patient selectPatientByPidnum(String pidnum)throws Exception;
+	
 }

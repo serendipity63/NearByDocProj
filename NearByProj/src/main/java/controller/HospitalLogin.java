@@ -50,7 +50,7 @@ public class HospitalLogin extends HttpServlet {
 			request.getRequestDispatcher("reserve_t.jsp").forward(request, response);
 		} catch (Exception e) {
 			request.setAttribute("err", e.getMessage());
-			request.getRequestDispatcher("herror.jsp").forward(request, response);
+			request.getRequestDispatcher("error404.jsp").forward(request, response);
 		}
 	}
 

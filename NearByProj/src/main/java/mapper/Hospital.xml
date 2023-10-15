@@ -20,13 +20,14 @@
 	<update id="updateHospital" parameterType="Hospital">
 		<trim prefix="SET" suffixOverrides=",">
 			<if test="subject !=null">subject=#{subject},</if>
-			<if test="email !=null">email=#{email},</if>
-			<if test="number !=null">number=#{number},</if>
+			<if test="hname !=null">hname=#{hname},</if>
+			<if test="comnum !=null">comnum=#{comnum},</if>
+			<if test="htel !=null">htel=#{htel},</if>
 			<if test="address !=null">address=#{address},</if>
-			<if test="clinictime !=null">clinic=#{clinic},</if>
-			<if test="lunchtime !=null">lunch=#{lunch},</if>
+			<if test="clinic !=null">clinic=#{clinic},</if>
+			<if test="lunch !=null">lunch=#{lunch},</if>
 		</trim>
-		where num=#{num}
+		where comnum=#{comnum}
 	</update>
 	
 	

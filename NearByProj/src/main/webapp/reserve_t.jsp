@@ -12,34 +12,31 @@
 h1{
 	width: 220px;
     color: rgb(25, 25, 112);
-    margin:44px auto;
+    margin:44px 933px;
 
 }
 
-.title {
-	font-weight: bold;
-	background-color: lightgray;
-	width: 100px;
-}
-
-.colume {
+th{
 	padding: 5px;
 	width: 150px;
 	float: left;
 	color: black;
 	text-align: center;
 	border-right:1px solid white;
+	font-weight: bold;
+	background-color: lightblue;
+	
 }
 
-.container {
-	height: 400px;
+table {
+	
     border: 1px solid;
-    width: 1353px;
-    margin:86px 379px;
+    width: 1206px;
+    margin:86px 430px;
 }
 #emptyArea { width: 708px;
     text-align: center;
-    margin-left: 696px; }
+    margin-left: 660px; }
 #emptyArea a {
 	display: inline-block;
 	width: 20px;
@@ -53,48 +50,50 @@ h1{
 	background: lightblue;
 }
 </style>
+<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+
 </head>
 
 <body>
 	<% pageContext.include("hmain.jsp");%>
 	<h1>오늘의 예약내역</h1>
 	
+		<form action="trlist" method="post" >			
+		<table>	
+			<tr class="row">
+				<th>예약번호</th>
+				<th>일자</th>
+				<th>시간</th>
+				<th>환자명</th>
+				<th>주민번호</th>
+				<th>요청사항</th>
+				<th>진료과목</th>
+				<th>진료완료처리</th>
+			</tr>
 		
-			
-		
-		<div class="container" id="container">
-			<div class="row">
-				<div class="title colume">일자</div>
-				<div class="title colume">시간</div>
-				<div class="title colume">환자명</div>
-				<div class="title colume">주민등록번호</div>
-				<div class="title colume">연락처</div>
-				<div class="title colume">주소</div>
-				<div class="title colume">요청사항</div>
-				<div class="title colume">진료과목</div>
-				<div class="title colume">진료완료처리</div>
-			</div>
-		
-
-
-			<c:set var="i" value="1" />
-			<c:forEach var="acc" items="${accs }">
-				<div class="row">
-					<div class="colume">${i }</div>
-					<div class="colume">${acc.id}</div>
-					<div class="colume">${acc.name }</div>
-					<div class="colume">${acc.balance }</div>
-					<div class="colume">${acc.type }</div>
-					<div class="colume">${acc.grade }&nbsp;</div>
-					<c:set var="i" value="${i+1 }" />
-				</div>
+			<c:forEach items="${res.reservationList }" var="reservation">
+			<tr>
+				<td>${reservation.id }
+				<td>${reservation.resdate }</td>
+				<td>${reservation.restime }</td>
+				<td>${reservation.name }</td>
+				<td>${reservation.pidnum }</td>
+				<td>${reservation.comment }</td>
+				<td>${reservation.subject }</td>
+				<td>${reservation.status }</td>
+				<td>
+					<c:if test="${hospitaluser.id == hospital.comnum }">
+						<a href="patientdelete?num=${patient.pidnum }&page=${res.pageInfo.curPage}">삭제</a>
+					</c:if>
+				</td>
+			</tr>
 			</c:forEach>
-		</div>
-	
+		</table>
+	</form>
 	<div id="emptyArea">
 			<c:choose>  
 				<c:when test="${res.pageInfo.curPage>1}">
-					<a href="boardlist?page=${res.pageInfo.curPage-1}">&lt;</a>
+					<a href="trlist?page=${res.pageInfo.curPage-1}">&lt;</a>
 				</c:when>
 				<c:otherwise>
 					&lt;
@@ -105,10 +104,10 @@ h1{
 			<c:forEach begin="${res.pageInfo.startPage}" end="${res.pageInfo.endPage}" var="i">
 				<c:choose>
 					<c:when test="${res.pageInfo.curPage==i}">
-						<a href="boardlist?page=${i}" class="select" onclick="callBtn(${i});return ${res.keyword==null};">${i}</a>&nbsp;
+						<a href="trlist?page=${i}" class="select" onclick="callBtn(${i});return ${res.keyword==null};">${i}</a>&nbsp;
 					</c:when>
 					<c:otherwise>
-						<a href="boardlist?page=${i}" class="btn" onclick="callBtn(${i});return ${res.keyword==null};">${i}</a>&nbsp;
+						<a href="trlist?page=${i}" class="btn" onclick="callBtn(${i});return ${res.keyword==null};">${i}</a>&nbsp;
 					</c:otherwise>
 					
 				</c:choose>
@@ -117,7 +116,7 @@ h1{
 
 			<c:choose>  
 				<c:when test="${res.pageInfo.curPage<res.pageInfo.allPage}">
-					<a href="boardlist?page=${res.pageInfo.curPage+1}">&gt;</a>
+					<a href="reslist?page=${res.pageInfo.curPage+1}">&gt;</a>
 				</c:when>
 				<c:otherwise>
 					&gt;

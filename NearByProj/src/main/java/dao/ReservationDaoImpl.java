@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
+import dto.Reservation;
 import util.MybatisSqlSessionFactory;
 
 public class ReservationDaoImpl implements ReservationDao{
@@ -20,6 +21,31 @@ public class ReservationDaoImpl implements ReservationDao{
 	@Override
 	public Integer cntMyReservation(String pidnum) throws Exception {
 		return sqlSession.selectOne("mapper.reservation.cntMyReservation", pidnum);
+	}
+
+	@Override
+	public List<Reservation> selectTodayReservation(Integer row) throws Exception {
+		return sqlSession.selectList("mapper.reservation.selectReservationList",row);
+	}
+
+	@Override
+	public Integer selectReservationCount() throws Exception {
+		return sqlSession.selectOne("mapper.reservation.selectReservationCount");
+	}
+
+	@Override
+	public Reservation selectReservation(Integer num) throws Exception {
+		return sqlSession.selectOne("mapper.reservation.selectReservation",num);
+	}
+
+	@Override
+	public Integer searchHRecordCount(Map<String, Object> param) throws Exception {
+		return sqlSession.selectOne("mapper.reservation.searchHRecordCount",param);
+	}
+
+	@Override
+	public List<Reservation> searchHRecordList(Map<String, Object> param) throws Exception {
+		return sqlSession.selectList("mapper.reservation.searchHRecordList",param);
 	}
 
 
