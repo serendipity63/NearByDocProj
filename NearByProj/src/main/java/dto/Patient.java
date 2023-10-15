@@ -12,7 +12,7 @@ public class Patient {
 
 	public Patient() {}
 
-	public Patient(String pemail, String pidnum, String ppassword, String pname, String ptel, String proadaddress,
+	public Patient(String pemail, String ppassword, String pname, String ptel, String pidnum, String proadaddress,
 			String ppostcode, String pdetailaddress) {
 		this.pemail = pemail;
 		this.pidnum = pidnum;
