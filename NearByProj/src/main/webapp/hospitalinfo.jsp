@@ -237,7 +237,7 @@
 		<br> <br>
 		<div>
 			<button type="button" class="btn-primary"
-				onclick="location.href='reservation.jsp';">예약하기</button>
+				onclick="location.href='insertreservation';">예약하기</button>
 		</div>
 	</div>
 	<br>
