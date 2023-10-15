@@ -29,7 +29,7 @@
 	<insert id="insertPatient" parameterType="Patient">
 	
 	<![CDATA[
-	insert into patient (pemail,pidnum,ppassword,pname,ptel,proadaddress,pdetailaddress,ppostcode) values (#{pemail},#{pidnum},#{ppassword},#{pname},#{ptel},#{proadaddress},#{pdetailaddress},#{ppostcode}) 
+	insert into patient (pidnum,pemail,ppassword,pname,ptel,proadaddress,pdetailaddress,ppostcode) values (#{pidnum},#{pemail},#{ppassword},#{pname},#{ptel},#{proadaddress},#{pdetailaddress},#{ppostcode}) 
 	]]>
 	</insert>
 	
