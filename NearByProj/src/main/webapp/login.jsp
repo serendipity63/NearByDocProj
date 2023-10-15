@@ -12,6 +12,29 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap"
         rel="stylesheet">
     <title>로그인</title>
+        <script type="text/javascript">
+    function validateForm() {
+        var email = document.getElementById("pemail").value;
+        var password = document.getElementById("ppassword").value;
+
+        // 이메일 형식 검사
+        var emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+        if (!emailRegex.test(email)) {
+            alert("올바른 이메일 형식으로 입력하세요.");
+            return false;
+        }
+
+        // 비밀번호 필드가 비어 있는지 확인
+        if (password === "") {
+            alert("비밀번호를 입력하세요.");
+            return false;
+        }
+
+        // 모든 유효성 검사를 통과한 경우 true 반환하여 폼 제출을 허용
+        return true;
+    }
+</script>
+    
 <style type="text/css">
 * {
     margin: 0;
@@ -153,7 +176,7 @@ button {
         </div>
 
         <center>
-            <form action="login" method="post" id='form'>
+            <form action="login" method="post" id='form' onsubmit="return validateForm()">
                 <div class="input-container">
                     <span class="icon material-symbols-outlined">
                         mail

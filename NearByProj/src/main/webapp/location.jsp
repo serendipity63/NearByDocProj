@@ -118,6 +118,7 @@ a {
 	top: 5px;
 }
 </style>
+
 </head>
 <body>
 	<div class="outerDiv">
@@ -126,7 +127,7 @@ a {
 				<button class="back">
 
 					<span class="icon-text-wrapper"> <a href="main"> <span
-							class="material-symbols-outlined"> arrow_back </span></span> 주소 설정 </a>
+							class="material-symbols-outlined"> close </span></span> 주소 설정 </a>
 				</button>
 			</div>
 		</div>
@@ -186,9 +187,6 @@ $("#currentAddress").click(function() {
 
 			<%-- 현재위치 가져오기 끝 --%>
 
-
-
-
 			<div class="otherloc">
 				<button class="other" onclick="execDaumPostcode()">
 					<img src="image?file=hospital1.jpg" height="250" width="150"
@@ -199,60 +197,69 @@ $("#currentAddress").click(function() {
 		</div>
 	</div>
 
+
 	<script
 		src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 	<script>
+
 	function execDaumPostcode() {
-		new daum.Postcode({
-			oncomplete : function(data) {
-				// 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
 
-				// 각 주소의 노출 규칙에 따라 주소를 조합한다.
-				// 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
-				var addr = ''; // 주소 변수
-				var extraAddr = ''; // 참고항목 변수
+	new daum.Postcode({
 
-				//사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
-				if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
-					addr = data.roadAddress;
-				} else { // 사용자가 지번 주소를 선택했을 경우(J)
-					addr = data.jibunAddress;
-				}
+	oncomplete: function (data) {
 
-				// 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
-				/* if (data.userSelectedType === 'R') {
-					// 법정동명이 있을 경우 추가한다. (법정리는 제외)
-					// 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
-					if (data.bname !== ''
-							&& /[동|로|가]$/g.test(data.bname)) {
-						extraAddr += data.bname;
-					}
-					// 건물명이 있고, 공동주택일 경우 추가한다.
-					if (data.buildingName !== ''
-							&& data.apartment === 'Y') {
-						extraAddr += (extraAddr !== '' ? ', '
-								+ data.buildingName : data.buildingName);
-					}
-					// 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
-					if (extraAddr !== '') {
-						extraAddr = ' (' + extraAddr + ')';
-					}
-					// 조합된 참고항목을 해당 필드에 넣는다.
-					document.getElementById("extraAddress").value = extraAddr;
+	var addrArray = data.jibunAddress.split(' '); // 지번 주소를 공백으로 나눠 배열로 분리
 
-				} else {
-					document.getElementById("extraAddress").value = '';
-				} */
+var sido = addrArray[0]; // 첫 번째 요소는 시/도 정보
 
-				// 우편번호와 주소 정보를 해당 필드에 넣는다.
-				document.getElementById('hpostcode').value = data.zonecode;
-				document.getElementById("haddress").value = addr;
-				// 커서를 상세주소 필드로 이동한다.
-				document.getElementById("hdetailAddress").focus();
-			}
-		}).open();
-	}
+var sigungu = addrArray[1]; // 두 번째 요소는 시/군/구 정보
+
+var bname = data.bname; // 건물명 가져오기
+
+// 시/도와 시/군/구 정보를 해당 필드에 넣는다
+
+document.getElementById("hsido").value = sido;
+
+document.getElementById("hsigungu").value = sigungu;
+
+document.getElementById("bname").value = bname;
+
+
+
+console.log("hsido 값: " + sido);
+
+console.log("hsigungu 값: " + sigungu);
+
+console.log("bname 값: " + bname);
+
+
+// 주소 데이터를 JavaScript 변수에 저장
+var addressData = sido + " " + sigungu + " " + bname;
+
+// 이제 addressData 변수에 주소 데이터가 저장됨
+console.log("주소 데이터: " + addressData);
+
+// 주소 데이터를 부모 창에 전달
+window.opener.postMessage(addressData, "*");
+
+// 주소 검색 완료 후 자동으로 다이얼로그를 닫음
+if (data.autoClose) {
+    window.close();
+
+
+}
+    }
+}).open();
+
+}
+
 </script>
+
+
+	<!-- 여기서 hsido와 hsigungu 필드를 추가 -->
+	<input type="hidden" id="hsido" name="hsido" value="">
+	<input type="hidden" id="hsigungu" name="hsigungu" value="">
+	<input type="hidden" id="bname" name="bname" value="">
 
 </body>
 
