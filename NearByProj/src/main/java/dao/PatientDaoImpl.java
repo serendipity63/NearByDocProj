@@ -13,8 +13,8 @@ public class PatientDaoImpl implements PatientDao {
 	SqlSession sqlSession= MybatisSqlSessionFactory.getSqlSessionFactory().openSession();
 
 	@Override
-	public Patient selectPatient(String pidnum) throws Exception {
-		return sqlSession.selectOne("mapper.patient.selectPatient",pidnum);
+	public Patient selectPatient(String pemail) throws Exception {
+		return sqlSession.selectOne("mapper.patient.selectPatient",pemail);
 	}
 
 	@Override
@@ -33,6 +33,8 @@ public class PatientDaoImpl implements PatientDao {
 	public Integer selectPatientCount() throws Exception {
 		return sqlSession.selectOne("mapper.patient.selectPatientCount");
 	}
+	
+	
 
 	@Override
 	public List<Patient> searchPatientList(Map<String, Object> param) throws Exception {

@@ -3,10 +3,10 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="mapper.reservation">
 	<insert id="insertReservation" parameterType="Reservation"
-		useGeneratedKeys="true" keyProperty="number">
+		useGeneratedKeys="true" keyProperty="id">
     <![CDATA[
-       insert into Reservation (pidnum,resdate,restime,name,phone,address,comment,subject,status,doccomment) values 
-       (#{pidnum},#{resdate},#{restime},#{name},#{phone},#{address},#{comment},#{subject},#{status},#{doccomment}) 
+       insert into Reservation (pidnum,comnum,resdate,restime,comment,status,doccomment) values 
+       (#{pidnum},#{comnum},#{resdate},#{restime},#{comment},#{status},#{doccomment}) 
     ]]>
 	</insert>
 
@@ -40,15 +40,41 @@
 order by r.resdate desc
      ]]>
 	</select>
-	<select id='selectTodayReservation' parameterType="String" resultType="hashmap">
+	<select id='selectTodayReservationList' parameterType="Integer" resultType="Reservation">
 	<![CDATA[
-		select id,resdate,restime,p.pname,comment,h.department,status
+		select id,resdate,restime,p.pname,p.pidnum,comment,h.department,status
 		from reservation r,patient p,hospital h
 		where r.pidnum=p,pidnum
 		and h.comnum=r.comnum
 		order by id desc
+		limit #{row},10
 	]]>
 	</select>
+	<select id='selectReservation' parameterType="Integer" resultType="Reservation">
+	<![CDATA[
+		select * from reservation where id=#{id}
+	]]>
+	</select>
+	
+	
+
+	<select id='searchHRecordList' parameterType="hashmap" resultType="Reservation">
+	<![CDATA[
+		select * from reservation
+   		where ${type} like '%${keyword}%' order by id 
+   		limit #{row},10
+	]]>
+	
+	</select>
+	
+	<select id='searchHRecordCount' parameterType="hashmap" resultType="Integer">
+	<![CDATA[
+		select count(*) from reservation
+   		where ${type} like '%${keyword}%' 
+	]]>
+	
+	</select>
+	
 	
 
 

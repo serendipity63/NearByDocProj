@@ -9,21 +9,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
-import service.PatientService;
-import service.PatientServiceImpl;
+import service.ReservationService;
+import service.ReservationServiceImpl;
 
 /**
- * Servlet implementation class PatientSearch
+ * Servlet implementation class TodayReservationList
  */
-@WebServlet("/patientsearch")
-public class PatientSearch extends HttpServlet {
+@WebServlet("/trlist")
+public class TodayReservationList extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public PatientSearch() {
+    public TodayReservationList() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,28 +32,24 @@ public class PatientSearch extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
-		String type=request.getParameter("type");
-		String keyword=request.getParameter("keyword");
-		String page=request.getParameter("page");
-		int curPage=1;
+		String page= request.getParameter("page");
+		int curpage=1;
 		if(page!=null) {
-			curPage= Integer.parseInt(page);
+			curpage= Integer.parseInt(page);
 		}
 		
-		if(type.equals("all")) {
-			response.sendRedirect("patientlist");
-			return;
-		}
 		try {
-			PatientService patientService=new PatientServiceImpl();
-			Map<String,Object>res=patientService.patientSearch(type,keyword,curPage);	
+			ReservationService reservationService=new ReservationServiceImpl();
+			Map<String,Object>res=reservationService.reservationListByPage(curpage);	
 			request.setAttribute("res", res);
-			request.getRequestDispatcher("reserveinfo_p.jsp").forward(request, response);
+			request.getRequestDispatcher("reserve_t.jsp").forward(request, response);
 		}catch(Exception e) {
 			e.printStackTrace();
-			request.setAttribute("err", "환자 검색 오류");
+			request.setAttribute("err", e.getMessage());
 			request.getRequestDispatcher("herror.jsp").forward(request, response);
 		}
+		
 	}
 
+	
 }

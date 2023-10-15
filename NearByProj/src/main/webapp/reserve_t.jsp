@@ -31,8 +31,8 @@ th{
 table {
 	
     border: 1px solid;
-    width: 1356px;
-    margin:86px 357px;
+    width: 1206px;
+    margin:86px 430px;
 }
 #emptyArea { width: 708px;
     text-align: center;
@@ -50,40 +50,37 @@ table {
 	background: lightblue;
 }
 </style>
+<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+
 </head>
 
 <body>
 	<% pageContext.include("hmain.jsp");%>
 	<h1>오늘의 예약내역</h1>
 	
-		
-			
-		
-		
+		<form action="trlist" method="post" >			
 		<table>	
 			<tr class="row">
+				<th>예약번호</th>
 				<th>일자</th>
 				<th>시간</th>
 				<th>환자명</th>
-				<th>주민등록번호</th>
-				<th>연락처</th>
-				<th>주소</th>
+				<th>주민번호</th>
 				<th>요청사항</th>
 				<th>진료과목</th>
 				<th>진료완료처리</th>
 			</tr>
 		
-			<c:forEach items="${res.reserveList }" var="reserve">
+			<c:forEach items="${res.reservationList }" var="reservation">
 			<tr>
-				<td>${reserve.resdate }</td>
-				<td>${reserve.restime }</td>
-				<td>${reserve.name }</td>
-				<td>${reserve.number }</td>
-				<td>${reserve.phone }</td>
-				<td>${reserve.address }</td>
-				<td>${reserve.comment }</td>
-				<td>${reserve.subject }</td>
-				<td>${reserve.status }</td>
+				<td>${reservation.id }
+				<td>${reservation.resdate }</td>
+				<td>${reservation.restime }</td>
+				<td>${reservation.name }</td>
+				<td>${reservation.pidnum }</td>
+				<td>${reservation.comment }</td>
+				<td>${reservation.subject }</td>
+				<td>${reservation.status }</td>
 				<td>
 					<c:if test="${hospitaluser.id == hospital.comnum }">
 						<a href="patientdelete?num=${patient.pidnum }&page=${res.pageInfo.curPage}">삭제</a>
@@ -92,10 +89,11 @@ table {
 			</tr>
 			</c:forEach>
 		</table>
+	</form>
 	<div id="emptyArea">
 			<c:choose>  
 				<c:when test="${res.pageInfo.curPage>1}">
-					<a href="reslist?page=${res.pageInfo.curPage-1}">&lt;</a>
+					<a href="trlist?page=${res.pageInfo.curPage-1}">&lt;</a>
 				</c:when>
 				<c:otherwise>
 					&lt;
@@ -106,10 +104,10 @@ table {
 			<c:forEach begin="${res.pageInfo.startPage}" end="${res.pageInfo.endPage}" var="i">
 				<c:choose>
 					<c:when test="${res.pageInfo.curPage==i}">
-						<a href="reslist?page=${i}" class="select" onclick="callBtn(${i});return ${res.keyword==null};">${i}</a>&nbsp;
+						<a href="trlist?page=${i}" class="select" onclick="callBtn(${i});return ${res.keyword==null};">${i}</a>&nbsp;
 					</c:when>
 					<c:otherwise>
-						<a href="reslist?page=${i}" class="btn" onclick="callBtn(${i});return ${res.keyword==null};">${i}</a>&nbsp;
+						<a href="trlist?page=${i}" class="btn" onclick="callBtn(${i});return ${res.keyword==null};">${i}</a>&nbsp;
 					</c:otherwise>
 					
 				</c:choose>
