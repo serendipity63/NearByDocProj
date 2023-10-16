@@ -21,9 +21,15 @@ public class ReservationServiceImpl implements ReservationService{
 
 	@Override
 	public List<Map<String, Object>> showReservation(String pidnum) throws Exception {
-		System.out.println("service" + pidnum);
+		
 		return resDao.selectMyReservation(pidnum);
 	}
+	
+	@Override
+	public Map<String, Object> detailRes(Map<String, Object> param) throws Exception {
+		return resDao.selectDetailReservation(param);
+	}
+	
 
 	@Override
 	public Map<String, Object> reservationListByPage(Integer page) throws Exception {
@@ -153,4 +159,6 @@ public class ReservationServiceImpl implements ReservationService{
 	public void insertReservation(Reservation reservation) throws Exception {
 		resDao.insertReservation(reservation);
 	}
+
+	
 }

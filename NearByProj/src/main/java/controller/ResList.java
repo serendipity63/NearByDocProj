@@ -47,6 +47,7 @@ public class ResList extends HttpServlet {
 			request.getRequestDispatcher("reslist.jsp").forward(request, response);
 		} catch (Exception e) {
 			e.printStackTrace();
+			
 		}
 		
 	}

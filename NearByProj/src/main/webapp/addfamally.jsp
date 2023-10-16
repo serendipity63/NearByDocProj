@@ -130,18 +130,44 @@ table {
 	height: 100px;
 }
 
-table span {
+table>td{
 	font-size: 1px;
+	margin-left: 10px;
 }
 
 table tr td:nth-child(1) {
 	background-color: #CFE8F7;
+	width: 90px;
+	padding-left: 5px;
+}
+
+table tr td:nth-child(2) {
+	padding-left: 5px;
 }
 
 input {
 margin-left : 70px;
 }
 </style>
+
+<script>
+$(function(){
+	$(".reg").click(function(){
+		$.ajax({
+			url:"addfamally",
+			type:"post",
+			data:{"fname" : $("#pname").val()
+	      		, "ftel" : $("#tel").val()
+	      		, "faddress" : $("#address").val()
+	      		, "fidnum" : $("#idnum").val()},
+			    success:function(){
+			    	location.href="addfamally"
+			    }
+		})
+	})
+})
+
+</script>
 </head>
 
 <body>
@@ -154,23 +180,21 @@ margin-left : 70px;
 			<span style="text-align: left; margin: 10px 0 10px 10px">가족관리</span>
 			<span class="material-symbols-outlined" onClick="history.go(-1)"
 				style="margin-left: 280px;"> arrow_back </span> <br> <br>
-			<form action="addfamally" method="post">
+			<!-- <form action="addfamally" method="post"> -->
 				<p>이름</p>
-				<input type="text" id="pname" placeholder="" required="">
+				<input type="text" id="pname" name="fname" placeholder="" required="">
 				<p>전화번호</p>
-				<input type="text" id="tel" placeholder="-없이 숫자만 입력" required="">
+				<input type="text" id="tel" name="ftel" placeholder="-없이 숫자만 입력" required="">
 				<p>주소</p>
-				<input type="text" id="address" placeholder="" required="">
+				<input type="text" id="address" name="faddress" placeholder="" required="">
 				<p>주민등록번호</p>
-				<input type="text" id="idnum" placeholder="-없이 숫자만 입력" required="">
+				<input type="text" id="idnum" name="fidnum" placeholder="-없이 숫자만 입력" required="">
 				<br>
 				<div class="idbtn">
-					<input calss="reg" type="submit" value="등록"
+					<input class="reg" type=button value="등록"
 						style="text-align: left;">
-					<!-- <button class="reg" type="submit">
-          <h4>등록</h4></button>  -->
 				</div>
-			</form>
+			<!-- </form> -->
 			<input class="cancel" type="button" value="취소" onclick="cancel">
 			<!-- <button class="cancel" onclick="cancel"><h4>취소</h4></button> -->
 			<br>
@@ -179,71 +203,25 @@ margin-left : 70px;
 
 		<div id="famlist">
 			<br>
+			<c:forEach items="${familys}" var="family">
 			<div id="detailfam">
 				<table border="1">
 					<tr>
-						<td><span>이름</span></td>
-						<td><span>김길동</span></td>
+						<td>이름</td>
+						<td size="30px">${family.name }</td>
 					</tr>
 					<tr>
-						<td><span>전화번호</span></td>
-						<td><span>010-1234-5678</span></td>
+						<td>전화번호</td>
+						<td>${family.tel }</td>
 					</tr>
 					<tr>
-						<td><span>주소</span></td>
-						<td><span>서울특별시 금천구 남부순환로 호서대벤처타워</span></td>
+						<td>주소</td>
+						<td>${family.address }</td>
 					</tr>
 				</table>
 			</div>
-			<div id="detailfam">
-				<table border="1">
-					<tr>
-						<td><span>이름</span></td>
-						<td><span>박길동</span></td>
-					</tr>
-					<tr>
-						<td><span>전화번호</span></td>
-						<td><span>010-1234-5678</span></td>
-					</tr>
-					<tr>
-						<td><span>주소</span></td>
-						<td><span>서울특별시 금천구 남부순환로 호서대벤처타워</span></td>
-					</tr>
-				</table>
-			</div>
-			<div id="detailfam">
-				<table border="1">
-					<tr>
-						<td><span>이름</span></td>
-						<td><span>홍길동</span></td>
-					</tr>
-					<tr>
-						<td><span>전화번호</span></td>
-						<td><span>010-1234-5678</span></td>
-					</tr>
-					<tr>
-						<td><span>주소</span></td>
-						<td><span>서울특별시 금천구 남부순환로 호서대벤처타워</span></td>
-					</tr>
-				</table>
-			</div>
-
-			<div id="detailfam">
-				<table border="1">
-					<tr>
-						<td><span>이름</span></td>
-						<td><span>신길동</span></td>
-					</tr>
-					<tr>
-						<td><span>전화번호</span></td>
-						<td><span>010-1234-5678</span></td>
-					</tr>
-					<tr>
-						<td><span>주소</span></td>
-						<td><span>서울특별시 금천구 남부순환로 호서대벤처타워</span></td>
-					</tr>
-				</table>
-			</div>
+			</c:forEach>
+			
 
 			<input type="button" value="수정" onClick="location.href='modifamally'">
 			<!-- <button><h4><a href="modifamally.html">수정</a></h4></button> -->

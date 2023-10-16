@@ -17,6 +17,13 @@ public class ReservationDaoImpl implements ReservationDao{
 		return sqlSession.selectList("mapper.reservation.selectMyReservation", pidnum);
 		 
 	}
+	
+	@Override
+	public Map<String, Object> selectDetailReservation(Map<String, Object> param) {
+		return sqlSession.selectOne("mapper.reservation.selectDetailReservation", param);
+	}
+	
+	
 
 	@Override
 	public Integer cntMyReservation(String pidnum) throws Exception {
@@ -52,5 +59,7 @@ public class ReservationDaoImpl implements ReservationDao{
 		sqlSession.insert("mapper.reservation.insertReservation",reservation);
 		sqlSession.commit();
 	}
+
+	
 
 }
