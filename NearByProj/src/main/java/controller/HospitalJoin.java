@@ -58,10 +58,16 @@ public class HospitalJoin extends HttpServlet {
 		String hdetail = request.getParameter("hdetail");
 		String hpostcode = request.getParameter("hpostcode");
 		String hurl = request.getParameter("hurl");
-		BigDecimal hgrade = null;
-		Integer hreviewcnt = null;
-		BigDecimal lat = null;
-		BigDecimal lon = null;
+		BigDecimal hgrade =null;
+		Integer hreviewcnt=null ;
+		BigDecimal lat = new BigDecimal(request.getParameter("lat"));
+		System.out.println(lat);
+		BigDecimal lon = new BigDecimal(request.getParameter("lon"));
+		System.out.println(lon);
+				
+				
+		
+		
 
 		Hospital hospital = new Hospital(hname, hpassword, comnum, htel, department, lunch, clinic, hroad, hdong,
 				hdetail, hpostcode, hurl, hgrade, hreviewcnt, lat, lon);

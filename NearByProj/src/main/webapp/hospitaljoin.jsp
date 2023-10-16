@@ -16,7 +16,8 @@
 	rel="stylesheet">
 
 <%--sweetalert2  --%>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
@@ -75,7 +76,7 @@ form.join-form input[type="text"], form.join-form input[type="password"],
 	padding: 10px;
 	border: 2px solid;
 	width: 500px;
-	height: 750px;
+	height: 800px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -159,77 +160,77 @@ input[type='submit']:hover {
 </style>
 <!-- 사업자번호 중복검사  기능 -->
 <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
+<script type="text/javascript"
+	src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
 
 <script type="text/javascript">
-$(function() {
-    let isComnumCheck = false;
-    let isPasswordMatch = false;
+	$(function() {
+		let isComnumCheck = false;
+		let isPasswordMatch = false;
 
-    $('#comnumcheck').click(function() {
-        const comnum = $("#comnum").val().trim(); // 사업자번호 입력에서 공백 제거
-        if (comnum.length !== 10) {
-            Swal.fire("오류", "사업자등록번호는 10자리여야 합니다", "error");
-            return; // 입력 오류가 있으므로 중복 체크를 진행하지 않음
-        }
+		$('#comnumcheck').click(function() {
+			const comnum = $("#comnum").val().trim(); // 사업자번호 입력에서 공백 제거
+			if (comnum.length !== 10) {
+				Swal.fire("오류", "사업자등록번호는 10자리여야 합니다", "error");
+				return; // 입력 오류가 있으므로 중복 체크를 진행하지 않음
+			}
 
-        $.ajax({
-            url: "comnumcheck",
-            type: "post",
-            data: {
-                comnum: comnum
-            },
-            success: function(res) {
-                console.log(res);
-                if (res == "notexist") {
-                    isComnumCheck = true;
-                    Swal.fire("성공", "사용 가능합니다", "success");
-                } else {
-                    Swal.fire("오류", "사업자등록번호가 중복됩니다", "error");
-                }
-            },
-            error: function(err) {
-                console.log(err);
-                Swal.fire("오류", "사업자번호 중복체크 오류", "error");
-            }
-        });
-    });
+			$.ajax({
+				url : "comnumcheck",
+				type : "post",
+				data : {
+					comnum : comnum
+				},
+				success : function(res) {
+					console.log(res);
+					if (res == "notexist") {
+						isComnumCheck = true;
+						Swal.fire("성공", "사용 가능합니다", "success");
+					} else {
+						Swal.fire("오류", "사업자등록번호가 중복됩니다", "error");
+					}
+				},
+				error : function(err) {
+					console.log(err);
+					Swal.fire("오류", "사업자번호 중복체크 오류", "error");
+				}
+			});
+		});
 
-    $('#comnum, #hpassword, #hpassword-confirm').change(function() {
-        isComnumCheck = false;
-        isPasswordMatch = false;
-    });
+		$('#comnum, #hpassword, #hpassword-confirm').change(function() {
+			isComnumCheck = false;
+			isPasswordMatch = false;
+		});
 
-    $("#form").submit(function(e) {
-        const comnum = $("#comnum").val().trim(); // 사업자번호 입력에서 공백 제거
-        const password = $("#hpassword").val();
-        const confirmPassword = $("#hpassword-confirm").val();
+		$("#form").submit(function(e) {
+			const comnum = $("#comnum").val().trim(); // 사업자번호 입력에서 공백 제거
+			const password = $("#hpassword").val();
+			const confirmPassword = $("#hpassword-confirm").val();
 
-        if (comnum.length !== 10) {
-            Swal.fire("오류", "사업자등록번호는 10자리여야 합니다", "error");
-            e.preventDefault();
-        } else if (!isComnumCheck) {
-            Swal.fire("오류", "사업자번호 중복체크하세요", "error");
-            e.preventDefault();
-        } else if (password !== confirmPassword) {
-            Swal.fire("오류", "비밀번호가 일치하지 않습니다. 다시 확인해주세요", "error");
-            e.preventDefault();
-/*         } else {
-            // 회원가입 성공 메세지
-            Swal.fire("성공", "회원가입이 성공적으로 완료되었습니다!", "success")
-            e.preventDefault();
- */
-/*             
-              .then((result) => {
-                    // "확인" 버튼을 누르면 hospitallogin.jsp 페이지로 리디렉션
-                    if (result.isConfirmed) {
-                        window.location.href = "hospitallogin.jsp";
-                    }
-                 });   */
-        }
-    });
-});
-
+			if (comnum.length !== 10) {
+				Swal.fire("오류", "사업자등록번호는 10자리여야 합니다", "error");
+				e.preventDefault();
+			} else if (!isComnumCheck) {
+				Swal.fire("오류", "사업자번호 중복체크하세요", "error");
+				e.preventDefault();
+			} else if (password !== confirmPassword) {
+				Swal.fire("오류", "비밀번호가 일치하지 않습니다. 다시 확인해주세요", "error");
+				e.preventDefault();
+				/*         } else {
+				 // 회원가입 성공 메세지
+				 Swal.fire("성공", "회원가입이 성공적으로 완료되었습니다!", "success")
+				 e.preventDefault();
+				 */
+				/*             
+				 .then((result) => {
+				 // "확인" 버튼을 누르면 hospitallogin.jsp 페이지로 리디렉션
+				 if (result.isConfirmed) {
+				 window.location.href = "hospitallogin.jsp";
+				 }
+				 });   */
+			}
+		});
+	});
 </script>
 
 
@@ -255,16 +256,14 @@ $(function() {
 				}
 
 				// 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
-				/* if (data.userSelectedType === 'R') {
+				if (data.userSelectedType === 'R') {
 					// 법정동명이 있을 경우 추가한다. (법정리는 제외)
 					// 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
-					if (data.bname !== ''
-							&& /[동|로|가]$/g.test(data.bname)) {
+					if (data.bname !== '' && /[동|로|가]$/g.test(data.bname)) {
 						extraAddr += data.bname;
 					}
 					// 건물명이 있고, 공동주택일 경우 추가한다.
-					if (data.buildingName !== ''
-							&& data.apartment === 'Y') {
+					if (data.buildingName !== '' && data.apartment === 'Y') {
 						extraAddr += (extraAddr !== '' ? ', '
 								+ data.buildingName : data.buildingName);
 					}
@@ -277,11 +276,12 @@ $(function() {
 
 				} else {
 					document.getElementById("extraAddress").value = '';
-				} */
+				}
 
 				// 우편번호와 주소 정보를 해당 필드에 넣는다.
 				document.getElementById('hpostcode').value = data.zonecode;
 				document.getElementById("haddress").value = addr;
+				addressSearch(addr);
 				// 커서를 상세주소 필드로 이동한다.
 				document.getElementById("hdetailAddress").focus();
 			}
@@ -315,7 +315,7 @@ $(function() {
 					<div class="row">
 						<div class="input">
 							<input type="number" id="comnum" name="comnum"
-								placeholder="사업자등록번호" required="required"/>
+								placeholder="사업자등록번호" required="required" />
 							<button id="comnumcheck">중복 확인</button>
 
 						</div>
@@ -332,7 +332,8 @@ $(function() {
 				</div>
 				<div class="row">
 					<div class="input">
-						<input type="password" id="hpassword-confirm" placeholder="비밀번호 재확인" required="required"/>
+						<input type="password" id="hpassword-confirm"
+							placeholder="비밀번호 재확인" required="required" />
 					</div>
 				</div>
 
@@ -352,8 +353,8 @@ $(function() {
 
 				<div class="row">
 					<div class="input">
-						<input type="text" id="haddress" name="hroad"
-							placeholder="도로명 주소">
+						<input type="text" id="haddress" name="hroad" placeholder="도로명 주소"
+							onblur="addressSearch(this.value)">
 					</div>
 				</div>
 				<div class="row">
@@ -362,6 +363,39 @@ $(function() {
 							placeholder="상세주소">
 					</div>
 				</div>
+				<input type="text" id="extraAddress" name="hdong" placeholder="참고항목">
+
+				<script type="text/javascript"
+					src="//dapi.kakao.com/v2/maps/sdk.js?appkey=0f92754065fd18fb9b2450d8077e930c&libraries=services,drawing"></script>
+				<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+
+				<script>
+					var geocoder = new kakao.maps.services.Geocoder();
+					function addressSearch(haddress) {
+						geocoder.addressSearch(haddress, function(result,
+								status) {
+							if (status === kakao.maps.services.Status.OK) {
+								//주소를 좌표로변환한 결과에서 위도와 경도를 얻어온다
+								var latitude = result[0].y;
+								var longitude = result[0].x;
+								var coords = new kakao.maps.LatLng(result[0].y,
+										result[0].x);
+								console.log(latitude);
+								console.log(longitude);
+								console.log(coords);
+								document.getElementById('latitude').value = latitude;
+								document.getElementById("longitude").value = longitude;
+
+							} else {
+								console.error('오류');
+
+							}
+						});
+					}
+				</script>
+				<input type="hidden" id="latitude" name="lat" placeholder="위도">
+				<input type="hidden" id="longitude" name="lon" placeholder="경도">
+
 				<%-- 주소끝 --%>
 
 				<div class="row">
@@ -372,9 +406,9 @@ $(function() {
 
 				<div class="row">
 					<div class="input">
-						<input type="text" class="type" 
-							placeholder="진료과목명" onclick="openTypeSelectionPage()"
-							name="department" id="department" required="required"/>
+						<input type="text" class="type" placeholder="진료과목명"
+							onclick="openTypeSelectionPage()" name="department"
+							id="department" required="required" />
 					</div>
 				</div>
 
