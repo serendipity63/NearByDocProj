@@ -1,5 +1,7 @@
 package service;
 
-public interface FamilyService {
+import dto.Family;
 
+public interface FamilyService {
+	Family selectFamily(String name) throws Exception;
 }
