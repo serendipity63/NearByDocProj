@@ -3,6 +3,7 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="mapper.family">
 
+
 <insert id="addFamily" parameterType="Family">
 <![CDATA[
 insert into family (fidnum, fname, ftel, pidnum, faddress)
@@ -23,5 +24,13 @@ insert into family (fidnum, fname, ftel, pidnum, faddress)
 
 ]]>
 </select>
+
+	<select id="selectFamily" parameterType="String"
+		resultType="Family">
+	<![CDATA[
+		select * from family where fname=#{name}
+	]]>
+	</select>
+
 	
 </mapper>

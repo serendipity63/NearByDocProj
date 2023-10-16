@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
+import dto.Hospital;
 import dto.Reservation;
 import util.MybatisSqlSessionFactory;
 
@@ -61,5 +62,8 @@ public class ReservationDaoImpl implements ReservationDao{
 	}
 
 	
-
+	@Override
+	public List<String> resTimeList(Map<String, String> param) throws Exception {
+		return sqlSession.selectList("mapper.reservation.searchResTimeList",param);
+	}
 }

@@ -21,45 +21,64 @@
 	href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+	rel="stylesheet">
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+	function toggleOtherDeptInput() {
+		var otherDeptCheckbox = document.getElementById("otherDeptCheckbox");
+		var otherDeptInput = document.getElementById("otherDeptInput");
 
-
-<script type="text/javascript">
-	//function openTypeSelectionPage() {
-		// 진료과목 선택 페이지 열기
-	//	var typeSelectionPage = window.open("department.jsp", "TypeSelection",
-	//			"width=400,height=300");
-	//	window.addEventListener("message", function(event) {
-	//		var selectedTypesStr = event.data;
-	//		var departmentInput = document.getElementById("department-input");
-	//		departmentInput.value = selectedTypesStr;
-//
-//		});
-//	}
+		if (otherDeptCheckbox.checked) {
+			otherDeptInput.removeAttribute("disabled");
+		} else {
+			otherDeptInput.setAttribute("disabled", "disabled");
+		}
+	}
 </script>
+
 
 <script type="text/javascript">
 	function openLocationSelectionPage() {
+		
+		document.getElementById("latitude").value='';
+		document.getElementById("longitude").value='';
 		// 주소 설정 페이지 열기
 		var locationSelectionPage = window.open("location.jsp",
 				"LocationSelection", "width=500,height=600");
 
 		window.addEventListener("message", function(event) {
 			// event.data에 보내진 데이터가 포함
-			
-			var addressName = event.data;
-			//내위치값
-			var addressData = event.data;
-			//검색값
-			
-			// 이제 이 값을 사용할 수 있음.
+			var address = event.data;
+			var addressArr = address.split(","); //주소와 위경도 분리
+
 			var addressInput = document.getElementById("address-input");
-		    // addressName 또는 addressData를 선택하여 addressInput에 할당
-		    // 예를 들어 addressName이 있는 경우 addressName을 사용하고, 그렇지 않으면 addressData를 사용
-		    var valueToAssign = addressName ? addressName : addressData;
-		    
-		    addressInput.value = valueToAssign;
+			addressInput.value = addressArr[0];
+			console.log(addressArr);
+			console.log(addressArr[1]);
+			if(addressArr.length==2) {
+				var latilong = addressArr[1].split(":");  //위도와 경도 분리
+				var latitude = document.getElementById("latitude");
+				var longitude = document.getElementById("longitude");
+				latitude.value= latilong[0];
+				longitude.value= latilong[1];
+			}
+
+
+			
+			console.log(addressInput.value);
 		});
 	}
+</script>
+
+<script>
+	$(function() {
+		$("#selectDeptBtn").click(function() {
+			$("#department-input").val($("input[name='dept']:checked").val());
+		})		
+	})
 </script>
 <style>
 * {
@@ -228,37 +247,39 @@ a {
 	pageContext.include("header.jsp");
 	%>
 
-	<div class="container">
+	<form action="searchhospital" method="post" id="searchhospital">
+		<input type="hidden" name="latitude" id="latitude"/>
+		<input type="hidden" name="longitude" id="longitude"/>
+		<div class="container">
+			<div class="searchbox">
+				<div class="inner">
+					<div class="container-2">
+						<div class="type">
+							<span class="icon"><i class="material-icons">search</i></span>
+							&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" placeholder="진료과"
+								class="department-input" name="department-input" required
+								id="department-input" data-bs-toggle="modal" 
+								data-bs-target="#myModal">
+						</div>
 
 
-		<%-- 진료과 입력값이 없으면 그냥 내 위치 기반으로 찾아지게? default가 내 위치 기반 --%>
-		<div class="searchbox">
-			<div class="inner">
-				<div class="container-2">
-					<div class="type">
-						<span class="icon"><i class="material-icons">search</i></span>
-						&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" placeholder="진료과"
-							class="department-input" id="department-input"
-							onclick="openTypeSelectionPage()" readonly>
 					</div>
-					<%-- hospital db에서 입력된 값만 호출되게.. --%>
-
-				</div>
-				<div class="container-3">
-					<div class="address">
-						<span class="icon"><i class="material-icons">location_on</i></span>
-						&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" placeholder="주소설정"
-							class="address-input" id="address-input"
-							onclick="openLocationSelectionPage()" readonly>
+					<div class="container-3">
+						<div class="address">
+							<span class="icon"><i class="material-icons">location_on</i></span>
+							&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" placeholder="주소설정"
+								class="address-input" id="address-input" name="address-input"
+								onclick="openLocationSelectionPage()" required >
+						</div>
 					</div>
-				</div>
-				<div class="button">
-					<button class="search-button"
-						onclick="location.href='searchhospital'">병원 찾기</button>
+					<div class="button">
+						<button class="search-button" type="submit">병원 찾기</button>
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
+
+	</form>
 	<a class="hospital" href="hlogin">
 		<div class="hospital">
 			혹시 병원 관계자이신가요? <br>병원페이지 바로가기
@@ -276,6 +297,51 @@ a {
 			<p class="copyright">NEARBYDOC © 2023</p>
 		</footer>
 	</div>
+	<!-- The Modal -->
+	<div class="modal" id="myModal">
+		<div class="modal-dialog">
+			<div class="modal-content">
+
+				<!-- Modal Header -->
+				<div class="modal-header">
+					<h4 class="modal-title">Modal Heading</h4>
+					<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+				</div>
+
+				<!-- Modal body -->
+				<div class="modal-body">
+					<ul>
+						<li><input type="radio" name="dept" value="내과"> 내과</li>
+						<li><input type="radio" name="dept" value="정형외과">
+							정형외과</li>
+						<li><input type="radio" name="dept" value="외과"> 외과</li>
+						<li><input type="radio" name="dept" value="피부과"> 피부과
+						</li>
+						<li><input type="radio" name="dept" value="산부인과">
+							산부인과</li>
+						<li><input type="radio" name="dept" value="정신건강의학과">
+							정신건강의학과</li>
+						<li><input type="radio" name="dept" value="이비인후과">
+							이비인후과</li>
+						<li><input type="radio" name="dept" value="소아과"> 소아과
+						</li>
+						<li><input type="radio" name="dept" id="otherDeptCheckbox"
+							value="기타" onchange="toggleOtherDeptInput()"> 기타 <input
+							type="text" name="otherDept" id="otherDeptInput"
+							placeholder="기타 진료과목 입력" disabled></li>
+					</ul>
+
+				</div>
+
+				<!-- Modal footer -->
+				<div class="modal-footer">
+					<button type="button" class="btn btn-danger"
+						data-bs-dismiss="modal" id="selectDeptBtn">선택 완료</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 </body>
 
 </html>

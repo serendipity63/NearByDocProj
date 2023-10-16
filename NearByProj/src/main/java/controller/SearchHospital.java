@@ -19,27 +19,39 @@ import service.HospitalServiceImpl;
 @WebServlet("/searchhospital")
 public class SearchHospital extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public SearchHospital() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public SearchHospital() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
+		String address = request.getParameter("address-input");
+		String department = request.getParameter("department-input");
+		String lat = request.getParameter("latitude");
+		String lon = request.getParameter("longitude");
+
+		/*
+		 * System.out.println(address); 
+		 * System.out.println(department);
+		 * System.out.println(lat); 
+		 * System.out.println(lon);
+		 */
+
 		HospitalService hospitalservice = new HospitalServiceImpl();
 		try {
-			List<Hospital> hoslist = hospitalservice.hospitalList();
+			List<Hospital> hoslist = hospitalservice.hospitalList(department,lat,lon);
+			request.setAttribute("address", address);
+			request.setAttribute("department", department);
 			request.setAttribute("hoslist", hoslist);
 			request.getRequestDispatcher("searchhospital.jsp").forward(request, response);
-		
-		} catch(Exception e) {
+
+		} catch (Exception e) {
 			e.printStackTrace();
 			request.setAttribute("err", e.getMessage());
 			request.getRequestDispatcher("error404.jsp").forward(request, response);
