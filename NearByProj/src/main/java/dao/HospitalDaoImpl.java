@@ -29,8 +29,8 @@ public class HospitalDaoImpl implements HospitalDao {
 	}
 
 	@Override
-	public List<Hospital> selectHospitalList() throws Exception {
+	public List<Hospital> selectHospitalList(String department) throws Exception {
 
-		return sqlSession.selectList("mapper.hospital.selectHospitalList");
+		return sqlSession.selectList("mapper.hospital.selectHospitalList",department);
 	}
 }
