@@ -151,9 +151,12 @@ a {
 			<script>
 var geocoder = new kakao.maps.services.Geocoder();
 
+var latitude;   // 위도
+var longitude; // 경도
+
 function success({ coords, timestamp }) {
-    const latitude = coords.latitude;   // 위도
-    const longitude = coords.longitude; // 경도
+    latitude = coords.latitude;   // 위도
+    longitude = coords.longitude; // 경도
     
     console.log(`위도: \${latitude}, 경도: \${longitude}, 위치 반환 시간: \${timestamp}`);
     //위도경도
@@ -170,7 +173,11 @@ function getUserLocation() {
 
 var callback = function(result, status) {
     if (status === kakao.maps.services.Status.OK) {
-    	  addressName = result[0].address.address_name; //변수에 주소를 저장
+    	  var addressName = result[0].address.address_name; //변수에 주소를 저장
+    	  addressName += ","+latitude+":"+longitude;
+    	  console.log(latitude)
+    	  console.log(longitude)
+    	  console.log(addressName)
     	  window.opener.postMessage(addressName,"*"); //전달하기
     	  
     	  window.close(); //전달하고 창 닫힘
@@ -205,62 +212,17 @@ $("#currentAddress").click(function() {
 
 	function execDaumPostcode() {
 
-	new daum.Postcode({
+		new daum.Postcode({
+			oncomplete: function (data) {
+				window.opener.postMessage(data.address,"*"); //전달하기
+      	    	window.close(); //전달하고 창 닫힘
+			}
+		}).open();
 
-	oncomplete: function (data) {
-
-	var addrArray = data.jibunAddress.split(' '); // 지번 주소를 공백으로 나눠 배열로 분리
-
-var sido = addrArray[0]; // 첫 번째 요소는 시/도 정보
-
-var sigungu = addrArray[1]; // 두 번째 요소는 시/군/구 정보
-
-var bname = data.bname; // 건물명 가져오기
-
-// 시/도와 시/군/구 정보를 해당 필드에 넣는다
-
-document.getElementById("hsido").value = sido;
-
-document.getElementById("hsigungu").value = sigungu;
-
-document.getElementById("bname").value = bname;
-
-
-
-console.log("hsido 값: " + sido);
-
-console.log("hsigungu 값: " + sigungu);
-
-console.log("bname 값: " + bname);
-
-
-// 주소 데이터를 JavaScript 변수에 저장
-var addressData = sido + " " + sigungu + " " + bname;
-
-// 이제 addressData 변수에 주소 데이터가 저장됨
-console.log("주소 데이터: " + addressData);
-
-// 주소 데이터를 부모 창에 전달
-window.opener.postMessage(addressData, "*");
-//opener.document.getElementById('address-input').value=$('#addressData').val();
-// 주소 검색 완료 후 자동으로 다이얼로그를 닫음
-if (data.autoClose) {
-    window.close();
-
-
-}
-    }
-}).open();
-
-}
+	}
 
 </script>
 
-
-	<!-- 여기서 hsido와 hsigungu 필드를 추가 -->
-	<input type="hidden" id="hsido" name="hsido" value="">
-	<input type="hidden" id="hsigungu" name="hsigungu" value="">
-	<input type="hidden" id="bname" name="bname" value="">
 
 </body>
 

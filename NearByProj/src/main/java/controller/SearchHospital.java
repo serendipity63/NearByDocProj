@@ -45,5 +45,17 @@ public class SearchHospital extends HttpServlet {
 			request.getRequestDispatcher("error404.jsp").forward(request, response);
 		}
 	}
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("utf-8");
+		String address = request.getParameter("address-input");
+		String department = request.getParameter("department-input");
+		String latitude = request.getParameter("latitude");
+		String longitude = request.getParameter("longitude");
+		
+		System.out.println(address);
+		System.out.println(department);
+		System.out.println(latitude);
+		System.out.println(longitude);
+	}
 
 }
