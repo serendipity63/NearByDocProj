@@ -45,9 +45,12 @@
 
 		window.addEventListener("message", function(event) {
 			// event.data에 보내진 데이터가 포함
+			
 			var addressName = event.data;
+			//내위치값
 			var addressData = event.data;
-
+			//검색값
+			
 			// 이제 이 값을 사용할 수 있음.
 			var addressInput = document.getElementById("address-input");
 		    // addressName 또는 addressData를 선택하여 addressInput에 할당
