@@ -86,6 +86,9 @@
 .btn-primary:hover {
 	background-color: #0056b3;
 }
+.sub {
+            font-weight: bold;
+        }
 </style>
 <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
 <script type="text/javascript">
@@ -197,7 +200,7 @@
 			<button
 				onclick="window.open('insertreview', 'window_name','width=800, height=1000, location=no, status=no, scrollbars=yes')">리뷰하기</button>
 		</div>
-		<br> 병원 위치 정보
+		<br> <p class="sub"}>병원 위치 정보</p>
 		<div id="map" style="width: 100%; height: 350px;"></div>
 
 		<script type="text/javascript"

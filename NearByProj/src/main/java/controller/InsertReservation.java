@@ -11,10 +11,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import dto.Family;
 import dto.Hospital;
 import dto.Patient;
 import dto.Reservation;
-import service.ReservationService;
+import service.FamilyService;
+import service.FamilyServiceImpl;
 import service.ReservationServiceImpl;
 
 /**
@@ -64,7 +66,7 @@ public class InsertReservation extends HttpServlet {
 		HttpSession session = request.getSession();
 		Hospital hospital = (Hospital)session.getAttribute("hospital");
 		Patient patient = (Patient)session.getAttribute("user");
-		
+		String name=request.getParameter("name");
 		String pidnum = patient.getPidnum(); // 이름value 보내는데 pidnum 어떻게 얻어올지 수정해야함.
 		String comnum = hospital.getComnum();
 		String resdate = request.getParameter("resdate");
@@ -74,8 +76,16 @@ public class InsertReservation extends HttpServlet {
 		String doccomment = null;
 		Integer id = null;
 		String fidnum = null;
+		
 		Reservation reservation = new Reservation(pidnum,comnum,resdate,restime,comment,status,doccomment,id,fidnum);
 		try {
+			if(!(name.equals(patient.getPname()))) {
+				
+				FamilyService familyservice = new FamilyServiceImpl();
+				Family family = familyservice.selectFamily(name);
+				fidnum=family.getFidnum();
+				session.setAttribute("name", name);
+			}
 			session.setAttribute("reservation", reservation);
 			response.sendRedirect("completereservation");
 
