@@ -42,28 +42,43 @@
 
 <script type="text/javascript">
 	function openLocationSelectionPage() {
+		
+		document.getElementById("latitude").value='';
+		document.getElementById("longitude").value='';
 		// 주소 설정 페이지 열기
 		var locationSelectionPage = window.open("location.jsp",
 				"LocationSelection", "width=500,height=600");
 
 		window.addEventListener("message", function(event) {
 			// event.data에 보내진 데이터가 포함
+			var address = event.data;
+			var addressArr = address.split(","); //주소와 위경도 분리
 
-			var addressName = event.data;
-			//내위치값
-			var addressData = event.data;
-			//검색값
-
-			// 이제 이 값을 사용할 수 있음.
 			var addressInput = document.getElementById("address-input");
-			// addressName 또는 addressData를 선택하여 addressInput에 할당
-			// 예를 들어 addressName이 있는 경우 addressName을 사용하고, 그렇지 않으면 addressData를 사용
-			var valueToAssign = addressName ? addressName : addressData;
+			addressInput.value = addressArr[0];
+			console.log(addressArr);
+			console.log(addressArr[1]);
+			if(addressArr.length==2) {
+				var latilong = addressArr[1].split(":");  //위도와 경도 분리
+				var latitude = document.getElementById("latitude");
+				var longitude = document.getElementById("longitude");
+				latitude.value= latilong[0];
+				longitude.value= latilong[1];
+			}
 
-			addressInput.value = valueToAssign;
+
+			
 			console.log(addressInput.value);
 		});
 	}
+</script>
+
+<script>
+	$(function() {
+		$("#selectDeptBtn").click(function() {
+			$("#department-input").val($("input[name='dept']:checked").val());
+		})		
+	})
 </script>
 <style>
 * {
@@ -232,7 +247,9 @@ a {
 	pageContext.include("header.jsp");
 	%>
 
-	<form action="main" method="post" id="allsearch">
+	<form action="searchhospital" method="post" id="searchhospital">
+		<input type="hidden" name="latitude" id="latitude"/>
+		<input type="hidden" name="longitude" id="longitude"/>
 		<div class="container">
 			<div class="searchbox">
 				<div class="inner">
@@ -240,8 +257,8 @@ a {
 						<div class="type">
 							<span class="icon"><i class="material-icons">search</i></span>
 							&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" placeholder="진료과"
-								class="department-input" name="department-input"
-								id="department-input" data-bs-toggle="modal"
+								class="department-input" name="department-input" required
+								id="department-input" data-bs-toggle="modal" 
 								data-bs-target="#myModal">
 						</div>
 
@@ -252,12 +269,11 @@ a {
 							<span class="icon"><i class="material-icons">location_on</i></span>
 							&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" placeholder="주소설정"
 								class="address-input" id="address-input" name="address-input"
-								onclick="openLocationSelectionPage()" readonly>
+								onclick="openLocationSelectionPage()" required >
 						</div>
 					</div>
 					<div class="button">
-						<button class="search-button"
-							onclick="location.href='searchhospital'">병원 찾기</button>
+						<button class="search-button" type="submit">병원 찾기</button>
 					</div>
 				</div>
 			</div>
@@ -320,9 +336,7 @@ a {
 				<!-- Modal footer -->
 				<div class="modal-footer">
 					<button type="button" class="btn btn-danger"
-						data-bs-dismiss="modal">Close</button>
-					<button type="button" class="btn btn-primary"
-						onclick="sendSelectedDeptToMainPage()">선택 완료</button>
+						data-bs-dismiss="modal" id="selectDeptBtn">선택 완료</button>
       </div>
     </div>
   </div>
