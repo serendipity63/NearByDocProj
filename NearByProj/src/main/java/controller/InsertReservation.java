@@ -71,7 +71,8 @@ public class InsertReservation extends HttpServlet {
 		boolean status = false;
 		String doccomment = null;
 		Integer id = null;
-		Reservation reservation = new Reservation(pidnum,comnum,resdate,restime,comment,status,doccomment,id);
+		String fidnum = null;
+		Reservation reservation = new Reservation(pidnum,comnum,resdate,restime,comment,status,doccomment,id,fidnum);
 		try {
 			session.setAttribute("reservation", reservation);
 			response.sendRedirect("completereservation");
