@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
+
 import dto.Hospital;
 import service.HospitalService;
 import service.HospitalServiceImpl;
@@ -46,6 +49,14 @@ public class HospitalJoin extends HttpServlet {
 			throws ServletException, IOException {
 
 		request.setCharacterEncoding("utf-8");
+
+		// 파일 업로드
+		String uploadPath = request.getServletContext().getRealPath("upload");
+		int size = 10 * 1024 * 1024;
+		MultipartRequest multi = new MultipartRequest(request, uploadPath, size, "utf-8",
+				new DefaultFileRenamePolicy());
+		// 파일 업로드 끝
+
 		String hname = request.getParameter("hname");
 		String hpassword = request.getParameter("hpassword");
 		String comnum = request.getParameter("comnum");
@@ -57,20 +68,19 @@ public class HospitalJoin extends HttpServlet {
 		String hdong = request.getParameter("hdong");
 		String hdetail = request.getParameter("hdetail");
 		String hpostcode = request.getParameter("hpostcode");
-		String hurl = request.getParameter("hurl");
-		BigDecimal hgrade =null;
-		Integer hreviewcnt=null ;
+		String hurl = multi.getOriginalFileName("hurl");
+		BigDecimal hgrade = null;
+		Integer hreviewcnt = null;
 		BigDecimal lat = new BigDecimal(request.getParameter("lat"));
 		System.out.println(lat);
 		BigDecimal lon = new BigDecimal(request.getParameter("lon"));
 		System.out.println(lon);
-				
-				
-		
-		
 
 		Hospital hospital = new Hospital(hname, hpassword, comnum, htel, department, lunch, clinic, hroad, hdong,
 				hdetail, hpostcode, hurl, hgrade, hreviewcnt, lat, lon);
+
+		String fileName = multi.getFilesystemName("hurl");
+		hospital.setHurl(fileName);
 		try {
 			HospitalService hospitalService = new HospitalServiceImpl();
 			hospitalService.hospitaljoin(hospital);
