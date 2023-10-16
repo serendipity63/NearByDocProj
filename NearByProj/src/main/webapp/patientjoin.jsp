@@ -301,11 +301,11 @@ input:focus {
 						$("#form").submit(function(e) {
 							const pidnum = $("#pidnum").val();
 							const ptel = $("#ptel").val();
-							const pidnumPattern = /^[0-9]{12}$/;
+							const pidnumPattern = /^[0-9]{13}$/;
 							const ptelPattern = /^[0-9]{11}$/;
 
 							if (!pidnumPattern.test(pidnum)) {
-								alert("주민번호는 12자리 숫자여야 합니다.");
+								alert("주민번호는 13자리 숫자여야 합니다.");
 								e.preventDefault();
 							}
 
