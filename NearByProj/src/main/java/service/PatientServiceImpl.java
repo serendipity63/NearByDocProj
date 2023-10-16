@@ -121,4 +121,20 @@ public Patient myInfo(String pidnum) throws Exception {
 	return patientDao.selectPatientByPidnum(pidnum);
 }
 
+
+@Override
+public void modiProfile(Patient patient) throws Exception {
+	patientDao.updatePatient(patient);
+	
+}
+
+
+@Override
+public void leavePatient(String pidnum) throws Exception {
+	
+	patientDao.deletePatient(pidnum);
+	
+	
+}
+
 }
