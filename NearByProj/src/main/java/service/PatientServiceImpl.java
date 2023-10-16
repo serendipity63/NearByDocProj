@@ -10,131 +10,127 @@ import dto.Patient;
 import util.PageInfo;
 
 public class PatientServiceImpl implements PatientService {
-   private PatientDao patientDao;
+	private PatientDao patientDao;
 
-   public PatientServiceImpl() {
-      patientDao = new PatientDaoImpl();
-   }
-   
+	public PatientServiceImpl() {
+		patientDao = new PatientDaoImpl();
+	}
 
-   @Override
-   public Map<String, Object> patientListByPage(Integer page) throws Exception {
-	   PageInfo pageInfo = new PageInfo();
+	@Override
+	public Map<String, Object> patientListByPage(Integer page) throws Exception {
+		PageInfo pageInfo = new PageInfo();
 		Integer patientCount = patientDao.selectPatientCount();
-		int maxPage = (int) Math.ceil((double) patientCount / 10); // ceil 반올림 floor 반내림
-		int startPage = (page - 1) / 10 * 10 + 1; // 1,11,21,31...
+		int maxPage = (int) Math.ceil((double) patientCount / 10);
+		int startPage = (page - 1) / 10 * 10 + 1;
 		int endPage = startPage + 10 - 1;
 		if (endPage > maxPage)
 			endPage = maxPage;
 		if (page > maxPage)
-			page = maxPage; // 2페이지 1개 일때 삭제하면 현재페이지랑 max페이지를 같게 1페이지로
+			page = maxPage;
 
 		pageInfo.setAllPage(maxPage);
 		pageInfo.setCurPage(page);
 		pageInfo.setStartPage(startPage);
 		pageInfo.setEndPage(endPage);
 
-		int row = (page - 1) * 10 + 1; // 현재 페이지의 시작 row
+		int row = (page - 1) * 10 + 1;
 		List<Patient> patientList = patientDao.selectPatientList(row - 1);
 
 		Map<String, Object> map = new HashMap<>();
 		map.put("pageInfo", pageInfo);
 		map.put("patientList", patientList);
 		return map;
-   }
-   
-   
-   @Override
-   public Map<String, Object> patientSearch(String type, String keyword, Integer page) throws Exception {
-      Map<String, Object> param = new HashMap<>();
+	}
 
-      param.put("type", type);
-      param.put("keyword", keyword);
-      PageInfo pageInfo = new PageInfo();
-      int patientCount = patientDao.searchPatientCount(param);
-      int maxPage = (int) Math.ceil((double) patientCount / 10); // ceil 반올림 floor 반내림
-      int startPage = (page - 1) / 10 * 10 + 1; // 1,11,21,31...
-      int endPage = startPage + 10 - 1;
-      if (endPage > maxPage)
-         endPage = maxPage;
-      if (page > maxPage)
-         page = maxPage; // 2페이지 1개 일때 삭제하면 현재페이지랑 max페이지를 같게 1페이지로
+	@Override
+	public Map<String, Object> patientSearch(String type, String keyword, Integer page) throws Exception {
+		Map<String, Object> param = new HashMap<>();
 
-      pageInfo.setAllPage(maxPage);
-      pageInfo.setCurPage(page);
-      pageInfo.setStartPage(startPage);
-      pageInfo.setEndPage(endPage);
+		param.put("type", type);
+		param.put("keyword", keyword);
+		PageInfo pageInfo = new PageInfo();
+		int patientCount = patientDao.searchPatientCount(param);
+		int maxPage = (int) Math.ceil((double) patientCount / 10);
+		int startPage = (page - 1) / 10 * 10 + 1;
+		int endPage = startPage + 10 - 1;
+		if (endPage > maxPage)
+			endPage = maxPage;
+		if (page > maxPage)
+			page = maxPage;
 
-      Map<String, Object> map = new HashMap<>();
-      map.put("pageInfo", pageInfo);
+		pageInfo.setAllPage(maxPage);
+		pageInfo.setCurPage(page);
+		pageInfo.setStartPage(startPage);
+		pageInfo.setEndPage(endPage);
 
-      if (page == 0) {
-         return map;
-      }
+		Map<String, Object> map = new HashMap<>();
+		map.put("pageInfo", pageInfo);
 
-      int row = (page - 1) * 10 + 1; // 현재 페이지의 시작 row
-      param.put("row", row - 1);
-      List<Patient> patientList = patientDao.searchPatientList(param);
+		if (page == 0) {
+			return map;
+		}
 
-      map.put("type", type);
-      map.put("keyword", keyword);
-      map.put("patientList", patientList);
-      return map;
+		int row = (page - 1) * 10 + 1;
+		param.put("row", row - 1);
+		List<Patient> patientList = patientDao.searchPatientList(param);
 
-   }
+		map.put("type", type);
+		map.put("keyword", keyword);
+		map.put("patientList", patientList);
+		return map;
 
-   @Override
-   public Patient login(String pemail, String ppassword) throws Exception {
-      Patient patient = patientDao.selectPatient(pemail);
-      if (patient == null)
-         throw new Exception("이메일틀림");
-      if (patient.getPpassword().equals(ppassword) == false)
-         throw new Exception("비밀번호 오류");
+	}
 
-      return patient;
-   }
+	@Override
+	public Patient login(String pemail, String ppassword) throws Exception {
+		Patient patient = patientDao.selectPatient(pemail);
+		if (patient == null)
+			throw new Exception("이메일틀림");
+		if (patient.getPpassword().equals(ppassword) == false)
+			throw new Exception("비밀번호 오류");
 
-   @Override
-   public void patientjoin(Patient patient) throws Exception {
-      Patient spatient = patientDao.selectPatient(patient.getPemail());
-      if (spatient != null)
-         throw new Exception("이메일 중복오류");
-      patientDao.insertPatient(patient);
-   }
+		return patient;
+	}
 
-   @Override
-   public String pemailcheck(String pemail) throws Exception {
-      Patient patient = patientDao.selectPatient(pemail);
-      if (patient == null)
-         return "notexist";
+	@Override
+	public void patientjoin(Patient patient) throws Exception {
+		Patient spatient = patientDao.selectPatient(patient.getPemail());
+		if (spatient != null)
+			throw new Exception("이메일 중복오류");
+		patientDao.insertPatient(patient);
+	}
 
-      return "exist";
-   }
+	@Override
+	public String pemailcheck(String pemail) throws Exception {
+		Patient patient = patientDao.selectPatient(pemail);
+		if (patient == null)
+			return "notexist";
 
+		return "exist";
+	}
 
+	@Override
+	public Patient myInfo(String pidnum) throws Exception {
+		return patientDao.selectPatientByPidnum(pidnum);
+	}
 
+	@Override
 
+	public void modiProfile(Patient patient) throws Exception {
+		patientDao.updatePatient(patient);
 
+	}
 
-@Override
-public Patient myInfo(String pidnum) throws Exception {
-	return patientDao.selectPatientByPidnum(pidnum);
-}
+	@Override
+	public void leavePatient(String pidnum) throws Exception {
 
+		patientDao.deletePatient(pidnum);
+	}
 
-@Override
-public void modiProfile(Patient patient) throws Exception {
-	patientDao.updatePatient(patient);
-	
-}
+	@Override
+	public void patientRemove(String pname) throws Exception {
+		patientDao.deletePatient(pname);
 
-
-@Override
-public void leavePatient(String pidnum) throws Exception {
-	
-	patientDao.deletePatient(pidnum);
-	
-	
-}
+	}
 
 }

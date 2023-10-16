@@ -35,11 +35,11 @@ public class HospitalModify extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
-		String comnum=request.getParameter("comnum");
+		String hname=request.getParameter("hname");
 		
 		try {
 			HospitalService hospitalService=new HospitalServiceImpl();
-			Hospital hospital=hospitalService.hospitalModify(comnum);
+			Hospital hospital=hospitalService.hospitalInfo(hname);
 			request.setAttribute("hospital", hospital);
 			request.getRequestDispatcher("hcorrection.jsp").forward(request, response);
 		}catch(Exception e) {
@@ -60,7 +60,6 @@ public class HospitalModify extends HttpServlet {
 		MultipartRequest multi=new MultipartRequest(request,uploadPath,size,"utf-8",new DefaultFileRenamePolicy());
 		
 		
-		String department=multi.getParameter("department");
 		String hname=multi.getParameter("hname");
 		String comnum=multi.getParameter("comnum");
 		String htel=multi.getParameter("htel");
@@ -72,7 +71,6 @@ public class HospitalModify extends HttpServlet {
 		String lunch=multi.getParameter("lunch");
 		
 		Hospital hospital=new Hospital();
-		hospital.setDepartment(department);
 		hospital.setHname(hname);
 		hospital.setComnum(comnum);
 		hospital.setHtel(htel);
@@ -83,6 +81,15 @@ public class HospitalModify extends HttpServlet {
 		hospital.setClinic(clinic);
 		hospital.setLunch(lunch);
 		
+		try {
+			HospitalService hospitalService= new HospitalServiceImpl();
+			hospitalService.hospitalModify(hospital);
+			response.sendRedirect("hinfo?hname="+hospital.getHname());
+		}catch(Exception e) {
+			e.printStackTrace();
+			request.setAttribute("err", "병원 수정 오류");
+			request.getRequestDispatcher("error.jsp").forward(request, response);
+		}
 		
 		
 	}

@@ -16,7 +16,7 @@ h1{
 }
 
 #submit{
-	margin-left:240px;
+	margin-left:160px;
 	
 }
 #submit>a{
@@ -43,8 +43,10 @@ function reset() {
 window.close();  
     }, );  
 }
-function submit(){
-	
+function submitForm(){
+	var formData=document.forms["myForm"].elements["myField"].value;
+	window.opener.postMessage(formData,"*");
+	window.close();
 }
  
 </script>
@@ -61,7 +63,7 @@ function submit(){
 	</div>
 	<br>
 	<div id="submit">
-	<a href="#" class="submit" onClick="javascript:submit();">제출</a>
+	<a href="mrecord.jsp" class="submit" onClick="javascript:submitForm();">제출</a>
 	<a href="#" class="reset" onClick="javascript:reset();">취소</a>
 	</div>
 	</form>
