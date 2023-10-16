@@ -13,11 +13,12 @@
 	<select id="selectHospital" parameterType="String"
 		resultType="Hospital">
 	<![CDATA[
-		select * from hospital where comnum=#{comnum}
+		select * from hospital where hname=#{hname}
 	]]>
 	</select>
 
 	<update id="updateHospital" parameterType="Hospital">
+		update hospital
 		<trim prefix="SET" suffixOverrides=",">
 			<if test="subject !=null">subject=#{subject},</if>
 			<if test="hname !=null">hname=#{hname},</if>
@@ -27,7 +28,7 @@
 			<if test="clinic !=null">clinic=#{clinic},</if>
 			<if test="lunch !=null">lunch=#{lunch},</if>
 		</trim>
-		where comnum=#{comnum}
+		where hname=#{hname}
 	</update>
 	
 	

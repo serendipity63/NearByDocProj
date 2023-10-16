@@ -12,13 +12,13 @@ public interface HospitalService {
 
 	String comnumcheck(String comnum) throws Exception;
 
-	Hospital hospitalHinfo(Integer num) throws Exception;
+	Hospital hospitalInfo(String hname) throws Exception;
 	
 	
 	List<Hospital> hospitalList(String department, String lat, String lon) throws Exception;
 	Hospital selectHospitalBycomnum(String comnum) throws Exception;
 
-	Hospital hospitalModify(String comnum);
+	void hospitalModify(Hospital hospital) throws Exception;
 
 	
 }

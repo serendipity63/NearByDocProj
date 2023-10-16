@@ -42,6 +42,7 @@ order by r.resdate desc
      ]]>   
 	</select>
 	
+
 	 <select id="selectDetailReservation" parameterType="hashMap" resultType="hashmap">
      SELECT h.hname as hname
 	      , h.hroad as address
@@ -64,7 +65,7 @@ order by r.resdate desc
      </select>
 	
 	
-	
+
 	
 	<select id='selectTodayReservationList' parameterType="Integer" resultType="Reservation">
 	<![CDATA[
@@ -76,6 +77,17 @@ order by r.resdate desc
 		limit #{row},10
 	]]>
 	</select>
+	<select id='selectHRecordList' parameterType="String" resultType="Reservation">
+	<![CDATA[
+		select resdate,restime,p.pname,comment,h.department,status,doccomment
+		from reservation r,patient p,hospital h
+		where r.pidnum=p,pidnum
+		and h.comnum=r.comnum
+		order by resdate desc
+		limit #{row},10
+	]]>
+	</select>
+	
 	<select id='selectReservation' parameterType="Integer" resultType="Reservation">
 	<![CDATA[
 		select * from reservation where id=#{id}
@@ -87,7 +99,7 @@ order by r.resdate desc
 	<select id='searchHRecordList' parameterType="hashmap" resultType="Reservation">
 	<![CDATA[
 		select * from reservation
-   		where ${type} like '%${keyword}%' order by id 
+   		where ${type} like '%${keyword}%' order by resdate desc
    		limit #{row},10
 	]]>
 	

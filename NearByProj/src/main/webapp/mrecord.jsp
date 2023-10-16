@@ -52,11 +52,7 @@ body {
 	margin: 0 auto;
 }
 
-#center {
-	display: flex;
-	margin-top: 20px;
-	margin-left: 20px;
-}
+
 
 h1 {
 	width: 202px;
@@ -64,26 +60,22 @@ h1 {
 	margin: 44px 944px;
 	color: rgb(25, 25, 112);
 }
-
-#center>th {
+th{
 	padding: 5px;
-	width: 150px;
+	width: 192px;
 	float: left;
 	color: black;
 	text-align: center;
-	border-right: 1px solid white;
+	border-right:1px solid white;
 	font-weight: bold;
 	background-color: lightblue;
-}
-
-#center {
-	border: 1px solid;
-	width: 1356px;
-	margin: 170px 357px;
 	
 }
-tr{
-	width:100px;
+
+table {
+	border: 1px solid;
+    width: 1542px;
+    margin: 170px 236px;
 }
 
 input {
@@ -148,7 +140,29 @@ button {
 	background: lightblue;
 }
 </style>
-<body>
+<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+<script language="javascript"></script>
+<script>
+	
+	function callBtn(pidnum) {
+		var keyword=$('#keyword').val()
+		if(keyword!=null && keyword.trim()!='') {
+			$('#page').val(pname);
+			$('#searchform').submit();
+		}
+	}
+	
+	  
+	function openOpinion(){  
+	    window.open("opinion.jsp", "담당의소견", "width=600, height=500, toolbar=no, menubar=no, scrollbars=no, resizable=yes" );  
+	}
+	window.addEventListner("message",function(event){
+		var receivedData=event.data;
+	});
+	
+ </script>
+
+<body style="overflow-y:hidden">
 	<% pageContext.include("hmain.jsp");%>
 
 
@@ -157,15 +171,18 @@ button {
 	<br>
 	<br>
 
-
+	<form action="mrecordsearch" method="post" id="searchform">
+	<input type="hidden" name="page" id="page" value="1">	
 	<div class="reserveform">
 
 		<select name="patient">
+			<option value="all">선택</option>
 			<option value="patient">환자명</option>
 			<option value="number">주민등록번호</option>
-		</select> <input type="text">
-		<button onclick="#" id="search">검색</button>
-
+		</select> 
+		<input type="text" name="keyword" id="keyword" value="${res.keyword }" /> 
+		<input type="submit" id="search" value="검색" />
+	
 
 
 
@@ -175,24 +192,24 @@ button {
 		<input type="text" id="datepicker2" placeholder="0000-00-00">
 
 
-		<button onclick="#" id="search">검색</button>
+		
+		<input type="submit" id="search" value="검색" />
 
 
 
 	</div>
+	</form>
 
-
-	<table id="center">
+	<table>
 		<tr>
 			<th>일자</th>
 			<th>시간</th>
 			<th>환자명</th>
-			<th>주민등록번호</th>
-			<th>연락처</th>
-			<th>주소</th>
 			<th>요청사항</th>
 			<th>진료과목</th>
 			<th>진료완료처리</th>
+			<th><a href="javascript:openOpinion('opinion.jsp','popup');" style=text-decoration:none;>담당의소견</a></th>
+			<th>기록삭제</th>
 		</tr>
 
 		<c:forEach items="${res.reserveList }" var="reserve">
@@ -200,23 +217,21 @@ button {
 				<td>${reserve.resdate }</td>
 				<td>${reserve.restime }</td>
 				<td>${reserve.name }</td>
-				<td>${reserve.number }</td>
-				<td>${reserve.phone }</td>
-				<td>${reserve.address }</td>
 				<td>${reserve.comment }</td>
-				<td>${reserve.subject }</td>
+				<td>${reserve.department }</td>
 				<td>${reserve.status }</td>
+				<td>${reserve.opinion }</td>
 				<td><c:if test="${hospitaluser.id == hospital.comnum }">
-						<a
-							href="patientdelete?num=${patient.pidnum }&page=${res.pageInfo.curPage}">삭제</a>
-					</c:if></td>
+					<a href="patientdelete?pname=${patient.pname }&page=${res.pageInfo.curPage}">삭제</a>
+					</c:if>
+				</td>
 			</tr>
 		</c:forEach>
 	</table>
 	<div id="emptyArea">
 		<c:choose>
 			<c:when test="${res.pageInfo.curPage>1}">
-				<a href="boardlist?page=${res.pageInfo.curPage-1}">&lt;</a>
+				<a href="patientlist?page=${res.pageInfo.curPage-1}">&lt;</a>
 			</c:when>
 			<c:otherwise>
 					&lt;
@@ -228,13 +243,13 @@ button {
 			end="${res.pageInfo.endPage}" var="i">
 			<c:choose>
 				<c:when test="${res.pageInfo.curPage==i}">
-					<a href="boardlist?page=${i}" class="select"
+					<a href="patientlist?page=${i}" class="select"
 						onclick="callBtn(${i});return ${res.keyword==null};">${i}</a>&nbsp;
 					</c:when>
 				<c:otherwise>
-					<a href="boardlist?page=${i}" class="btn"
+					<a href="patientlist?page=${i}" class="btn"
 						onclick="callBtn(${i});return ${res.keyword==null};">${i}</a>&nbsp;
-					</c:otherwise>
+				</c:otherwise>
 
 			</c:choose>
 
@@ -242,7 +257,7 @@ button {
 
 		<c:choose>
 			<c:when test="${res.pageInfo.curPage<res.pageInfo.allPage}">
-				<a href="boardlist?page=${res.pageInfo.curPage+1}">&gt;</a>
+				<a href="patientlist?page=${res.pageInfo.curPage+1}">&gt;</a>
 			</c:when>
 			<c:otherwise>
 					&gt;
