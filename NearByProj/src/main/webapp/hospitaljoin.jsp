@@ -26,7 +26,7 @@
 	function openTypeSelectionPage() {
 		// 진료과목 선택 페이지 열기
 		var typeSelectionPage = window.open("department.jsp", "TypeSelection",
-				"width=400,height=300");
+				"width=400,height=400");
 		window.addEventListener("message", function(event) {
 			document.querySelector("#department").value = event.data;
 		});
@@ -301,7 +301,7 @@ input[type='submit']:hover {
 
 	<center>
 		<div class="container" id='query'>
-			<form action="hjoin" method="post" id='form'>
+			<form action="hjoin" method="post" id='form' enctype="multipart/form-data">
 				<div class="title">병원등록</div>
 
 				<div class="row">
@@ -383,6 +383,7 @@ input[type='submit']:hover {
 								console.log(latitude);
 								console.log(longitude);
 								console.log(coords);
+								// 위경도 넣는다 input에
 								document.getElementById('latitude').value = latitude;
 								document.getElementById("longitude").value = longitude;
 

@@ -41,6 +41,7 @@ public class Main extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		doGet(request, response);
+		//search에 넘기기;
 	}
 
 }
