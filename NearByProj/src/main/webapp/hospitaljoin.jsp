@@ -301,7 +301,7 @@ input[type='submit']:hover {
 
 	<center>
 		<div class="container" id='query'>
-			<form action="hjoin" method="post" id='form' enctype="multipart/form-data">
+<form action="hjoin" method="post" id="form" enctype="multipart/form-data">
 				<div class="title">병원등록</div>
 
 				<div class="row">
@@ -367,7 +367,6 @@ input[type='submit']:hover {
 
 				<script type="text/javascript"
 					src="//dapi.kakao.com/v2/maps/sdk.js?appkey=0f92754065fd18fb9b2450d8077e930c&libraries=services,drawing"></script>
-				<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
 
 				<script>
 					var geocoder = new kakao.maps.services.Geocoder();
@@ -426,7 +425,7 @@ input[type='submit']:hover {
 				<div class="row">
 					<div class="input">
 						<%--디자인은 수정할게요  --%>
-						<input type="file" name="file" id="file" accept="image/*" />
+						<input type="file" name="hurl" id="file" accept="image/*" />
 					</div>
 				</div>
 				<div class="button">
