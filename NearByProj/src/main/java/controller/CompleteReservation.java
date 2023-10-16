@@ -1,30 +1,39 @@
 package controller;
 
 import java.io.IOException;
-import java.sql.Timestamp;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-import dto.Review;
-import service.ReviewService;
-import service.ReviewServiceImpl;
+import dto.Reservation;
+import service.ReservationService;
+import service.ReservationServiceImpl;
+
 /**
- * Servlet implementation class Review
+ * Servlet implementation class CompleteReservation
  */
-@WebServlet("/insertreview")
-public class InsertReview extends HttpServlet {
+@WebServlet("/completereservation")
+public class CompleteReservation extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public CompleteReservation() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
-		request.getRequestDispatcher("review.jsp").forward(request, response);
+		request.getRequestDispatcher("completereservation.jsp").forward(request, response);
 	}
 
 	/**
@@ -32,20 +41,15 @@ public class InsertReview extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
-		String pidnum = request.getParameter("pidnum");
-		String comnum = request.getParameter("comnum");
-		String content = request.getParameter("content");
-		String star = request.getParameter("star");
-		Timestamp birth = null;
-		Review review = new Review(pidnum,comnum,content,star,birth);
+		HttpSession session = request.getSession();
+		Reservation reservation = (Reservation)session.getAttribute("reservation");
 		try {
-			ReviewService reviewservice = new ReviewServiceImpl();
-			reviewservice.insertReview(review);
-			
-
+			ReservationService reservationservice = new ReservationServiceImpl();
+			reservationservice.insertReservation(reservation);
+			response.sendRedirect("confirmreservation");
 		} catch (Exception e) {
 			request.setAttribute("err", e.getMessage());
-			request.getRequestDispatcher("error404.jsp").forward(request, response); // 에러 페이지 따로 만들거에요
+			request.getRequestDispatcher("error404.jsp").forward(request, response);
 		}
 	}
 

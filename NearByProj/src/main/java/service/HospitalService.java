@@ -15,12 +15,10 @@ public interface HospitalService {
 	Hospital hospitalHinfo(Integer num) throws Exception;
 	
 	
-	List<Hospital> hospitalList() throws Exception;
+	List<Hospital> hospitalList(String department, String lat, String lon) throws Exception;
 	Hospital selectHospitalBycomnum(String comnum) throws Exception;
 
 	Hospital hospitalModify(String comnum);
 
-	
-	
 	
 }

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.family">
+
+
+<insert id="addFamily" parameterType="Family">
+<![CDATA[
+insert into family (fidnum, fname, ftel, pidnum, faddress)
+            values (#{fidnum},#{fname},#{ftel},#{pidnum},#{faddress} )
+]]>
+</insert>
+	
+<select id="selecetMyFamily" parameterType="String" resultType="hashmap">
+<![CDATA[
+		SELECT f.fname as name
+		     , f.ftel as tel
+		     , f.faddress as address
+		  FROM patient p 
+		     , family f
+		 WHERE 1=1
+		   AND p.pidnum = f.pidnum
+		   AND p.pidnum = #{pidnum}
+
+]]>
+</select>
+
+	<select id="selectFamily" parameterType="String"
+		resultType="Family">
+	<![CDATA[
+		select * from family where fname=#{name}
+	]]>
+	</select>
+
+	
+</mapper>

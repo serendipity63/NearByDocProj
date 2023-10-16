@@ -16,4 +16,7 @@ public interface PatientService {
 	
 	
 	Patient myInfo(String pidnum) throws Exception;
+	void modiProfile(Patient patient) throws Exception;
+	void leavePatient (String pidnum) throws Exception;
+	
 }

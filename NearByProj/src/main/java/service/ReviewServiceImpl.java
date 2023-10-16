@@ -1,10 +1,12 @@
 package service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 import dao.ReviewDao;
 import dao.ReviewDaoImpl;
+import dto.Hospital;
 import dto.Review;
 
 public class ReviewServiceImpl implements ReviewService {
@@ -21,7 +23,6 @@ public class ReviewServiceImpl implements ReviewService {
 	public List<Map<String, Object>> myReviews(String pidnum) throws Exception {
 		return reviewDao.myReviewListByid(pidnum);
 	}
-}
 
 	public void insertReview(Review review) throws Exception {
 		reviewDao.insertReview(review);

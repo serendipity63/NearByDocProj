@@ -207,111 +207,116 @@ input:focus {
 <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
 
 <script type="text/javascript">
+	$(document)
+			.ready(
+					function() {
+						let isPemailCheck = false;
 
+						// 이메일 입력 필드에서 입력 변화 감지
+						$("#pemail")
+								.on(
+										"input",
+										function() {
+											const pemail = $("#pemail").val();
+											const emailRegex = /^[a-zA-Z0-9._-]+@[a-zAZ0-9.-]+\.[a-zA-Z]{2,4}$/;
+											const isValid = emailRegex
+													.test(pemail);
 
-/* function check(){
+											if (!isValid) {
+												$("#pemailMessage").text(
+														"올바른 이메일 형식으로 입력하세요")
+														.show();
+												isPemailCheck = false;
+											} else {
+												$("#pemailMessage").hide();
+												isPemailCheck = true;
+											}
+										});
 
-	if(document.fr.pemail.val)
-	
-	
-}
- */
-// 이메일 입력 필드에서 입력 변화 감지
-$("#pemail")
-		.on(
-				"input",
-				function() {
-					const pemail = $("#pemail").val();
-					const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
-					const isValid = emailRegex.test(pemail);
+						// 이메일 중복 검사 버튼 클릭 시
+						$('#pemailcheck')
+								.click(
+										function() {
+											if (!isPemailCheck) {
+												$("#pemailMessage").text(
+														"올바른 이메일 형식으로 입력하세요")
+														.show();
+												return;
+											}
 
-					if (!isValid) {
-						$("#pemailMessage").text("올바른 이메일 형식으로 입력하세요")
-								.show();
-						isPemailCheck = false; // 이메일 형식이 아닌 경우 중복 확인도 통과하지 않도록
-					} else {
-						$("#pemailMessage").hide();
-					}
-				});
+											const pemail = $("#pemail").val();
+											$
+													.ajax({
+														url : "pemailcheck",
+														type : "post",
+														data : {
+															pemail : pemail
+														},
+														success : function(res) {
+															console.log(res);
+															if (res === "notexist") {
+																$(
+																		"#pemailMessage")
+																		.text(
+																				"사용 가능한 이메일입니다")
+																		.show();
+															} else {
+																$(
+																		"#pemailMessage")
+																		.text(
+																				"이미 사용중인 이메일입니다")
+																		.show();
+															}
+														},
+														error : function(err) {
+															console.log(err);
+															$("#pemailMessage")
+																	.text(
+																			"이메일 중복체크 오류")
+																	.show();
+														}
+													});
+										});
 
+						// 비밀번호 확인과 비밀번호 필드의 입력이 변경될 때 확인 함수 실행
+						$("#ppasswordcheck, #ppassword").on(
+								"input",
+								function() {
+									const ppassword = $("#ppassword").val();
+									const ppasswordcheck = $("#ppasswordcheck")
+											.val();
 
+									if (ppassword !== ppasswordcheck) {
+										$("#check").show();
+										$("#join-button")
+												.prop('disabled', true);
+									} else {
+										$("#check").hide();
+										$("#join-button").prop('disabled',
+												false);
+									}
+								});
 
+						// 폼 제출 시 이메일 중복 확인
+						$("#form").submit(function(e) {
+							const pidnum = $("#pidnum").val();
+							const ptel = $("#ptel").val();
+							const pidnumPattern = /^[0-9]{13}$/;
+							const ptelPattern = /^[0-9]{11}$/;
 
-	$(function() {				
-		let isPemailCheck = false;
+							if (!pidnumPattern.test(pidnum)) {
+								alert("주민번호는 13자리 숫자여야 합니다.");
+								e.preventDefault();
+							}
 
-		// 이메일 중복 검사 버튼 클릭 시
-		$('#pemailcheck').click(function() {
-			$.ajax({
-				url : "pemailcheck",
-				type : "post",
-				data : {
-					pemail : $("#pemail").val()
-				},
-				success : function(res) {
-					console.log(res);
-					if (res === "notexist") {
-						isPemailCheck = true;
-						$("#pemailMessage").text("사용 가능한 이메일입니다").show();
-					} else {
-						isPemailCheck = false;
-						$("#pemailMessage").text("이미 사용중인 이메일입니다").show();
-					}
-				},
-				error : function(err) {
-					console.log(err);
-					$("#pemailMessage").text("이메일 중복체크 오류").show();
-				}
-			});
-		});
-
-
- 
-		$("#form").submit(function(e) {
-			if (!isPemailCheck) {
-				$("#pemailMessage").text("이메일 중복체크하세요").show();
-				e.preventDefault();
-			}
-		});
-	});
+							if (!ptelPattern.test(ptel)) {
+								alert("휴대전화 번호는 11자리 숫자여야 합니다.");
+								e.preventDefault();
+							}
+						});
+					});
 </script>
 
-
-<script>
-	// 비밀번호 확인과 비밀번호 필드의 입력이 변경될 때 확인 함수 실행
-
-	$("#ppasswordcheck, #ppassword").on("input", check);
-
-	function check() {
-
-		const ppassword = $("#ppassword").val();
-
-		const ppasswordcheck = $("#ppasswordcheck").val();
-
-		if (ppassword !== ppasswordcheck) {
-
-			$("#check").show();
-
-			$("#join-button").prop('disabled', true);
-
-		} else {
-
-			$("#check").hide();
-
-			$("#join-button").prop('disabled', false);
-
-		}
-
-	}
-
-	// 문서가 준비되면 "비밀번호 확인" 표시를 숨김
-
-	$(document).ready(function() {
-
-		$("#check").hide();
-
-	});
-</script>
 
 <script
 	src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
@@ -424,16 +429,14 @@ $("#pemail")
 
 			<div class="join">
 
-				이메일<br>
-
-				<div id="pemailMessage" class="error-message"></div>
+				이메일 <span id="pemailMessage" class="error-message"></span>
 
 				<div id="info_pemail">
 
 					<input type="text" id="pemail" name="pemail"
 						placeholder="nearbydoc@abc.com 형식으로 입력" required="required">
 
-<%-- 이메일중복검사및 이메일 유효성검사 --%>
+					<%-- 이메일중복검사및 이메일 유효성검사 --%>
 					<button id="pemailcheck">중복 확인</button>
 
 				</div>
@@ -451,29 +454,23 @@ $("#pemail")
 				<div>
 
 					비밀번호 확인 <span id="check" class="invalid-feedback"
-						style="margin-left: 10px;">비밀번호가 동일하지 않습니다.</span>
+						style="margin-left: 3px;">비밀번호가 동일하지 않습니다.</span>
 
 				</div>
 
 				<div class="input-container">
 
 					<input type="password" id="ppasswordcheck" class="form-control"
-						onchange="check()" placeholder="" required /> <span
-						class="icon material-symbols-outlined"> lock </span>
+						onchange="check()" placeholder="" required /> 
+						<span class="icon material-symbols-outlined"> lock </span>
 
 				</div>
 
 				이름<br> <input type="text" id="pname" name="pname"
-					placeholder="" required />
-					 
-				휴대전화<br> <input type="number"
-					id="ptel" name="ptel" size="15" placeholder="-없이 숫자만 입력" /> 
-					
-				주민번호<br> 
-				<input type="number" id="pidnum" name="pidnum" size="12" placeholder="-없이 숫자만 입력"
-					required /> 
-				
-				주소<br>
+					placeholder="" required /> 휴대전화<br> <input type="number"
+					id="ptel" name="ptel" size="15" placeholder="-없이 숫자만 입력" /> 주민번호<br>
+				<input type="number" id="pidnum" name="pidnum" size="12"
+					placeholder="-없이 숫자만 입력" required /> 주소<br>
 				<div class="row">
 					<div class="input">
 						<input type="text" id="ppostcode" name="ppostcode"

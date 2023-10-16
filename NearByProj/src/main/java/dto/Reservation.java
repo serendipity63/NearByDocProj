@@ -1,33 +1,46 @@
 package dto;
 
-
 public class Reservation {
 	
 	private String pidnum;
+	private String comnum;
 	private String resdate;
 	private String restime;
-	private String name;
-	private String number;
-	private String phone;
-	private String address;
 	private String comment;
-	private String subject;
-	private String status;
+	private boolean status;
 	private String doccomment;
 	private Integer id;
+	private String fidnum;
 	
-	
-	public Integer getId() {
-		return id;
+	public String getFidnum() {
+		return fidnum;
 	}
-	public void setId(Integer id) {
-		this.id = id;
+	public void setFidnum(String fidnum) {
+		this.fidnum = fidnum;
+	}
+	public Reservation() {}
+	public Reservation(String pidnum,String comnum,String resdate,String restime,String comment,boolean status,String doccomment,Integer id, String fidnum) {
+		this.pidnum=pidnum;
+		this.comnum=comnum;
+		this.resdate=resdate;
+		this.restime=restime;
+		this.comment=comment;
+		this.status=status;
+		this.doccomment=doccomment;
+		this.id=id;
+		this.fidnum = fidnum;
 	}
 	public String getPidnum() {
 		return pidnum;
 	}
 	public void setPidnum(String pidnum) {
 		this.pidnum = pidnum;
+	}
+	public String getComnum() {
+		return comnum;
+	}
+	public void setComnum(String comnum) {
+		this.comnum = comnum;
 	}
 	public String getResdate() {
 		return resdate;
@@ -41,46 +54,16 @@ public class Reservation {
 	public void setRestime(String restime) {
 		this.restime = restime;
 	}
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
-	public String getNumber() {
-		return number;
-	}
-	public void setNumber(String number) {
-		this.number = number;
-	}
-	public String getPhone() {
-		return phone;
-	}
-	public void setPhone(String phone) {
-		this.phone = phone;
-	}
-	public String getAddress() {
-		return address;
-	}
-	public void setAddress(String address) {
-		this.address = address;
-	}
 	public String getComment() {
 		return comment;
 	}
 	public void setComment(String comment) {
 		this.comment = comment;
 	}
-	public String getSubject() {
-		return subject;
-	}
-	public void setSubject(String subject) {
-		this.subject = subject;
-	}
-	public String getStatus() {
+	public boolean isStatus() {
 		return status;
 	}
-	public void setStatus(String status) {
+	public void setStatus(boolean status) {
 		this.status = status;
 	}
 	public String getDoccomment() {
@@ -89,4 +72,11 @@ public class Reservation {
 	public void setDoccomment(String doccomment) {
 		this.doccomment = doccomment;
 	}
+	public Integer getId() {
+		return id;
+	}
+	public void setId(Integer id) {
+		this.id = id;
+	}
+	
 }

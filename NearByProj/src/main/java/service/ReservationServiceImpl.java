@@ -1,11 +1,13 @@
 package service;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import dao.ReservationDao;
 import dao.ReservationDaoImpl;
+import dto.Hospital;
 import dto.Reservation;
 import util.PageInfo;
 
@@ -19,9 +21,15 @@ public class ReservationServiceImpl implements ReservationService{
 
 	@Override
 	public List<Map<String, Object>> showReservation(String pidnum) throws Exception {
-		System.out.println("service" + pidnum);
+		
 		return resDao.selectMyReservation(pidnum);
 	}
+	
+	@Override
+	public Map<String, Object> detailRes(Map<String, Object> param) throws Exception {
+		return resDao.selectDetailReservation(param);
+	}
+	
 
 	@Override
 	public Map<String, Object> reservationListByPage(Integer page) throws Exception {
@@ -87,5 +95,79 @@ public class ReservationServiceImpl implements ReservationService{
 		map.put("hrecordList", reservationList);
 		return map;
 	}
+	
+	@Override
+	public List<String> timelist(Hospital hospital, String date) throws Exception {
+		List<String> timelist = new ArrayList<>();
+		String clinic = hospital.getClinic();
+		String lunch = hospital.getLunch();
+		int scH = Integer.parseInt(clinic.substring(0, 2));
+		int scM = Integer.parseInt(clinic.substring(2, 4));
+		int ecH = Integer.parseInt(clinic.substring(4, 6));
+		int ecM = Integer.parseInt(clinic.substring(6, 8));
+		int slH = Integer.parseInt(lunch.substring(0, 2));
+		int slM = Integer.parseInt(lunch.substring(2, 4));
+		int elH = Integer.parseInt(lunch.substring(4, 6));
+		int elM = Integer.parseInt(lunch.substring(6, 8));
+		while (true) {
+			String hour = Integer.toString(scH);
+			if (hour.length() == 1) {
+				hour = "0" + hour;
+			}
+			String min = Integer.toString(scM);
+			if (min.length() == 1) {
+				min = "0" + min;
+			}
+			timelist.add(hour + ":" + min);
 
+			scM += 30;
+			if (scM >= 60) {
+				scH += 1;
+				scM -= 60;
+			}
+
+			if (scH >= slH && scM >= slM) {
+				break;
+			}
+
+		}
+		while (true) {
+			String hour = Integer.toString(elH);
+			if (hour.length() == 1) {
+				hour = "0" + hour;
+			}
+			String min = Integer.toString(elM);
+			if (min.length() == 1) {
+				min = "0" + min;
+			}
+			timelist.add(hour + ":" + min);
+
+			elM += 30;
+			if (elM >= 60) {
+				elH += 1;
+				elM -= 60;
+			}
+
+			if (elH >= ecH && elM >= ecM) {
+				break;
+			}
+		}
+		if(date !=null) {
+			List<String> restimelist = new ArrayList<>();
+			Map<String, String> param = new HashMap<>();
+			param.put("date", date);
+			param.put("comnum", hospital.getComnum());
+			restimelist = resDao.resTimeList(param);
+			for(String t : restimelist) {
+				timelist.remove(t);
+			}
+		}
+		return timelist;
+	}
+	@Override
+	public void insertReservation(Reservation reservation) throws Exception {
+		resDao.insertReservation(reservation);
+	}
+
+	
 }
