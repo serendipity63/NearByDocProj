@@ -34,4 +34,5 @@ public Map<String,Object> selectLastReview(String comnum) throws Exception {
 	return sqlSession.selectOne("mapper.review.selectLastReview",comnum);
 
 }
+
 }

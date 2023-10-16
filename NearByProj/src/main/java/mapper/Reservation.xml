@@ -76,7 +76,13 @@ order by r.resdate desc
 	
 	</select>
 	
+	<select id='searchResTimeList' parameterType="hashmap" resultType="String">
+	<![CDATA[
+		select restime from reservation
+   		where comnum= #{comnum} and resdate=#{date}
+	]]>
 	
+	</select>
 
 
 

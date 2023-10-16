@@ -12,6 +12,6 @@ public interface ReservationService {
 	Map<String,Object> reservationListByPage(Integer page)throws Exception;
 	Map<String,Object> hrecordSearch (String type,String keyword,Integer page) throws Exception;
 	
-	List<String> timelist(Hospital hospital) throws Exception;
+	List<String> timelist(Hospital hospital, String date) throws Exception;
 	void insertReservation(Reservation reservation) throws Exception;
 }
