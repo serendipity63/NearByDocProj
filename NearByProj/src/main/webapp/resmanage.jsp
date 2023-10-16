@@ -57,14 +57,15 @@ margin-left: 380px;
   padding-top: 10px;
 }
 
-.patientinfo{
-  margin-top: 10px;
-  padding-top: 12px;
+.patientinfo>h4{
+margin-top: 5px;
+  margin-bottom: 10px;
   text-align: left;
+  margin-top : 10px;
 }
 
 .resInfo{
-  margin-top: 10px;
+  
   text-align: left;
 }
 
@@ -122,15 +123,22 @@ margin-left: 380px;
 </style>
 
 <script> 
- function checkCancel(){
-  if (confirm("정말 취소하시겠습니까??") == true){    //확인
-
-}else{   //취소
-
-return false;
-
-}
- }
+$(function (){
+	$("#rescancel").click(function() {
+		if (confirm("예약을 취소하시겠습니까?") == true){    //확인
+			$.ajax({
+				url:"resmanage",
+				type:"post",
+				data:{"pidnum" : $('#hiddenPidnum').val()},
+				success:function(res){
+					location.href=res
+				}
+			})
+		}else{   //취소
+			return false;
+		}
+	})
+})
  </script> 
 </head>
 
@@ -149,34 +157,38 @@ return false;
    <div id="container">
     <div id="res">
       <div class="hsinfo">
-        <h2>ㅇㅇㅇ 종합병원</h2>
-        <h3>의원</h5>
-        <h3>서울특별시 금천구 남부순환로 호서대벤처타워</h3>
-        <h3>진료 시간 : 오전 9시 ~ 오후 6시</h3>
-        <h3>02-1234-5678</h3>
+      <% request.getParameter("res");%>
+        <h3>${res.hname }</h3>
+        <br>
+
+        <h4>${res.address }</h4>
+        <br>
+        <h4>진료 시간 : ${res.time }</h4>
+        <br>
+        <h4>${res.tel }</h4>
         <br>
         <hr>
     </div>
     <div class="patientinfo">
-      <h4>진료 대상 : 홍길동</h4>
-      <br>
+      <h4>진료 대상</h4>
+      <h4>${res.pname }</h4>
       <hr>
     </div>
 
     <div class="resInfo">
       <div class="resDate">
         <h4>예약 일자</h4>
-        <h5>2023.09.27</h5>
+        <h5>${res.resdate }</h5>
       </div>
 
       <div class="resTime">
         <h4>예약 시간</h4>
-        <h5>10:00</h5>
+        <h5>${res.restime }</h5>
       </div>
 
       <div class="type">
         <h4>진료 과목</h4>
-        <h5>정형 외과</h5>
+        <h5>${res.department }</h5>
       </div>
       <br>
       <hr>
@@ -185,10 +197,11 @@ return false;
 
     <div class="comment">
       <h4>원장님께 하고 싶은 말 :</h4>
-      <textarea disabled="true" name="" id="content" cols="40">증상을 입력해주세요.</textarea>
+      <br>
+      <textarea name="" id="content" cols="58" rows="2">${res.comment }</textarea>
     </div>
 
-    <button  class="rescancel" onclick="checkCancel()"><h2>예약 취소</h2></button> 
+    <button class="rescancel" ><h2>예약 취소</h2></button> 
       
     </div>
 
