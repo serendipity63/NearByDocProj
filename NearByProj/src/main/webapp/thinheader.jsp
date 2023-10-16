@@ -50,21 +50,20 @@ a {
 	height: 115px;
 	display: inline-block;
 	vertical-align: middle;
-	margin-right: 10px;
 	margin-top: 10px;
-	margin-right: 10px;
 }
 
 .outerDiv .loginJoin {
 	position: absolute;
 	top: 10px;
 	right: 10px;
+	margin-right: 2px;
 }
 
   .button {
     background-color: #fff;
     color: #2188C4;
-    width: 70px;
+    width: 80px;
     height: 29px;
     line-height: 29px;
     border-radius: 20px;
@@ -95,6 +94,7 @@ a {
 				</c:when>
 				<c:otherwise>
 					<a href="mypage" class="button">마이페이지</a>
+					&nbsp;
 					<a href="logout" class="button">로그아웃</a>
 				</c:otherwise>
 			</c:choose>
