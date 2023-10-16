@@ -5,8 +5,8 @@
 
 	<insert id="insertHospital" parameterType="Hospital">
 	<![CDATA[
-	insert into hospital (hname, comnum, htel, department, hpassword, lunch, clinic, hroad, hdong, hdetail, hpostcode, hurl ) values 
-	(#{hname},#{comnum},#{htel},#{department},#{hpassword},#{lunch},#{clinic},#{hroad},#{hdong},#{hdetail},#{hpostcode},#{hurl} ) 
+	insert into hospital (hname, comnum, htel, department, hpassword, lunch, clinic, hroad, hdong, hdetail, hpostcode, hurl,lat,lon ) values 
+	(#{hname},#{comnum},#{htel},#{department},#{hpassword},#{lunch},#{clinic},#{hroad},#{hdong},#{hdetail},#{hpostcode},#{hurl},#{lat},#{lon} ) 
 	]]>
 	</insert>
 
