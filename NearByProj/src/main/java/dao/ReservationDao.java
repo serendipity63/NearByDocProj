@@ -3,6 +3,7 @@ package dao;
 import java.util.List;
 import java.util.Map;
 
+import dto.Hospital;
 import dto.Reservation;
 
 public interface ReservationDao {
@@ -17,4 +18,5 @@ public interface ReservationDao {
 	List<Reservation> searchHRecordList(Map<String,Object>param) throws Exception;
 	
 	void insertReservation(Reservation reservation) throws Exception;
+	List<String> resTimeList(Map<String,String> param) throws Exception;
 }

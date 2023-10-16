@@ -38,11 +38,13 @@ public class InsertReservation extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		HttpSession session = request.getSession();
+		String date = null;
+		if(session.getAttribute("date") !=null) date = (String)session.getAttribute("date");
 		Hospital hospital = (Hospital)session.getAttribute("hospital");
 		ReservationServiceImpl reservationservice = new ReservationServiceImpl();
 		try {
 			List<String> timelist = new ArrayList<>();
-			timelist = reservationservice.timelist(hospital);
+			timelist = reservationservice.timelist(hospital,date);
 			request.setAttribute("timelist", timelist);
 			request.getRequestDispatcher("reservation.jsp").forward(request, response);
 			
