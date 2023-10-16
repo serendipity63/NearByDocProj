@@ -63,7 +63,6 @@
   width:430px;
   height:600;
   padding-top: 5px;
-  overflow-y: scroll;
 }
 
 table{
@@ -96,10 +95,9 @@ margin-left :60px;
 
 </style>
 <script>
-  function modi(){
-    alert("수정되었습니다")
-    history.go(-1)
-  }
+	$(function() {
+		$
+	})
 </script>
 </head>
 
@@ -107,31 +105,36 @@ margin-left :60px;
    <!-- 헤더 -->
    <% pageContext.include("thinheader.jsp");%>
    <div id="sub">
-    <div >
+   <!--  <div >
       <span>
         <input class="modibtn" type="button" value="수정" onclick="modi()">
-        <!-- <button class="modibtn" onclick="modi()"><h5>수정</h5></button> -->
         <input class="canbtn" type="button" onclick="history.go(-1)" value="취소">
-        <!-- <button class="canbtn" onclick="history.go(-1)"><h5>취소</h5></button> -->
       </span>
       <br>  
     </div>
   
     
-    <hr>
+    <hr> -->
   </div>
 
 
    <div id="container">
     <div>
-    <p class="col">이름</p>
-    <p><input type="text" id="pname" value="홍길동"></p>
-    <p class="col">전화번호</p>
-    <p><input type="text" id="tel"  value="010-1234-5678" ></p>
-    <p class="col">이메일</p>
-    <p><input type="text" id="address"value="kosta@gmail.com"></p>
-    <p class="col">주소</p>
-    <p><input type="text" id="idnum" value="서울특별시 금천구"></p>
+    <form id="updateProfile" action="modiprofile" method="post"> 
+	    <p class="col">이름</p>
+	    <p><input type="text" id="name" name="pname" value="${myinfo.pname }"></p>
+	    <p class="col">전화번호</p>
+	    <p><input type="text" id="tel" name="ptel"  value="${myinfo.ptel } "></p>
+	    <p class="col">이메일</p>
+	    <p><input type="text" id="email" name="pemail" value="${myinfo.pemail }"></p>
+	    <p class="col">주소</p>
+	    <p><input type="text" id="address" name="proadaddress" value="${myinfo.proadaddress }"></p>
+	    <span>
+        <input class="modibtn" type="submit" value="수정" onclick="modi()">
+        <input class="canbtn" type="button" onclick="history.go(-1)" value="취소">
+      </span>
+    </form>
+    </div>
     </div>
 
 

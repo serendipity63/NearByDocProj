@@ -23,6 +23,15 @@ public class Patient {
 		this.ppostcode = ppostcode;
 		this.pdetailaddress = pdetailaddress;
 	}
+	
+	// 개인정보 수정위한 생성자
+	public Patient(String pname,String ptel,String pemail,String proadaddress, String pidnum) {
+		this.pname = pname;
+		this.ptel = ptel;
+		this.pemail = pemail;
+		this.proadaddress = proadaddress;
+		this.pidnum = pidnum;
+	}
 
 	public String getPemail() {
 		return pemail;

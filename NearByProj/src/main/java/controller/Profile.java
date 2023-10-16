@@ -40,8 +40,6 @@ public class Profile extends HttpServlet {
 		PatientService patientService = new PatientServiceImpl();
 		try {
 			Patient myinfo = patientService.myInfo(pidnum);
-			System.out.println(myinfo);
-			System.out.println(myinfo.getProadaddress());
 			request.setAttribute("myinfo", myinfo);
 			request.getRequestDispatcher("profile.jsp").forward(request, response);
 		} catch (Exception e) {
