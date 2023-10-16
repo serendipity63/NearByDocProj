@@ -91,7 +91,7 @@ public class ReservationServiceImpl implements ReservationService{
 	}
 	
 	@Override
-	public List<String> timelist(Hospital hospital) throws Exception {
+	public List<String> timelist(Hospital hospital, String date) throws Exception {
 		List<String> timelist = new ArrayList<>();
 		String clinic = hospital.getClinic();
 		String lunch = hospital.getLunch();
@@ -146,7 +146,16 @@ public class ReservationServiceImpl implements ReservationService{
 				break;
 			}
 		}
-
+		if(date !=null) {
+			List<String> restimelist = new ArrayList<>();
+			Map<String, String> param = new HashMap<>();
+			param.put("date", date);
+			param.put("comnum", hospital.getComnum());
+			restimelist = resDao.resTimeList(param);
+			for(String t : restimelist) {
+				timelist.remove(t);
+			}
+		}
 		return timelist;
 	}
 	@Override

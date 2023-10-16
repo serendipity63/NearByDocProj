@@ -1,7 +1,7 @@
-package dao;
+package service;
 
 import dto.Family;
 
-public interface FamilyDao {
+public interface FamilyService {
 	Family selectFamily(String name) throws Exception;
 }

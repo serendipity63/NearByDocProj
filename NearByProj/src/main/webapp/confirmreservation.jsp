@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -78,7 +79,7 @@
         <div class="hosinfo">
             <table>
                 <tr>
-                    <td>
+                    <td width="250px"  colspan="2">
                         <h4>${hospital.hname }</h4>
                     </td>
                     <td rowspan="2">
@@ -86,7 +87,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>
+                    <td colspan="2">
                         <p>${hospital.department }</p>
                     </td>
                 </tr>
@@ -121,9 +122,14 @@
             <table>
                 <tbody>
                     <tr>
-                        <td>
-                            ${user.pname}
-                        </td>
+                        <c:choose>
+							<c:when test="${reservation.fidnum eq null}">
+								<td>${user.pname}</td>
+							</c:when>
+							<c:otherwise>
+								<td>${name}</td>
+							</c:otherwise>
+						</c:choose>
                     </tr>
                 </tbody>
             </table>

@@ -13,7 +13,7 @@
 	]]>
 	</select>
 	
-	<!-- 환자 내 정보 조회 -->
+	<!-- 환자 - 내 정보 조회 -->
 	<select id="selectPatientByPidnum" parameterType="String" resultType="Patient">
 	<![CDATA[
 		select * 
@@ -22,6 +22,15 @@
 		  and pidnum=#{pidnum}
 	]]>
 	</select>
+	
+	
+	<!-- 환자 - 내 정보 수정 -->
+	<update id="updatePatient" parameterType="Patient">
+	<![CDATA[
+	update patient set pname = #{pname}, ptel = #{ptel}, pemail = #{pemail}, proadaddress = #{proadaddress}
+	where pidnum = #{pidnum}
+	]]>
+	</update>
 	
 	
 	
@@ -64,7 +73,7 @@
    </select>
    
    
-   <delete id="deletePatient" parameterType="Integer">
+   <delete id="deletePatient" parameterType="String">
    <![CDATA[
    
    	delete from patient where pidnum=#{pidnum} 

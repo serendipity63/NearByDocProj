@@ -5,8 +5,8 @@
 	<insert id="insertReservation" parameterType="Reservation"
 		useGeneratedKeys="true" keyProperty="id">
     <![CDATA[
-       insert into Reservation (pidnum,comnum,resdate,restime,comment,status,doccomment, id) values 
-       (#{pidnum},#{comnum},#{resdate},#{restime},#{comment},#{status},#{doccomment},#{id}) 
+       insert into Reservation (pidnum,comnum,resdate,restime,comment,status,doccomment, fidnum) values 
+       (#{pidnum},#{comnum},#{resdate},#{restime},#{comment},#{status},#{doccomment},#{fidnum}) 
     ]]>
 	</insert>
 
@@ -32,6 +32,7 @@
         , r.restime as time
         , r.`status` as status
         , r.id as id
+        , r.fidnum as fidnum
     from reservation r
        , hospital h
    where 1=1
@@ -75,7 +76,13 @@ order by r.resdate desc
 	
 	</select>
 	
+	<select id='searchResTimeList' parameterType="hashmap" resultType="String">
+	<![CDATA[
+		select restime from reservation
+   		where comnum= #{comnum} and resdate=#{date}
+	]]>
 	
+	</select>
 
 
 

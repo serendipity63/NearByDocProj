@@ -60,4 +60,11 @@
 	]]>
 	</select>
 	
+	<update id="updateReviewCnt" parameterType="Review">
+   		<![CDATA[
+			update hospital set hreviewcnt=hreviewcnt+1 where comnum=#{comnum}
+		]]>
+   </update>
+	
+	
 </mapper>

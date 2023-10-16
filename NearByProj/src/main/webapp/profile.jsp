@@ -111,19 +111,23 @@ input{
 
 </style>
 <script>
-  function out(){
-	  window.open()
-   /* if (confirm("정말 탈퇴하시겠습니까??") == true){    //확인
- 
- }else{   //취소 */
- 
- return false;
- 
- }
+$(function (){
+	$("#out").click(function() {
+		if (confirm("정말 탈퇴하시겠습니까?") == true){    //확인
+			$.ajax({
+				url:"patientleave",
+				type:"post",
+				data:{"pidnum" : $('#hiddenPidnum').val()},
+				success:function(res){
+					location.href=res
+				}
+			})
+		}else{   //취소
+			return false;
+		}
+	})
+})
 
-
- 
-}
 </script>
 </head>
 
@@ -152,29 +156,19 @@ input{
       <p class="col">이름</p>
       <p><input type="text" id="pname" value="${myinfo.getPname()}" disabled="disabled"></p>
       <p class="col">전화번호</p>
-      <p><input type="text" id="tel"  value="${myinfo.getPtel() };" disabled="disabled"  ></p>
+      <p><input type="text" id="tel"  value="${myinfo.getPtel() }" disabled="disabled"  ></p>
       <p class="col">이메일</p>
       <p><input type="text" id="address"value="${myinfo.getPemail() }" disabled="disabled"></p>
       <p class="col">주소</p>
       <p><input type="text" id="idnum" value="${myinfo.getProadaddress() }" disabled="disabled" ></p>
     </div>
-    
-    
-     <%-- <div>
-      <p class="col">이름</p>
-      <p><input type="text" id="pname" value="${myinfo.getPname()}" disabled="disabled"></p>
-      <p class="col">전화번호</p>
-      <p><input type="text" id="tel"  value="${myinfo.getPtel() };" disabled="disabled"  ></p>
-      <p class="col">이메일</p>
-      <p><input type="text" id="address"value="${myinfo.getPemail() }" disabled="disabled"></p>
-      <p class="col">주소</p>
-      <p><input type="text" id="idnum" value="${myinfo.getProadaddress() } + ${myinfo.getPdetailaddress}" disabled="disabled" ></p>
-    </div> --%>
 
-   
     <div id="out">
-      <button onclick="out()"><h5>회원탈퇴</h5></button>
-     </div>
+      <button class="out"><h5>회원탈퇴</h5></button>
+     </div> 
+     <!-- pidNum을 탈퇴시에 전달하기 위해 값을 받아두는 장소 안보이게 처리  -->
+     <input id="hiddenPidnum" type="text" value="${myinfo.getPidnum() }" style="display:none;" > 
+     
    </div>
 
    

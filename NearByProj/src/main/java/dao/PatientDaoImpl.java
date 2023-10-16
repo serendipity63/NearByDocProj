@@ -51,4 +51,18 @@ public class PatientDaoImpl implements PatientDao {
 		return sqlSession.selectOne("mapper.patient.selectPatientByPidnum",pidnum);
 	}
 
+	@Override
+	public void updatePatient(Patient patient) throws Exception {
+		sqlSession.update("mapper.patient.updatePatient", patient);
+		sqlSession.commit();
+		
+	}
+
+	@Override
+	public void deletePatient(String pidnum) throws Exception {
+		System.out.println("Impl : " +pidnum);
+		sqlSession.delete("mapper.patient.deletePatient",pidnum);
+		sqlSession.commit();
+	}
+
 }

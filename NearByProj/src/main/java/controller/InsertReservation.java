@@ -11,10 +11,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import dto.Family;
 import dto.Hospital;
 import dto.Patient;
 import dto.Reservation;
-import service.ReservationService;
+import service.FamilyService;
+import service.FamilyServiceImpl;
 import service.ReservationServiceImpl;
 
 /**
@@ -38,11 +40,13 @@ public class InsertReservation extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		HttpSession session = request.getSession();
+		String date = null;
+		if(session.getAttribute("date") !=null) date = (String)session.getAttribute("date");
 		Hospital hospital = (Hospital)session.getAttribute("hospital");
 		ReservationServiceImpl reservationservice = new ReservationServiceImpl();
 		try {
 			List<String> timelist = new ArrayList<>();
-			timelist = reservationservice.timelist(hospital);
+			timelist = reservationservice.timelist(hospital,date);
 			request.setAttribute("timelist", timelist);
 			request.getRequestDispatcher("reservation.jsp").forward(request, response);
 			
@@ -62,7 +66,7 @@ public class InsertReservation extends HttpServlet {
 		HttpSession session = request.getSession();
 		Hospital hospital = (Hospital)session.getAttribute("hospital");
 		Patient patient = (Patient)session.getAttribute("user");
-		
+		String name=request.getParameter("name");
 		String pidnum = patient.getPidnum(); // 이름value 보내는데 pidnum 어떻게 얻어올지 수정해야함.
 		String comnum = hospital.getComnum();
 		String resdate = request.getParameter("resdate");
@@ -71,8 +75,17 @@ public class InsertReservation extends HttpServlet {
 		boolean status = false;
 		String doccomment = null;
 		Integer id = null;
-		Reservation reservation = new Reservation(pidnum,comnum,resdate,restime,comment,status,doccomment,id);
+		String fidnum = null;
+		
+		Reservation reservation = new Reservation(pidnum,comnum,resdate,restime,comment,status,doccomment,id,fidnum);
 		try {
+			if(!(name.equals(patient.getPname()))) {
+				
+				FamilyService familyservice = new FamilyServiceImpl();
+				Family family = familyservice.selectFamily(name);
+				fidnum=family.getFidnum();
+				session.setAttribute("name", name);
+			}
 			session.setAttribute("reservation", reservation);
 			response.sendRedirect("completereservation");
 
