@@ -12,7 +12,7 @@ public interface HospitalService {
 
 	String comnumcheck(String comnum) throws Exception;
 
-	Hospital hospitalInfo(String hname) throws Exception;
+	Hospital hospitalInfo(String comnum) throws Exception;
 	
 	
 	List<Hospital> hospitalList(String department, String lat, String lon) throws Exception;

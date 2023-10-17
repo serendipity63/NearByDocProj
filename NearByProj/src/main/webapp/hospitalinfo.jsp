@@ -86,9 +86,10 @@
 .btn-primary:hover {
 	background-color: #0056b3;
 }
+
 .sub {
-            font-weight: bold;
-        }
+	font-weight: bold;
+}
 </style>
 <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
 <script type="text/javascript">
@@ -150,45 +151,45 @@
 		<br>
 
 		<div>
-		<c:choose>
-			<c:when test="${empty lastreview}">
-				<p>해당 병원의 리뷰가 없습니다.</p>
-			</c:when>
-			<c:otherwise>
-				<table>
-					<td style="text-align: left" width="215">&nbsp;&nbsp;&nbsp;리뷰
-						${hospital.hreviewcnt}</td>
-					<td style="text-align: right" width="215"><a
-						href="readreview?comnum=${hospital.comnum}">전체보기 ></a></td>
-				</table>
-				<br>
-				<div class="review">
-					<div class="reviewinfo1">
-						<table>
-							<tr>
-								<td style="text-align: left" width="185">&nbsp;${lastreview.name}</td>
-								<td style="text-align: right" width="185">${lastreview.birth}&nbsp;</td>
-							</tr>
-							<tr>
-								<td></td>
-							</tr>
-							<tr>
-								<td colspan="2">&nbsp;${lastreview.content}</td>
-							</tr>
-						</table>
+			<c:choose>
+				<c:when test="${empty lastreview}">
+					<p>해당 병원의 리뷰가 없습니다.</p>
+				</c:when>
+				<c:otherwise>
+					<table>
+						<td style="text-align: left" width="215">&nbsp;&nbsp;&nbsp;리뷰
+							${hospital.hreviewcnt}</td>
+						<td style="text-align: right" width="215"><a
+							href="readreview?comnum=${hospital.comnum}">전체보기 ></a></td>
+					</table>
+					<br>
+					<div class="review">
+						<div class="reviewinfo1">
+							<table>
+								<tr>
+									<td style="text-align: left" width="185">&nbsp;${lastreview.name}</td>
+									<td style="text-align: right" width="185">${lastreview.birth}&nbsp;</td>
+								</tr>
+								<tr>
+									<td></td>
+								</tr>
+								<tr>
+									<td colspan="2">&nbsp;${lastreview.content}</td>
+								</tr>
+							</table>
+						</div>
+						<div class="reviewinfo2">
+							<table>
+								<tr>
+									<td>사용자 별점&nbsp;&nbsp;</td>
+									<td><c:forEach begin="1" end="${lastreview.star}">
+											<img src="image?file=star.png" alt="별" width="15">
+										</c:forEach></td>
+								</tr>
+							</table>
+						</div>
 					</div>
-					<div class="reviewinfo2">
-						<table>
-							<tr>
-								<td>사용자 별점&nbsp;&nbsp;</td>
-								<td><c:forEach begin="1" end="${lastreview.star}">
-										<img src="image?file=star.png" alt="별" width="15">
-									</c:forEach></td>
-							</tr>
-						</table>
-					</div>
-				</div>
-			</c:otherwise>
+				</c:otherwise>
 			</c:choose>
 
 		</div>
@@ -200,7 +201,8 @@
 			<button
 				onclick="window.open('insertreview', 'window_name','width=800, height=1000, location=no, status=no, scrollbars=yes')">리뷰하기</button>
 		</div>
-		<br> <p class="sub"}>병원 위치 정보</p>
+		<br>
+		<p class="sub"}>병원 위치 정보</p>
 		<div id="map" style="width: 100%; height: 350px;"></div>
 
 		<script type="text/javascript"

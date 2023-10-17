@@ -5,6 +5,7 @@ import java.util.Map;
 import dto.Patient;
 
 public interface PatientService {
+	void patientReserve(Patient patient)throws Exception;
 	Patient login(String pemail, String ppassword) throws Exception;
 
 	void patientjoin(Patient patient) throws Exception;

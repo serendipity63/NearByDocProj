@@ -110,25 +110,37 @@ function confirmReservation(reservationId) {
 		<c:forEach items="${reservations}" var="reservation">
 			<div id="res" onclick="location.href='resmanage?id=${reservation.id}';" style="cursor:pointer;">
 				<span>${reservation.date }</span>
-				 <c:if test="${reservation.status eq true}">
-						<span id="goResManageConfirm"
-							<%-- onclick="confirmReservation(${reservation.id})">예약 확인</button> --%>
-							>예약 확인</span>
+				 <c:if test="${reservation.status eq 1}">
+						<span>예약 확인</span>
 					</c:if> 
-				 <c:if test="${reservation.status eq false}">
-						<span id="goResManageComplete"
-							>진료 완료</span>
+				 <c:if test="${reservation.status eq 2}">
+						<span>진료 완료</span>
+					</c:if>
+					
+					 <c:if test="${reservation.status eq 3}">
+						<span>예약 취소</span>
+					</c:if>
+					
+					
+					<c:if test="${reservation.status eq 4}">
+						<span>방문 안함</span>
 					</c:if>
 			
 			
 			
 			
-				<c:if test="${reservation.status eq true}">
+				<c:if test="${reservation.status eq 1}">
 					<table class="restable">
-						</c:if>
-						<c:if test="${reservation.status eq false}">
-							<table class="restable" style="background-color: #CFE8F7">
-								</c:if>
+				</c:if>
+				<c:if test="${reservation.status eq 2}">
+					<table class="restable" style="background-color: #CFE8F7">
+				</c:if>
+				<c:if test="${reservation.status eq 3}">
+					<table class="restable" style="background-color: #DAD9D9">
+				</c:if>
+				<c:if test="${reservation.status eq 4}">
+					<table class="restable" style="background-color: #DAD9D9">
+				</c:if>
 								<tr>
 									<th rowspan="2">
 										<h4>${reservation.name }</h4>
