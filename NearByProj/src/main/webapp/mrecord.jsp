@@ -57,25 +57,24 @@ body {
 h1 {
 	width: 202px;
 	height: 50px;
-	margin: 44px 944px;
+	margin: 0 auto;
 	color: rgb(25, 25, 112);
 }
 th{
 	padding: 5px;
 	width: 192px;
-	float: left;
 	color: black;
 	text-align: center;
 	border-right:1px solid white;
 	font-weight: bold;
-	background-color: lightblue;
+	background-color: lightgray;
 	
 }
 
 table {
 	border: 1px solid;
     width: 1542px;
-    margin: 170px 236px;
+    margin: 80px auto;
 }
 
 input {
@@ -88,6 +87,12 @@ select {
 	height: 35px;
 }
 
+#center {
+	margin:0 auto;
+    width: 1479px;
+   
+   
+}
 button {
 	width: 100px;
 	height: 30px;
@@ -104,14 +109,14 @@ button {
 }
 
 .reserveform {
-	width: 1500px;
+	width: 1543px;
 	height: 50px;
-	margin: -86px 358px;
+	margin: 0 auto;
 }
 
 #datepicker1 {
 	margin-top: 50px;
-	margin-left: 282px;
+	margin-left: 501px;
 }
 
 #datepicker2 {
@@ -122,7 +127,7 @@ button {
 	width: 708px;
 	text-align: center;
 	margin-top: 20px;
-	margin-left: 673px;
+	margin:0 auto;
 }
 
 #emptyArea a {
@@ -166,7 +171,7 @@ button {
 	<% pageContext.include("hmain.jsp");%>
 
 
-
+	<div id="center">
 	<h1>진료 기록 조회</h1>
 	<br>
 	<br>
@@ -265,6 +270,7 @@ button {
 		</c:choose>
 		&nbsp;&nbsp;
 
+	</div>
 	</div>
 </body>
 </html>
