@@ -7,6 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<%
+	pageContext.include("hospitalheader.jsp");
+	%>
 <h2><%=request.getAttribute("err") %> </h2>
 
 </body>
