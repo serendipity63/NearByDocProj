@@ -25,5 +25,5 @@ public interface PatientService {
 
 	
 	void patientRemove (String pname)throws Exception;
-
+	Patient selectPatientByname(String pname) throws Exception;
 }

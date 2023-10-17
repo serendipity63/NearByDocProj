@@ -146,6 +146,10 @@ public class PatientServiceImpl implements PatientService {
 	public void patientReserve(Patient patient) throws Exception {
 		patientDao.insertPatient(patient);
 	}
-
+	
+	@Override
+	public Patient selectPatientByname(String pname) throws Exception {
+		return patientDao.selectPatientByname(pname);
+	}
 
 }

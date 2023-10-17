@@ -67,20 +67,7 @@ a {
 <body>
  <div class="outerDiv">
         <a href="hlogin" class="logo"><img src="image?file=hospitaldoc.png" alt="로고 이미지"></a>
-        <div class="innerDiv">
-            <div style="float: right; margin-right: 10px;">
-            
-                <c:choose>
-                    <c:when test="${empty hospitaluser}">
-                        <a href="hlogin">로그인</a> &nbsp;&nbsp;
-                    </c:when>
-                    <c:otherwise>
-                        <b>${hospitaluser.hname}님 환영합니다</b> &nbsp;&nbsp; <a href="hlogout">로그아웃</a>&nbsp;&nbsp;
-                    </c:otherwise>
-                </c:choose>
-                <a href="hjoin">회원가입</a>&nbsp;&nbsp;
-            </div>
-        </div>
+ 
     </div>
 
 
