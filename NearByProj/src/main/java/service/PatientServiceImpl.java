@@ -110,6 +110,15 @@ public class PatientServiceImpl implements PatientService {
 	}
 
 	@Override
+	public String pidnumcheck(String pidnum) throws Exception {
+		Patient patient= patientDao.selectPatientByPidnum(pidnum);
+		if(patient == null)
+			return "notexist";
+		
+		return "exist";
+	}
+	
+	@Override
 	public Patient myInfo(String pidnum) throws Exception {
 		return patientDao.selectPatientByPidnum(pidnum);
 	}
@@ -137,5 +146,6 @@ public class PatientServiceImpl implements PatientService {
 	public void patientReserve(Patient patient) throws Exception {
 		patientDao.insertPatient(patient);
 	}
+
 
 }

@@ -43,6 +43,7 @@ order by r.resdate desc
 	</select>
 	
 	
+
 	<!-- 리뷰 번호로 예약자 주민 번호 찾기 -->
 	<select id="findById" parameterType="Integer" resultType="String">
 	<![CDATA[
@@ -157,7 +158,21 @@ order by r.resdate desc
 	]]>
 	
 	</select>
-
+	
+	<select id="selectAllResBycomnum" parameterType="String" resultType="Reservation">
+	<![CDATA[
+		SELECT *
+		FROM reservation
+		WHERE comnum=#{comnum}
+		]]>
+	</select>
+	
+	<select id="selectResCount" parameterType="String" resultType="Integer">
+      <![CDATA[
+         select count(pidnum) from reservation where comnum=#{comnum}
+      ]]>
+    
+   </select>
 
 
 
