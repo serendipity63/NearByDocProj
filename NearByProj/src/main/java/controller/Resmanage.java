@@ -45,8 +45,10 @@ public class Resmanage extends HttpServlet {
 			Map<String, Object> reservation = new HashMap<>();
 			reservation.put("id", id);
 			reservation.put("pidnum", pidnum);
+			
+			System.out.println("Controller pidnum : "+reservation.get("pidnum"));
+			
 			Map<String,Object> res = resService.detailRes(reservation);
-			System.out.println("Controller : " + res.toString());
 			request.setAttribute("res", res);	
 			request.getRequestDispatcher("resmanage.jsp").forward(request, response);
 		} catch (Exception e) {

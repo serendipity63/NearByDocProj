@@ -12,34 +12,34 @@
 h1{
 	width: 220px;
     color: rgb(25, 25, 112);
-    margin:44px 933px;
+    margin:0 auto;
 
 }
 
-th{
-	padding: 5px;
-	width: 150px;
-	float: left;
-	color: black;
-	text-align: center;
-	border-right:1px solid white;
-	font-weight: bold;
-	background-color: lightblue;
+th {
+	width: 450px;
+	height: 30px;
+	background-color:lightgray;
+	
 	
 }
 td{
-	height:200px;
+	text-align:center;
+	background-color:white;
+}
+#center{
+	margin:0 auto;
 }
 
 table {
 	
     border: 1px solid;
-    width: 1206px;
-    margin:86px 430px;
+    width: 1346px;
+    margin:100px auto;
 }
 #emptyArea { width: 708px;
     text-align: center;
-    margin-left: 660px; }
+    margin:0 auto; }
 #emptyArea a {
 	display: inline-block;
 	width: 20px;
@@ -59,19 +59,20 @@ table {
 
 <body style="overflow-y:hidden">
 	<% pageContext.include("hmain.jsp");%>
+	<div id="center">
 	<h1>오늘의 예약내역</h1>
 	
-	<form action="trlist" method="post">
+	
 		<table>	
 			<tr class="row">
-				<th>예약번호</th>
-				<th>일자</th>
-				<th>시간</th>
-				<th>환자명</th>
-				<th>주민번호</th>
-				<th>요청사항</th>
-				<th>진료과목</th>
-				<th>진료완료처리</th>
+				<th style="width:150px;">예약번호</th>
+				<th style="width:150px;">일자</th>
+				<th style="width:150px;">시간</th>
+				<th style="width:150px;">환자명</th>
+				<th style="width:150px;">주민번호</th>
+				<th style="width:150px;">요청사항</th>
+				<th style="width:150px;">진료완료처리</th>
+				<th style="width:150px;">삭제</th>
 			</tr>
 		
 			<c:forEach items="${res.selectallres }" var="reservation">
@@ -79,20 +80,19 @@ table {
 				<td>${reservation.id }</td>
 				<td>${reservation.resdate }</td>
 				<td>${reservation.restime }</td>
-				<td>  </td>
+				<td> </td>
 				<td>${reservation.pidnum }</td>
 				<td>${reservation.comment }</td>
 				<td>${reservation.status }</td>
-				<td>  </td>
 				<td>
-					<%-- <c:if test="${hospitaluser.id == hospital.comnum }">
+					<c:if test="${hospitaluser.id == hospital.comnum }">
 						<a href="patientdelete?num=${patient.pname }&page=${res.pageInfo.curPage}">삭제</a>
-					</c:if> --%>
+					</c:if>
 				</td>
 			</tr>
 			</c:forEach>
 		</table>
-	</form>
+	
 	<div id="emptyArea">
 			<c:choose>  
 				<c:when test="${res.pageInfo.curPage>1}">
@@ -128,6 +128,6 @@ table {
 			&nbsp;&nbsp;
            
     	</div>
-
+	</div>
 </body>
 </html>

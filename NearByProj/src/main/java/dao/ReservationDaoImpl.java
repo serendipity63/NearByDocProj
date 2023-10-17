@@ -5,7 +5,6 @@ import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
-import dto.Hospital;
 import dto.Reservation;
 import util.MybatisSqlSessionFactory;
 
@@ -21,14 +20,18 @@ public class ReservationDaoImpl implements ReservationDao{
 	
 	
 	@Override
-	public String checkFamily(Object pidnum) throws Exception {
-		
-		return sqlSession.selectOne("mapper.reservation.checkFamily", pidnum);
+	public String findById(Integer id) throws Exception {
+		return sqlSession.selectOne("mapper.reservation.findById", id);
 	}
 	
 	@Override
-	public Map<String, Object> selectDetailReservation(Map<String, Object> param) {
-		return sqlSession.selectOne("mapper.reservation.selectDetailReservation", param);
+	public Map<String, Object> selectMyDetailReservation(Map<String, Object> param) {
+		return sqlSession.selectOne("mapper.reservation.selectMyDetailReservation", param);
+	}
+	
+	@Override
+	public Map<String, Object> selectFamDetailReservation(Map<String, Object> param) {
+		return sqlSession.selectOne("mapper.reservation.selectFamDetailReservation", param);
 	}
 	
 	
@@ -82,9 +85,6 @@ public class ReservationDaoImpl implements ReservationDao{
 	
 	@Override
 	public Integer selectResCount(String comnum) throws Exception {
-		return sqlSession.selectOne("mapper.reservation.selectResCount");
+		return sqlSession.selectOne("mapper.reservation.selectResCount",comnum);
 	}
-
-
-
 }

@@ -50,43 +50,35 @@ body {
 h1 {
 	width: 162px;
     height: 50px;
-    margin:44px 944px;
+    margin:0 auto;
     color: rgb(25, 25, 112);
 }
 
-#center>th{
-	padding: 5px;
-	width: 225px;
-	float: left;
-	color: black;
-	text-align: center;
-	border:1px solid black;
-	font-weight: bold;
-	
+#center{
+	margin:0 auto;
 	
 }
-
-#center {
-	
-    border: 1px solid;
-    width: 1356px;
-    margin:40px 337px;
-    background-color: white;
-}
-
-
-
 
 input {
 	width: 224px;
 	height: 38px;
 }
+th{
+	width: 450px;
+	height: 30px;
+	background-color:lightgray;
+
+}
+table{
+	 border: 1px solid;
+    width: 1512px;
+    margin:80px auto;
+}
 
 #reserveform {
-	margin-top: 50px;
     width: 1000px;
     height: 50px;
-    margin-left: 336px;
+    margin:70px 391px auto;
     
 }
 
@@ -131,7 +123,7 @@ button {
 
 	
 		
-
+			<div id="center">
 		
 				<h1>일정별 조회</h1>
 			
@@ -150,7 +142,7 @@ button {
 
 
 			</div>
-			<table id="center">	
+			<table>	
 			<tr class="row">
 				<th style="width:150px;">예약번호</th>
 				<th style="width:150px;">일자</th>
@@ -215,6 +207,7 @@ button {
 		</c:choose>
 		&nbsp;&nbsp;
 
+	</div>
 	</div>
 </body>
 </html>
