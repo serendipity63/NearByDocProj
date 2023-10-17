@@ -4,9 +4,14 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap"
+	rel="stylesheet">
 <title>error404</title>
 <style type="text/css">
+*{
+			font-family: 'Noto Sans kr', sans-serif;
 
+}
 </style>
 </head>
 <body>

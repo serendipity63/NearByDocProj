@@ -4,13 +4,14 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>오류</title>
 </head>
 <body>
 	<%
 	pageContext.include("hospitalheader.jsp");
 	%>
-<h2><%=request.getAttribute("err") %> </h2>
-
+<center>
+<%=request.getAttribute("err") %>
+</center>
 </body>
 </html>
