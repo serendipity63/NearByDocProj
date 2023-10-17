@@ -204,18 +204,27 @@ $("#currentAddress").click(function() {
 	<script
 		src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 	<script>
-
+	var geocoder = new kakao.maps.services.Geocoder();
 	function execDaumPostcode() {
 
 		new daum.Postcode({
 			oncomplete: function (data) {
-				console.log(data);
-				
-				window.opener.postMessage(data.address,"*"); //전달하기
-      	    	window.close(); //전달하고 창 닫힘
+				geocoder.addressSearch(data.address, function(result,
+						status) {
+					if (status === kakao.maps.services.Status.OK) {
+						//주소를 좌표로변환한 결과에서 위도와 경도를 얻어온다
+						var latitude = result[0].y;
+						var longitude = result[0].x;
+						var letlon = latitude+":"+longitude;
+						window.opener.postMessage(data.address+","+letlon,"*"); //전달하기
+			  	    	window.close(); //전달하고 창 닫힘
+					} else {
+						console.error('오류');
+
+					}
+				});
 			}
 		}).open();
-
 	}
 
 </script>
