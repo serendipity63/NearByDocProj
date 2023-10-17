@@ -105,16 +105,6 @@ margin-left :60px;
    <!-- 헤더 -->
    <% pageContext.include("thinheader.jsp");%>
    <div id="sub">
-   <!--  <div >
-      <span>
-        <input class="modibtn" type="button" value="수정" onclick="modi()">
-        <input class="canbtn" type="button" onclick="history.go(-1)" value="취소">
-      </span>
-      <br>  
-    </div>
-  
-    
-    <hr> -->
   </div>
 
 
