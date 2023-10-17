@@ -65,9 +65,6 @@
 				latitude.value= latilong[0];
 				longitude.value= latilong[1];
 			}
-
-
-			
 			console.log(addressInput.value);
 		});
 	}

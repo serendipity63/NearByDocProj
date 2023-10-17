@@ -37,10 +37,8 @@ public class SearchHospital extends HttpServlet {
 		String lon = request.getParameter("longitude");
 
 		/*
-		 * System.out.println(address); 
-		 * System.out.println(department);
-		 * System.out.println(lat); 
-		 * System.out.println(lon);
+		 * System.out.println(address); System.out.println(department);
+		 * System.out.println(lat); System.out.println(lon);
 		 */
 
 		HospitalService hospitalservice = new HospitalServiceImpl();
