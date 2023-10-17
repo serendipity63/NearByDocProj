@@ -13,7 +13,7 @@
 	<select id="selectHospital" parameterType="String"
 		resultType="Hospital">
 	<![CDATA[
-		select * from hospital where hname=#{hname}
+		select * from hospital where comnum=#{comnum}
 	]]>
 	</select>
 

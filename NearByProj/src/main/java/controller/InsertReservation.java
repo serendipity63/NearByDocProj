@@ -72,7 +72,7 @@ public class InsertReservation extends HttpServlet {
 		String resdate = request.getParameter("resdate");
 		String restime = request.getParameter("restime");
 		String comment = request.getParameter("comment");
-		boolean status = false;
+		String status = "1";
 		String doccomment = null;
 		Integer id = null;
 		String fidnum = null;
