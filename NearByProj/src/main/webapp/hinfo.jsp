@@ -112,8 +112,8 @@ td{
 				
 			</table>
 				<div id="button">
-				<c:if test="${hospitaluser.id eq hospital.hname }">
-				<a href="hospitalmodify?hname=${hospital.hname }">수정하기</a>
+				<c:if test="${hospitaluser.comnum eq hospital.comnum }">
+				<a href="hospitalmodify?comnum=${hospital.comnum }">수정하기</a>
 				</c:if>
 				</div>
 				

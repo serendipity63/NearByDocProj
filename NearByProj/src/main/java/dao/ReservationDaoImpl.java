@@ -75,4 +75,16 @@ public class ReservationDaoImpl implements ReservationDao{
 	}
 
 	
+	@Override
+	public List<Reservation> selectAllResBycomnum(String comnum) throws Exception {
+		return sqlSession.selectList("mapper.reservation.selectAllResBycomnum",comnum);
+	}
+	
+	@Override
+	public Integer selectResCount(String comnum) throws Exception {
+		return sqlSession.selectOne("mapper.reservation.selectResCount");
+	}
+
+
+
 }
