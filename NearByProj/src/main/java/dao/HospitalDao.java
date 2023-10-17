@@ -1,6 +1,7 @@
 package dao;
 
 import java.util.List;
+import java.util.Map;
 
 import dto.Hospital;
 
@@ -11,5 +12,5 @@ public interface HospitalDao {
 
 	List<Hospital> selectHospitalList(String department) throws Exception;
 
-
+	void updateGrade(Map<String, String> param) throws Exception;
 }

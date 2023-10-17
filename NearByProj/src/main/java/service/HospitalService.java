@@ -19,6 +19,6 @@ public interface HospitalService {
 	Hospital selectHospitalBycomnum(String comnum) throws Exception;
 
 	void hospitalModify(Hospital hospital) throws Exception;
-
+	void updateGrade(String comnum) throws Exception;
 	
 }

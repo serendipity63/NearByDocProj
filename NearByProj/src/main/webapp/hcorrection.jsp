@@ -87,45 +87,45 @@ input[type="text"]{
 		<h1>병원정보</h1>
 	
 		
-		<form action="hinfomodify" method="post" enctype="maltipart/form-data">
+		<form action="hospitalmodify" method="post" enctype="maltipart/form-data">
 		
 		
 			<table>
 				<tr>
 					<td>진료 과목</td>
 					<td><input type="text" name="department" 
-					id="department"  value="${hospital.department }" placeholder="이비인후과" /></td>
+					id="department"  value="${hospital.department }" placeholder="${hospital.department }" /></td>
 				</tr>
 				<tr>
 					<td>병원명</td>
 					<td><input type="text" name="hname" 
-					id="hname"  value="${hospital.hname }" placeholder="니어바이닥의원" /></td>
+					id="hname"  value="${hospital.hname }" placeholder="${hospital.hname }" /></td>
 				</tr>
 				<tr>
 					<td>사업자등록번호</td>
 					<td><input type="text" name="comnum"
-					id="comnum" value="${hospital.comnum }" placeholder="ch2488@naver.com" /></td>
+					id="comnum" value="${hospital.comnum }" placeholder="${hospital.comnum }" /></td>
 				</tr>
 				<tr>
 					<td>전화번호</td>
 					<td><input type="text" name="htel"
-					id="htel" value="${hospital.htel }"placeholder="02-1234-5678" /></td>
+					id="htel" value="${hospital.htel }"placeholder="${hospital.htel }" /></td>
 				</tr>
 				<tr>
 					<td>주소</td>
 					<td><input type="text" name="address"
-					id="address" value="${hospital.address }"placeholder="서울시 금천구 호서대벤처타워" /></td>
+					id="address" value="${hospital.address }" placeholder="${hospital.address }" /></td>
 				</tr>
 
 				<tr>
 					<td>진료시간</td>
 					<td><input type="text" name="clinic"
-					id="clinic" value="${hospital.clinic }"placeholder="09:00~18:00" /></td>
+					id="clinic" value="${hospital.clinic }" placeholder="${hospital.clinic }" /></td>
 				</tr>
 				<tr>
 					<td>점심시간</td>
 					<td><input type="text" name="lunch"
-					id="lunch" value="${hospital.lunch }"placeholder="13:00~14:00" /></td>
+					id="lunch" value="${hospital.lunch }"placeholder="${hospital.lunch }" /></td>
 				</tr>
 
 			</table>

@@ -27,6 +27,9 @@ th{
 	background-color: lightblue;
 	
 }
+td{
+	height:200px;
+}
 
 table {
 	
@@ -58,7 +61,7 @@ table {
 	<% pageContext.include("hmain.jsp");%>
 	<h1>오늘의 예약내역</h1>
 	
-		<form action="trlist" method="post" >			
+	<form action="trlist" method="post">
 		<table>	
 			<tr class="row">
 				<th>예약번호</th>
@@ -71,20 +74,20 @@ table {
 				<th>진료완료처리</th>
 			</tr>
 		
-			<c:forEach items="${res.reservationList }" var="reservation">
+			<c:forEach items="${res.selectallres }" var="reservation">
 			<tr>
-				<td>${reservation.id }
+				<td>${reservation.id }</td>
 				<td>${reservation.resdate }</td>
 				<td>${reservation.restime }</td>
-				<td>${reservation.name }</td>
+				<td>  </td>
 				<td>${reservation.pidnum }</td>
 				<td>${reservation.comment }</td>
-				<td>${reservation.subject }</td>
 				<td>${reservation.status }</td>
+				<td>  </td>
 				<td>
-					<c:if test="${hospitaluser.id == hospital.comnum }">
+					<%-- <c:if test="${hospitaluser.id == hospital.comnum }">
 						<a href="patientdelete?num=${patient.pname }&page=${res.pageInfo.curPage}">삭제</a>
-					</c:if>
+					</c:if> --%>
 				</td>
 			</tr>
 			</c:forEach>
