@@ -9,8 +9,10 @@ import dto.Reservation;
 public interface ReservationDao {
 	
 	List<Map<String, Object>> selectMyReservation(String pidnum)throws Exception;
-	String checkFamily(Object pidnum) throws Exception;
-	Map<String, Object> selectDetailReservation(Map<String, Object> param);
+	String findById(Integer id) throws Exception;
+	Map<String, Object> selectMyDetailReservation(Map<String, Object> param);
+	Map<String, Object> selectFamDetailReservation(Map<String, Object> param);
+
 	
 	
 	Integer cntMyReservation(String pidnum)throws Exception;
