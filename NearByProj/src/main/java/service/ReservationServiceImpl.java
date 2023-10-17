@@ -27,9 +27,12 @@ public class ReservationServiceImpl implements ReservationService{
 	
 	@Override
 	public Map<String, Object> detailRes(Map<String, Object> param) throws Exception {
-		if(resDao.checkFamily(param.get("pidnum")) == null)return resDao.selectDetailReservation(param);
+		// 리뷰 번호로 해당 리뷰의 예약자의 주민번호 찾기
+		if(resDao.findById((Integer) param.get("id"))== null) { // null일 경우 본인이 예약
+			return resDao.selectMyDetailReservation(param);
+		}
 		
-		return resDao.selectDetailReservation(param);
+			return resDao.selectFamDetailReservation(param);
 	}
 	
 
