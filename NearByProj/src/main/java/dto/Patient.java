@@ -1,6 +1,10 @@
 package dto;
 
 public class Patient {
+	
+
+	
+
 	private String pemail;
 	private String pidnum;
 	private String ppassword;
@@ -14,6 +18,7 @@ public class Patient {
 
 	public Patient(String pemail, String ppassword, String pname, String ptel, String pidnum, String proadaddress,
 			String ppostcode, String pdetailaddress) {
+		
 		this.pemail = pemail;
 		this.pidnum = pidnum;
 		this.ppassword = ppassword;

@@ -76,14 +76,20 @@ button {
 </style>
 <script>
 function confirmReservation(reservationId) {
-    // Create a URL with the reservation ID as a query parameter
-    const url = `/near/resmanage?reservationId=${reservation.id}`; // Update the path accordingly
-
-    // Redirect the page to the new URL
-    window.location.href = "resmanage";
+	console.log("예약 확인 버튼 클릭");
+    $.ajax({
+        url: 'resmanage',
+        type: 'post',
+        data: {'id': reservationId},
+        success: function(response) {
+            console.log("success");
+        },
+        error: function(xhr, status, error) {
+            // Handle errors, if any
+            console.err("에러다 에러")
+        }
+    })
 }
-
-
 </script>
 </head>
 
@@ -102,34 +108,48 @@ function confirmReservation(reservationId) {
 
 	<div id="container">
 		<c:forEach items="${reservations}" var="reservation">
-			<div id="res">
-				<span>${reservation.date }</span> 
-				<span> 
-				<c:if test="${reservation.status eq true}"><button id="goResManageConfirm" onclick="confirmReservation(${reservation.id})">예약 확인</button></c:if> 
-				<c:if test="${reservation.status eq false}"><button id="goResManageComplete"onclick="confirmReservation(${reservation.id})">진료 완료</button></c:if>
-				</span>
-					<c:if test="${reservation.status eq true}"><table class="restable"></c:if>
-					<c:if test="${reservation.status eq false}"><table class="restable" style="background-color: #CFE8F7"></c:if>									<tr>
-										<th rowspan="2">
-											<h4>${reservation.name }</h4>
-											<h5>${reservation.address }</h5>
-											<h5>${reservation.tel }</h5>
-										</th>
-										<th>
-											<h5>예약 일자</h5>
-											<h5>${reservation.date }</h5>
-										</th>
-									</tr>
-									<tr>
-										<th>
-											<h5>예약 시간</h5>
-											<h5>${reservation.time }</h5>
-										</th>
-									</tr>
-								</table>
-			</div>
-		</c:forEach>
-	</div>
+			<div id="res" onclick="location.href='resmanage?id=${reservation.id}';" style="cursor:pointer;">
+				<span>${reservation.date }</span>
+				 <c:if test="${reservation.status eq true}">
+						<span id="goResManageConfirm"
+							<%-- onclick="confirmReservation(${reservation.id})">예약 확인</button> --%>
+							>예약 확인</span>
+					</c:if> 
+				 <c:if test="${reservation.status eq false}">
+						<span id="goResManageComplete"
+							>진료 완료</span>
+					</c:if>
+			
+			
+			
+			
+				<c:if test="${reservation.status eq true}">
+					<table class="restable">
+						</c:if>
+						<c:if test="${reservation.status eq false}">
+							<table class="restable" style="background-color: #CFE8F7">
+								</c:if>
+								<tr>
+									<th rowspan="2">
+										<h4>${reservation.name }</h4>
+										<h5>${reservation.address }</h5>
+										<h5>${reservation.tel }</h5>
+									</th>
+									<th>
+										<h5>예약 일자</h5>
+										<h5>${reservation.date }</h5>
+									</th>
+								</tr>
+								<tr>
+									<th>
+										<h5>예약 시간</h5>
+										<h5>${reservation.time }</h5>
+									</th>
+								</tr>
+							</table>
+							</div>
+							</c:forEach>
+							</div>
 </body>
 
 </html>

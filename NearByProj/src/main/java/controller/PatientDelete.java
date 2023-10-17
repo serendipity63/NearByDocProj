@@ -1,7 +1,6 @@
 package controller;
 
 import java.io.IOException;
-import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,21 +8,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
 import service.PatientService;
 import service.PatientServiceImpl;
 
 /**
- * Servlet implementation class PatientList
+ * Servlet implementation class PatientDelete
  */
-@WebServlet("/patientlist")
-public class PatientList extends HttpServlet {
+@WebServlet("/patientdelete")
+public class PatientDelete extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public PatientList() {
+    public PatientDelete() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,22 +31,18 @@ public class PatientList extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
-		String page= request.getParameter("page");
-		int curpage=1;
-		if(page!=null) {
-			curpage= Integer.parseInt(page);
-		}
-		
+		String pname= request.getParameter("pname");
+		Integer page=Integer.parseInt(request.getParameter("page"));
 		try {
 			PatientService patientService=new PatientServiceImpl();
-			Map<String,Object>res=patientService.patientListByPage(curpage);	
-			request.setAttribute("res", res);
-			request.getRequestDispatcher("reserveinfo_p.jsp").forward(request, response);
+			patientService.patientRemove(pname);
+			response.sendRedirect("patientlist?page="+page);
 		}catch(Exception e) {
 			e.printStackTrace();
-			request.setAttribute("err", e.getMessage());
+			request.setAttribute("err", "환자 삭제 오류");
 			request.getRequestDispatcher("herror.jsp").forward(request, response);
 		}
-
 	}
+
+
 }

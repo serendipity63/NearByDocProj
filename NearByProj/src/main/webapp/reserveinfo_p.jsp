@@ -14,22 +14,27 @@ body {
 h1 {
 	width: 163px;
 	height: 55px;
-	margin: 44px 944px;
+	margin: 44px 840px;
 	color: rgb(25, 25, 112);
 }
 
 #center {
-	margin-left: 400px;
-	width: 1276px;
-	margin-top: 55px;
-	background-color: lightgray;
+	margin-left: 261px;
+    width: 1479px;
+    margin-top: 55px;
+    background-color: lightgray;
 }
 
 th {
 	width: 300px;
 	height: 30px;
-	border: 1px solid black;
+	
 }
+td{
+	text-align:center;
+ }
+
+
 
 h5 {
 	text-align: center;
@@ -50,7 +55,7 @@ input {
 	margin-top: 40px;
 	width: 1000px;
 	height: 50px;
-	margin-left: 129px;
+	margin-left: -153px;
 }
 
 #search {
@@ -65,8 +70,8 @@ input {
 #emptyArea {
 	width: 708px;
 	text-align: center;
-	margin-top: 401px;
-	margin-left: 673px;
+	margin-top: 66px;
+	margin-left: 578px;
 }
 
 #emptyArea a {
@@ -77,11 +82,12 @@ input {
 }
 
 #emptyArea .btn {
-	background: lightgray;
+	background: white;
 }
 
 #emptyArea .select {
-	background: lightblue;
+	background: black;
+	color:white;
 }
 </style>
 <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
@@ -97,14 +103,14 @@ input {
 </script>
 </head>
 
-<body>
+<body style="overflow-y:hidden">
 	<% pageContext.include("hmain.jsp");%>
 	<h1>환자별 조회</h1>
 
 
 
 
-
+	
 
 	<form action="patientsearch" method="post" id="searchform">
 		<div id="reserveform">
@@ -112,7 +118,7 @@ input {
 				<select name="type">
 					<option value="all">선택</option>
 					<option value="pname" ${res.type eq 'pname'? 'selected':'' }>환자명</option>
-					<option value="pidnum">${res.type eq 'pidnum'? 'selected':'' }주민등록번호</option>
+					<option value="pidnum"${res.type eq 'pidnum'? 'selected':'' }>주민등록번호</option>
 				</select> 
 				<input type="text" name="keyword" id="keyword" value="${res.keyword }" /> 
 				<input type="submit" id="search" value="검색" />
@@ -120,28 +126,36 @@ input {
 		</div>
 
 	</form>
-
+	
 	<table id="center">
 		<tr id="row">
-			<th>이름</th>
-			<th>주민번호</th>
-			<th>이메일</th>
-			<th>휴대폰</th>
+			<th style="width:150px;">환자명</th>
+			<th style="width:150px;">주민번호</th>
+			<th style="width:150px;">이메일</th>
+			<th style="width:150px;">휴대폰</th>
 			<th>주소</th>
-			<th>우편번호</th>
+			<th style="width:150px;">우편번호</th>
+			<th style="width:150px;">회원삭제</th>
 		</tr>
 		<c:forEach items="${res.patientList }" var="patient">
 			<tr>
-				<td>${patient.pname }</td>
-				<td>${patient.pemail }</td>
-				<td>${patient.pidnum }</td>
-				<td>${patient.ptel }</td>
-				<td>${patient.address }</td>
-				<td>${patient.ppostcode }</td>
-				<td><c:if test="${hospitaluser.id == hospital.comnum }">
-						<a
-							href="patientdelete?pidnum=${patient.pidnum }&page=${res.pageInfo.curPage}">삭제</a>
-					</c:if></td>
+				<td style="background-color:white;">${patient.pname }</td>
+			
+			
+				<td style="background-color:white;">${patient.pidnum }</td>
+				
+				<td style="background-color:white;">${patient.pemail }</td>
+				
+				<td style="background-color:white;">${patient.ptel }</td>
+				
+				<td style="background-color:white;">${patient.proadaddress }</td>
+			
+				<td style="background-color:white;">${patient.ppostcode }</td>
+				
+				<td style="background-color:white;"><c:if test="${hospitaluser.id == hospital.comnum }">
+					<a href="patientdelete?pname=${patient.pname }&page=${res.pageInfo.curPage}" style="text-decoration:none;  color:red;">삭제</a>
+					</c:if>
+				</td>
 			</tr>
 		</c:forEach>
 	</table>
@@ -151,7 +165,7 @@ input {
 				<a href="patientlist?page=${res.pageInfo.curPage-1}">&lt;</a>
 			</c:when>
 			<c:otherwise>
-					&lt;
+         			&lt;	
 				</c:otherwise>
 		</c:choose>
 		&nbsp;&nbsp;

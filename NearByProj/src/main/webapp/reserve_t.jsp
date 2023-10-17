@@ -44,17 +44,17 @@ table {
 	text-decoration: none;
 }
 #emptyArea .btn {
-	background: lightgray;
+	background-color: black;
 }
 #emptyArea .select {
-	background: lightblue;
+	background-color: black;
 }
 </style>
 <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
 
 </head>
 
-<body>
+<body style="overflow-y:hidden">
 	<% pageContext.include("hmain.jsp");%>
 	<h1>오늘의 예약내역</h1>
 	
@@ -83,7 +83,7 @@ table {
 				<td>${reservation.status }</td>
 				<td>
 					<c:if test="${hospitaluser.id == hospital.comnum }">
-						<a href="patientdelete?num=${patient.pidnum }&page=${res.pageInfo.curPage}">삭제</a>
+						<a href="patientdelete?num=${patient.pname }&page=${res.pageInfo.curPage}">삭제</a>
 					</c:if>
 				</td>
 			</tr>
