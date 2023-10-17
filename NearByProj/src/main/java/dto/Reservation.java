@@ -8,7 +8,7 @@ public class Reservation {
 	private String resdate;
 	private String restime;
 	private String comment;
-	private boolean status;
+	private String status;
 	private String doccomment;
 	private Integer id;
 	private String fidnum;
@@ -20,7 +20,7 @@ public class Reservation {
 		this.fidnum = fidnum;
 	}
 	public Reservation() {}
-	public Reservation(String pidnum,String comnum,String resdate,String restime,String comment,boolean status,String doccomment,Integer id, String fidnum) {
+	public Reservation(String pidnum,String comnum,String resdate,String restime,String comment,String status,String doccomment,Integer id, String fidnum) {
 		this.pidnum=pidnum;
 		this.comnum=comnum;
 		this.resdate=resdate;
@@ -67,10 +67,10 @@ public class Reservation {
 		this.comment = comment;
 	}
 
-	public boolean isStatus() {
+	public String isStatus() {
 		return status;
 	}
-	public void setStatus(boolean status) {
+	public void setStatus(String status) {
 		this.status = status;
 	}
 	public String getDoccomment() {
