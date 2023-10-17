@@ -14,5 +14,5 @@ public interface FamilyDao {
 	public List<Map<String, Object>> selecetMyFamily(String pidnum) throws Exception; 
   
   Family selectFamily(String name) throws Exception;
-
+  	public List<Family> selectFamilyList(String pidnum) throws Exception;
 }

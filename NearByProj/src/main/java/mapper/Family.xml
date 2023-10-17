@@ -4,14 +4,15 @@
 <mapper namespace="mapper.family">
 
 
-<insert id="addFamily" parameterType="Family">
+	<insert id="addFamily" parameterType="Family">
 <![CDATA[
 insert into family (fidnum, fname, ftel, pidnum, faddress)
             values (#{fidnum},#{fname},#{ftel},#{pidnum},#{faddress} )
 ]]>
-</insert>
-	
-<select id="selecetMyFamily" parameterType="String" resultType="hashmap">
+	</insert>
+
+	<select id="selecetMyFamily" parameterType="String"
+		resultType="hashmap">
 <![CDATA[
 		SELECT f.fname as name
 		     , f.ftel as tel
@@ -23,7 +24,7 @@ insert into family (fidnum, fname, ftel, pidnum, faddress)
 		   AND p.pidnum = #{pidnum}
 
 ]]>
-</select>
+	</select>
 
 	<select id="selectFamily" parameterType="String"
 		resultType="Family">
@@ -32,5 +33,13 @@ insert into family (fidnum, fname, ftel, pidnum, faddress)
 	]]>
 	</select>
 
-	
+	<select id="selectFamilyList" parameterType="String"
+		resultType="Family">
+		<![CDATA[
+			SELECT *
+			FROM family
+			WHERE pidnum=#{pidnum}
+		]]>
+	</select>
+
 </mapper>
