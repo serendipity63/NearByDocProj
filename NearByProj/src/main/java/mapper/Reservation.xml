@@ -174,7 +174,22 @@ order by r.resdate desc
     
    </select>
 
-
+	<select id="searchAllResCount" parameterType="hashmap" resultType="Integer">
+      <![CDATA[
+         select count(pidnum) from reservation 
+         where comnum=#{comnum} and resdate between #{sdate} and #{edate} and ${type} like '%${keyword}%'
+      ]]>
+    
+   </select>
+   
+   <select id='searchAllResList' parameterType="hashmap" resultType="Reservation">
+	<![CDATA[
+		select * from reservation 
+        where comnum=#{comnum} and resdate between #{sdate} and #{edate} and ${type} like '%${keyword}%'
+        limit #{row},10
+	]]>
+	
+	</select>
 
 
 </mapper>

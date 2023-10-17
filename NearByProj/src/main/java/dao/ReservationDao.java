@@ -28,4 +28,8 @@ public interface ReservationDao {
 	List<String> resTimeList(Map<String,String> param) throws Exception;
 	List<Reservation> selectAllResBycomnum(String comnum) throws Exception;
 	Integer selectResCount(String comnum) throws Exception;
+	
+	Integer searchAllResCount(Map<String,Object> param) throws Exception;
+	
+	List<Reservation>searchAllResList(Map<String,Object> param) throws Exception;
 }

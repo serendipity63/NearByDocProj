@@ -70,5 +70,9 @@ public class PatientDaoImpl implements PatientDao {
 
 		sqlSession.commit();
 	}
-
+	
+	@Override
+	public Patient selectPatientByname(String pname) throws Exception {
+		return sqlSession.selectOne("mapper.patient.selectPatientByname",pname);
+	}
 }

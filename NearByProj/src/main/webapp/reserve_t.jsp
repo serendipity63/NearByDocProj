@@ -85,9 +85,9 @@ table {
 				<td>${reservation.comment }</td>
 				<td>${reservation.status }</td>
 				<td>
-					<c:if test="${hospitaluser.id == hospital.comnum }">
+					<%-- <c:if test="${hospitaluser.id == hospital.comnum }">
 						<a href="patientdelete?num=${patient.pname }&page=${res.pageInfo.curPage}">삭제</a>
-					</c:if>
+					</c:if> --%>
 				</td>
 			</tr>
 			</c:forEach>
