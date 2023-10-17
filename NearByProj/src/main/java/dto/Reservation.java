@@ -67,7 +67,7 @@ public class Reservation {
 		this.comment = comment;
 	}
 
-	public String isStatus() {
+	public String getStatus() {
 		return status;
 	}
 	public void setStatus(String status) {

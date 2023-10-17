@@ -32,8 +32,8 @@ public class TodayReservationList extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("utf-8");
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    	request.setCharacterEncoding("utf-8");
 		String page= request.getParameter("page");
 		HttpSession session = request.getSession();
 		Hospital hospital = (Hospital)session.getAttribute("hospitaluser");
