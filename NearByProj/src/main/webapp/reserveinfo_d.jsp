@@ -71,7 +71,7 @@ h1 {
     border: 1px solid;
     width: 1356px;
     margin:40px 337px;
-    background-color: lightgray;
+    background-color: white;
 }
 
 
@@ -87,6 +87,7 @@ input {
     width: 1000px;
     height: 50px;
     margin-left: 336px;
+    
 }
 
 button {
@@ -151,16 +152,18 @@ button {
 			</div>
 			<table id="center">	
 			<tr class="row">
-				<th>일자</th>
-				<th>시간</th>
-				<th>환자명</th>
-				<th>주민등록번호</th>
-				<th>연락처</th>
+				<th style="width:150px;">예약번호</th>
+				<th style="width:150px;">일자</th>
+				<th style="width:150px;">시간</th>
+				<th style="width:150px;">환자명</th>
+				<th style="width:150px;">주민등록번호</th>
+				<th style="width:150px;">연락처</th>
 				<th>주소</th>
 			</tr>
 		
 			<c:forEach items="${res.reserveList }" var="reserve">
 			<tr>
+				<td>${reserve.comnum }</td>
 				<td>${reserve.resdate }</td>
 				<td>${reserve.restime }</td>
 				<td>${reserve.name }</td>
@@ -168,17 +171,17 @@ button {
 				<td>${reserve.phone }</td>
 				<td>${reserve.address }</td>
 				<td>
-					<c:if test="${hospitaluser.id == hospital.comnum }">
+					<c:if test="${hospitaluser.id == reserve.comnum }">
 						<a href="patientdelete?num=${patient.pidnum }&page=${res.pageInfo.curPage}">삭제</a>
 					</c:if>
 				</td>
 			</tr>
 			</c:forEach>
-		</table>
+			</table>
 	<div id="emptyArea">
 		<c:choose>
 			<c:when test="${res.pageInfo.curPage>1}">
-				<a href="boardlist?page=${res.pageInfo.curPage-1}">&lt;</a>
+				<a href="patientlist?page=${res.pageInfo.curPage-1}">&lt;</a>
 			</c:when>
 			<c:otherwise>
 					&lt;
@@ -190,11 +193,11 @@ button {
 			end="${res.pageInfo.endPage}" var="i">
 			<c:choose>
 				<c:when test="${res.pageInfo.curPage==i}">
-					<a href="boardlist?page=${i}" class="select"
+					<a href="patientlist?page=${i}" class="select"
 						onclick="callBtn(${i});return ${res.keyword==null};">${i}</a>&nbsp;
 					</c:when>
 				<c:otherwise>
-					<a href="boardlist?page=${i}" class="btn"
+					<a href="patientlist?page=${i}" class="btn"
 						onclick="callBtn(${i});return ${res.keyword==null};">${i}</a>&nbsp;
 					</c:otherwise>
 

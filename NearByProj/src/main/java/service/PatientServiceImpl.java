@@ -133,4 +133,9 @@ public class PatientServiceImpl implements PatientService {
 
 	}
 
+	@Override
+	public void patientReserve(Patient patient) throws Exception {
+		patientDao.insertPatient(patient);
+	}
+
 }

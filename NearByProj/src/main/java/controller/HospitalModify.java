@@ -35,7 +35,7 @@ public class HospitalModify extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
-		String hname=request.getParameter("hname");
+		String comnum=request.getParameter("comnum");
 		
 		try {
 			HospitalService hospitalService=new HospitalServiceImpl();

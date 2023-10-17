@@ -44,10 +44,10 @@ table {
 	text-decoration: none;
 }
 #emptyArea .btn {
-	background-color: black;
+	background-color: white;
 }
 #emptyArea .select {
-	background-color: black;
+	background-color: white;
 }
 </style>
 <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
