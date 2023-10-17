@@ -14,21 +14,26 @@ body {
 h1 {
 	width: 163px;
 	height: 55px;
-	margin: 44px 840px;
+	margin:0 auto;
 	color: rgb(25, 25, 112);
 }
 
 #center {
-	margin-left: 261px;
+	margin:0 auto;
     width: 1479px;
-    margin-top: 55px;
-    background-color:lightgray;
+   
+   
+}
+table{
+	 border: 1px solid;
+    width: 1346px;
+    margin:80px auto;
 }
 
 th {
 	width: 300px;
 	height: 30px;
-	
+	background-color:lightgray;
 }
 td{
 	text-align:center;
@@ -39,21 +44,21 @@ h5{
 
 
 select {
-	width: 200px;
+	width: 224px;
 	height: 38px;
 	cursor: pointer;
 }
 
 input {
-	width: 200px;
+	width: 224px;
 	height: 38px;
 }
 
 #reserveform {
-	margin-top: 40px;
+	
 	width: 1000px;
 	height: 50px;
-	margin-left: -153px;
+	margin:60px -172px auto;
 	
 }
 
@@ -69,8 +74,7 @@ input {
 #emptyArea {
 	width: 708px;
 	text-align: center;
-	margin-top: 66px;
-	margin-left: 578px;
+	margin:0 auto;
 }
 
 #emptyArea a {
@@ -104,6 +108,9 @@ input {
 
 <body style="overflow-y:hidden">
 	<% pageContext.include("hmain.jsp");%>
+	
+	<div id="center">
+	
 	<h1>환자별 조회</h1>
 
 
@@ -126,16 +133,17 @@ input {
 
 	</form>
 	
-	<table id="center">
+	<table>
 		<tr id="row">
 			<th style="width:150px;">예약번호</th>
 			<th style="width:150px;">환자명</th>
 			<th style="width:150px;">주민번호</th>
 			<th style="width:150px;">이메일</th>
 			<th style="width:150px;">휴대폰</th>
-			<th>주소</th>
 			<th style="width:150px;">우편번호</th>
-			<th style="width:150px;">회원삭제</th>
+			<th >주소</th>
+		
+			
 		</tr>
 		<c:forEach items="${res.patientList }" var="patient">
 			<tr>
@@ -153,11 +161,11 @@ input {
 			
 				<td style="background-color:white;">${patient.ppostcode }</td>
 				
-				<td style="background-color:white;">
+				<%-- <td style="background-color:white;">
 				<c:if test="${hospitaluser.comnum eq reserve.comnum }">
 					<a href="patientdelete?pname=${patient.pname }&page=${res.pageInfo.curPage}" style="text-decoration:none;  color:red;">삭제</a>
 					</c:if>
-				</td>
+				</td> --%>
 			</tr>
 		</c:forEach>
 	</table>
@@ -198,6 +206,7 @@ input {
 		</c:choose>
 		&nbsp;&nbsp;
 
+	</div>
 	</div>
 </body>
 </html>

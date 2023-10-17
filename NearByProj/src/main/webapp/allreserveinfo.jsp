@@ -47,37 +47,50 @@ body {
 h1 {
 	width: 150px;
 	color: rgb(25, 25, 112);
-	margin: 44px 944px;
+	margin: 0 auto;
 }
 
-#center>tr>th {
+th {
+	
 	padding: 5px;
-	width: 225px;
-	float: left;
+	width: 192px;
 	color: black;
 	text-align: center;
-	border: 1px solid black;
+	border-right:1px solid white;
 	font-weight: bold;
-	background-color: lightblue;
+	background-color: lightgray;
+	
 }
+
 
 
 #center {
-	border: 1px solid;
+
 	width: 1356px;
-	margin: 0px 337px;
+	margin:  0 auto;
 	
+}
+table {
+	
+    border: 1px solid;
+    width: 1346px;
+    margin:50px auto;
 }
 
 input {
 	width: 200px;
 	height: 38px;
+	margin-left:20px;
 }
 
 select {
 	width: 200px;
 	height: 38px;
 	cursor: pointer;
+}
+#date{
+	float:right;
+	margin-right:230px;
 }
 
 #search {
@@ -92,8 +105,11 @@ select {
 .reserveform {
 	width: 1574px;
 	height: 100px;
-	margin-left: 339px;
-	margin-top: 57px;
+	margin:57px auto;
+	
+}
+span{
+	margin-left:40px;
 }
 
 .reserveform>button {
@@ -102,9 +118,6 @@ select {
 	background-color: rgb(25, 25, 112);
 }
 
-#datepicker1 {
-	margin-left: 280px;
-}
 
 #datepicker2 {
 	margin-left: 20px;
@@ -113,8 +126,7 @@ select {
 #emptyArea {
 	width: 708px;
 	text-align: center;
-	margin-top: 35px;
-	margin-left: 674px;
+	margin:0 auto;
 }
 
 #emptyArea a {
@@ -134,39 +146,42 @@ select {
 </style>
 <body>
 	<% pageContext.include("hmain.jsp");%>
+	<div id="center">
 	<h1>전체 조회</h1>
 
 
 	<div class="reserveform">
-
+		
 		<select name="patient">
 			<option value="patient">환자명</option>
 			<option value="number">주민등록번호</option>
-		</select> <input type="text">
-		<button onclick="#" id="search">검색</button>
+		</select> 
+		<input type="text">
+		
 
-
-
-
+		
+		<div id="date">
+		<span><기간></span>
+		
 
 		<input type="text" id="datepicker1" placeholder="0000-00-00">
 
 		<input type="text" id="datepicker2" placeholder="0000-00-00">
 
 
-		<button onclick="#" id="search">검색</button>
-
+		<input type="submit" id="search" value="검색"/>
+		</div>
 	</div>
 
 
 
-	<table id="center">
+	<table>
 		<tr>
-			<th>일자</th>
-			<th>시간</th>
-			<th>환자명</th>
-			<th>주민등록번호</th>
-			<th>연락처</th>
+			<th style="width:100px;">일자</th>
+			<th style="width:100px;">시간</th>
+			<th style="width:100px;">환자명</th>
+			<th style="width:100px;">주민등록번호</th>
+			<th style="width:100px;">연락처</th>
 			<th>주소</th>
 		</tr>
 
@@ -223,6 +238,6 @@ select {
 		&nbsp;&nbsp;
 
 	</div>
-
+</div>
 </body>
 </html>
