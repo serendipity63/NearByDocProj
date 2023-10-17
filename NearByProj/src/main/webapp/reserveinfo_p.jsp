@@ -12,7 +12,7 @@ body {
 }
 
 h1 {
-	width: 163px;
+	width: 197px;
 	height: 55px;
 	margin:0 auto;
 	color: rgb(25, 25, 112);
@@ -58,7 +58,7 @@ input {
 	
 	width: 1000px;
 	height: 50px;
-	margin:60px -172px auto;
+	margin:78px -169px auto;
 	
 }
 
@@ -111,7 +111,7 @@ input {
 	
 	<div id="center">
 	
-	<h1>환자별 조회</h1>
+	<h1>환자 정보 조회</h1>
 
 
 
@@ -141,7 +141,7 @@ input {
 			<th style="width:150px;">이메일</th>
 			<th style="width:150px;">휴대폰</th>
 			<th style="width:150px;">우편번호</th>
-			<th >주소</th>
+			<th>주소</th>
 		
 			
 		</tr>
