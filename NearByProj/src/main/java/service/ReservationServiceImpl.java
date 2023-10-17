@@ -54,6 +54,8 @@ public class ReservationServiceImpl implements ReservationService{
 	}
 	@Override
 	public Map<String, Object> detailRes(Map<String, Object> param) throws Exception {
+		if(resDao.checkFamily(param.get("pidnum")) == null)return resDao.selectDetailReservation(param);
+		
 		return resDao.selectDetailReservation(param);
 	}
 	

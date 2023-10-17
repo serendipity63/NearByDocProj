@@ -39,6 +39,17 @@
 	}
 </script>
 
+<script>
+  $(function() {
+    $("#selectDeptBtn").click(function() {
+      var selectedDept = $("input[name='dept']:checked").val();
+      if (selectedDept === '기타') {
+        selectedDept = $("#otherDeptInput").val();
+      }
+      $("#department-input").val(selectedDept);
+    })		
+  })
+</script>
 
 <script type="text/javascript">
 	function openLocationSelectionPage() {
@@ -70,13 +81,6 @@
 	}
 </script>
 
-<script>
-	$(function() {
-		$("#selectDeptBtn").click(function() {
-			$("#department-input").val($("input[name='dept']:checked").val());
-		})		
-	})
-</script>
 <style>
 * {
 	margin: 0;
@@ -86,6 +90,9 @@
 a {
 	text-decoration: none;
 }
+
+ul{
+list-style-type:none;}
 
 .container {
 	max-width: 425px;
@@ -301,7 +308,7 @@ a {
 
 				<!-- Modal Header -->
 				<div class="modal-header">
-					<h4 class="modal-title">Modal Heading</h4>
+					<h4 class="modal-title">진료과목을 선택해주세요</h4>
 					<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
 				</div>
 
@@ -323,8 +330,9 @@ a {
 						<li><input type="radio" name="dept" value="소아과"> 소아과
 						</li>
 						<li><input type="radio" name="dept" id="otherDeptCheckbox"
-							value="기타" onchange="toggleOtherDeptInput()"> 기타 <input
-							type="text" name="otherDept" id="otherDeptInput"
+							value="기타" onchange="toggleOtherDeptInput()"> 
+							기타 
+							<input type="text" name="otherDept" id="otherDeptInput"
 							placeholder="기타 진료과목 입력" disabled></li>
 					</ul>
 

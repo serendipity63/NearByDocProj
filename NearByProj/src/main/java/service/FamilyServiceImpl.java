@@ -4,9 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import dao.FamilyDao;
-
 import dao.FamilyDaoImpl;
-
 import dto.Family;
 
 public class FamilyServiceImpl implements FamilyService {
@@ -19,8 +17,12 @@ public class FamilyServiceImpl implements FamilyService {
 	
 
 	@Override
-	public void addFam(Family family) throws Exception {
-		familyDao.addFamily(family);
+	public String addFam(Family family, String pidnum) throws Exception {
+		if(!(family.getFidnum().equals(pidnum))) {
+			familyDao.addFamily(family);
+			return "can"; 
+		}
+		return "cant";
 		
 	}
 
@@ -34,5 +36,10 @@ public class FamilyServiceImpl implements FamilyService {
 	public Family selectFamily(String name) throws Exception {
 		return familyDao.selectFamily(name);
 
+	}
+	
+	@Override
+	public List<Family> familylist(String pidnum) throws Exception {
+		return familyDao.selectFamilyList(pidnum);
 	}
 }

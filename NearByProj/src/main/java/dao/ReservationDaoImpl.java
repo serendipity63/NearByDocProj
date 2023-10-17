@@ -19,6 +19,13 @@ public class ReservationDaoImpl implements ReservationDao{
 		 
 	}
 	
+	
+	@Override
+	public String checkFamily(Object pidnum) throws Exception {
+		
+		return sqlSession.selectOne("mapper.reservation.checkFamily", pidnum);
+	}
+	
 	@Override
 	public Map<String, Object> selectDetailReservation(Map<String, Object> param) {
 		return sqlSession.selectOne("mapper.reservation.selectDetailReservation", param);
@@ -66,6 +73,7 @@ public class ReservationDaoImpl implements ReservationDao{
 	public List<String> resTimeList(Map<String, String> param) throws Exception {
 		return sqlSession.selectList("mapper.reservation.searchResTimeList",param);
 	}
+
 	
 	@Override
 	public List<Reservation> selectAllResBycomnum(String comnum) throws Exception {
@@ -76,4 +84,7 @@ public class ReservationDaoImpl implements ReservationDao{
 	public Integer selectResCount(String comnum) throws Exception {
 		return sqlSession.selectOne("mapper.reservation.selectResCount");
 	}
+
+
+
 }

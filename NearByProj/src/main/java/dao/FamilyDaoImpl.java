@@ -29,4 +29,9 @@ public class FamilyDaoImpl implements FamilyDao{
 		return sqlSession.selectOne("mapper.family.selectFamily", name);
 
 	}
+	
+	@Override
+	public List<Family> selectFamilyList(String pidnum) throws Exception {
+		return sqlSession.selectList("mapper.family.selectFamilyList",pidnum);
+	}
 }

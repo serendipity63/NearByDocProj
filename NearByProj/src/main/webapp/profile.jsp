@@ -53,8 +53,7 @@ table{
   width: 52px;
   height: 36px;
   border-radius: 10px;
-  background : #CFE8F7;
-  color: #black;
+  color: #2188C4;
   font-size: 17px;
   text-align: left;
   margin-left:360px; 

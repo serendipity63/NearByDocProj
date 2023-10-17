@@ -76,7 +76,7 @@ button {
 }
 
 .cancel {
-	background-color: grey;
+	background: #DAD9D9;
 	border-radius: 10px;
 	width: 57px;
 	height: 36px;
@@ -160,13 +160,18 @@ $(function(){
 	      		, "ftel" : $("#tel").val()
 	      		, "faddress" : $("#address").val()
 	      		, "fidnum" : $("#idnum").val()},
-			    success:function(){
-			    	location.href="addfamally"
+	      		success:function(res){
+			    	console.log(res);
+			    	if(res=="can"){
+			    		alert("등록 성공");
+			    		location.href="addfamally"
+			    	} else {
+			    		alert("등록한 사람과 주민번호가 같을 수 없습니다.")
+			    	}
 			    }
 		})
 	})
 })
-
 </script>
 </head>
 

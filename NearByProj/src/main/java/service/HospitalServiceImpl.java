@@ -1,11 +1,14 @@
 package service;
 
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import dao.HospitalDao;
 import dao.HospitalDaoImpl;
 import dto.Hospital;
+import dto.Review;
 
 public class HospitalServiceImpl implements HospitalService {
 
@@ -89,6 +92,25 @@ public class HospitalServiceImpl implements HospitalService {
 	public Hospital hospitalInfo(String comnum) throws Exception {
 		return hospitalDao.selectHospital(comnum);
 	}
-
+	
+	@Override
+	public void updateGrade(String comnum) throws Exception {
+		String grade="";
+		HospitalService hospitalservice = new HospitalServiceImpl();
+		Hospital hospital = hospitalservice.selectHospitalBycomnum(comnum);
+		Integer cnt = hospital.getHreviewcnt();
+		ReviewService reviewservice = new ReviewServiceImpl();
+		List<Map<String,Object>> reviewlist = reviewservice.reviewListByHos(comnum);
+		Integer sumStar = 0;
+		for(Map<String,Object> r : reviewlist ) {
+			sumStar += Integer.parseInt((String)r.get("star"));
+		}
+		double gra = Math.round((double)sumStar/cnt*10.0)/10.0;
+		grade=Double.toString(gra);
+		Map<String,String> param = new HashMap<>();
+		param.put("grade", grade);
+		param.put("comnum", comnum);
+		hospitalDao.updateGrade(param);
+	}
 }
 
