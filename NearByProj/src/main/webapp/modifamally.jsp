@@ -117,21 +117,25 @@ $(function(){
     
     $(".modi").click(function() {
         console.log("수정 버튼 클릭");
+        var famName = $(this).closest("div#detailfam").find("textarea[id='fname']").val();
+        var ftel = $(this).closest("div#detailfam").find("textarea[id='ftel']").val();
+        var faddress = $(this).closest("div#detailfam").find("textarea[id='faddress']").val();
+        var fidnum = $(this).closest("div#detailfam").find("input[id='fidnum']").val();
         if (confirm("수정하시겠습니까??") == true) {
 
-        	console.log($("#fname").val());
-        	console.log($("#ftel").val());
-        	console.log($("#faddress").val());
-        	console.log($("#fidnum").val());
+        	console.log(famName);
+        	console.log(ftel);
+        	console.log(faddress);
+        	console.log(fidnum);
             // Send familyList to the servlet using AJAX
             $.ajax({
                 url: 'modifamally',
                 type: 'post',
                 data: {
-                    'fname': $("#fname").val()
-                  , 'ftel' : $("#ftel").val()
-                  , 'faddress' : $("#faddress").val()
-                  , 'fidnum' : $("#fidnum").val()
+                    'fname': famName
+                  , 'ftel' : ftel
+                  , 'faddress' : faddress
+                  , 'fidnum' : fidnum
                 },
                 success: function(response) {
                     console.log("success");
