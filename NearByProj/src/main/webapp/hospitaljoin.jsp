@@ -20,10 +20,6 @@
 	href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<link rel="stylesheet"
-	href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
-<script
-	src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
 
 
 <script>
@@ -36,7 +32,6 @@
 		});
 	}
 </script>
-
 
 <style type="text/css">
 @charset "UTF-8";
@@ -67,7 +62,7 @@ a {
 /* 로그인 폼 스타일 */
 form.join-form {
 	float: right;
-	margin-top: 10px;
+	margin-top: 5px;
 }
 
 /* 로그인 폼 요소 스타일 */
@@ -80,12 +75,12 @@ form.join-form input[type="text"], form.join-form input[type="password"],
 	padding: 10px;
 	border: 2px solid;
 	width: 500px;
-	height: 800px;
+	height: 820px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	border-radius: 20px;
-	margin-top: 60px;
+	margin-top: 55px;
 }
 
 .row {
@@ -112,18 +107,24 @@ input[type='submit'] {
 	height: 40px;
 	background-color: #191970;
 	color: #fff;
-	margin-bottom: 25px;
+	margin-bottom: 5px;
+	margin-top: 5px;
 	text-indent: 0;
 	border: 0;
 }
 
-input[type='text'], input[type='number'], input[type='password'], input[type='submit']
+
+input[type='text'], input[type='number'], input[type='password']
 	{
 	margin-bottom: 22px;
 }
 
 input[type='submit']:hover {
 	cursor: pointer;
+}
+input[type='file']
+{
+border:none;
 }
 
 /* 우편번호 입력 칸 스타일 */
@@ -133,7 +134,7 @@ input[type='submit']:hover {
 }
 
 .input input[name='hroadAddress'] {
-	margin-bottom: 10px;
+	margin-bottom: 8px;
 }
 
 /* 우편번호 찾기 버튼 스타일 */
@@ -149,6 +150,7 @@ input[type='submit']:hover {
 	border-radius: 3px;
 }
 
+
 #info_comnum button {
 	position: absolute;
 	width: 90px;
@@ -160,7 +162,27 @@ input[type='submit']:hover {
 	color: #fff;
 	cursor: pointer;
 	margin-left: -90px;
+	
+	
 }
+.custom-row-container {
+    display: flex;
+    align-items: center; 
+}
+
+.custom-row {
+    display: flex;
+    align-items: center;
+}
+
+.custom-row .input {
+    margin-right: 10px;
+}
+
+.custom-row .input select {
+    width: 60px; 
+}
+
 </style>
 <!-- 사업자번호 중복검사  기능 -->
 <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
@@ -307,7 +329,6 @@ input[type='submit']:hover {
 	});
 </script>
 
-
 <%--주소불러오기  --%>
 <script
 	src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
@@ -364,6 +385,7 @@ input[type='submit']:hover {
 
 
 
+
 <title>병원등록</title>
 </head>
 
@@ -380,7 +402,7 @@ input[type='submit']:hover {
 
 				<div class="row">
 					<div class="input">
-						<input type="text" id="hname" name="hname" placeholder="병원명">
+					  <input type="text" id="hname" name="hname" placeholder="병원명">
 					</div>
 				</div>
 
@@ -388,7 +410,7 @@ input[type='submit']:hover {
 				<div id="info_comnum">
 					<div class="row">
 						<div class="input">
-							<input type="number" id="comnum" name="comnum"
+						<input type="number" id="comnum" name="comnum"
 								placeholder="사업자등록번호" required="required" />
 							<button id="comnumcheck">중복 확인</button>
 
@@ -485,8 +507,6 @@ input[type='submit']:hover {
 				</div>
 
 
-
-
 				<div class="row">
 					<div class="input">
 						<input type="text" class="type" placeholder="진료과목명"
@@ -495,12 +515,59 @@ input[type='submit']:hover {
 					</div>
 				</div>
 
-				<div class="row">
-					<div class="input">
-						<input type="text" class="clinic" id="clinic" name="clinic"
-							placeholder="진료시간">
-					</div>
-				</div>
+<div class="custom-row-container">
+    <div class="custom-row">
+        <div class="input">
+            <select id="hourFrom">
+                <option value="00">07</option>
+                <option value="01">08</option>
+                <option value="02">09</option>
+                <option value="23">10</option>
+            </select>
+        </div>
+        <span>시</span>
+    </div>
+
+    <div class="custom-row">
+        <div class="input">
+            <select id="minuteFrom">
+                <option value="00">00</option>
+                <option value="15">15</option>
+                <option value="30">30</option>
+                <option value="45">45</option>
+            </select>
+        </div>
+        <span>분 ~</span>
+    </div>
+
+    <div class="custom-row">
+        <div class="input">
+            <select id="hourTo">
+                <option value="00">03</option>
+                <option value="01">04</option>
+                <option value="02">05</option>
+                <option value="23">06</option>
+                
+            </select>
+        </div>
+        <span>시</span>
+    </div>
+
+    <div class="custom-row">
+        <div class="input">
+            <select id="minuteTo">
+                <option value="00">00</option>
+                <option value="15">15</option>
+                <option value="30">30</option>
+                <option value="45">45</option>
+            </select>
+        </div>
+        <span>분</span>
+    </div>
+</div>
+
+
+				
 				<div class="row">
 					<div class="input">
 						<input type="text" name="lunch" placeholder="점심시간">
@@ -517,12 +584,11 @@ input[type='submit']:hover {
 				<div class="button">
 					<input type="submit" value="병 원 등 록">
 				</div>
+				
 				<div>
 					니어바이닥 병원회원이신가요? <a href="hlogin">로그인</a>
 				</div>
 			</form>
 		</div>
-	</center>
-
 </body>
 </html>

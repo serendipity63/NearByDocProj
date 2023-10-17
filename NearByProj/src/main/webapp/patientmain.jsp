@@ -26,7 +26,8 @@
 	rel="stylesheet">
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-<script>
+	
+<script type="text/javascript">
 	function toggleOtherDeptInput() {
 		var otherDeptCheckbox = document.getElementById("otherDeptCheckbox");
 		var otherDeptInput = document.getElementById("otherDeptInput");
@@ -260,7 +261,8 @@ list-style-type:none;}
 					<div class="container-2">
 						<div class="type">
 							<span class="icon"><i class="material-icons">search</i></span>
-							&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" placeholder="진료과"
+							&nbsp;&nbsp;&nbsp;&nbsp;
+							<input type="text" placeholder="진료과"
 								class="department-input" name="department-input" required
 								id="department-input" data-bs-toggle="modal" 
 								data-bs-target="#myModal">

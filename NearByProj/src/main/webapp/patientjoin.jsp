@@ -370,7 +370,7 @@ input:focus {
 									}
 								});
 
-						// 전화번호에 - 자동으로 뜨게 하는거
+						// 전화번호 자동하이픈
 						$('.ptel')
 								.keydown(
 										function(event) {
@@ -477,7 +477,7 @@ input:focus {
 					<input type="text" id="pemail" name="pemail"
 						placeholder="nearbydoc@abc.com 형식으로 입력" required="required">
 
-					<%-- 이메일중복검사및 이메일 유효성검사 --%>
+					<%-- 이메일중복검사및 이메일 유효성검사 버튼--%>
 					<button id="pemailcheck">중복 확인</button>
 
 				</div>
@@ -486,7 +486,7 @@ input:focus {
 				<div id="info_pidnum">
 					<input type="number" id="pidnum" name="pidnum" size="13"
 						placeholder="-없이 숫자만 입력" required />
-					<%-- 주민번호 중복검사 및 유효성검사 --%>
+					<%-- 주민번호 중복검사 및 유효성검사 버튼 --%>
 					<button id="pidnumcheck">중복 확인</button>
 				</div>
 
