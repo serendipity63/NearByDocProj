@@ -50,6 +50,7 @@ public class HospitalJoin extends HttpServlet {
 
 		request.setCharacterEncoding("utf-8");
 
+		// 파일 업로드
 		String uploadPath = request.getServletContext().getRealPath("upload");
 		int size = 10 * 1024 * 1024;
 		MultipartRequest multi = new MultipartRequest(request, uploadPath, size, "utf-8",
@@ -74,6 +75,8 @@ public class HospitalJoin extends HttpServlet {
 		BigDecimal hgrade = null;
 		Integer hreviewcnt = null;
 		BigDecimal lat = new BigDecimal(multi.getParameter("lat"));
+		// 파일 업로드 끝
+
 		System.out.println(lat);
 		BigDecimal lon = new BigDecimal(multi.getParameter("lon"));
 		System.out.println(lon);
@@ -81,6 +84,9 @@ public class HospitalJoin extends HttpServlet {
 		Hospital hospital = new Hospital(hname, hpassword, comnum, htel, department, lunch, clinic, hroad, hdong,
 				hdetail, hpostcode, hurl, hgrade, hreviewcnt, lat, lon);
 		hospital.setHurl(hurl);
+
+		String fileName = multi.getFilesystemName("hurl");
+		hospital.setHurl(fileName);
 		try {
 			HospitalService hospitalService = new HospitalServiceImpl();
 			hospitalService.hospitaljoin(hospital);
