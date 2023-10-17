@@ -22,7 +22,7 @@ h1 {
 	margin-left: 261px;
     width: 1479px;
     margin-top: 55px;
-    background-color: lightgray;
+    background-color:lightgray;
 }
 
 th {
@@ -33,12 +33,10 @@ th {
 td{
 	text-align:center;
  }
-
-
-
-h5 {
-	text-align: center;
+h5{
+	text-align:center;
 }
+
 
 select {
 	width: 200px;
@@ -56,6 +54,7 @@ input {
 	width: 1000px;
 	height: 50px;
 	margin-left: -153px;
+	
 }
 
 #search {
@@ -129,6 +128,7 @@ input {
 	
 	<table id="center">
 		<tr id="row">
+			<th style="width:150px;">예약번호</th>
 			<th style="width:150px;">환자명</th>
 			<th style="width:150px;">주민번호</th>
 			<th style="width:150px;">이메일</th>
@@ -139,6 +139,7 @@ input {
 		</tr>
 		<c:forEach items="${res.patientList }" var="patient">
 			<tr>
+				<td style="background-color:white;">${reserve.comnum }</td>
 				<td style="background-color:white;">${patient.pname }</td>
 			
 			
@@ -152,7 +153,8 @@ input {
 			
 				<td style="background-color:white;">${patient.ppostcode }</td>
 				
-				<td style="background-color:white;"><c:if test="${hospitaluser.id == hospital.comnum }">
+				<td style="background-color:white;">
+				<c:if test="${hospitaluser.comnum eq reserve.comnum }">
 					<a href="patientdelete?pname=${patient.pname }&page=${res.pageInfo.curPage}" style="text-decoration:none;  color:red;">삭제</a>
 					</c:if>
 				</td>

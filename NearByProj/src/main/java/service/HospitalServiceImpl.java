@@ -86,8 +86,8 @@ public class HospitalServiceImpl implements HospitalService {
 	}
 
 	@Override
-	public Hospital hospitalInfo(String hname) throws Exception {
-		return hospitalDao.selectHospital(hname);
+	public Hospital hospitalInfo(String comnum) throws Exception {
+		return hospitalDao.selectHospital(comnum);
 	}
 
 }
