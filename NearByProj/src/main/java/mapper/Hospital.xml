@@ -38,5 +38,13 @@
 		select * from hospital where department=#{department}
 	]]>
 	</select>
+	
+	<update id="updateGrade" parameterType="hashmap">
+		<![CDATA[
+			update hospital 
+			set hgrade = #{grade}
+			where comnum = #{comnum}
+		]]>
+	</update>
 
 </mapper>

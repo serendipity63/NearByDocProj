@@ -1,6 +1,7 @@
 package dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
@@ -32,5 +33,12 @@ public class HospitalDaoImpl implements HospitalDao {
 	public List<Hospital> selectHospitalList(String department) throws Exception {
 
 		return sqlSession.selectList("mapper.hospital.selectHospitalList",department);
+	}
+	
+	@Override
+	public void updateGrade(Map<String, String> param) throws Exception {
+		sqlSession.update("mapper.hospital.updateGrade", param);
+		sqlSession.commit();
+		
 	}
 }
