@@ -133,7 +133,7 @@
 				<button type="submit" class="login-button">로그인</button>
 
 				<div class="new">니어바이닥이 처음이신가요? <a href="hjoin">회원가입</a></div>
-
+			</form>
 		</div>
 	</center>
 
