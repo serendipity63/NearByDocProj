@@ -43,6 +43,7 @@ $('#datepicker').datepicker('setDate', 'today'); //(-1D:하루전, -1M:한달전
 <style>
 body {
 	margin: 0 auto;
+	
 }
 
 
@@ -64,22 +65,29 @@ input {
 	height: 38px;
 }
 th{
-	width: 450px;
+	width: 300px;
 	height: 30px;
 	background-color:lightgray;
 
 }
 table{
-	 border: 1px solid;
-    width: 1512px;
+	border: 1px solid;
+    width: 1531px;
     margin:80px auto;
+   	
 }
 
 #reserveform {
     width: 1000px;
     height: 50px;
-    margin:70px 391px auto;
+    margin:70px 394px auto;
     
+}
+select {
+	width: 200px;
+    height: 35px;
+    margin-top: 50px;
+    margin-left: 70px;
 }
 
 button {
@@ -100,7 +108,7 @@ button {
 	width: 708px;
 	text-align: center;
 	margin-top: 20px;
-	margin-left: 673px;
+	margin-left: 700px;
 }
 
 #emptyArea a {
@@ -111,11 +119,12 @@ button {
 }
 
 #emptyArea .btn {
-	background: lightgray;
+	background: white;
 }
 
 #emptyArea .select {
-	background: lightblue;
+	background: white;
+	color:black;
 }
 </style>
 <body>

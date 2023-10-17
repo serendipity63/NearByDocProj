@@ -173,6 +173,15 @@ order by r.resdate desc
       ]]>
     
    </select>
+   <select id="selectDateResBycomnum" parameterType="String" resultType="Reservation">
+   	<![CDATA[
+         SELECT * 
+         FROM reservation
+         where comnum=#{comnum}
+         
+      ]]>
+   
+   </select>
 
 	<select id="searchAllResCount" parameterType="hashmap" resultType="Integer">
       <![CDATA[

@@ -179,32 +179,24 @@ b{
             
          </h2>
          <hr>
-         
             <p>
-               <a href="allreserveinfo.jsp" >전체 조회</a>
-            </p>
-            
-         
-            <p>
-               <a href="reserveinfo_d.jsp" >일정별 조회</a>
-            </p>
+            <a href="mrecord.jsp">진료 기록 조회</a>
+         	</p> 
             
             <p>
-               <a href="reserveinfo_p.jsp" >환자별 조회</a>
+               <a href="reserveinfo_p.jsp" >환자 정보 조회</a>
             </p>
             <br>
         
          <hr>
-         
+         <br>
          <p>
             <a href="hinfo.jsp">병원 정보</a>
          </p>
          <br>
-         <hr>
          
-         <p>
-            <a href="mrecord.jsp">진료 기록</a>
-         </p>
+         
+        
          <br>
          <hr>
          <br>

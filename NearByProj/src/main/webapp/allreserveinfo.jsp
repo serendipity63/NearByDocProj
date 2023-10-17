@@ -86,6 +86,7 @@ input {
 select {
 	width: 200px;
 	height: 38px;
+	margin-left:4px;
 	cursor: pointer;
 }
 #date{
@@ -105,7 +106,7 @@ select {
 .reserveform {
 	width: 1574px;
 	height: 100px;
-	margin:57px auto;
+	margin:62px auto;
 	
 }
 span{
@@ -137,11 +138,12 @@ span{
 }
 
 #emptyArea .btn {
-	background: lightgray;
+	background: white;
 }
 
 #emptyArea .select {
-	background: lightblue;
+	background: white;
+	color:black;
 }
 </style>
 <body>
@@ -151,10 +153,18 @@ span{
 
 
 	<div class="reserveform">
+<<<<<<< Updated upstream
 		<form action="allressearch" method="post" id='form'>
 		<select name="type">
 			<option value="pname" ${res.type eq 'pname'? 'selected':'' }>환자명</option>
 			<option value="pidnum" ${res.type eq 'pidnum'? 'selected':'' }>주민등록번호</option>
+=======
+		
+		<select name="patient">
+			<option value="all">선택</option>
+			<option value="patient">환자명</option>
+			<option value="number">주민등록번호</option>
+>>>>>>> Stashed changes
 		</select> 
 		<input type="text" name="keyword" id="keyword" value="${res.keyword}"/>
 		
