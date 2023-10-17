@@ -55,29 +55,35 @@ public class HospitalJoin extends HttpServlet {
 		int size = 10 * 1024 * 1024;
 		MultipartRequest multi = new MultipartRequest(request, uploadPath, size, "utf-8",
 				new DefaultFileRenamePolicy());
-		// 파일 업로드 끝
 
-		String hname = request.getParameter("hname");
-		String hpassword = request.getParameter("hpassword");
-		String comnum = request.getParameter("comnum");
-		String htel = request.getParameter("htel");
-		String department = request.getParameter("department");
-		String lunch = request.getParameter("lunch");
-		String clinic = request.getParameter("clinic");
-		String hroad = request.getParameter("hroad");
-		String hdong = request.getParameter("hdong");
-		String hdetail = request.getParameter("hdetail");
-		String hpostcode = request.getParameter("hpostcode");
-		String hurl = multi.getOriginalFileName("hurl");
+		String hname = multi.getParameter("hname");
+		String hpassword = multi.getParameter("hpassword");
+		String comnum = multi.getParameter("comnum");
+		String htel = multi.getParameter("htel");
+		String department = multi.getParameter("department");
+		String lunch = multi.getParameter("lunch");
+		String clinic = multi.getParameter("clinic");
+		String hroad = multi.getParameter("hroad");
+		String hdong = multi.getParameter("hdong");
+		String hdetail = multi.getParameter("hdetail");
+		String hpostcode = multi.getParameter("hpostcode");
+		String hurl= multi.getOriginalFileName("file");		
+		
+		System.out.println(hurl);
+		request.setAttribute("hurl", hurl);
+		
 		BigDecimal hgrade = null;
 		Integer hreviewcnt = null;
-		BigDecimal lat = new BigDecimal(request.getParameter("lat"));
+		BigDecimal lat = new BigDecimal(multi.getParameter("lat"));
+		// 파일 업로드 끝
+
 		System.out.println(lat);
-		BigDecimal lon = new BigDecimal(request.getParameter("lon"));
+		BigDecimal lon = new BigDecimal(multi.getParameter("lon"));
 		System.out.println(lon);
 
 		Hospital hospital = new Hospital(hname, hpassword, comnum, htel, department, lunch, clinic, hroad, hdong,
 				hdetail, hpostcode, hurl, hgrade, hreviewcnt, lat, lon);
+		hospital.setHurl(hurl);
 
 		String fileName = multi.getFilesystemName("hurl");
 		hospital.setHurl(fileName);
@@ -88,7 +94,6 @@ public class HospitalJoin extends HttpServlet {
 		} catch (Exception e) {
 			request.setAttribute("err", e.getMessage());
 			request.getRequestDispatcher("herror.jsp").forward(request, response);
-			// 에러 페이지 따로 만들거에요
 		}
 	}
 }
