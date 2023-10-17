@@ -20,6 +20,10 @@
 	href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<link rel="stylesheet"
+	href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
+<script
+	src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
 
 
 <script>
@@ -210,7 +214,6 @@ input[type='submit']:hover {
 
 		});
 
-
 		$("#form").submit(function(e) {
 			const comnum = $("#comnum").val().trim(); // 사업자번호 입력에서 공백 제거
 			const password = $("#hpassword").val();
@@ -243,42 +246,65 @@ input[type='submit']:hover {
 </script>
 
 <script type="text/javascript">
-//htel 전화번호에 자동 하이픈
-$(function() {
-	$("#htel").keyup(function(){
-		var val = $(this).val().replace(/[^0-9]/g, '');
-		if(val.length > 3 && val.length < 6){
-			var tmp = val.substring(0,2)
-			if(tmp == "02"){
-				$(this).val(val.substring(0,2) + "-" + val.substring(2));
-			} else {
-				$(this).val(val.substring(0,3) + "-" + val.substring(3));
-			}
-		}else if (val.length > 6){
-			var tmp = val.substring(0,2)
-			var tmp2 = val.substring(0,4)
-			if(tmp == "02"){
-				if(val.length == "10"){
-					$(this).val(val.substring(0,2) + "-" + val.substring(2, 6) + "-" + val.substring(6));
-				} else {
-					$(this).val(val.substring(0,2) + "-" + val.substring(2, 5) + "-" + val.substring(5));
-				}
-			} else if(tmp2 == "0505"){
-				if(val.length == "12"){
-					$(this).val(val.substring(0,4) + "-" + val.substring(4, 8) + "-" + val.substring(8));
-				} else {
-					$(this).val(val.substring(0,4) + "-" + val.substring(4, 7) + "-" + val.substring(7));
-				}
-			} else {
-				if(val.length == "11"){
-					$(this).val(val.substring(0,3) + "-" + val.substring(3, 7) + "-" + val.substring(7));
-				} else {
-					$(this).val(val.substring(0,3) + "-" + val.substring(3, 6) + "-" + val.substring(6));
-				}
-			}
-		}
+	//htel 전화번호에 자동 하이픈
+	$(function() {
+		$("#htel").keyup(
+				function() {
+					var val = $(this).val().replace(/[^0-9]/g, '');
+					if (val.length > 3 && val.length < 6) {
+						var tmp = val.substring(0, 2)
+						if (tmp == "02") {
+							$(this).val(
+									val.substring(0, 2) + "-"
+											+ val.substring(2));
+						} else {
+							$(this).val(
+									val.substring(0, 3) + "-"
+											+ val.substring(3));
+						}
+					} else if (val.length > 6) {
+						var tmp = val.substring(0, 2)
+						var tmp2 = val.substring(0, 4)
+						if (tmp == "02") {
+							if (val.length == "10") {
+								$(this).val(
+										val.substring(0, 2) + "-"
+												+ val.substring(2, 6) + "-"
+												+ val.substring(6));
+							} else {
+								$(this).val(
+										val.substring(0, 2) + "-"
+												+ val.substring(2, 5) + "-"
+												+ val.substring(5));
+							}
+						} else if (tmp2 == "0505") {
+							if (val.length == "12") {
+								$(this).val(
+										val.substring(0, 4) + "-"
+												+ val.substring(4, 8) + "-"
+												+ val.substring(8));
+							} else {
+								$(this).val(
+										val.substring(0, 4) + "-"
+												+ val.substring(4, 7) + "-"
+												+ val.substring(7));
+							}
+						} else {
+							if (val.length == "11") {
+								$(this).val(
+										val.substring(0, 3) + "-"
+												+ val.substring(3, 7) + "-"
+												+ val.substring(7));
+							} else {
+								$(this).val(
+										val.substring(0, 3) + "-"
+												+ val.substring(3, 6) + "-"
+												+ val.substring(6));
+							}
+						}
+					}
+				});
 	});
-});
 </script>
 
 
@@ -453,8 +479,8 @@ $(function() {
 
 				<div class="row">
 					<div class="input">
-						<input type="text"  maxlength="13" id="htel" class="htel" name="htel"
-							placeholder="전화번호" />
+						<input type="text" maxlength="13" id="htel" class="htel"
+							name="htel" placeholder="전화번호" />
 					</div>
 				</div>
 
@@ -471,7 +497,8 @@ $(function() {
 
 				<div class="row">
 					<div class="input">
-						<input type="text" name="clinic" placeholder="진료시간">
+						<input type="text" class="clinic" id="clinic" name="clinic"
+							placeholder="진료시간">
 					</div>
 				</div>
 				<div class="row">
@@ -479,12 +506,14 @@ $(function() {
 						<input type="text" name="lunch" placeholder="점심시간">
 					</div>
 				</div>
+				
 				<div class="row">
 					<div class="input">
 						<%--디자인은 수정할게요  --%>
 						<input type="file" name="file" id="file" accept="image/*" />
 					</div>
 				</div>
+				
 				<div class="button">
 					<input type="submit" value="병 원 등 록">
 				</div>
