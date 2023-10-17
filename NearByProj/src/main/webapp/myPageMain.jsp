@@ -69,7 +69,7 @@ button {
 			<button onclick="location.href='reslist'">예약 내역</button>
 		</div>
 		<div class="whitebox">
-			<button onclick="location.href='addfamally'">자녀 추가</button>
+			<button onclick="location.href='addfamally'">가족 관리</button>
 		</div>
 		<div class="whitebox">
 			<button onclick="location.href='myreview'">나의 리뷰</button>
