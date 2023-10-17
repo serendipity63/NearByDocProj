@@ -24,7 +24,34 @@ public class ReservationServiceImpl implements ReservationService{
 		
 		return resDao.selectMyReservation(pidnum);
 	}
-	
+	@Override
+	public Map<String,Object> selectAllResBycomnum(String comnum,Integer page) throws Exception {
+		PageInfo pageInfo = new PageInfo();
+		Integer resCount = resDao.selectResCount(comnum);
+		int maxPage = (int) Math.ceil((double) resCount / 10);
+		int startPage = (page - 1) / 10 * 10 + 1;
+		int endPage = startPage + 10 - 1;
+		if (endPage > maxPage)
+			endPage = maxPage;
+		if (page > maxPage)
+			page = maxPage;
+
+		pageInfo.setAllPage(maxPage);
+		pageInfo.setCurPage(page);
+		pageInfo.setStartPage(startPage);
+		pageInfo.setEndPage(endPage);
+
+		int row = (page - 1) * 10 + 1;
+		
+		List<Reservation> selectallres = new ArrayList<>();
+		selectallres= resDao.selectAllResBycomnum(comnum);
+		
+		
+		Map<String,Object> map = new HashMap<>();
+		map.put("pageInfo", pageInfo);
+		map.put("selectallres", selectallres);
+		return map;
+	}
 	@Override
 	public Map<String, Object> detailRes(Map<String, Object> param) throws Exception {
 		return resDao.selectDetailReservation(param);

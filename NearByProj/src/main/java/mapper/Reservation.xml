@@ -120,7 +120,21 @@ order by r.resdate desc
 	]]>
 	
 	</select>
-
+	
+	<select id="selectAllResBycomnum" parameterType="String" resultType="Reservation">
+	<![CDATA[
+		SELECT *
+		FROM reservation
+		WHERE comnum=#{comnum}
+		]]>
+	</select>
+	
+	<select id="selectResCount" parameterType="String" resultType="Integer">
+      <![CDATA[
+         select count(pidnum) from reservation where comnum=#{comnum}
+      ]]>
+    
+   </select>
 
 
 

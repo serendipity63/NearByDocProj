@@ -22,5 +22,6 @@ public interface ReservationDao {
 	void insertReservation(Reservation reservation) throws Exception;
 
 	List<String> resTimeList(Map<String,String> param) throws Exception;
-
+	List<Reservation> selectAllResBycomnum(String comnum) throws Exception;
+	Integer selectResCount(String comnum) throws Exception;
 }

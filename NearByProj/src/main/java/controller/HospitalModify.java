@@ -39,7 +39,7 @@ public class HospitalModify extends HttpServlet {
 		
 		try {
 			HospitalService hospitalService=new HospitalServiceImpl();
-			Hospital hospital=hospitalService.hospitalInfo(hname);
+			Hospital hospital=hospitalService.hospitalInfo(comnum);
 			request.setAttribute("hospital", hospital);
 			request.getRequestDispatcher("hcorrection.jsp").forward(request, response);
 		}catch(Exception e) {
@@ -59,14 +59,11 @@ public class HospitalModify extends HttpServlet {
 		int size=10*1024*1024;
 		MultipartRequest multi=new MultipartRequest(request,uploadPath,size,"utf-8",new DefaultFileRenamePolicy());
 		
-		
+		String department=multi.getParameter("department");
 		String hname=multi.getParameter("hname");
 		String comnum=multi.getParameter("comnum");
 		String htel=multi.getParameter("htel");
 		String hroad=multi.getParameter("hroad");
-		String hdong=multi.getParameter("hdong");
-		String hdetail=multi.getParameter("hdetail");
-		String hpostcode=multi.getParameter("hpostcode");
 		String clinic=multi.getParameter("clinic");
 		String lunch=multi.getParameter("lunch");
 		
@@ -74,21 +71,21 @@ public class HospitalModify extends HttpServlet {
 		hospital.setHname(hname);
 		hospital.setComnum(comnum);
 		hospital.setHtel(htel);
-		hospital.setHroad(hroad);
-		hospital.setHdong(hdong);
-		hospital.setHdetail(hdetail);
-		hospital.setHpostcode(hpostcode);
-		hospital.setClinic(clinic);
+		hospital.setDepartment(department);
 		hospital.setLunch(lunch);
+		hospital.setClinic(clinic);
+		hospital.setHroad(hroad);
+		
+		
 		
 		try {
 			HospitalService hospitalService= new HospitalServiceImpl();
 			hospitalService.hospitalModify(hospital);
-			response.sendRedirect("hinfo?hname="+hospital.getHname());
+			response.sendRedirect("hospitalinfo?comnum="+hospital.getComnum());
 		}catch(Exception e) {
 			e.printStackTrace();
 			request.setAttribute("err", "병원 수정 오류");
-			request.getRequestDispatcher("error.jsp").forward(request, response);
+			request.getRequestDispatcher("herror.jsp").forward(request, response);
 		}
 		
 		
