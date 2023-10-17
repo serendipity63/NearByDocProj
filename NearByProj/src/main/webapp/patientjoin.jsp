@@ -190,6 +190,24 @@ input:focus {
 	font-weight: bold;
 }
 
+#info_pidnum {
+	position: relative;
+}
+
+#info_pidnum button {
+	position: absolute;
+	width: 90px;
+	height: 42px;
+	border-radius: 4px;
+	right: 5px;
+	border: none;
+	top: 3px;
+	background: #CFE8F7;
+	color: #333333;
+	cursor: pointer;
+	font-weight: bold;
+}
+
 .error-message {
 	color: red;
 	font-size: 12px;
@@ -202,133 +220,140 @@ input:focus {
 }
 </style>
 
-<!-- 이메일 중복검사 기능 pemailcheck -->
+<!-- 유효성검사 시작 -->
 
 <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
 
 <script type="text/javascript">
-	$(document)
-			.ready(
-					function() {
-						let isPemailCheck = false;
+	$(document).ready(function() {
+		let isPidnumCheck = false;
+		let isPemailCheck = false;
 
-						// 이메일 입력 필드에서 입력 변화 감지
-						$("#pemail")
-								.on(
-										"input",
-										function() {
-											const pemail = $("#pemail").val();
-											const emailRegex = /^[a-zA-Z0-9._-]+@[a-zAZ0-9.-]+\.[a-zA-Z]{2,4}$/;
-											const isValid = emailRegex
-													.test(pemail);
+		// 주민번호 입력 필드에서 입력 변화 감지
+		$("#pidnum").on("input", function() {
+			const pidnum = $("#pidnum").val();
+			const pidnumPattern = /^[0-9]{13}$/;
+			const isOK = pidnumPattern.test(pidnum);
+			if (!isOK) {
+				$("#pidnumMessage").text("올바른 주민번호 형식으로 입력하세요").show();
+				isPidnumCheck = false;
+			} else {
+				$("#pidnumMessage").hide();
+				isPidnumCheck = true;
+			}
+		});
 
-											if (!isValid) {
-												$("#pemailMessage").text(
-														"올바른 이메일 형식으로 입력하세요")
-														.show();
-												isPemailCheck = false;
-											} else {
-												$("#pemailMessage").hide();
-												isPemailCheck = true;
-											}
-										});
+		// 주민번호 중복검사 버튼 클릭시
+		$('#pidnumcheck').click(function() {
+			if (!isPidnumCheck) {
+				$("#pidnumMessage").text("올바른 주민번호 형식으로 입력하세요").show();
+				return;
+			}
 
-						// 이메일 중복 검사 버튼 클릭 시
-						$('#pemailcheck')
-								.click(
-										function() {
-											if (!isPemailCheck) {
-												$("#pemailMessage").text(
-														"올바른 이메일 형식으로 입력하세요")
-														.show();
-												return;
-											}
-
-											const pemail = $("#pemail").val();
-											$
-													.ajax({
-														url : "pemailcheck",
-														type : "post",
-														data : {
-															pemail : pemail
-														},
-														success : function(res) {
-															console.log(res);
-															if (res === "notexist") {
-																$(
-																		"#pemailMessage")
-																		.text(
-																				"사용 가능한 이메일입니다")
-																		.show();
-															} else {
-																$(
-																		"#pemailMessage")
-																		.text(
-																				"이미 사용중인 이메일입니다")
-																		.show();
-															}
-														},
-														error : function(err) {
-															console.log(err);
-															$("#pemailMessage")
-																	.text(
-																			"이메일 중복체크 오류")
-																	.show();
-														}
-													});
-										});
-
-						// 비밀번호 확인과 비밀번호 필드의 입력이 변경될 때 확인 함수 실행
-						$("#ppasswordcheck, #ppassword").on(
-								"input",
-								function() {
-									const ppassword = $("#ppassword").val();
-									const ppasswordcheck = $("#ppasswordcheck")
-											.val();
-
-									if (ppassword !== ppasswordcheck) {
-										$("#check").show();
-										$("#join-button")
-												.prop('disabled', true);
-									} else {
-										$("#check").hide();
-										$("#join-button").prop('disabled',
-												false);
-									}
-								});
-
-			$('.ptel').keydown(function(event){
-				var key=event.charCode || event.keyCode || 0;
-				$text=$(this);
-				if(key!==8 && key !==9) {
-					if($text.val().length==3){
-						$text.val($text.val()+'-');
+			const pidnum = $("#pidnum").val();
+			$.ajax({
+				url : "pidnumcheck",
+				type : "post",
+				data : { 
+					pidnum : $("#pidnum").val()
+					
+				},
+				success : function(res) {
+					console.log(res);
+					if (res === "notexist") {
+						$("#pidnumMessage").text("사용 가능한 주민번호입니다").show();
+					} else {
+						$("#pidnumMessage").text("이미 가입된 주민번호입니다").show();
 					}
-					if($text.val().length==8){
-						$text.val($text.val()+'-');
-					}
+				},
+				error : function(err) {
+					console.log(err);
+					$("#pidnumMessage").text("주민번호 중복체크 오류").show();
 				}
-				return (key==8 || key== 9 || key == 46 || (key >= 48 && key <= 57) || (key >= 96 && key <= 105));
-				
-			});			
-						// 폼 제출 시 이메일 중복 확인
-						$("#form").submit(function(e) {
-							const pidnum = $("#pidnum").val();
-/* 							const ptel = $("#ptel").val();
-							const pidnumPattern = /^[0-9]{13}$/;
-							const ptelPattern = /^[0-9]{11}$/;
+			});
+		});
 
-							if (!pidnumPattern.test(pidnum)) {
-								alert("주민번호는 13자리 숫자여야 합니다.");
-								e.preventDefault();
-							}
- *//* 
-							if (!ptelPattern.test(ptel)) {
-								alert("휴대전화 번호는 11자리 숫자여야 합니다.");
-								e.preventDefault();
-							}
- */						});
-					});
+		// 이메일 입력 필드에서 입력 변화 감지
+		$("#pemail").on("input", function() {
+			const pemail = $("#pemail").val();
+			const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+			const isValid = emailRegex.test(pemail);
+
+			if (!isValid) {
+				$("#pemailMessage").text("올바른 이메일 형식으로 입력하세요").show();
+				isPemailCheck = false;
+			} else {
+				$("#pemailMessage").hide();
+				isPemailCheck = true;
+			}
+		});
+
+		// 이메일 중복 검사 버튼 클릭 시
+		$('#pemailcheck').click(function() {
+			if (!isPemailCheck) {
+				$("#pemailMessage").text("올바른 이메일 형식으로 입력하세요").show();
+				return;
+			}
+
+			const pemail = $("#pemail").val();
+			$.ajax({
+				url : "pemailcheck",
+				type : "post",
+				data : {
+					pemail : pemail
+				},
+				success : function(res) {
+					console.log(res);
+					if (res === "notexist") {
+						$("#pemailMessage").text("사용 가능한 이메일입니다").show();
+					} else {
+						$("#pemailMessage").text("이미 사용중인 이메일입니다").show();
+					}
+				},
+				error : function(err) {
+					console.log(err);
+					$("#pemailMessage").text("이메일 중복체크 오류").show();
+				}
+			});
+		});
+
+		// 비밀번호 확인과 비밀번호 필드의 입력이 변경될 때 확인 함수 실행
+		$("#ppasswordcheck, #ppassword").on("input", function() {
+			const ppassword = $("#ppassword").val();
+			const ppasswordcheck = $("#ppasswordcheck").val();
+
+			if (ppassword !== ppasswordcheck) {
+				$("#check").show();
+				$("#join-button").prop('disabled', true);
+			} else {
+				$("#check").hide();
+				$("#join-button").prop('disabled', false);
+			}
+		});
+
+		// 전화번호에 - 자동으로 뜨게 하는거
+		$('.ptel').keydown(function(event) {
+			var key = event.charCode || event.keyCode || 0;
+			$text = $(this);
+			if (key !== 8 && key !== 9) {
+				if ($text.val().length == 3) {
+					$text.val($text.val() + '-');
+				}
+				if ($text.val().length == 8) {
+					$text.val($text.val() + '-');
+				}
+			}
+			return (key == 8 || key == 9 || key == 46 || (key >= 48 && key <= 57) || (key >= 96 && key <= 105));
+		});
+
+		$("#form").submit(function(e) {
+/* 			e.preventDefault();
+			if(isPidnumCheck==false){
+				alert("주민번호 중복체크하세요")
+
+			} */
+		});
+	}); 
 </script>
 
 
@@ -409,7 +434,15 @@ input:focus {
 
 				</div>
 
-				<br> 비밀번호<br>
+				주민번호 <span id="pidnumMessage" class="error-message"></span><br>
+				<div id="info_pidnum">
+					<input type="number" id="pidnum" name="pidnum" size="13"
+						placeholder="-없이 숫자만 입력" required />
+					<%-- 주민번호 중복검사 및 유효성검사 --%>
+					<button id="pidnumcheck">중복 확인</button>
+				</div>
+
+				비밀번호<br>
 
 				<div class="input-container">
 
@@ -429,20 +462,15 @@ input:focus {
 				<div class="input-container">
 
 					<input type="password" id="ppasswordcheck" class="form-control"
-						onchange="check()" placeholder="" required /> 
-						<span class="icon material-symbols-outlined"> lock </span>
+						onchange="check()" placeholder="" required /> <span
+						class="icon material-symbols-outlined"> lock </span>
 
 				</div>
 
-				이름<br> 
-				<input type="text" id="pname" name="pname" placeholder="" required /> 
-					휴대전화<br> 
-					<input type="text"
-					id="ptel" class="ptel" name="ptel" maxlength="13" placeholder="-없이 숫자만 입력" /> 
-					주민번호<br>
-				<input type="number" id="pidnum" name="pidnum" size="12"
-					placeholder="-없이 숫자만 입력" required /> 
-					주소<br>
+				이름<br> <input type="text" id="pname" name="pname"
+					placeholder="" required /> 휴대전화<br> <input type="text"
+					id="ptel" class="ptel" name="ptel" maxlength="13"
+					placeholder="-없이 숫자만 입력" /> 주소<br>
 				<div class="row">
 					<div class="input">
 						<input type="text" id="ppostcode" name="ppostcode"
