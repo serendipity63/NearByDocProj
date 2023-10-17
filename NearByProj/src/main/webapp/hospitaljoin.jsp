@@ -424,7 +424,7 @@ input[type='submit']:hover {
 				<div class="row">
 					<div class="input">
 						<%--디자인은 수정할게요  --%>
-						<input type="file" name="hurl" id="file" accept="image/*" />
+						<input type="file" name="file" id="file" accept="image/*" />
 					</div>
 				</div>
 				<div class="button">
