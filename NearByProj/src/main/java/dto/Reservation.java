@@ -2,6 +2,7 @@ package dto;
 
 public class Reservation {
 	
+
 	private String pidnum;
 	private String comnum;
 	private String resdate;
@@ -30,6 +31,8 @@ public class Reservation {
 		this.id=id;
 		this.fidnum = fidnum;
 	}
+
+
 	public String getPidnum() {
 		return pidnum;
 	}
@@ -54,12 +57,16 @@ public class Reservation {
 	public void setRestime(String restime) {
 		this.restime = restime;
 	}
+
+	
+
 	public String getComment() {
 		return comment;
 	}
 	public void setComment(String comment) {
 		this.comment = comment;
 	}
+
 	public boolean isStatus() {
 		return status;
 	}
@@ -78,5 +85,6 @@ public class Reservation {
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	
+
 }
+

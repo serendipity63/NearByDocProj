@@ -6,8 +6,7 @@
 
 
 
-	<select id="selectPatient" parameterType="String"
-		resultType="Patient">
+	<select id="selectPatient" parameterType="String" resultType="Patient">
 	<![CDATA[
 		select * from patient where pemail=#{pemail}
 	]]>
@@ -42,27 +41,30 @@
 	]]>
 	</insert>
 	
-	<select id="selectPatientList" parameterType="String" resultType="Patient">
+	<select id="selectPatientList" parameterType="Integer" resultType="Patient">
 	<![CDATA[
-	select pidnum,pemail,ppassword,pname,ptel,ppostcode,(concat(proadaddress,pdetailaddress)as address)) from patient order by pidnum
+	select * from patient order by pname
 	limit #{row},10
 	]]>
 	</select>
 	
 	
+	
 	<select id="selectPatientCount" resultType="Integer">
       <![CDATA[
-         select count(num) from patient
+         select count(pidnum) from patient
       ]]>
     
    </select>
+   
+   
 	
 
 	
 	<select id="searchPatientList" parameterType="hashmap" resultType="Patient">
 	
 	select * from patient
-	where ${type} like '%${keyword}%' order by pidnum desc
+	where ${type} like '%${keyword}%' order by pname
 	limit #{row},10
 	
 	</select>
@@ -76,7 +78,8 @@
    <delete id="deletePatient" parameterType="String">
    <![CDATA[
    
-   	delete from patient where pidnum=#{pidnum} 
+   	delete from patient where pname=#{pname} 
+   
    ]]>
    
    

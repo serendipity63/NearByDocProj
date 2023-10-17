@@ -85,6 +85,7 @@ table{
 
 table tr td:nth-child(1){
   background-color: #CFE8F7;
+  padding-right: 5px;
 }
 
 </style>

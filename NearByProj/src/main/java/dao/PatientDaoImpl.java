@@ -26,7 +26,7 @@ public class PatientDaoImpl implements PatientDao {
 
 	@Override
 	public List<Patient> selectPatientList(Integer row) throws Exception {
-		return sqlSession.selectList("mapper.patient.selectPatientList,row");
+		return sqlSession.selectList("mapper.patient.selectPatientList",row);
 	}
 
 	@Override
@@ -52,6 +52,7 @@ public class PatientDaoImpl implements PatientDao {
 	}
 
 	@Override
+
 	public void updatePatient(Patient patient) throws Exception {
 		sqlSession.update("mapper.patient.updatePatient", patient);
 		sqlSession.commit();
@@ -62,6 +63,11 @@ public class PatientDaoImpl implements PatientDao {
 	public void deletePatient(String pidnum) throws Exception {
 		System.out.println("Impl : " +pidnum);
 		sqlSession.delete("mapper.patient.deletePatient",pidnum);
+	}
+	@Override
+	public void deleteMyPatient(String pname) throws Exception {
+		sqlSession.delete("mapper.patient.deletePatient",pname);
+
 		sqlSession.commit();
 	}
 

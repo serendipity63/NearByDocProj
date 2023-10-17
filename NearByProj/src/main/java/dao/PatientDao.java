@@ -7,10 +7,11 @@ import java.util.Map;
 import dto.Patient;
 
 public interface PatientDao {
-	Patient selectPatient(String pidnum)throws Exception;
+	Patient selectPatient(String pemail)throws Exception;
 	void insertPatient(Patient patient) throws Exception;
 	List<Patient> selectPatientList(Integer row) throws Exception;
 	Integer selectPatientCount() throws Exception;
+	
 	
 	List<Patient> searchPatientList(Map<String,Object>param) throws Exception;
 	Integer searchPatientCount(Map<String,Object> param) throws Exception;
@@ -23,5 +24,6 @@ public interface PatientDao {
 	void updatePatient(Patient patient) throws Exception;
 	// 환자 정보 삭제
 	void deletePatient(String pidnum) throws Exception;
+	void deleteMyPatient(String pname) throws Exception;
 	
 }
