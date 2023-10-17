@@ -18,21 +18,16 @@
 	
 	<select id="myReviewListByid" parameterType="String" resultType="hashmap">
 	<![CDATA[
-	SELECT h.hname as name
-     	 , res.resdate as date
-     	 , h.department as department
-     	 , r.star as star
-     	 , r.content as content 
-	  FROM patient p
-   	   	 , review r
-   		 , hospital h
-   		 , reservation res
- 	 WHERE 1=1
-	  AND r.pidnum = #{pidnum}
-	  AND r.comnum = h.comnum
-	  AND res.pidnum = #{pidnum}
-	  AND h.comnum = res.comnum
-	  ORDER BY res.resdate desc
+
+	  select h.hname as name
+	       , SUBSTRING(r.birth,1, 10) as date
+	       , h.department as department
+	       , r.star as star
+	       , r.content as content
+	    from review r
+	       , hospital h
+	   where r.pidnum=#{pidnum}
+	ORDER BY r.birth DESC;
 	]]>
 	</select>
 
