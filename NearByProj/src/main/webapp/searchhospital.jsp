@@ -86,7 +86,6 @@
 
 .condition {
 	width: 430px;
-	height: 90px;
 	border-bottom: 1px solid;
 }
 
