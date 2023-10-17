@@ -86,7 +86,6 @@
 
 .condition {
 	width: 430px;
-	height: 130px;
 	border-bottom: 1px solid;
 }
 
@@ -151,59 +150,68 @@
 	<div class="main">
 
 		<div class="condition">
-				<h3>
-				검색 조건 "${department}" / "${address} "
-				</h3>
-				<br>
-				<h3>검색결과(총 ${hoslist.size()}건)</h3>
-				<br>
-				<p>설정 조건과 가까운 병원 검색 결과입니다.</p>
+			<h3>검색 조건 "${department}" / "${address} "</h3>
+			<br>
+			<h3>검색결과(총 ${hoslist.size()}건)</h3>
+			<br>
 		</div>
 		<div class="hoslist">
-			<c:forEach items="${hoslist}" var="hospital">
-				<div class="hos">
-					<div class="hosinfo"
-						onclick="location.href='hospitalinfo?comnum=${hospital.comnum}';"
-						style="cursor: pointer;">
-						<table>
-							<tbody>
-								<tr>
-									<td colspan="3" width="330"><h4 style="font-size: 24px;">${hospital.hname}</h4></td>
-								</tr>
-								<tr>
-									<td colspan="3" width="330">${hospital.hroad}
-										${hospital.hdetail}</td>
-
-								</tr>
-								<tr>
-									<td width="110">진료시간:</td>
-									<td width="110">${hospital.clinic}</td>
-									<td width="110">${hospital.htel}</td>
-								</tr>
-
-								<tr>
-									<td colspan="2">${hospital.hgrade}<c:forEach begin="1"
-											end="${hospital.hgrade}">
-											<img src="image?file=star.png" alt="별" width="15">
-										</c:forEach>
-									</td>
-									<td>리뷰 ${hospital.hreviewcnt}건</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-					<div class="hosmap"
-						onclick="window.open('map?comnum=${hospital.comnum}', 'window_name','width=600, height=400, location=no, status=no, scrollbars=yes')"
-						style="cursor: pointer;">
-						<center>
-							<br>
-							<span class="material-symbols-outlined"> map </span>
-							<p>지도보기</p>
-						</center>
-					</div>
+			<c:choose>
+				<c:when test="${empty hoslist}">
 					<br>
-				</div>
-			</c:forEach>
+					<p>5km 내에 해당 조건에 맞는 병원이 없습니다.</p>
+					<br>
+				</c:when>
+				<c:otherwise>
+					<br>
+					<p>근처 5km 내 설정 조건의 병원 검색 결과입니다.</p>
+					<br>
+					<c:forEach items="${hoslist}" var="hospital">
+						<div class="hos">
+							<div class="hosinfo"
+								onclick="location.href='hospitalinfo?comnum=${hospital.comnum}';"
+								style="cursor: pointer;">
+								<table>
+									<tbody>
+										<tr>
+											<td colspan="3" width="330"><h4 style="font-size: 24px;">${hospital.hname}</h4></td>
+										</tr>
+										<tr>
+											<td colspan="3" width="330">${hospital.hroad}
+												${hospital.hdetail}</td>
+
+										</tr>
+										<tr>
+											<td width="110">진료시간:</td>
+											<td width="110">${hospital.clinic}</td>
+											<td width="110">${hospital.htel}</td>
+										</tr>
+
+										<tr>
+											<td colspan="2">${hospital.hgrade}<c:forEach begin="1"
+													end="${hospital.hgrade}">
+													<img src="image?file=star.png" alt="별" width="15">
+												</c:forEach>
+											</td>
+											<td>리뷰 ${hospital.hreviewcnt}건</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<div class="hosmap"
+								onclick="window.open('map?comnum=${hospital.comnum}', 'window_name','width=600, height=400, location=no, status=no, scrollbars=yes')"
+								style="cursor: pointer;">
+								<center>
+									<br> <span class="material-symbols-outlined"> map </span>
+									<p>지도보기</p>
+								</center>
+							</div>
+							<br>
+						</div>
+					</c:forEach>
+				</c:otherwise>
+			</c:choose>
+
 		</div>
 	</div>
 	<br>

@@ -297,10 +297,24 @@ input:focus {
 									}
 								});
 
+			$('.ptel').keydown(function(event){
+				var key=event.charCode || event.keyCode || 0;
+				$text=$(this);
+				if(key!==8 && key !==9) {
+					if($text.val().length==3){
+						$text.val($text.val()+'-');
+					}
+					if($text.val().length==8){
+						$text.val($text.val()+'-');
+					}
+				}
+				return (key==8 || key== 9 || key == 46 || (key >= 48 && key <= 57) || (key >= 96 && key <= 105));
+				
+			});			
 						// 폼 제출 시 이메일 중복 확인
 						$("#form").submit(function(e) {
 							const pidnum = $("#pidnum").val();
-							const ptel = $("#ptel").val();
+/* 							const ptel = $("#ptel").val();
 							const pidnumPattern = /^[0-9]{13}$/;
 							const ptelPattern = /^[0-9]{11}$/;
 
@@ -308,12 +322,12 @@ input:focus {
 								alert("주민번호는 13자리 숫자여야 합니다.");
 								e.preventDefault();
 							}
-
+ *//* 
 							if (!ptelPattern.test(ptel)) {
 								alert("휴대전화 번호는 11자리 숫자여야 합니다.");
 								e.preventDefault();
 							}
-						});
+ */						});
 					});
 </script>
 
@@ -349,52 +363,6 @@ input:focus {
 					addr = data.jibunAddress;
 
 				}
-
-				// 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
-
-				/* if (data.userSelectedType === 'R') {
-
-				 // 법정동명이 있을 경우 추가한다. (법정리는 제외)
-
-				 // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
-
-				 if (data.bname !== ''
-
-				 && /[동|로|가]$/g.test(data.bname)) {
-
-				 extraAddr += data.bname;
-
-				 }
-
-				 // 건물명이 있고, 공동주택일 경우 추가한다.
-
-				 if (data.buildingName !== ''
-
-				 && data.apartment === 'Y') {
-
-				 extraAddr += (extraAddr !== '' ? ', '
-
-				 + data.buildingName : data.buildingName);
-
-				 }
-
-				 // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
-
-				 if (extraAddr !== '') {
-
-				 extraAddr = ' (' + extraAddr + ')';
-
-				 }
-
-				 // 조합된 참고항목을 해당 필드에 넣는다.
-
-				 document.getElementById("extraAddress").value = extraAddr;
-
-				 } else {
-
-				 document.getElementById("extraAddress").value = '';
-
-				 } */
 
 				// 우편번호와 주소 정보를 해당 필드에 넣는다.
 				document.getElementById('ppostcode').value = data.zonecode;
@@ -466,11 +434,15 @@ input:focus {
 
 				</div>
 
-				이름<br> <input type="text" id="pname" name="pname"
-					placeholder="" required /> 휴대전화<br> <input type="number"
-					id="ptel" name="ptel" size="15" placeholder="-없이 숫자만 입력" /> 주민번호<br>
+				이름<br> 
+				<input type="text" id="pname" name="pname" placeholder="" required /> 
+					휴대전화<br> 
+					<input type="text"
+					id="ptel" class="ptel" name="ptel" maxlength="13" placeholder="-없이 숫자만 입력" /> 
+					주민번호<br>
 				<input type="number" id="pidnum" name="pidnum" size="12"
-					placeholder="-없이 숫자만 입력" required /> 주소<br>
+					placeholder="-없이 숫자만 입력" required /> 
+					주소<br>
 				<div class="row">
 					<div class="input">
 						<input type="text" id="ppostcode" name="ppostcode"

@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dto.Review;
+import service.HospitalService;
+import service.HospitalServiceImpl;
 import service.ReviewService;
 import service.ReviewServiceImpl;
 /**
@@ -41,7 +43,8 @@ public class InsertReview extends HttpServlet {
 		try {
 			ReviewService reviewservice = new ReviewServiceImpl();
 			reviewservice.insertReview(review);
-			
+			HospitalService hospitalservice = new HospitalServiceImpl();
+			hospitalservice.updateGrade(comnum);
 
 		} catch (Exception e) {
 			request.setAttribute("err", e.getMessage());

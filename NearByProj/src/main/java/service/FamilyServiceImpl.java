@@ -37,4 +37,9 @@ public class FamilyServiceImpl implements FamilyService {
 		return familyDao.selectFamily(name);
 
 	}
+	
+	@Override
+	public List<Family> familylist(String pidnum) throws Exception {
+		return familyDao.selectFamilyList(pidnum);
+	}
 }

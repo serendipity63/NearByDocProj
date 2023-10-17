@@ -65,9 +65,6 @@
 				latitude.value= latilong[0];
 				longitude.value= latilong[1];
 			}
-
-
-			
 			console.log(addressInput.value);
 		});
 	}
@@ -326,7 +323,8 @@ a {
 						<li><input type="radio" name="dept" value="소아과"> 소아과
 						</li>
 						<li><input type="radio" name="dept" id="otherDeptCheckbox"
-							value="기타" onchange="toggleOtherDeptInput()"> 기타 <input
+							value="기타" onchange="toggleOtherDeptInput()"> 
+							기타 <input
 							type="text" name="otherDept" id="otherDeptInput"
 							placeholder="기타 진료과목 입력" disabled></li>
 					</ul>
