@@ -199,17 +199,18 @@ input[type='submit']:hover {
 		$('#comnum').change(function() {
 			isComnumCheck = false;
 		});
-		
+
 		$('#hpassword').change(function() {
 			isPasswordMatch = false;
 
 		});
-		
+
 		$('#hpassword-confirm').change(function() {
 			isPasswordMatch = false;
 
 		});
-		
+
+
 		$("#form").submit(function(e) {
 			const comnum = $("#comnum").val().trim(); // 사업자번호 입력에서 공백 제거
 			const password = $("#hpassword").val();
@@ -239,6 +240,45 @@ input[type='submit']:hover {
 			}
 		});
 	});
+</script>
+
+<script type="text/javascript">
+//htel 전화번호에 자동 하이픈
+$(function() {
+	$("#htel").keyup(function(){
+		var val = $(this).val().replace(/[^0-9]/g, '');
+		if(val.length > 3 && val.length < 6){
+			var tmp = val.substring(0,2)
+			if(tmp == "02"){
+				$(this).val(val.substring(0,2) + "-" + val.substring(2));
+			} else {
+				$(this).val(val.substring(0,3) + "-" + val.substring(3));
+			}
+		}else if (val.length > 6){
+			var tmp = val.substring(0,2)
+			var tmp2 = val.substring(0,4)
+			if(tmp == "02"){
+				if(val.length == "10"){
+					$(this).val(val.substring(0,2) + "-" + val.substring(2, 6) + "-" + val.substring(6));
+				} else {
+					$(this).val(val.substring(0,2) + "-" + val.substring(2, 5) + "-" + val.substring(5));
+				}
+			} else if(tmp2 == "0505"){
+				if(val.length == "12"){
+					$(this).val(val.substring(0,4) + "-" + val.substring(4, 8) + "-" + val.substring(8));
+				} else {
+					$(this).val(val.substring(0,4) + "-" + val.substring(4, 7) + "-" + val.substring(7));
+				}
+			} else {
+				if(val.length == "11"){
+					$(this).val(val.substring(0,3) + "-" + val.substring(3, 7) + "-" + val.substring(7));
+				} else {
+					$(this).val(val.substring(0,3) + "-" + val.substring(3, 6) + "-" + val.substring(6));
+				}
+			}
+		}
+	});
+});
 </script>
 
 
@@ -308,7 +348,8 @@ input[type='submit']:hover {
 
 	<center>
 		<div class="container" id='query'>
-<form action="hjoin" method="post" id="form" enctype="multipart/form-data">
+			<form action="hjoin" method="post" id="form"
+				enctype="multipart/form-data">
 				<div class="title">병원등록</div>
 
 				<div class="row">
@@ -378,26 +419,31 @@ input[type='submit']:hover {
 				<script>
 					var geocoder = new kakao.maps.services.Geocoder();
 					function addressSearch(haddress) {
-						geocoder.addressSearch(haddress, function(result,
-								status) {
-							if (status === kakao.maps.services.Status.OK) {
-								//주소를 좌표로변환한 결과에서 위도와 경도를 얻어온다
-								var latitude = result[0].y;
-								var longitude = result[0].x;
-								var coords = new kakao.maps.LatLng(result[0].y,
-										result[0].x);
-								console.log(latitude);
-								console.log(longitude);
-								console.log(coords);
-								// 위경도 넣는다 input에
-								document.getElementById('latitude').value = latitude;
-								document.getElementById("longitude").value = longitude;
+						geocoder
+								.addressSearch(
+										haddress,
+										function(result, status) {
+											if (status === kakao.maps.services.Status.OK) {
+												//주소를 좌표로변환한 결과에서 위도와 경도를 얻어온다
+												var latitude = result[0].y;
+												var longitude = result[0].x;
+												var coords = new kakao.maps.LatLng(
+														result[0].y,
+														result[0].x);
+												console.log(latitude);
+												console.log(longitude);
+												console.log(coords);
+												// 위경도 넣는다 input에
+												document
+														.getElementById('latitude').value = latitude;
+												document
+														.getElementById("longitude").value = longitude;
 
-							} else {
-								console.error('오류');
+											} else {
+												console.error('오류');
 
-							}
-						});
+											}
+										});
 					}
 				</script>
 				<input type="hidden" id="latitude" name="lat" placeholder="위도">
@@ -407,9 +453,13 @@ input[type='submit']:hover {
 
 				<div class="row">
 					<div class="input">
-						<input type="number" name="htel" placeholder="전화번호">
+						<input type="text"  maxlength="13" id="htel" class="htel" name="htel"
+							placeholder="전화번호" />
 					</div>
 				</div>
+
+
+
 
 				<div class="row">
 					<div class="input">
