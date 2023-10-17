@@ -123,6 +123,7 @@ table tr td:nth-child(1){
         </span> 
       <hr>
       <div id="famlist">
+      <c:forEach items="${familys}" var="family">
         <div id="detailfam">
           <table>
             <tr>
@@ -130,7 +131,7 @@ table tr td:nth-child(1){
                 <span>이름</span>
               </td>
               <td>
-                <span><textarea name="" id="" cols="20">김길동</textarea></span>
+                <span><textarea name="" id="" cols="20">${family.name }</textarea></span>
               </td>
               <td rowspan="4" colspan="3">
                 <input class="delete" type="button" value="삭제" onclick="deletefam()">
@@ -143,7 +144,7 @@ table tr td:nth-child(1){
                 <span>전화번호</span>
               </td>
               <td>
-                <span><textarea name="" id="" cols="20">010-1234-5678</textarea></span>
+                <span><textarea name="" id="" cols="20">${family.tel }</textarea></span>
               </td>
             </tr>
 
@@ -152,117 +153,13 @@ table tr td:nth-child(1){
                 <span>주소</span>
               </td>
               <td>
-                <span><textarea name="" id="" cols="20">서울특별시 금천구 남부순환로 호서대벤처타워</textarea></span>
+                <span><textarea name="" id="" cols="20">${family.address }</textarea></span>
               </td>
             </tr>
           </table>
         </div>
-
-        <div id="detailfam">
-          <table>
-            <tr>
-              <td>
-                <span>이름</span>
-              </td>
-              <td>
-                <span><textarea name="" id="" cols="20">박길동</textarea></span>
-              </td>
-              <td rowspan="4" colspan="3">
-                <input class="delete" type="button" value="삭제" onclick="deletefam()">
-                <!-- <button class="delete" onclick="deletefam()"><h4>삭제</h4></button> -->
-              </td>
-            </tr>
-
-            <tr>
-              <td>
-                <span>전화번호</span>
-              </td>
-              <td>
-                <span><textarea name="" id="" cols="20">010-1234-5678</textarea></span>
-              </td>
-            </tr>
-
-            <tr>
-              <td>
-                <span>주소</span>
-              </td>
-              <td>
-                <span><textarea name="" id="" cols="20">서울특별시 금천구 남부순환로 호서대벤처타워</textarea></span>
-              </td>
-            </tr>
-          </table>
-        </div>
-
-        <div id="detailfam">
-          <table>
-            <tr>
-              <td>
-                <span>이름</span>
-              </td>
-              <td>
-                <span><textarea name="" id="" cols="20">홍길동</textarea></span>
-              </td>
-              <td rowspan="4" colspan="3">
-                <input class="delete" type="button" value="삭제" onclick="deletefam()">
-                <!-- <button class="delete" onclick="deletefam()"><h4>삭제</h4></button> -->
-              </td>
-            </tr>
-
-            <tr>
-              <td>
-                <span>전화번호</span>
-              </td>
-              <td>
-                <span><textarea name="" id="" cols="20">010-1234-5678</textarea></span>
-              </td>
-            </tr>
-
-            <tr>
-              <td>
-                <span>주소</span>
-              </td>
-              <td>
-                <span><textarea name="" id="" cols="20">서울특별시 금천구 남부순환로 호서대벤처타워</textarea></span>
-              </td>
-            </tr>
-          </table>
-        </div>
-
-        <div id="detailfam">
-          <table>
-            <tr>
-              <td>
-                <span>이름</span>
-              </td>
-              <td>
-                <span><textarea name="" id="" cols="20">신길동</textarea></span>
-              </td>
-              <td rowspan="4" colspan="3">
-                <input class="delete" type="button" value="삭제" onclick="deletefam()">
-                <!-- <button class="delete" onclick="deletefam()"><h4>삭제</h4></button> -->
-              </td>
-            </tr>
-
-            <tr>
-              <td>
-                <span>전화번호</span>
-              </td>
-              <td>
-                <span><textarea name="" id="" cols="20">010-1234-5678</textarea></span>
-              </td>
-            </tr>
-
-            <tr>
-              <td>
-                <span>주소</span>
-              </td>
-              <td>
-                <span><textarea name="" id="" cols="20">서울특별시 금천구 남부순환로 호서대벤처타워</textarea></span>
-              </td>
-            </tr>
-          </table>
-        </div>
-  
+        </c:forEach>
+        
         <input type="button" value="수정" onclick="modi()">
         <!-- <button onclick="modi()"><h4>수정</h4></button> -->
       </div>

@@ -22,7 +22,7 @@
 		]]>
 	</select>
 
-
+    <!-- 내 예약 목록 조회 -->
 	<select id='selectMyReservation' parameterType="String" resultType="hashmap">
    <![CDATA[
    select h.hname as name
@@ -42,7 +42,20 @@ order by r.resdate desc
      ]]>   
 	</select>
 	
-
+	
+	<!-- 가족 예약 확인 -->
+	<select id="checkFamily" parameterType="string" resultType="Family">
+	<![CDATA[
+	SELECT fname AS NAME 
+	  FROM family f
+	     , reservation r
+	 WHERE 1=1
+	   AND r.pidnum = #{pidnum}
+	   AND f.fidnum = #{pidnum}
+	]]>
+	</select>
+	
+     <!-- 예약 세부 내용 조회 -->
 	 <select id="selectDetailReservation" parameterType="hashMap" resultType="hashmap">
      SELECT h.hname as hname
 	      , h.hroad as address

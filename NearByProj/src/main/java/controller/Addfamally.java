@@ -65,10 +65,7 @@ public class Addfamally extends HttpServlet {
 		String ftel = request.getParameter("ftel");
 		String faddress = request.getParameter("faddress");
 		String fidnum = request.getParameter("fidnum");
-		System.out.println(fname);
-		System.out.println(ftel);
-		System.out.println(faddress);
-		System.out.println(fidnum);
+		
 		HttpSession session = request.getSession();
 		Patient patient = (Patient)session.getAttribute("user");
 		String pidnum = patient.getPidnum();
@@ -76,10 +73,12 @@ public class Addfamally extends HttpServlet {
 		Family family = new Family(fidnum, fname, ftel, pidnum, faddress);
 		FamilyService familyService = new FamilyServiceImpl();
 		try {
-			familyService.addFam(family);
-			request.getRequestDispatcher("addfamally.jsp").forward(request, response);
+			//familyService.addFam(family, pidnum);
+			response.getWriter().print(familyService.addFam(family, pidnum));
+			//request.getRequestDispatcher("addfamally.jsp").forward(request, response);
 		} catch (Exception e) {
 			e.printStackTrace();
+			response.getWriter().print("error!");
 		}
 		
 	}
