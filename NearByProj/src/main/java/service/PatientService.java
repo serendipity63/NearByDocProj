@@ -11,6 +11,7 @@ public interface PatientService {
 	void patientjoin(Patient patient) throws Exception;
 
 	String pemailcheck(String pemail) throws Exception;
+	String pidnumcheck(String pidnum) throws Exception;
 	
 	Map<String,Object> patientListByPage(Integer page) throws Exception;
 	Map<String,Object> patientSearch (String type,String keyword,Integer page) throws Exception;
