@@ -110,6 +110,9 @@ input{
 
 </style>
 <script>
+
+
+
 $(function (){
 	$("#out").click(function() {
 		if (confirm("정말 탈퇴하시겠습니까?") == true){    //확인
