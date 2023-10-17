@@ -177,7 +177,6 @@ var callback = function(result, status) {
     	  
     	  window.close(); //전달하고 창 닫힘
     }
-
    
 };
 

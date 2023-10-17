@@ -111,8 +111,8 @@ public class PatientServiceImpl implements PatientService {
 
 	@Override
 	public String pidnumcheck(String pidnum) throws Exception {
-		Patient patient= patientDao.selectPatient(pidnum);
-		if(patient== null)
+		Patient patient= patientDao.selectPatientByPidnum(pidnum);
+		if(patient == null)
 			return "notexist";
 		
 		return "exist";
