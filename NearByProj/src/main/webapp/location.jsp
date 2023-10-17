@@ -124,11 +124,8 @@ a {
 	<div class="outerDiv">
 		<div class="locationset">
 			<div class="juso">
-				<button class="back">
 
-					<span class="icon-text-wrapper"> <a href="main"> <span
-							class="material-symbols-outlined"> close </span></span> 주소 설정 </a>
-				</button>
+					주소 설정
 			</div>
 		</div>
 		<div class="find">
@@ -142,8 +139,6 @@ a {
 					</span> 현재 위치에서 병원 찾기
 				</button>
 			</div>
-
-
 
 			<script type="text/javascript"
 				src="//dapi.kakao.com/v2/maps/sdk.js?appkey=0f92754065fd18fb9b2450d8077e930c&libraries=services"></script>
@@ -214,6 +209,8 @@ $("#currentAddress").click(function() {
 
 		new daum.Postcode({
 			oncomplete: function (data) {
+				console.log(data);
+				
 				window.opener.postMessage(data.address,"*"); //전달하기
       	    	window.close(); //전달하고 창 닫힘
 			}
