@@ -61,7 +61,7 @@ table {
 	<% pageContext.include("hmain.jsp");%>
 	<h1>오늘의 예약내역</h1>
 	
-	<form action="trlist" method="post">
+	
 		<table>	
 			<tr class="row">
 				<th>예약번호</th>
@@ -92,7 +92,7 @@ table {
 			</tr>
 			</c:forEach>
 		</table>
-	</form>
+	
 	<div id="emptyArea">
 			<c:choose>  
 				<c:when test="${res.pageInfo.curPage>1}">
