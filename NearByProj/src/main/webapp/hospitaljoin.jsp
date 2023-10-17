@@ -196,12 +196,20 @@ input[type='submit']:hover {
 				}
 			});
 		});
-
-		$('#comnum, #hpassword, #hpassword-confirm').change(function() {
+		$('#comnum').change(function() {
 			isComnumCheck = false;
-			isPasswordMatch = false;
 		});
+		
+		$('#hpassword').change(function() {
+			isPasswordMatch = false;
 
+		});
+		
+		$('#hpassword-confirm').change(function() {
+			isPasswordMatch = false;
+
+		});
+		
 		$("#form").submit(function(e) {
 			const comnum = $("#comnum").val().trim(); // 사업자번호 입력에서 공백 제거
 			const password = $("#hpassword").val();
