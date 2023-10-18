@@ -22,6 +22,9 @@
   </button>
 </div>
 
+
+
+
 <!-- The Modal -->
 <div class="modal" id="myModal">
   <div class="modal-dialog">
@@ -29,26 +32,13 @@
 
       <!-- Modal Header -->
       <div class="modal-header">
-        <h4 class="modal-title">Modal Heading</h4>
+        <h4 class="modal-title"> 진료시간을 선택해주세요 </h4>
         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
       </div>
 
       <!-- Modal body -->
       <div class="modal-body">
         <select name="time" id="time">
-  <option value="12:00am">12:00am</option>
-	<option value="12:30am">12:30am</option>
-	<option value="1:00am">1:00am</option>
-	<option value="1:30am">1:30am</option>
-	<option value="2:00am">2:00am</option>
-	<option value="2:30am">2:30am</option>
-	<option value="3:00am">3:00am</option>
-	<option value="3:30am">3:30am</option>
-	<option value="4:00am">4:00am</option>
-	<option value="4:30am">4:30am</option>
-	<option value="5:00am">5:00am</option>
-	<option value="5:30am">5:30am</option>
-	<option value="6:00am">6:00am</option>
 	<option value="6:30am">6:30am</option>
 	<option value="7:00am">7:00am</option>
 	<option value="7:30am">7:30am</option>
@@ -61,6 +51,10 @@
 	<option value="11:00am">11:00am</option>
 	<option value="11:30am">11:30am</option>
 	<option value="12:00pm">12:00pm</option>
+
+</select>
+~
+        <select name="time" id="time">
 	<option value="12:30pm">12:30pm</option>
 	<option value="1:00pm">1:00pm</option>
 	<option value="1:30pm">1:30pm</option>

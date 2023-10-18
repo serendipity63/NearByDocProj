@@ -26,7 +26,8 @@
 	rel="stylesheet">
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-<script>
+
+<script type="text/javascript">
 	function toggleOtherDeptInput() {
 		var otherDeptCheckbox = document.getElementById("otherDeptCheckbox");
 		var otherDeptInput = document.getElementById("otherDeptInput");
@@ -40,22 +41,22 @@
 </script>
 
 <script>
-  $(function() {
-    $("#selectDeptBtn").click(function() {
-      var selectedDept = $("input[name='dept']:checked").val();
-      if (selectedDept === '기타') {
-        selectedDept = $("#otherDeptInput").val();
-      }
-      $("#department-input").val(selectedDept);
-    })		
-  })
+	$(function() {
+		$("#selectDeptBtn").click(function() {
+			var selectedDept = $("input[name='dept']:checked").val();
+			if (selectedDept === '기타') {
+				selectedDept = $("#otherDeptInput").val();
+			}
+			$("#department-input").val(selectedDept);
+		})
+	})
 </script>
 
 <script type="text/javascript">
 	function openLocationSelectionPage() {
-		
-		document.getElementById("latitude").value='';
-		document.getElementById("longitude").value='';
+
+		document.getElementById("latitude").value = '';
+		document.getElementById("longitude").value = '';
 		// 주소 설정 페이지 열기
 		var locationSelectionPage = window.open("location.jsp",
 				"LocationSelection", "width=500,height=600");
@@ -69,12 +70,12 @@
 			addressInput.value = addressArr[0];
 			console.log(addressArr);
 			console.log(addressArr[1]);
-			if(addressArr.length==2) {
-				var latilong = addressArr[1].split(":");  //위도와 경도 분리
+			if (addressArr.length == 2) {
+				var latilong = addressArr[1].split(":"); //위도와 경도 분리
 				var latitude = document.getElementById("latitude");
 				var longitude = document.getElementById("longitude");
-				latitude.value= latilong[0];
-				longitude.value= latilong[1];
+				latitude.value = latilong[0];
+				longitude.value = latilong[1];
 			}
 			console.log(addressInput.value);
 		});
@@ -91,61 +92,13 @@ a {
 	text-decoration: none;
 }
 
-ul{
-list-style-type:none;}
-
-.container {
-	max-width: 425px;
-	width: 100%;
-	margin: 70px auto 20px auto;
-	padding: 10px;
-	border: 2px solid #16151562;
-	border-radius: 10px;
-	overflow: hidden;
+ul {
+	list-style-type: none;
 }
 
-.department-input, .address-input {
-	padding: 13px;
-	border: none;
-	outline: none;
-	font-family: 'Noto Sans', sans-serif;
-	font-size: 17px;
-	margin-bottom: 0px;
-	margin-top: 20px;
-	width: 97%;
-	margin-left: 5px;
-}
 
-.container-2 .icon, .container-3 .icon {
-	position: absolute;
-	top: 30px;
-	margin-left: 5px;
-	z-index: 1;
-	vertical-align: middle;
-}
 
-.search-button {
-	padding: 20px 20px;
-	background-color: #cfe8f7;
-	color: #333333;
-	border: none;
-	cursor: pointer;
-	transition: background-color 0.3s ease;
-	font-family: 'Noto Sans', sans-serif;
-	text-decoration: none;
-	border-radius: 10px;
-	width: 100%;
-	margin-top: 20px;
-	margin-bottom: 10px;
-	font-weight: bold;
-	font-size: 18px;
-}
-
-.search-button:hover {
-	background-color: #0056b3;
-}
-
-.hospital {
+.hos {
 	display: flex;
 	max-width: 395px;
 	padding: 10px;
@@ -159,23 +112,6 @@ list-style-type:none;}
 	flex-direction: column;
 	padding-left: 30px;
 	color: #333333;
-}
-
-/*서치박스 안에 있는거? */
-.material-icons {
-	font-size: 24px;
-	color: black;
-	text-decoration: none;
-	opacity: 0.75;
-}
-
-.material-icons:hover {
-	text-decoration: none;
-}
-
-.container-2, .container-3 {
-	position: relative;
-	white-space: nowrap;
 }
 
 .type, .address {
@@ -250,16 +186,21 @@ list-style-type:none;}
 	<%
 	pageContext.include("header.jsp");
 	%>
-	<br><br>
+
+	<br>
+	<br>
 	<%
 	pageContext.include("searchBox.jsp");
 	%>
-	
-	<a class="hospital" href="hlogin">
-		<div class="hospital">
+
+	<a class="hos" href="hlogin">
+		<div class="hos">
 			혹시 병원 관계자이신가요? <br>병원페이지 바로가기
 		</div>
 	</a>
+
+
+
 	<h2 class="text-center"></h2>
 	<div class="footer-basic">
 		<footer>
@@ -272,6 +213,15 @@ list-style-type:none;}
 			<p class="copyright">NEARBYDOC © 2023</p>
 		</footer>
 	</div>
+
+
+
+
+
+
+
+
+
 	<!-- The Modal -->
 	<div class="modal" id="myModal">
 		<div class="modal-dialog">
@@ -301,9 +251,8 @@ list-style-type:none;}
 						<li><input type="radio" name="dept" value="소아과"> 소아과
 						</li>
 						<li><input type="radio" name="dept" id="otherDeptCheckbox"
-							value="기타" onchange="toggleOtherDeptInput()"> 
-							기타 
-							<input type="text" name="otherDept" id="otherDeptInput"
+							value="기타" onchange="toggleOtherDeptInput()"> 기타 <input
+							type="text" name="otherDept" id="otherDeptInput"
 							placeholder="기타 진료과목 입력" disabled></li>
 					</ul>
 
@@ -313,10 +262,10 @@ list-style-type:none;}
 				<div class="modal-footer">
 					<button type="button" class="btn btn-danger"
 						data-bs-dismiss="modal" id="selectDeptBtn">선택 완료</button>
-      </div>
-    </div>
-  </div>
-</div>
+				</div>
+			</div>
+		</div>
+	</div>
 
 </body>
 

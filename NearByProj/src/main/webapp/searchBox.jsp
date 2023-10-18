@@ -40,22 +40,22 @@
 </script>
 
 <script>
-  $(function() {
-    $("#selectDeptBtn").click(function() {
-      var selectedDept = $("input[name='dept']:checked").val();
-      if (selectedDept === '기타') {
-        selectedDept = $("#otherDeptInput").val();
-      }
-      $("#department-input").val(selectedDept);
-    })		
-  })
+	$(function() {
+		$("#selectDeptBtn").click(function() {
+			var selectedDept = $("input[name='dept']:checked").val();
+			if (selectedDept === '기타') {
+				selectedDept = $("#otherDeptInput").val();
+			}
+			$("#department-input").val(selectedDept);
+		})
+	})
 </script>
 
 <script type="text/javascript">
 	function openLocationSelectionPage() {
-		
-		document.getElementById("latitude").value='';
-		document.getElementById("longitude").value='';
+
+		document.getElementById("latitude").value = '';
+		document.getElementById("longitude").value = '';
 		// 주소 설정 페이지 열기
 		var locationSelectionPage = window.open("location.jsp",
 				"LocationSelection", "width=500,height=600");
@@ -69,12 +69,12 @@
 			addressInput.value = addressArr[0];
 			console.log(addressArr);
 			console.log(addressArr[1]);
-			if(addressArr.length==2) {
-				var latilong = addressArr[1].split(":");  //위도와 경도 분리
+			if (addressArr.length == 2) {
+				var latilong = addressArr[1].split(":"); //위도와 경도 분리
 				var latitude = document.getElementById("latitude");
 				var longitude = document.getElementById("longitude");
-				latitude.value= latilong[0];
-				longitude.value= latilong[1];
+				latitude.value = latilong[0];
+				longitude.value = latilong[1];
 			}
 			console.log(addressInput.value);
 		});
@@ -91,8 +91,9 @@ a {
 	text-decoration: none;
 }
 
-ul{
-list-style-type:none;}
+ul {
+	list-style-type: none;
+}
 
 .container {
 	max-width: 425px;
@@ -181,7 +182,6 @@ list-style-type:none;}
 .type, .address {
 	border-bottom: 2px solid #ccc;
 }
-
 </style>
 
 </head>
@@ -189,8 +189,9 @@ list-style-type:none;}
 <body>
 
 	<form action="searchhospital" method="post" id="searchhospital">
-		<input type="hidden" name="latitude" id="latitude"/>
-		<input type="hidden" name="longitude" id="longitude"/>
+		<input type="hidden" name="latitude" id="latitude" /> <input
+			type="hidden" name="longitude" id="longitude" />
+			
 		<div class="container">
 			<div class="searchbox">
 				<div class="inner">
@@ -199,7 +200,7 @@ list-style-type:none;}
 							<span class="icon"><i class="material-icons">search</i></span>
 							&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" placeholder="진료과"
 								class="department-input" name="department-input" required
-								id="department-input" data-bs-toggle="modal" 
+								id="department-input" data-bs-toggle="modal"
 								data-bs-target="#myModal">
 						</div>
 
@@ -210,11 +211,11 @@ list-style-type:none;}
 							<span class="icon"><i class="material-icons">location_on</i></span>
 							&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" placeholder="주소설정"
 								class="address-input" id="address-input" name="address-input"
-								onclick="openLocationSelectionPage()" required >
+								onclick="openLocationSelectionPage()" required>
 						</div>
 					</div>
 					<!-- <div class="button"> -->
-						<button class="search-button" type="submit">병원 찾기</button>
+					<button class="search-button" type="submit">병원 찾기</button>
 					<!-- </div> -->
 				</div>
 			</div>
@@ -250,9 +251,8 @@ list-style-type:none;}
 						<li><input type="radio" name="dept" value="소아과"> 소아과
 						</li>
 						<li><input type="radio" name="dept" id="otherDeptCheckbox"
-							value="기타" onchange="toggleOtherDeptInput()"> 
-							기타 
-							<input type="text" name="otherDept" id="otherDeptInput"
+							value="기타" onchange="toggleOtherDeptInput()"> 기타 <input
+							type="text" name="otherDept" id="otherDeptInput"
 							placeholder="기타 진료과목 입력" disabled></li>
 					</ul>
 
@@ -262,10 +262,10 @@ list-style-type:none;}
 				<div class="modal-footer">
 					<button type="button" class="btn btn-danger"
 						data-bs-dismiss="modal" id="selectDeptBtn">선택 완료</button>
-      </div>
-    </div>
-  </div>
-</div>
+				</div>
+			</div>
+		</div>
+	</div>
 
 </body>
 

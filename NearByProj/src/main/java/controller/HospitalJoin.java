@@ -62,13 +62,19 @@ public class HospitalJoin extends HttpServlet {
 		String comnum = multi.getParameter("comnum");
 		String htel = multi.getParameter("htel");
 		String department = multi.getParameter("department");
-		String lunch = multi.getParameter("lunch");
-		String clinic = multi.getParameter("clinic");
+		String lunch1 = multi.getParameter("lunch1");
+		String lunch2 = multi.getParameter("lunch2");
+		String clinic1 = multi.getParameter("clinic1");
+		String clinic2 = multi.getParameter("clinic2");
+		String lunch = lunch1 +" ~ " + lunch2;
+		String clinic = clinic1 +" ~ " + clinic2;
 		String hroad = multi.getParameter("hroad");
 		String hdong = multi.getParameter("hdong");
 		String hdetail = multi.getParameter("hdetail");
 		String hpostcode = multi.getParameter("hpostcode");
 		String hurl= multi.getOriginalFileName("file");		
+		
+		
 		
 		System.out.println(hurl);
 		request.setAttribute("hurl", hurl);
