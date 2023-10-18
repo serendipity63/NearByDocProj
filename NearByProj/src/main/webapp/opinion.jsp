@@ -36,8 +36,7 @@ h1{
 }
 
 </style>
-<script language="javascript"></script>
-<script>
+<script type="text/javascript">
 function reset() {  
     setTimeout(function() {  
 window.close();  

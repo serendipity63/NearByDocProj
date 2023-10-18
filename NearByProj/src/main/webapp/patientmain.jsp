@@ -96,8 +96,6 @@ ul {
 	list-style-type: none;
 }
 
-
-
 .hos {
 	display: flex;
 	max-width: 395px;
@@ -213,13 +211,6 @@ ul {
 			<p class="copyright">NEARBYDOC © 2023</p>
 		</footer>
 	</div>
-
-
-
-
-
-
-
 
 
 	<!-- The Modal -->
