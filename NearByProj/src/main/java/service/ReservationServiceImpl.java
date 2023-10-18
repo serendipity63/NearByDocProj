@@ -8,6 +8,7 @@ import java.util.Map;
 import dao.ReservationDao;
 import dao.ReservationDaoImpl;
 import dto.Hospital;
+import dto.Patient;
 import dto.Reservation;
 import util.PageInfo;
 
@@ -202,5 +203,49 @@ public class ReservationServiceImpl implements ReservationService{
 		resDao.insertReservation(reservation);
 	}
 
+	@Override
+	public Map<String, Object> resAllSearch(String type, String keyword, Integer page, String sdate, String edate, String comnum)
+			throws Exception {
+		Map<String, Object> param = new HashMap<>();
+		String type2;
+		if(type.equals("환자명")) {
+			type2="pname";
+		} else {
+			type2="pidnum";
+		}
+		
+		
+		param.put("type", type2);
+		param.put("keyword", keyword);
+		param.put("sdate", sdate);
+		param.put("edate", edate);
+		param.put("comnum", comnum);
+		
+		PageInfo pageInfo = new PageInfo();
+		int resCount = resDao.searchAllResCount(param);
+		int maxPage = (int)Math.ceil((double)resCount/10);
+		int startPage = (page-1)/10*10+1;
+		int endPage = startPage+10-1;
+		if(endPage>maxPage) endPage=maxPage;
+		if(page>maxPage) page=maxPage;
+		
+		pageInfo.setAllPage(maxPage);
+		pageInfo.setCurPage(page);
+		pageInfo.setStartPage(startPage);
+		pageInfo.setEndPage(endPage);
+		
+		int row = (page-1)*10+1;	//현재 페이지의 시작 row
+		param.put("row", row-1);
+		List<Reservation> resList = resDao.searchAllResList(param);
+		
+		
+		Map<String, Object> map = new HashMap<>();
+		map.put("pageInfo", pageInfo);
+		map.put("resList", resList);
+		map.put("type", type);
+		map.put("keyword", keyword);
+		
+		return map;
+	}
 	
 }

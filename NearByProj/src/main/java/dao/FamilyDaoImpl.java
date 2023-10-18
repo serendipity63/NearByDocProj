@@ -34,4 +34,24 @@ public class FamilyDaoImpl implements FamilyDao{
 	public List<Family> selectFamilyList(String pidnum) throws Exception {
 		return sqlSession.selectList("mapper.family.selectFamilyList",pidnum);
 	}
+
+	@Override
+	public void deleteFamily(String fname) throws Exception {
+		sqlSession.delete("mapper.family.deleteFamily",fname);
+		sqlSession.commit();
+		
+	}
+
+	@Override
+	public void famInfoUpdate(Family family) throws Exception {
+		System.out.println("DaoImpl -----------");
+		System.out.println("fname : " + family.getFname());
+		System.out.println("ftel : " + family.getFtel());
+		System.out.println("faddress : " + family.getFaddress());
+		System.out.println("fidnum : " + family.getFidnum());
+		
+		sqlSession.update("mapper.family.famInfoUpdate",family);
+		sqlSession.commit();
+		
+	}
 }

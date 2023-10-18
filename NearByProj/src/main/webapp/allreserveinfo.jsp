@@ -86,6 +86,7 @@ input {
 select {
 	width: 200px;
 	height: 38px;
+	margin-left:4px;
 	cursor: pointer;
 }
 #date{
@@ -105,7 +106,7 @@ select {
 .reserveform {
 	width: 1574px;
 	height: 100px;
-	margin:57px auto;
+	margin:62px auto;
 	
 }
 span{
@@ -137,11 +138,12 @@ span{
 }
 
 #emptyArea .btn {
-	background: lightgray;
+	background: white;
 }
 
 #emptyArea .select {
-	background: lightblue;
+	background: white;
+	color:black;
 }
 </style>
 <body>
@@ -151,26 +153,32 @@ span{
 
 
 	<div class="reserveform">
+<<<<<<< Updated upstream
+		<form action="allressearch" method="post" id='form'>
+		<select name="type">
+			<option value="pname" ${res.type eq 'pname'? 'selected':'' }>환자명</option>
+			<option value="pidnum" ${res.type eq 'pidnum'? 'selected':'' }>주민등록번호</option>
+=======
 		
 		<select name="patient">
+			<option value="all">선택</option>
 			<option value="patient">환자명</option>
 			<option value="number">주민등록번호</option>
+>>>>>>> Stashed changes
 		</select> 
-		<input type="text">
-		
-
+		<input type="text" name="keyword" id="keyword" value="${res.keyword}"/>
 		
 		<div id="date">
 		<span><기간></span>
 		
 
-		<input type="text" id="datepicker1" placeholder="0000-00-00">
+		<input type="text" id="datepicker1" placeholder="0000-00-00" name="sdate">
 
-		<input type="text" id="datepicker2" placeholder="0000-00-00">
-
+		<input type="text" id="datepicker2" placeholder="0000-00-00" name="edate">
 
 		<input type="submit" id="search" value="검색"/>
 		</div>
+		</form>
 	</div>
 
 
@@ -185,18 +193,18 @@ span{
 			<th>주소</th>
 		</tr>
 
-		<c:forEach items="${res.reserveList }" var="reserve">
+		<c:forEach items="${res.resList }" var="reserve">
 			<tr>
 				<td>${reserve.resdate }</td>
 				<td>${reserve.restime }</td>
-				<td>${reserve.name }</td>
-				<td>${reserve.number }</td>
-				<td>${reserve.phone }</td>
-				<td>${reserve.address }</td>
-				<td><c:if test="${hospitaluser.id == hospital.comnum }">
+				<td>김김김</td>
+				<td>${reserve.pidnum }</td>
+				<td>전화번호</td>
+				<td>주소</td>
+				<%-- <td><c:if test="${hospitaluser.id == hospital.comnum }">
 						<a
 							href="patientdelete?num=${patient.pidnum }&page=${res.pageInfo.curPage}">삭제</a>
-					</c:if></td>
+					</c:if></td> --%>
 			</tr>
 		</c:forEach>
 	</table>

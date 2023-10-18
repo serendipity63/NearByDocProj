@@ -19,7 +19,7 @@
 	position: relative;
 }
 
-.container {
+/* .container {
 	max-width: 425px;
 	width: 100%;
 	margin: 30px auto 20px auto;
@@ -70,7 +70,6 @@
 	background-color: #0056b3;
 }
 
-/*서치박스 안에 있는거? */
 .material-icons {
 	font-size: 24px;
 }
@@ -82,11 +81,14 @@
 
 .type, .address {
 	border-bottom: 2px solid #ccc;
-}
+} */
 
 .condition {
 	width: 430px;
 	border-bottom: 1px solid;
+}
+#con {
+	margin-top: 5px;
 }
 
 .material-symbols-outlined {
@@ -104,6 +106,7 @@
 
 .hos {
 	border-bottom: 1px solid;
+	margin-top: 15px;
 	border-color: gainsboro;
 	display: flex;
 }
@@ -124,7 +127,7 @@
 	<%
 	pageContext.include("thinheader.jsp");
 	%>
-	<div class="container">
+	<!-- <div class="container">
 		<div class="searchbox">
 			<div class="inner">
 				<div class="container-2">
@@ -146,14 +149,16 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</div> -->
+	<%
+	pageContext.include("searchBox.jsp");
+	%>
 	<div class="main">
 
 		<div class="condition">
-			<h3>검색 조건 "${department}" / "${address} "</h3>
-			<br>
-			<h3>검색결과(총 ${hoslist.size()}건)</h3>
-			<br>
+			<h4>검색 조건 : "${department}" / "${address} "</h4>
+			<h4>검색결과(총 ${hoslist.size()}건)</h4>
+			
 		</div>
 		<div class="hoslist">
 			<c:choose>
@@ -163,9 +168,9 @@
 					<br>
 				</c:when>
 				<c:otherwise>
-					<br>
-					<p>근처 5km 내 설정 조건의 병원 검색 결과입니다.</p>
-					<br>
+				<div id="con">
+					<p>근처 5km 내 설정 조건의 병원 검색 결과입니다.</p></div>
+					
 					<c:forEach items="${hoslist}" var="hospital">
 						<div class="hos">
 							<div class="hosinfo"

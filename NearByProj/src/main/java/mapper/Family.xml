@@ -17,6 +17,7 @@ insert into family (fidnum, fname, ftel, pidnum, faddress)
 		SELECT f.fname as name
 		     , f.ftel as tel
 		     , f.faddress as address
+		     , f.fidnum as id
 		  FROM patient p 
 		     , family f
 		 WHERE 1=1
@@ -41,5 +42,25 @@ insert into family (fidnum, fname, ftel, pidnum, faddress)
 			WHERE pidnum=#{pidnum}
 		]]>
 	</select>
+	
+	
+	<delete id="deleteFamily" parameterType="String">
+	<![CDATA[
+	DELETE 
+	  FROM family
+	 WHERE 1=1	
+       AND fname = #{fname}
+	]]>
+	
+	</delete>
+	
+	
+	
+	<update id="famInfoUpdate" parameterType="Family">
+	<![CDATA[
+	update family set fname = #{fname} , ftel = #{ftel}, faddress = #{faddress}
+	where fidnum = #{fidnum}
+	]]>
+	</update>
 
 </mapper>

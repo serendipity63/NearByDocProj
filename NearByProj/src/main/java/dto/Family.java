@@ -15,6 +15,13 @@ public class Family {
 		this.pidnum=pidnum;
 		this.faddress=faddress;
 	}
+	
+	public Family(String fname, String ftel, String faddress, String fidnum) {
+		this.fname = fname;
+		this.ftel = ftel;
+		this.faddress = faddress;
+		this.fidnum = fidnum;
+	}
 	public String getFidnum() {
 		return fidnum;
 	}
