@@ -11,12 +11,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import dto.Family;
 import dto.Patient;
-import service.FamilyService;
-import service.FamilyServiceImpl;
-import service.ReservationService;
-import service.ReservationServiceImpl;
+import service.PatientService;
+import service.PatientServiceImpl;
 
 /**
  * Servlet implementation class Addfamally
@@ -44,9 +41,9 @@ public class Addfamally extends HttpServlet {
 		
 		
 		
-		FamilyService familyService = new FamilyServiceImpl();
+		PatientService patientService = new PatientServiceImpl();
 		try {
-			List<Map<String, Object>> familys = familyService.famList(pidnum);
+			List<Map<String, Object>> familys = patientService.famList(pidnum);
 			request.setAttribute("familys", familys);
 			request.getRequestDispatcher("addfamally.jsp").forward(request, response);
 		} catch (Exception e) {
@@ -61,20 +58,20 @@ public class Addfamally extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
-		String fname = request.getParameter("fname");
-		String ftel = request.getParameter("ftel");
-		String faddress = request.getParameter("faddress");
-		String fidnum = request.getParameter("fidnum");
+		String pname = request.getParameter("pname");
+		String ptel = request.getParameter("ptel");
+		String proadaddress = request.getParameter("proadaddress");
+		String pidnum = request.getParameter("pidnum");
 		
 		HttpSession session = request.getSession();
-		Patient patient = (Patient)session.getAttribute("user");
-		String pidnum = patient.getPidnum();
+		Patient p = (Patient)session.getAttribute("user");
+		String ppidnum = p.getPidnum();
 		
-		Family family = new Family(fidnum, fname, ftel, pidnum, faddress);
-		FamilyService familyService = new FamilyServiceImpl();
+		Patient patient = new Patient(pidnum, pname, ptel, proadaddress, ppidnum);
+		PatientService patientService = new PatientServiceImpl();
 		try {
 			//familyService.addFam(family, pidnum);
-			response.getWriter().print(familyService.addFam(family, pidnum));
+			response.getWriter().print(patientService.addFam(patient, pidnum));
 			//request.getRequestDispatcher("addfamally.jsp").forward(request, response);
 		} catch (Exception e) {
 			e.printStackTrace();
