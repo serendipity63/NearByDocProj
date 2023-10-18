@@ -27,7 +27,7 @@ h1 {
 table{
 	 border: 1px solid;
     width: 1346px;
-    margin:80px auto;
+    margin:70px auto;
 }
 
 th {
@@ -58,7 +58,7 @@ input {
 	
 	width: 1000px;
 	height: 50px;
-	margin:70px -169px auto;
+	margin:80px -169px auto;
 	
 }
 
