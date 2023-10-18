@@ -97,7 +97,7 @@ list-style-type:none;}
 .container {
 	max-width: 425px;
 	width: 100%;
-	margin: 70px auto 20px auto;
+	margin: 20px auto 20px auto;
 	padding: 10px;
 	border: 2px solid #16151562;
 	border-radius: 10px;
@@ -182,96 +182,45 @@ list-style-type:none;}
 	border-bottom: 2px solid #ccc;
 }
 
-.footer-basic {
-	padding: 40px 0;
-	background-color: #ffffff;
-	color: #4b4c4d;
-}
-
-.footer-basic ul {
-	padding: 0;
-	list-style: none;
-	text-align: center;
-	font-size: 18px;
-	line-height: 1.6;
-	margin-bottom: 0;
-}
-
-.footer-basic li {
-	padding: 0 10px;
-}
-
-.footer-basic ul a {
-	color: inherit;
-	text-decoration: none;
-	opacity: 0.8;
-}
-
-.footer-basic ul a:hover {
-	opacity: 1;
-}
-
-.footer-basic .social {
-	text-align: center;
-	padding-bottom: 25px;
-}
-
-.footer-basic .social>a {
-	font-size: 24px;
-	width: 40px;
-	height: 40px;
-	line-height: 40px;
-	display: inline-block;
-	text-align: center;
-	border-radius: 50%;
-	border: 1px solid #ccc;
-	margin: 0 8px;
-	color: inherit;
-	opacity: 0.75;
-}
-
-.footer-basic .social>a:hover {
-	opacity: 0.9;
-}
-
-.footer-basic .copyright {
-	margin-top: 15px;
-	text-align: center;
-	font-size: 13px;
-	color: #aaa;
-	margin-bottom: 0;
-}
 </style>
 
 </head>
 
 <body>
-	<!-- 헤더 -->
-	<%
-	pageContext.include("header.jsp");
-	%>
-	<br><br>
-	<%
-	pageContext.include("searchBox.jsp");
-	%>
-	
-	<a class="hospital" href="hlogin">
-		<div class="hospital">
-			혹시 병원 관계자이신가요? <br>병원페이지 바로가기
-		</div>
-	</a>
-	<h2 class="text-center"></h2>
-	<div class="footer-basic">
-		<footer>
-			<div class="social">
-				<a href="#"><i class="icon ion-social-instagram"></i></a><a href="#"><i
-					class="icon ion-social-snapchat"></i></a><a href="#"><i
-					class="icon ion-social-twitter"></i></a><a href="#"><i
-					class="icon ion-social-facebook"></i></a>
+
+	<form action="searchhospital" method="post" id="searchhospital">
+		<input type="hidden" name="latitude" id="latitude"/>
+		<input type="hidden" name="longitude" id="longitude"/>
+		<div class="container">
+			<div class="searchbox">
+				<div class="inner">
+					<div class="container-2">
+						<div class="type">
+							<span class="icon"><i class="material-icons">search</i></span>
+							&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" placeholder="진료과"
+								class="department-input" name="department-input" required
+								id="department-input" data-bs-toggle="modal" 
+								data-bs-target="#myModal">
+						</div>
+
+
+					</div>
+					<div class="container-3">
+						<div class="address">
+							<span class="icon"><i class="material-icons">location_on</i></span>
+							&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" placeholder="주소설정"
+								class="address-input" id="address-input" name="address-input"
+								onclick="openLocationSelectionPage()" required >
+						</div>
+					</div>
+					<!-- <div class="button"> -->
+						<button class="search-button" type="submit">병원 찾기</button>
+					<!-- </div> -->
+				</div>
 			</div>
-			<p class="copyright">NEARBYDOC © 2023</p>
-		</footer>
-	</div>
+		</div>
+
+	</form>
 	<!-- The Modal -->
 	<div class="modal" id="myModal">
 		<div class="modal-dialog">
