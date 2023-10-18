@@ -8,11 +8,11 @@
 <title>진료 기록 조회</title>
 <link rel="stylesheet"
 	href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<script type="text/javascript"></script>
+
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+
 
 <script>
 $(function() {
@@ -39,13 +39,6 @@ dateFormat: 'yy-mm-dd' //달력 날짜 형태
 //초기값을 오늘 날짜로 설정해줘야 합니다.
 $('#datepicker').datepicker('setDate', 'today'); //(-1D:하루전, -1M:한달전, -1Y:일년전), (+1D:하루후, -1M:한달후, -1Y:일년후)
 });
-
-
-function Opinion(){
-   window.open("<%=request.getContextPath()%>/opinion.jsp", '의사소견', 'width=750px,height=470px,scrollbars=yes');
-}
-
-
 	
 function callBtn(pidnum) {
 	var keyword=$('#keyword').val()
@@ -95,6 +88,7 @@ table {
 	border: 1px solid;
     width: 1454px;
     margin: 67px 71px auto;
+    position:absolute;
 }
 
 input {
@@ -152,7 +146,7 @@ button {
 #emptyArea {
 	width: 708px;
 	text-align: center;
-	margin:50px auto;
+	margin:280px auto;
 }
 
 #emptyArea a {

@@ -5,8 +5,8 @@
 	<insert id="insertReservation" parameterType="Reservation"
 		useGeneratedKeys="true" keyProperty="id">
     <![CDATA[
-       insert into Reservation (pidnum,comnum,resdate,restime,comment,status,doccomment, fidnum) values 
-       (#{pidnum},#{comnum},#{resdate},#{restime},#{comment},#{status},#{doccomment},#{fidnum}) 
+       insert into Reservation (pidnum,comnum,resdate,restime,comment,status,doccomment) values 
+       (#{pidnum},#{comnum},#{resdate},#{restime},#{comment},#{status},#{doccomment}) 
     ]]>
 	</insert>
 
@@ -32,7 +32,7 @@
         , r.restime as time
         , r.`status` as status
         , r.id as id
-        , r.fidnum as fidnum
+        , r.pidnum as pidnum
     from reservation r
        , hospital h
    where 1=1
@@ -123,16 +123,7 @@ order by r.resdate desc
      </update>
 	
 	
-	<select id='selectTodayReservationList' parameterType="Integer" resultType="Reservation">
-	<![CDATA[
-		select id,resdate,restime,p.pname,p.pidnum,comment,h.department,status
-		from reservation r,patient p,hospital h
-		where r.pidnum=p,pidnum
-		and h.comnum=r.comnum
-		order by id desc
-		limit #{row},10
-	]]>
-	</select>
+	
 	<select id='selectHRecordList' parameterType="String" resultType="Reservation">
 	<![CDATA[
 		select resdate,restime,p.pname,comment,h.department,status,doccomment
@@ -191,16 +182,8 @@ order by r.resdate desc
       ]]>
     
    </select>
-   <select id="selectDateResBycomnum" parameterType="String" resultType="Reservation">
-   	<![CDATA[
-         SELECT * 
-         FROM reservation
-         where comnum=#{comnum}
-         
-      ]]>
    
-   </select>
-
+ 	<!-- 전체 예약조회 -->
 	<select id="searchAllResCount" parameterType="hashmap" resultType="Integer">
       <![CDATA[
          select count(pidnum) from reservation 
@@ -215,8 +198,57 @@ order by r.resdate desc
         where comnum=#{comnum} and resdate between #{sdate} and #{edate} and ${type} like '%${keyword}%'
         limit #{row},10
 	]]>
-	
 	</select>
-
+	
+	<!-- 오늘의 예약조회 -->
+	<select id='selectTodayReservationList' parameterType="Integer" resultType="hashmap">
+	<![CDATA[
+		select id,resdate,restime,p.pname as pname,p.pidnum as pidnum ,comment,h.department as department,status
+		from reservation r,patient p,hospital h
+		where r.pidnum=p.pidnum
+		and h.comnum=r.comnum
+		order by id desc
+		limit #{row},10
+	]]>
+	</select>
+	
+	<!-- 예약 환자 조건 검색 데이터 수-->
+	<select id="searchReservationCount"  resultType="Integer" parameterType="hashmap" >
+		<![CDATA[
+			select count(*) 
+		 	from reservation r, patient p
+	 		where r.pidnum=p.pidnum	and p.${type} = #{keyword}
+		]]>
+	</select>
+	
+	<!-- 예약 환자 조건 검색 -->
+	<select id='searchReservationList' parameterType="hashmap" resultType="hashmap">
+	 <![CDATA[
+	 	select p.pname as pname,p.pidnum as pidnum,p.pemail as pemail,p.ptel as ptel, 
+	 		p.ppostcode as ppostcode,p.proadaddress as proadaddress 
+	 	from reservation r, patient p
+	 	where r.pidnum=p.pidnum	and p.${type} = #{keyword}
+	 	order by id desc
+	 	limit #{row},10
+	 ]]>
+	 </select> 
+	 
+	 
+	<!-- 예약 환자 전체 데이터 수-->
+	<select id='selectAllReservationCount' resultType="Integer">
+	<![CDATA[
+		select count(*) from reservation
+	]]>
+	</select>
+	
+	<!-- 예약 환자 전체 조회 -->
+	<select id='selectAllReservationList' parameterType="Integer" resultType="hashmap">
+	 	select p.pname as pname,p.pidnum as pidnum,p.pemail as pemail,p.ptel as ptel, 
+	 		p.ppostcode as ppostcode,p.proadaddress as proadaddress 
+	 	from reservation r, patient p
+	 	where r.pidnum=p.pidnum
+	 	order by id desc
+	 	limit #{row},10
+	</select>
 
 </mapper>

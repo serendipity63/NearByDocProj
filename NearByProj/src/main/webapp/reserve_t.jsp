@@ -69,9 +69,9 @@ table {
 				<th style="width:150px;">일자</th>
 				<th style="width:150px;">시간</th>
 				<th style="width:150px;">환자명</th>
-				<th style="width:150px;">주민번호</th>
+				<th style="width:150px;">진료과목</th>
 				<th style="width:150px;">요청사항</th>
-				<th style="width:150px;">진료완료처리</th>
+				<th style="width:150px;">진료예약상태</th>
 				<th style="width:150px;">삭제</th>
 			</tr>
 		
@@ -80,14 +80,14 @@ table {
 				<td>${reservation.id }</td>
 				<td>${reservation.resdate }</td>
 				<td>${reservation.restime }</td>
-				<td> </td>
-				<td>${reservation.pidnum }</td>
+				<td>${reservation.pname }</td>
+				<td>${reservation.department }</td>
 				<td>${reservation.comment }</td>
 				<td>${reservation.status }</td>
 				<td>
-					<%-- <c:if test="${hospitaluser.id == hospital.comnum }">
+					<c:if test="${hospitaluser.id == hospital.comnum }">
 						<a href="patientdelete?num=${patient.pname }&page=${res.pageInfo.curPage}">삭제</a>
-					</c:if> --%>
+					</c:if>
 				</td>
 			</tr>
 			</c:forEach>

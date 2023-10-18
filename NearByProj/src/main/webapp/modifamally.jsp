@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ page import="dto.Family" %>
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.ArrayList" %>
 
@@ -172,7 +171,7 @@ $(function(){
                 $.ajax({
                     url: 'deletafam',
                     type: 'post',
-                    data: {'fname': famName},
+                    data: {'pname': famName},
                     success: function(response) {
                         console.log("success");
                         Swal.fire('삭제 완료', '가족이 삭제되었습니다.', 'success').then(function() {
@@ -207,10 +206,10 @@ $(function(){
                     url: 'modifamally',
                     type: 'post',
                     data: {
-                        'fname': famName,
-                        'ftel' : ftel,
-                        'faddress' : faddress,
-                        'fidnum' : fidnum
+                        'pname': famName,
+                        'ptel' : ftel,
+                        'proadaddress' : faddress,
+                        'pidnum' : fidnum
                     },
                     success: function(response) {
                         console.log("success");
