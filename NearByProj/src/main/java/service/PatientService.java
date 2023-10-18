@@ -1,5 +1,6 @@
 package service;
 
+import java.util.List;
 import java.util.Map;
 
 import dto.Patient;
@@ -26,4 +27,5 @@ public interface PatientService {
 	
 	void patientRemove (String pname)throws Exception;
 	Patient selectPatientByname(String pname) throws Exception;
+	List<Patient> patientListBypidnum(String pidnum) throws Exception;
 }

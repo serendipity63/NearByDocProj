@@ -151,5 +151,10 @@ public class PatientServiceImpl implements PatientService {
 	public Patient selectPatientByname(String pname) throws Exception {
 		return patientDao.selectPatientByname(pname);
 	}
+	
+	@Override
+	public List<Patient> patientListBypidnum(String pidnum) throws Exception {
+		return patientDao.patientListBypidnum(pidnum);
+	}
 
 }

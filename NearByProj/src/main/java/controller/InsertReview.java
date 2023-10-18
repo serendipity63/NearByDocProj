@@ -39,7 +39,8 @@ public class InsertReview extends HttpServlet {
 		String content = request.getParameter("content");
 		String star = request.getParameter("star");
 		Timestamp birth = null;
-		Review review = new Review(pidnum,comnum,content,star,birth);
+		Integer id = null;
+		Review review = new Review(pidnum,comnum,content,star,birth,id);
 		try {
 			ReviewService reviewservice = new ReviewServiceImpl();
 			reviewservice.insertReview(review);

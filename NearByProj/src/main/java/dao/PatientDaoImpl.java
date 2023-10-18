@@ -71,4 +71,11 @@ public class PatientDaoImpl implements PatientDao {
 	public Patient selectPatientByname(String pname) throws Exception {
 		return sqlSession.selectOne("mapper.patient.selectPatientByname",pname);
 	}
+	
+	@Override
+	public List<Patient> patientListBypidnum(String pidnum) throws Exception {
+		return sqlSession.selectList("mapper.patient.patientListBypidnum", pidnum);
+	}
+	
+	
 }

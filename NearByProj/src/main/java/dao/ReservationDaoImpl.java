@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
+import dto.Patient;
 import dto.Reservation;
 import util.MybatisSqlSessionFactory;
 
