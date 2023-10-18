@@ -6,16 +6,9 @@ CREATE TABLE patient (
   ptel  varchar(200),
   proadaddress varchar(200),
   ppostcode VARCHAR(200),
-  pdetailaddress VARCHAR(200)
-);
-
-
-CREATE TABLE family (
-  fidnum varchar(200) PRIMARY KEY,
-  fname varchar(200),
-  ftel varchar(200),
-  pidnum varchar(200) REFERENCES patient(pidnum),
-  faddress varchar(200)
+  pdetailaddress VARCHAR(200),
+  quit BOOLEAN DEFAULT FALSE,
+  fidnum VARCHAR(200)
 );
 
 
@@ -38,6 +31,7 @@ CREATE TABLE hospital (
   lon DECIMAL(9,6)
 );
 
+
 CREATE TABLE reservation (
   id INT(8) PRIMARY KEY AUTO_INCREMENT,
   pidnum varchar(200) REFERENCES patient(pidnum),
@@ -46,27 +40,8 @@ CREATE TABLE reservation (
   restime varchar(200),
   `comment` varchar(200),
   `status` VARCHAR(200),
-  doccomment varchar(200),
-  fidnum VARCHAR(200) REFERENCES family(fidnum) ON DELETE CASCADE
+  doccomment varchar(200)
 );
-
-
--- 예약 테이블 
--- 환자 삭제시 환자 관련 같이  삭제 10/18
-ALTER TABLE reservation
-ADD CONSTRAINT fk_pidnum
-FOREIGN KEY (pidnum)
-REFERENCES patient(pidnum)
-ON DELETE CASCADE;
-
--- 병원 삭제시 병원 관련  같이 삭제 10/18
-ALTER TABLE reservation
-ADD CONSTRAINT fk_comnum
-FOREIGN KEY (comnum)
-REFERENCES hospital(comnum)
-ON DELETE CASCADE;
-
-
 
 
 CREATE TABLE review (
@@ -74,12 +49,9 @@ CREATE TABLE review (
   comnum varchar(200) REFERENCES hospital(comnum),
   content varchar(200),
   star varchar(200),
-  birth TIMESTAMP NOT NULL DEFAULT NOW()
+  birth TIMESTAMP NOT NULL DEFAULT NOW(),
+  id INT AUTO_INCREMENT PRIMARY KEY
 );
-
--- 리뷰 테이블 id 추가 10/18
-ALTER TABLE review
-ADD COLUMN id INT AUTO_INCREMENT PRIMARY KEY;
 
 
 DROP TABLE review;

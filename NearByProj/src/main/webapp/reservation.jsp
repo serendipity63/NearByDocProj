@@ -172,13 +172,13 @@ $(function() {
 							<td width="100"><input type="radio" name="name"
 								value="${user.pname}">&nbsp;${user.pname}</td>
 							<c:choose>
-								<c:when test="${empty familylist}">
+								<c:when test="${empty patientlist}">
 
 								</c:when>
 								<c:otherwise>
-									<c:forEach items="${familylist}" var="family">
+									<c:forEach items="${patientlist}" var="patient">
 										<td width="100"><input type="radio" name="name"
-											value="${family.fname}">&nbsp;${family.fname}</td>
+											value="${patient.pname}">&nbsp;${patient.pname}</td>
 									</c:forEach>
 								</c:otherwise>
 							</c:choose>

@@ -32,12 +32,54 @@
 	</update>
 	
 	
+	<!-- 가족 조회 -->
+	<select id="selecetMyFamily" parameterType="String"	resultType="hashmap">
+	<![CDATA[
+		SELECT p.pname as name
+		     , p.ptel as tel
+		     , p.paddress as address
+		     , p.pidnum as id
+		  FROM patient p 
+		 WHERE 1=1
+		   AND p.ppidnum = #{pidnum}
+		   ]]>
+	</select>
+
+	<!-- 가족 구성원 추가 -->
+	<insert id="addFamily" parameterType="Patient">
+	<![CDATA[
+	insert into patient (pidnum, pname, ptel, proadaddress, ppidnum)
+                values (#{pidnum},#{pname},#{ptel},#{proadaddress},#{ppidnum} )
+	]]>
+	</insert>
 	
+	
+	<!-- 가족 구성원 삭제 -->
+	<delete id="deleteFamily" parameterType="String">
+	<![CDATA[
+	DELETE 
+	  FROM patient
+	 WHERE 1=1	
+       AND pname = #{pname}
+	]]>
+	
+	</delete>
+	
+	
+	<!-- 가족 구성원 정보 수정  -->
+	<update id="famInfoUpdate" parameterType="Patient">
+	<![CDATA[
+	update family set pname = #{pname} , ptel = #{ptel}, proadaddress = #{proadaddress}
+	where pidnum = #{pidnum}
+	]]>
+	</update>
+	
+
 
 	<insert id="insertPatient" parameterType="Patient">
 	
 	<![CDATA[
-	insert into patient (pidnum,pemail,ppassword,pname,ptel,proadaddress,pdetailaddress,ppostcode) values (#{pidnum},#{pemail},#{ppassword},#{pname},#{ptel},#{proadaddress},#{pdetailaddress},#{ppostcode}) 
+	insert into patient (pidnum,pemail,ppassword,pname,ptel,proadaddress,pdetailaddress,ppostcode,quit, ppidnum) values (#{pidnum},#{pemail},#{ppassword},#{pname},#{ptel},#{proadaddress},#{pdetailaddress},#{ppostcode},#{quit},#{ppidnum}) 
 	]]>
 	</insert>
 	
@@ -90,6 +132,13 @@
 		select * from patient where pname=#{pname}
 	]]>
 	</select>
+	
+	<select id="patientListBypidnum" parameterType="String" resultType="Patient">
+	<![CDATA[
+		select * from patient where fidnum=#{pidnum}
+	]]>
+	</select>
+	
 	
 	
 </mapper>
