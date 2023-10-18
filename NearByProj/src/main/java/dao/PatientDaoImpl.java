@@ -72,6 +72,7 @@ public class PatientDaoImpl implements PatientDao {
 		return sqlSession.selectOne("mapper.patient.selectPatientByname",pname);
 	}
 
+
 	@Override
 	public List<Map<String, Object>> selecetMyFamily(String pidnum) throws Exception {
 		
@@ -104,4 +105,11 @@ public class PatientDaoImpl implements PatientDao {
 		sqlSession.commit();
 		
 	}
+
+	
+	@Override
+	public List<Patient> patientListBypidnum(String pidnum) throws Exception {
+		return sqlSession.selectList("mapper.patient.patientListBypidnum", pidnum);
+	}
+
 }

@@ -1,10 +1,9 @@
 package dao;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import dto.Hospital;
+import dto.Patient;
 import dto.Reservation;
 
 public interface ReservationDao {

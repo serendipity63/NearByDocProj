@@ -49,6 +49,12 @@ public class Review {
 	public void setBirth(Timestamp birth) {
 		this.birth = birth;
 	}
+	public Integer getId() {
+		return id;
+	}
+	public void setId(Integer id) {
+		this.id = id;
+	}
 	
 	
 }

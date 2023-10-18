@@ -8,6 +8,7 @@ import java.util.Map;
 import dao.ReservationDao;
 import dao.ReservationDaoImpl;
 import dto.Hospital;
+import dto.Patient;
 import dto.Reservation;
 import util.PageInfo;
 
@@ -311,6 +312,7 @@ public class ReservationServiceImpl implements ReservationService{
 		map.put("patientresList", resList);
 		return map;
 	}
-
+	
+	
 	
 }

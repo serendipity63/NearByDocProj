@@ -11,16 +11,9 @@ public class Reservation {
 	private String status;
 	private String doccomment;
 	private Integer id;
-	private String fidnum;
 	
-	public String getFidnum() {
-		return fidnum;
-	}
-	public void setFidnum(String fidnum) {
-		this.fidnum = fidnum;
-	}
 	public Reservation() {}
-	public Reservation(String pidnum,String comnum,String resdate,String restime,String comment,String status,String doccomment,Integer id, String fidnum) {
+	public Reservation(String pidnum,String comnum,String resdate,String restime,String comment,String status,String doccomment,Integer id) {
 		this.pidnum=pidnum;
 		this.comnum=comnum;
 		this.resdate=resdate;
@@ -29,7 +22,7 @@ public class Reservation {
 		this.status=status;
 		this.doccomment=doccomment;
 		this.id=id;
-		this.fidnum = fidnum;
+
 	}
 	
 	

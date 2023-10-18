@@ -52,8 +52,10 @@ public class PatientJoin extends HttpServlet {
 		String proadaddress = request.getParameter("proadaddress");
 		String ppostcode = request.getParameter("ppostcode");
 		String pdetailaddress = request.getParameter("pdetailaddress");
+		Boolean quit = false;
+		String ppidnum = null;
 
-		Patient patient = new Patient(pemail, ppassword, pname, ptel, pidnum, proadaddress, ppostcode, pdetailaddress);
+		Patient patient = new Patient(pemail, ppassword, pname, ptel, pidnum, proadaddress, ppostcode, pdetailaddress, quit, ppidnum);
 
 		try {
 			PatientService patientService = new PatientServiceImpl();

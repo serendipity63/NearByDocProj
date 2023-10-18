@@ -13,20 +13,14 @@ public class Patient {
 	private String proadaddress;
 	private String ppostcode;
 	private String pdetailaddress;
+
+	private Boolean quit;
 	private String ppidnum;
-
-	public String getPpidnum() {
-		return ppidnum;
-	}
-
-	public void setPpidnum(String ppidnum) {
-		this.ppidnum = ppidnum;
-	}
 
 	public Patient() {}
 
 	public Patient(String pemail, String ppassword, String pname, String ptel, String pidnum, String proadaddress,
-			String ppostcode, String pdetailaddress) {
+			String ppostcode, String pdetailaddress, Boolean quit, String ppidnum) {
 		
 		this.pemail = pemail;
 		this.pidnum = pidnum;
@@ -36,6 +30,8 @@ public class Patient {
 		this.proadaddress = proadaddress;
 		this.ppostcode = ppostcode;
 		this.pdetailaddress = pdetailaddress;
+		this.quit = quit;
+		this.ppidnum = ppidnum;
 	}
 	
 	// 개인정보 수정위한 생성자
@@ -112,6 +108,22 @@ public class Patient {
 
 	public void setProadaddress(String proadaddress) {
 		this.proadaddress = proadaddress;
+	}
+
+	public Boolean getQuit() {
+		return quit;
+	}
+
+	public void setQuit(Boolean quit) {
+		this.quit = quit;
+	}
+
+	public String getPpidnum() {
+		return ppidnum;
+	}
+
+	public void setPpidnum(String ppidnum) {
+		this.ppidnum = ppidnum;
 	}
 
 	public String getPpostcode() {
