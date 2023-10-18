@@ -34,7 +34,7 @@ td{
 table {
 	
     border: 1px solid;
-    width: 1346px;
+    width: 1454px;
     margin:100px auto;
 }
 #emptyArea { width: 708px;
@@ -85,14 +85,14 @@ table {
 				<td>${reservation.comment }</td>
 				<td>${reservation.status }</td>
 				<td>
-					<c:if test="${hospitaluser.id == hospital.comnum }">
+					<%-- <c:if test="${hospitaluser.id == hospital.comnum }">
 						<a href="patientdelete?num=${patient.pname }&page=${res.pageInfo.curPage}">삭제</a>
-					</c:if>
+					</c:if> --%>
 				</td>
 			</tr>
 			</c:forEach>
 		</table>
-	
+	</div>
 	<div id="emptyArea">
 			<c:choose>  
 				<c:when test="${res.pageInfo.curPage>1}">
@@ -119,7 +119,7 @@ table {
 
 			<c:choose>  
 				<c:when test="${res.pageInfo.curPage<res.pageInfo.allPage}">
-					<a href="reslist?page=${res.pageInfo.curPage+1}">&gt;</a>
+					<a href="trlist?page=${res.pageInfo.curPage+1}">&gt;</a>
 				</c:when>
 				<c:otherwise>
 					&gt;
@@ -128,6 +128,6 @@ table {
 			&nbsp;&nbsp;
            
     	</div>
-	</div>
+	
 </body>
 </html>

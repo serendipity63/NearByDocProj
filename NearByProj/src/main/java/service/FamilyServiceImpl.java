@@ -42,4 +42,23 @@ public class FamilyServiceImpl implements FamilyService {
 	public List<Family> familylist(String pidnum) throws Exception {
 		return familyDao.selectFamilyList(pidnum);
 	}
+
+
+	@Override
+	public void editFam(String fname) throws Exception {
+		familyDao.deleteFamily(fname);
+		
+	}
+
+
+	@Override
+	public void famUpdate(Family family) throws Exception {
+		System.out.println("ServiceImpl -----------");
+		System.out.println("fname : " + family.getFname());
+		System.out.println("ftel : " + family.getFtel());
+		System.out.println("faddress : " + family.getFaddress());
+		System.out.println("fidnum : " + family.getFidnum());
+		familyDao.famInfoUpdate(family);
+		
+	}
 }

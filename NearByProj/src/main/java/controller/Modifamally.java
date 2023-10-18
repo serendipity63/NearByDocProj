@@ -11,11 +11,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import dto.Family;
 import dto.Patient;
 import service.FamilyService;
 import service.FamilyServiceImpl;
-import service.ReservationService;
-import service.ReservationServiceImpl;
 
 /**
  * Servlet implementation class Modifamally
@@ -57,8 +56,31 @@ public class Modifamally extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		request.setCharacterEncoding("utf-8");
+		String fname = request.getParameter("fname");		 
+		String ftel = request.getParameter("ftel");		 
+		String faddress = request.getParameter("faddress");	
+		String fidnum = request.getParameter("fidnum");
+		
+		
+		System.out.println("Controller -----------");
+		System.out.println("fname : " + fname);
+		System.out.println("ftel : " + ftel);
+		System.out.println("faddress : " + faddress);
+		System.out.println("fidnum : " + fidnum);
+		
+		
+		Family family = new Family(fname, ftel, faddress, fidnum);
+		
+		FamilyService familyService = new FamilyServiceImpl();
+		
+		try {
+			familyService.famUpdate(family);
+			request.getRequestDispatcher("modifamally.jsp").forward(request, response);
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 }

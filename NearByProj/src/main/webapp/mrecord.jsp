@@ -12,6 +12,7 @@
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
 
 <script>
 $(function() {
@@ -45,6 +46,25 @@ function Opinion(){
 }
 
 
+	
+function callBtn(pidnum) {
+	var keyword=$('#keyword').val()
+	if(keyword!=null && keyword.trim()!='') {
+			$('#page').val(pname);
+			$('#searchform').submit();
+	}
+}
+	
+	  
+function openOpinion(){  
+	window.open("opinion.jsp", "담당의소견", "width=600, height=500, toolbar=no, menubar=no, scrollbars=no, resizable=yes" );  
+}
+	window.addEventListner("message",function(event){
+	var receivedData=event.data;
+});
+	
+
+
 </script>
 </head>
 <style>
@@ -57,11 +77,11 @@ body {
 h1 {
 	width: 202px;
 	height: 50px;
-	margin: 0 auto;
+	margin: 0px auto;
 	color: rgb(25, 25, 112);
 }
 th{
-	padding: 5px;
+	padding: 4px;
 	width: 192px;
 	color: black;
 	text-align: center;
@@ -73,22 +93,25 @@ th{
 
 table {
 	border: 1px solid;
-    width: 1542px;
-    margin: 80px auto;
+    width: 1454px;
+    margin: 67px 71px auto;
 }
 
 input {
-	width: 200px;
+	width: 224px;
 	height: 38px;
 }
 
 select {
-	width: 200px;
-	height: 35px;
+	width: 224px;
+    height: 38px;
+    margin-top: 50px;
+    margin-left: 70px;
+    cursor: pointer;
 }
 
 #center {
-	margin:0 auto;
+	margin:10px auto;
     width: 1479px;
    
    
@@ -109,14 +132,17 @@ button {
 }
 
 .reserveform {
-	width: 1543px;
-	height: 50px;
-	margin: 0 auto;
+	width: 1522px;
+	height: 100px;
+	margin: -10px auto;
+}
+#date{
+	float:right;
 }
 
 #datepicker1 {
 	margin-top: 50px;
-	margin-left: 501px;
+	
 }
 
 #datepicker2 {
@@ -126,8 +152,7 @@ button {
 #emptyArea {
 	width: 708px;
 	text-align: center;
-	margin-top: 20px;
-	margin:0 auto;
+	margin:50px auto;
 }
 
 #emptyArea a {
@@ -138,34 +163,15 @@ button {
 }
 
 #emptyArea .btn {
-	background: lightgray;
+	background: white;
 }
 
 #emptyArea .select {
-	background: lightblue;
+	background: black;
+	color:white;
 }
 </style>
-<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
-<script language="javascript"></script>
-<script>
-	
-	function callBtn(pidnum) {
-		var keyword=$('#keyword').val()
-		if(keyword!=null && keyword.trim()!='') {
-			$('#page').val(pname);
-			$('#searchform').submit();
-		}
-	}
-	
-	  
-	function openOpinion(){  
-	    window.open("opinion.jsp", "담당의소견", "width=600, height=500, toolbar=no, menubar=no, scrollbars=no, resizable=yes" );  
-	}
-	window.addEventListner("message",function(event){
-		var receivedData=event.data;
-	});
-	
- </script>
+
 
 <body style="overflow-y:hidden">
 	<% pageContext.include("hmain.jsp");%>
@@ -186,12 +192,12 @@ button {
 			<option value="number">주민등록번호</option>
 		</select> 
 		<input type="text" name="keyword" id="keyword" value="${res.keyword }" /> 
-		<input type="submit" id="search" value="검색" />
+		
 	
 
 
-
-
+		<div id="date">
+		<span><기간></span>
 		<input type="text" id="datepicker1" placeholder="0000-00-00">
 
 		<input type="text" id="datepicker2" placeholder="0000-00-00">
@@ -199,7 +205,7 @@ button {
 
 		
 		<input type="submit" id="search" value="검색" />
-
+		</div>
 
 
 	</div>

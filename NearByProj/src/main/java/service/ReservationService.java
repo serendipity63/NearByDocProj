@@ -18,4 +18,5 @@ public interface ReservationService {
 	List<String> timelist(Hospital hospital, String date) throws Exception;
 	void insertReservation(Reservation reservation) throws Exception;
 	public Map<String,Object> selectAllResBycomnum(String comnum,Integer page) throws Exception;
+	Map<String,Object> resAllSearch(String type, String keyword, Integer page, String sdate, String edate, String comnum) throws Exception;
 }
