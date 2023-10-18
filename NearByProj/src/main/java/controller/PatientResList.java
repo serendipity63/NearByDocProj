@@ -19,14 +19,14 @@ import service.ReservationServiceImpl;
 /**
  * Servlet implementation class PatientList
  */
-@WebServlet("/patientlist")
-public class PatientList extends HttpServlet {
+@WebServlet("/patientreslist")
+public class PatientResList extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public PatientList() {
+    public PatientResList() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -35,6 +35,23 @@ public class PatientList extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("utf-8");
+		String page= request.getParameter("page");
+		int curpage=1;
+		if(page!=null) {
+			curpage= Integer.parseInt(page);
+		}
+		
+		try {
+			ReservationService patientresService=new ReservationServiceImpl();
+			Map<String,Object>res=patientresService.patientResListByPage(curpage);	
+			request.setAttribute("res", res);
+			request.getRequestDispatcher("reserveinfo_p.jsp").forward(request, response);
+		}catch(Exception e) {
+			e.printStackTrace();
+			request.setAttribute("err", e.getMessage());
+			request.getRequestDispatcher("herror.jsp").forward(request, response);
+		}
 		
 
 	}

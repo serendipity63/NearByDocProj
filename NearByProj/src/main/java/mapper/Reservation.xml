@@ -109,7 +109,7 @@ order by r.resdate desc
 	<![CDATA[
 		select id,resdate,restime,p.pname,p.pidnum,comment,h.department,status
 		from reservation r,patient p,hospital h
-		where r.pidnum=p,pidnum
+		where r.pidnum=p.pidnum
 		and h.comnum=r.comnum
 		order by id desc
 		limit #{row},10
@@ -173,16 +173,8 @@ order by r.resdate desc
       ]]>
     
    </select>
-   <select id="selectDateResBycomnum" parameterType="String" resultType="Reservation">
-   	<![CDATA[
-         SELECT * 
-         FROM reservation
-         where comnum=#{comnum}
-         
-      ]]>
    
-   </select>
-
+ 	<!-- 전체 예약조회 -->
 	<select id="searchAllResCount" parameterType="hashmap" resultType="Integer">
       <![CDATA[
          select count(pidnum) from reservation 
@@ -197,7 +189,45 @@ order by r.resdate desc
         where comnum=#{comnum} and resdate between #{sdate} and #{edate} and ${type} like '%${keyword}%'
         limit #{row},10
 	]]>
+	</select>
 	
+	<!-- 예약 환자 조건 검색 데이터 수-->
+	<select id="searchReservationCount"  resultType="Integer" parameterType="hashmap" >
+		<![CDATA[
+			select count(*) 
+		 	from reservation r, patient p
+	 		where r.pidnum=p.pidnum	and p.${type} = #{keyword}
+		]]>
+	</select>
+	
+	<!-- 예약 환자 조건 검색 -->
+	<select id='searchReservationList' parameterType="hashmap" resultType="hashmap">
+	 <![CDATA[
+	 	select p.pname as pname,p.pidnum as pidnum,p.pemail as pemail,p.ptel as ptel, 
+	 		p.ppostcode as ppostcode,p.proadaddress as proadaddress 
+	 	from reservation r, patient p
+	 	where r.pidnum=p.pidnum	and p.${type} = #{keyword}
+	 	order by id desc
+	 	limit #{row},10
+	 ]]>
+	 </select> 
+	 
+	 
+	<!-- 예약 환자 전체 데이터 수-->
+	<select id='selectAllReservationCount' resultType="Integer">
+	<![CDATA[
+		select count(*) from reservation
+	]]>
+	</select>
+	
+	<!-- 예약 환자 전체 조회 -->
+	<select id='selectAllReservationList' parameterType="Integer" resultType="hashmap">
+	 	select p.pname as pname,p.pidnum as pidnum,p.pemail as pemail,p.ptel as ptel, 
+	 		p.ppostcode as ppostcode,p.proadaddress as proadaddress 
+	 	from reservation r, patient p
+	 	where r.pidnum=p.pidnum
+	 	order by id desc
+	 	limit #{row},10
 	</select>
 
 
