@@ -58,7 +58,7 @@ input {
 	
 	width: 1000px;
 	height: 50px;
-	margin:78px -169px auto;
+	margin:70px -169px auto;
 	
 }
 
