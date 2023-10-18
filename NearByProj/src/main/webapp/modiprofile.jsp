@@ -157,7 +157,7 @@ margin-left :60px;
 	    <span>
 	     
         <input class="modibtn" type="submit" value="수정">
-        <input class="canbtn" type="button" onclick="history.go(-1)" value="취소">
+        <input class="canbtn" type="button" onclick="location.href='profile'" value="취소">
       </span>
     </div>
     </div>

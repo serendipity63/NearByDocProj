@@ -97,7 +97,7 @@ $(function(){
 		
 		Swal.fire({
 			  title: '삭제',
-			  test : '삭제하시겠습니까?',
+			  text : '삭제하시겠습니까?',
 			  icon: 'question',
 			  showCancelButton: true,
 			  confirmButtonText: '확인',
