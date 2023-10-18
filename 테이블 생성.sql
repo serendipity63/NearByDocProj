@@ -77,7 +77,7 @@ CREATE TABLE review (
   birth TIMESTAMP NOT NULL DEFAULT NOW()
 );
 
--- 리뷰 테이블 id 추가 
+-- 리뷰 테이블 id 추가 10/18
 ALTER TABLE review
 ADD COLUMN id INT AUTO_INCREMENT PRIMARY KEY;
 
