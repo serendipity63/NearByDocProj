@@ -57,7 +57,7 @@ body {
 
 }
 h2{
-   margin-left:20px;
+   margin-left:50px;
 }
 
 h3>img{
@@ -74,14 +74,18 @@ h3{
 h3>a{
 
    color: black;
-   margin-left:10px;
+   margin-left:15px;
    text-decoration:none;
 
 }
 h3>a:hover{color:blue;}
 h3>p{
    color: black;
-   margin-left:10px;
+   margin-left:48px;
+   margin-top:20px;
+}
+h3>p>a{
+	text-decoration:none;
 }
 
 #sidemenubox {
@@ -91,6 +95,7 @@ h3>p{
     width: 180px;
     border-right: 1px solid gray;
     margin-left: 4px;
+    text-decoration:none;
 }
 
 #list{
@@ -98,7 +103,8 @@ h3>p{
 	
 }
 #list>p{
-	margin-top:15px;
+	
+	margin:15px auto;
 }
 
 #list>p>a{
@@ -156,18 +162,18 @@ b{
          <br>
          <c:choose>
 			<c:when test="${hospitaluser eq Empty}">
-				<a href="hlogin" >로그인</a>&nbsp;&nbsp;
+				<p style="text-decoration:none;"><a href="hlogin" >로그인</a></p>&nbsp;&nbsp;
 			</c:when>
 		<c:otherwise>
 			<div id="user">
 			<b>${hospitaluser.hname }</b>
 			</div>
 		</c:otherwise>
-</c:choose>
+		</c:choose>
       </h3>
     
       <h3>
-         <a href="reserve_t.jsp" >오늘의 예약내역</a>
+         <a href="reserve_t.jsp">오늘의 예약내역</a>
       </h3>
       
       <br>

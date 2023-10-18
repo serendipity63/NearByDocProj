@@ -19,7 +19,7 @@ h1 {
 }
 
 #center {
-	margin:0 auto;
+	margin:10px auto;
     width: 1479px;
    
    
@@ -27,7 +27,7 @@ h1 {
 table{
 	 border: 1px solid;
     width: 1346px;
-    margin:70px auto;
+    margin:55px auto;
 }
 
 th {
@@ -58,7 +58,7 @@ input {
 	
 	width: 1000px;
 	height: 50px;
-	margin:80px -169px auto;
+	margin:83px -169px auto;
 	
 }
 
