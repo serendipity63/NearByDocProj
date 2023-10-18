@@ -51,6 +51,22 @@ CREATE TABLE reservation (
 );
 
 
+-- 예약 테이블 
+-- 환자 삭제시 환자 관련 같이  삭제 10/18
+ALTER TABLE reservation
+ADD CONSTRAINT fk_pidnum
+FOREIGN KEY (pidnum)
+REFERENCES patient(pidnum)
+ON DELETE CASCADE;
+
+-- 병원 삭제시 병원 관련  같이 삭제 10/18
+ALTER TABLE reservation
+ADD CONSTRAINT fk_comnum
+FOREIGN KEY (comnum)
+REFERENCES hospital(comnum)
+ON DELETE CASCADE;
+
+
 
 
 CREATE TABLE review (
