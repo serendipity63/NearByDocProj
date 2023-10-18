@@ -112,4 +112,33 @@ public class ReservationDaoImpl implements ReservationDao{
 		return sqlSession.selectList("mapper.reservation.searchAllResList",param);
 	}
 
+
+
+	@Override
+	public Integer selectAllReservationCount() throws Exception {
+		return sqlSession.selectOne("mapper.reservation.selectAllReservationCount");
+	}
+
+
+	@Override
+	public List<Map<String, Object>> selectAllReservationList(Integer row) throws Exception {
+		return sqlSession.selectList("mapper.reservation.selectAllReservationList",row);
+	}
+
+
+	@Override
+	public Integer searchReservationCount(Map<String, Object> param) throws Exception {
+		return sqlSession.selectOne("mapper.reservation.searchReservationCount",param);
+	}
+
+
+	@Override
+	public List<Map<String, Object>> searchReservationList(Map<String, Object> param) throws Exception {
+		return sqlSession.selectList("mapper.reservation.searchReservationList",param);
+	}
+
+	/* 예약 환자 정보 */
+
+	
+
 }
