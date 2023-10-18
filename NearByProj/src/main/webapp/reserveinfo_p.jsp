@@ -23,11 +23,16 @@ h1 {
     width: 1479px;
    
    
+   
 }
+
 table{
-	 border: 1px solid;
+	border: 1px solid;
     width: 1346px;
-    margin:55px auto;
+    margin:55px 70px auto;
+    position:absolute;
+   
+    
 }
 
 th {
@@ -42,6 +47,9 @@ h5{
 	text-align:center;
 }
 
+.select {
+	background-color: blue;
+}
 
 select {
 	width: 224px;
@@ -74,10 +82,10 @@ input {
 #emptyArea {
 	width: 708px;
 	text-align: center;
-	margin:0 auto;
+	margin:355px auto;
 }
 
-#emptyArea a {
+#emptyArea button {
 	display: inline-block;
 	width: 20px;
 	height: 20px;
@@ -96,12 +104,9 @@ input {
 <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
 <script>
 	
-	function callBtn(pidnum) {
-		var keyword=$('#keyword').val()
-		if(keyword!=null && keyword.trim()!='') {
-			$('#page').val(pidnum);
-			$('#searchform').submit();
-		}
+	function callBtn(num) {
+		$('#page').val(num);
+		$('#searchform').submit();
 	}
 </script>
 </head>
@@ -113,18 +118,14 @@ input {
 	
 	<h1>환자 정보 조회</h1>
 
-
-
-
-	
-
 	<form action="patientsearch" method="post" id="searchform">
+		<input type="hidden" id="page" name="page" value="1"/>
 		<div id="reserveform">
 			<h5>
 				<select name="type">
-					<option value="all">선택</option>
+					<option value="all">전체</option>
 					<option value="pname" ${res.type eq 'pname'? 'selected':'' }>환자명</option>
-					<option value="pidnum"${res.type eq 'pidnum'? 'selected':'' }>주민등록번호</option>
+					<option value="pidnum" ${res.type eq 'pidnum'? 'selected':'' }>주민등록번호</option>
 				</select> 
 				<input type="text" name="keyword" id="keyword" value="${res.keyword }" /> 
 				<input type="submit" id="search" value="검색" />
@@ -132,10 +133,9 @@ input {
 		</div>
 
 	</form>
-	
+	<div class="table_layout">
 	<table>
 		<tr id="row">
-			<th style="width:150px;">예약번호</th>
 			<th style="width:150px;">환자명</th>
 			<th style="width:150px;">주민번호</th>
 			<th style="width:150px;">이메일</th>
@@ -145,9 +145,8 @@ input {
 		
 			
 		</tr>
-		<c:forEach items="${res.patientList }" var="patient">
+		<c:forEach items="${res.patientresList }" var="patient">
 			<tr>
-				<td style="background-color:white;">${reserve.comnum }</td>
 				<td style="background-color:white;">${patient.pname }</td>
 			
 			
@@ -157,9 +156,9 @@ input {
 				
 				<td style="background-color:white;">${patient.ptel }</td>
 				
-				<td style="background-color:white;">${patient.proadaddress }</td>
-			
 				<td style="background-color:white;">${patient.ppostcode }</td>
+			
+				<td style="background-color:white;">${patient.proadaddress }</td>
 				
 				<%-- <td style="background-color:white;">
 				<c:if test="${hospitaluser.comnum eq reserve.comnum }">
@@ -169,10 +168,11 @@ input {
 			</tr>
 		</c:forEach>
 	</table>
+	</div>
 	<div id="emptyArea">
 		<c:choose>
 			<c:when test="${res.pageInfo.curPage>1}">
-				<a href="patientlist?page=${res.pageInfo.curPage-1}">&lt;</a>
+				<button onclick="callBtn(${res.pageInfo.curPage-1})">&lt;</button>
 			</c:when>
 			<c:otherwise>
          			&lt;	
@@ -184,12 +184,10 @@ input {
 			end="${res.pageInfo.endPage}" var="i">
 			<c:choose>
 				<c:when test="${res.pageInfo.curPage==i}">
-					<a href="patientlist?page=${i}" class="select"
-						onclick="callBtn(${i});return ${res.keyword==null};">${i}</a>&nbsp;
+					<button onclick="callBtn(${i})" class="select">${i}</button>&nbsp;
 					</c:when>
 				<c:otherwise>
-					<a href="patientlist?page=${i}" class="btn"
-						onclick="callBtn(${i});return ${res.keyword==null};">${i}</a>&nbsp;
+					<button onclick="callBtn(${i})">${i}</button>&nbsp;
 					</c:otherwise>
 
 			</c:choose>
@@ -198,7 +196,7 @@ input {
 
 		<c:choose>
 			<c:when test="${res.pageInfo.curPage<res.pageInfo.allPage}">
-				<a href="patientlist?page=${res.pageInfo.curPage+1}">&gt;</a>
+				<button onclick="callBtn(${res.pageInfo.curPage+1})">&gt;</button>
 			</c:when>
 			<c:otherwise>
 					&gt;

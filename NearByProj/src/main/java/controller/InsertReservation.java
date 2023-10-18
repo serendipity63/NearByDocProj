@@ -11,12 +11,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import dto.Family;
 import dto.Hospital;
 import dto.Patient;
 import dto.Reservation;
-import service.FamilyService;
-import service.FamilyServiceImpl;
+import service.PatientService;
+import service.PatientServiceImpl;
 import service.ReservationService;
 import service.ReservationServiceImpl;
 
@@ -45,15 +44,15 @@ public class InsertReservation extends HttpServlet {
 		if(session.getAttribute("date") !=null) date = (String)session.getAttribute("date");
 		Hospital hospital = (Hospital)session.getAttribute("hospital");
 		Patient patient = (Patient)session.getAttribute("user");
+		PatientService patientservice = new PatientServiceImpl();
 		ReservationService reservationservice = new ReservationServiceImpl();
-		FamilyService familyservice = new FamilyServiceImpl();
 		try {
+			List<Patient> patientlist = new ArrayList<>();
+			patientlist = patientservice.patientListBypidnum(patient.getPidnum());
 			List<String> timelist = new ArrayList<>();
 			timelist = reservationservice.timelist(hospital,date);
 			request.setAttribute("timelist", timelist);
-			List<Family> familylist = new ArrayList<>();
-			familylist = familyservice.familylist(patient.getPidnum());
-			request.setAttribute("familylist", familylist);
+			request.setAttribute("patientlist", patientlist);
 			request.getRequestDispatcher("reservation.jsp").forward(request, response);
 			
 		} catch (Exception e) {
@@ -71,10 +70,8 @@ public class InsertReservation extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		HttpSession session = request.getSession();
 		Hospital hospital = (Hospital)session.getAttribute("hospital");
-		Patient patient = (Patient)session.getAttribute("user");
-		String name=request.getParameter("name");
-		
-		String pidnum = patient.getPidnum();
+		String pname = request.getParameter("name");
+		PatientService patientservice = new PatientServiceImpl();
 		String comnum = hospital.getComnum();
 		String resdate = request.getParameter("resdate");
 		String restime = request.getParameter("restime");
@@ -82,17 +79,12 @@ public class InsertReservation extends HttpServlet {
 		String status = "1";
 		String doccomment = null;
 		Integer id = null;
-		String fidnum = null;
 		
-		Reservation reservation = new Reservation(pidnum,comnum,resdate,restime,comment,status,doccomment,id,fidnum);
+		
 		try {
-			if(!(name.equals(patient.getPname()))) {
-				FamilyService familyservice = new FamilyServiceImpl();
-				Family family = familyservice.selectFamily(name);
-				fidnum=family.getFidnum();
-				reservation.setFidnum(fidnum);
-				session.setAttribute("name", name);
-			}
+			String pidnum = patientservice.selectPatientByname(pname).getPidnum();
+			Reservation reservation = new Reservation(pidnum,comnum,resdate,restime,comment,status,doccomment,id);
+			session.setAttribute("name", pname);
 			session.setAttribute("reservation", reservation);
 			response.sendRedirect("completereservation");
 

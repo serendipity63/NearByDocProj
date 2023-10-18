@@ -9,9 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
-import service.PatientService;
-import service.PatientServiceImpl;
+import service.ReservationService;
+import service.ReservationServiceImpl;
 
 /**
  * Servlet implementation class PatientSearch
@@ -31,6 +30,9 @@ public class PatientSearch extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    	request.getRequestDispatcher("reserveinfo_p.jsp").forward(request, response);
+    }
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		String type=request.getParameter("type");
@@ -40,15 +42,12 @@ public class PatientSearch extends HttpServlet {
 		if(page!=null) {
 			curPage= Integer.parseInt(page);
 		}
-		
-		if(type.equals("all")) {
-			response.sendRedirect("patientlist");
-			return;
-		}
+
 		try {
-			PatientService patientService=new PatientServiceImpl();
-			Map<String,Object>res=patientService.patientSearch(type,keyword,curPage);	
+			ReservationService resService=new ReservationServiceImpl();
+			Map<String,Object>res=resService.patientResListSearch(type,keyword,curPage);	
 			request.setAttribute("res", res);
+			System.out.println(res);
 			request.getRequestDispatcher("reserveinfo_p.jsp").forward(request, response);
 		}catch(Exception e) {
 			e.printStackTrace();

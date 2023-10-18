@@ -14,10 +14,13 @@ public class Patient {
 	private String ppostcode;
 	private String pdetailaddress;
 
+	private Boolean quit;
+	private String ppidnum;
+
 	public Patient() {}
 
 	public Patient(String pemail, String ppassword, String pname, String ptel, String pidnum, String proadaddress,
-			String ppostcode, String pdetailaddress) {
+			String ppostcode, String pdetailaddress, Boolean quit, String ppidnum) {
 		
 		this.pemail = pemail;
 		this.pidnum = pidnum;
@@ -27,15 +30,36 @@ public class Patient {
 		this.proadaddress = proadaddress;
 		this.ppostcode = ppostcode;
 		this.pdetailaddress = pdetailaddress;
+		this.quit = quit;
+		this.ppidnum = ppidnum;
 	}
 	
 	// 개인정보 수정위한 생성자
-	public Patient(String pname,String ptel,String pemail,String proadaddress, String pidnum) {
+	public Patient(String pname,String ptel,String pemail, String ppassword, String proadaddress, String pidnum) {
 		this.pname = pname;
 		this.ptel = ptel;
 		this.pemail = pemail;
+		this.ppassword = ppassword;
 		this.proadaddress = proadaddress;
 		this.pidnum = pidnum;
+	}
+	
+	// 가족 추가 생성자
+	public Patient(String pidnum, String pname, String ptel, String proadaddress, String ppidnum) {
+		this.pidnum = pidnum;
+		this.pname = pname;
+		this.ptel = ptel;
+		this.proadaddress = proadaddress;
+		this.ppidnum = ppidnum;
+	}
+	
+	// 가족 정보 수정 생성자
+	public Patient(String pname, String ptel, String proadaddress, String pidnum) {
+		this.pname = pname;
+		this.ptel = ptel;
+		this.proadaddress = proadaddress;
+		this.pidnum = pidnum;
+		
 	}
 
 	public String getPemail() {
@@ -84,6 +108,22 @@ public class Patient {
 
 	public void setProadaddress(String proadaddress) {
 		this.proadaddress = proadaddress;
+	}
+
+	public Boolean getQuit() {
+		return quit;
+	}
+
+	public void setQuit(Boolean quit) {
+		this.quit = quit;
+	}
+
+	public String getPpidnum() {
+		return ppidnum;
+	}
+
+	public void setPpidnum(String ppidnum) {
+		this.ppidnum = ppidnum;
 	}
 
 	public String getPpostcode() {

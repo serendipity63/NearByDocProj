@@ -11,10 +11,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import dto.Family;
 import dto.Patient;
-import service.FamilyService;
-import service.FamilyServiceImpl;
+import service.PatientService;
+import service.PatientServiceImpl;
 
 /**
  * Servlet implementation class Modifamally
@@ -40,10 +39,10 @@ public class Modifamally extends HttpServlet {
 		Patient patient = (Patient)session.getAttribute("user");
 		String pidnum = patient.getPidnum();
 		
-		FamilyService familyService = new FamilyServiceImpl();
+		PatientService patientService = new PatientServiceImpl();
 		
 		try {
-			List<Map<String, Object>> familys = familyService.famList(pidnum);
+			List<Map<String, Object>> familys = patientService.famList(pidnum);
 			request.setAttribute("familys", familys);
 			request.getRequestDispatcher("modifamally.jsp").forward(request, response);
 		} catch (Exception e) {
@@ -57,25 +56,25 @@ public class Modifamally extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
-		String fname = request.getParameter("fname");		 
-		String ftel = request.getParameter("ftel");		 
-		String faddress = request.getParameter("faddress");	
-		String fidnum = request.getParameter("fidnum");
+		String pname = request.getParameter("pname");		 
+		String ptel = request.getParameter("ptel");		 
+		String proadaddress = request.getParameter("proadaddress");	
+		String pidnum = request.getParameter("pidnum");
 		
 		
 		System.out.println("Controller -----------");
-		System.out.println("fname : " + fname);
-		System.out.println("ftel : " + ftel);
-		System.out.println("faddress : " + faddress);
-		System.out.println("fidnum : " + fidnum);
+		System.out.println("fname : " + pname);
+		System.out.println("ftel : " + ptel);
+		System.out.println("faddress : " + proadaddress);
+		System.out.println("fidnum : " + pidnum);
 		
 		
-		Family family = new Family(fname, ftel, faddress, fidnum);
+		Patient patient = new Patient(pname, ptel, proadaddress, pidnum);
 		
-		FamilyService familyService = new FamilyServiceImpl();
+		PatientService patientService = new PatientServiceImpl();
 		
 		try {
-			familyService.famUpdate(family);
+			patientService.famUpdate(patient);
 			request.getRequestDispatcher("modifamally.jsp").forward(request, response);
 			
 		} catch(Exception e) {

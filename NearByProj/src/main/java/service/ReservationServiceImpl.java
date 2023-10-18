@@ -66,7 +66,7 @@ public class ReservationServiceImpl implements ReservationService{
 	
 
 	@Override
-	public Map<String, Object> reservationListByPage(Integer page) throws Exception {
+	public Map<String, Object> todayResListByPage(Integer page) throws Exception {
 	
 	PageInfo pageInfo = new PageInfo();
 	Integer reservationCount = resDao.selectReservationCount();
@@ -84,7 +84,7 @@ public class ReservationServiceImpl implements ReservationService{
 	pageInfo.setEndPage(endPage);
 
 	int row = (page - 1) * 10 + 1; 
-	List<Reservation> reservationList = resDao.selectTodayReservation(row - 1);
+	List<Map<String, Object>> reservationList = resDao.selectTodayReservation(row - 1);
 
 	Map<String, Object> map = new HashMap<>();
 	map.put("pageInfo", pageInfo);
@@ -259,5 +259,64 @@ public class ReservationServiceImpl implements ReservationService{
 		resDao.commentUpdate(res);
 		
 	}
+	
+	/*예약 환자 정보*/
+
+	@Override
+	public Map<String, Object> patientResListSearch(String type, String keyword, Integer page) throws Exception {
+		Map<String, Object> param = new HashMap<>();
+		param.put("type", type);
+		param.put("keyword", keyword);
+
+		PageInfo pageInfo = new PageInfo();
+
+		Map<String, Object> map = new HashMap<>();
+		
+		Integer resCount;
+		if(type.equals("all") || keyword==null || keyword.trim().equals("")) { //전체 예약 환자 조회
+			resCount = resDao.selectAllReservationCount();
+		} else { //조건별 예약환자 조회
+			resCount = resDao.searchReservationCount(param);
+		}
+		
+		int maxPage = (int) Math.ceil((double) resCount / 10); // ceil 반올림 floor 반내림
+		int startPage = (page - 1) / 10 * 10 + 1; // 1,11,21,31...
+		int endPage = startPage + 10 - 1;
+		if (endPage > maxPage)
+			endPage = maxPage;
+		if (page > maxPage)
+			page = maxPage; // 2페이지 1개 일때 삭제하면 현재페이지랑 max페이지를 같게 1페이지로
+
+		pageInfo.setAllPage(maxPage);
+		pageInfo.setCurPage(page);
+		pageInfo.setStartPage(startPage);
+		pageInfo.setEndPage(endPage);
+
+		map.put("pageInfo", pageInfo);
+		if (page == 0) {
+			return map;
+		}
+
+		int row = (page - 1) * 10 + 1; // 현재 페이지의 시작 row
+
+		List<Map<String, Object>> resList;
+		if(type.equals("all") || keyword==null || keyword.trim().equals("")) { //전체 예약 환자 조회
+			resList = resDao.selectAllReservationList(row-1);
+		} else { //조건별 예약환자 조회
+			param.put("row", row - 1);
+			resList = resDao.searchReservationList(param);
+		}
+
+		map.put("type", type);
+		map.put("keyword", keyword);
+		map.put("patientresList", resList);
+		return map;
+	}
+	
+	
+	
+
+	
+
 	
 }
