@@ -77,11 +77,11 @@ body {
 h1 {
 	width: 202px;
 	height: 50px;
-	margin: 0 auto;
+	margin: 14px auto;
 	color: rgb(25, 25, 112);
 }
 th{
-	padding: 5px;
+	padding: 4px;
 	width: 192px;
 	color: black;
 	text-align: center;
@@ -94,7 +94,7 @@ th{
 table {
 	border: 1px solid;
     width: 1454px;
-    margin: 80px 71px auto;
+    margin: 65px 71px auto;
 }
 
 input {
@@ -111,7 +111,7 @@ select {
 }
 
 #center {
-	margin:0 auto;
+	margin:-15px auto;
     width: 1479px;
    
    
@@ -134,7 +134,7 @@ button {
 .reserveform {
 	width: 1522px;
 	height: 100px;
-	margin: 0 auto;
+	margin: -10px auto;
 }
 #date{
 	float:right;
