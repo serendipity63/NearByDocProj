@@ -19,6 +19,10 @@
 <link
    href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap"
    rel="stylesheet">
+   
+<!-- alert 디자인 -->
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
 <title>NearByDocHeader</title>
 
 <style>
@@ -91,12 +95,13 @@ tr>td{
     border: 1px solid #16151562;
 }
 </style>
-
+<script type="text/javascript"
+	src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
 <script> 
-$(function(){
+/* $(function(){
     $(".delete").click(function(){
         console.log("삭제 버튼 클릭");
-        var famName = $(this).closest("div#detailfam").find("input[type='text']").val();
+        var famName = $(this).closest("div#detailfam").find("input[id='hiddenPidnum']").val();
         console.log(famName);
         if (confirm("삭제하시겠습니까??") == true) {
             $.ajax({
@@ -147,7 +152,78 @@ $(function(){
             return false;
         }
     });    
+}); */
+
+
+$(function(){
+    $(".delete").click(function(){
+        console.log("삭제 버튼 클릭");
+        var famName = $(this).closest("div#detailfam").find("input[id='hiddenPidnum']").val();
+        console.log(famName);
+        Swal.fire({
+            title: '삭제 확인',
+            text: '삭제하시겠습니까?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: '삭제',
+            cancelButtonText: '취소'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $.ajax({
+                    url: 'deletafam',
+                    type: 'post',
+                    data: {'fname': famName},
+                    success: function(response) {
+                        console.log("success");
+                        Swal.fire('삭제 완료', '가족이 삭제되었습니다.', 'success').then(function() {
+                            location.href = "modifamally";
+                        });
+                    },
+                });
+            }
+        });
+    });
+
+    $(".modi").click(function() {
+        console.log("수정 버튼 클릭");
+        var famName = $(this).closest("div#detailfam").find("textarea[id='fname']").val();
+        var ftel = $(this).closest("div#detailfam").find("textarea[id='ftel']").val();
+        var faddress = $(this).closest("div#detailfam").find("textarea[id='faddress']").val();
+        var fidnum = $(this).closest("div#detailfam").find("input[id='fidnum']").val();
+        Swal.fire({
+            title: '수정 확인',
+            text: '수정하시겠습니까?',
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonText: '수정',
+            cancelButtonText: '취소'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                console.log(famName);
+                console.log(ftel);
+                console.log(faddress);
+                console.log(fidnum);
+                $.ajax({
+                    url: 'modifamally',
+                    type: 'post',
+                    data: {
+                        'fname': famName,
+                        'ftel' : ftel,
+                        'faddress' : faddress,
+                        'fidnum' : fidnum
+                    },
+                    success: function(response) {
+                        console.log("success");
+                        Swal.fire('수정 완료', '가족 정보가 수정되었습니다.', 'success').then(function() {
+                            location.href = "modifamally";
+                        });
+                    }
+                });
+            }
+        });
+    });
 });
+
 	  
 
   </script> 
@@ -161,7 +237,7 @@ $(function(){
    <div id="container">
     <div id="famallymanage">
       <span style="text-align: left; margin:10px 0 10px 10px">가족관리</span>
-      <span class="material-symbols-outlined" onClick="history.go(-1)" style="margin-left: 300px;">
+      <span class="material-symbols-outlined" onClick="location.href='addfamally'" style="margin-left: 300px;">
         arrow_back
         </span> 
       <hr>

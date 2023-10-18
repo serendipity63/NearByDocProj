@@ -16,6 +16,10 @@
 <link
    href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap"
    rel="stylesheet">
+<!-- alert 디자인 -->
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">   
+   
 <title>NearByDocHeader</title>
 
 <style>
@@ -101,15 +105,27 @@ margin-top: 5px;
   margin-top: 5px;
 }
 
+
+.modi{
+  margin-top : 30px;
+  background : white;
+  background-color : white;
+  color: #2188C4;
+  width: 200px;
+  height: 42px;
+  border-radius: 20px; 
+  float: left;
+  font-size: 20px;
+  border: 1px solid #16151562;
+}
+
 .rescancel{
   margin-top : 30px;
-  margin-left : 103px;
   background-color: #363A3E;
   color: white;
   width: 200px;
   height: 42px;
-  border-radius: 20px;
-  
+  border-radius: 20px; 
 }
 
 .material-symbols-outlined {
@@ -122,23 +138,119 @@ margin-top: 5px;
 
 </style>
 
+<script type="text/javascript"
+	src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
 <script> 
-$(function (){
-	$("#rescancel").click(function() {
+/* $(function (){
+	
+	$(".rescancel").click(function() {
+		var id = $(".hiddenId").val();
+		console.log(id);
+		var status = "2"; 
+		
 		if (confirm("예약을 취소하시겠습니까?") == true){    //확인
 			$.ajax({
 				url:"resmanage",
 				type:"post",
-				data:{"pidnum" : $('#hiddenPidnum').val()},
+				data:{
+					"id" :id
+				  , "status" : status
+					},
 				success:function(res){
-					location.href=res
+					location.href="reslist"
 				}
 			})
 		}else{   //취소
 			return false;
 		}
 	})
-})
+	
+	$(".modi").click(function() {
+		var id = $(".hiddenId").val();
+		var comment = $("#comment").val();
+		
+		if (confirm("수정하시겠습니까?") == true){    //확인
+			$.ajax({
+				url:"commentupdate",
+				type:"post",
+				data:{
+					"id" : id
+				  , "comment" :comment
+					},
+				success:function(res){
+					
+				}
+			})
+		}else{   //취소
+			return false;
+		}
+		
+		
+	})
+	
+	
+}) */
+
+
+$(function (){
+    $(".rescancel").click(function() {
+        var id = $(".hiddenId").val();
+        console.log(id);
+        var status = "2"; 
+
+        Swal.fire({
+            title: '예약 취소',
+            text: '예약을 취소하시겠습니까?',
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonText: '확인',
+            cancelButtonText: '취소',
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $.ajax({
+                    url: "resmanage",
+                    type: "post",
+                    data: {
+                        "id": id,
+                        "status": status
+                    },
+                    success: function (res) {
+                        location.href = "reslist";
+                    }
+                });
+            }
+        });
+    });
+
+    $(".modi").click(function() {
+        var id = $(".hiddenId").val();
+        var comment = $("#comment").val();
+
+        Swal.fire({
+            title: '수정',
+            text: '수정하시겠습니까?',
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonText: '확인',
+            cancelButtonText: '취소',
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $.ajax({
+                    url: "commentupdate",
+                    type: "post",
+                    data: {
+                        "id": id,
+                        "comment": comment
+                    },
+                    success: function (res) {
+                        location.href="reslist"
+                    }
+                });
+            }
+        });
+    });
+});
+
  </script> 
 </head>
 
@@ -146,7 +258,7 @@ $(function (){
    <!-- 헤더 -->
    <% pageContext.include("thinheader.jsp");%>
    <div id="sub">
-    <span class="material-symbols-outlined" onClick="history.go(-1)" style="margin-left: 400px;">
+    <span class="material-symbols-outlined" onClick="location.href='reslist'" style="margin-left: 400px;">
       arrow_back
       </span> 
     <br>
@@ -198,11 +310,27 @@ $(function (){
     <div class="comment">
       <h4>원장님께 하고 싶은 말 :</h4>
       <br>
-      <textarea name="" id="content" cols="58" rows="2">${res.comment }</textarea>
-    </div>
-
-    <button class="rescancel" ><h2>예약 취소</h2></button> 
+      <c:choose>
+      <c:when test = "${res.status eq 1}">
+      <textarea name="" id="comment" cols="58" rows="2">${res.comment }</textarea>
+      </c:when>
+       <c:when test = "${res.status ne 1}">
+       <textarea disabled="disabled" name="" id="comment" cols="58" rows="2">${res.comment }</textarea>
+       </c:when>
+       </c:choose>
       
+    </div>
+    
+    <c:choose>
+    	 <c:when test = "${res.status eq 1}">
+    	 <input type="button" class="modi" value="수정"> &nbsp;
+    <button style="cursor: pointer;" class="rescancel"><h2>예약 취소</h2></button>
+    <input  class="hiddenId" type="text" value="${res.id }" style="display: none;">  
+       </c:when>
+        <c:when test = "${res.status ne 1}">
+        <button class="rescancel" style="display: none;" ><h2>예약 취소</h2></button>
+      </c:when>
+      </c:choose>
     </div>
 
     

@@ -100,7 +100,7 @@ function confirmReservation(reservationId) {
 	%>
 	<div id="sub">
 		<span>예약 내역</span> <span class="material-symbols-outlined"
-			onClick="history.go(-1)" style="margin-left: 260px;">
+			onClick="location.href='mypage'" style="margin-left: 260px;">
 			arrow_back </span> <br>
 		<hr>
 	</div>

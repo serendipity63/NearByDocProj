@@ -10,6 +10,8 @@ public interface ReservationService {
 	
 	List<Map<String, Object>> showReservation(String pidnum)throws Exception;
 	Map<String,Object> detailRes(Map<String, Object> param) throws Exception;
+	void resUpdate(Reservation res) throws Exception;
+	void updateComment(Reservation res) throws Exception;
 	
 	
 	Map<String,Object> reservationListByPage(Integer page)throws Exception;

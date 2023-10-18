@@ -16,6 +16,10 @@
 <link
    href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap"
    rel="stylesheet">
+<!-- alert 디자인 -->
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+   
 <title>NearByDocHeader</title>
 
 <style>
@@ -96,7 +100,7 @@ input{
     /* Noto Sans 폰트 설정 */
     font-size: 12pt;
     font-style: normal;
-    font-weight: normal;
+    3font-weight: normal;
     text-decoration: inherit;
     color: black;
     text-indent: 0.5em;
@@ -109,12 +113,12 @@ input{
 
 
 </style>
-<script>
+<script type="text/javascript"
+	src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
 
-
-
+<script type="text/javascript">
 $(function (){
-	$("#out").click(function() {
+	/* $("#out").click(function() {
 		if (confirm("정말 탈퇴하시겠습니까?") == true){    //확인
 			$.ajax({
 				url:"patientleave",
@@ -127,7 +131,33 @@ $(function (){
 		}else{   //취소
 			return false;
 		}
-	})
+	}) */
+	
+	
+	$("#out").click(function() {
+		Swal.fire({
+			  title: '탈퇴',
+			  test : '탈퇴하시겠습니까?',
+			  icon: 'question',
+			  showCancelButton: true,
+			  confirmButtonText: '확인',
+			  cancelButtonText: '취소',
+			}).then((result) => {
+			  /* Read more about isConfirmed, isDenied below */
+			  if (result.isConfirmed) {
+				  $.ajax({
+						url:"patientleave",
+						type:"post",
+						data:{"pidnum" : $('#hiddenPidnum').val()},
+						success:function(res){
+							location.href=res
+						}
+					})
+			  } else if (result.isDenied) {
+				  return false;
+			  }
+			})
+		})
 })
 
 </script>
@@ -138,7 +168,7 @@ $(function (){
    <% pageContext.include("thinheader.jsp");%>
    <div id="sub">
     <span>내 정보</span> 
-    <span class="material-symbols-outlined" onClick="history.go(-1)" style="margin-left: 290px;">
+    <span class="material-symbols-outlined" onClick="location.href='mypage'" style="margin-left: 290px;">
       arrow_back
       </span> 
     <br>

@@ -31,6 +31,20 @@ public class Reservation {
 		this.id=id;
 		this.fidnum = fidnum;
 	}
+	
+	
+	// 예약취소
+	public Reservation(Integer id, String status) {
+		this.id = id;
+		this.status = status;
+	}
+	
+	// 코멘트 수정
+	public Reservation(String comment, Integer id) {
+		this.comment = comment;
+		this.id = id;
+		
+	}
 
 
 	public String getPidnum() {

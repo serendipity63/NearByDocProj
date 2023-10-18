@@ -14,5 +14,6 @@ public interface ReviewDao {
 
 	void insertReview(Review review) throws Exception;
 	Map<String,Object> selectLastReview(String comnum) throws Exception;
+	void deleteReview(Integer id) throws Exception;
 
 }
