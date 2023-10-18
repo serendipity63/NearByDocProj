@@ -36,4 +36,12 @@ public Map<String,Object> selectLastReview(String comnum) throws Exception {
 
 }
 
+
+@Override
+public void deleteReview(Integer id) throws Exception {
+	sqlSession.delete("mapper.review.deleteReview", id);
+	sqlSession.commit();
+	
+}
+
 }

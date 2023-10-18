@@ -11,6 +11,7 @@ public interface ReviewService {
 	
 	// 나의 리뷰 리스트
 	List<Map<String, Object>> myReviews(String pidnum) throws Exception;
+	void reviewDelete(Integer id) throws Exception;
 
 	void insertReview(Review review) throws Exception;
 	Map<String,Object> selectLastReview(String comnum) throws Exception;

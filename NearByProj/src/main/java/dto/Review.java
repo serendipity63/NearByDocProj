@@ -8,14 +8,16 @@ public class Review {
 	private String content;
 	private String star;
 	private Timestamp birth;
+	private Integer id;
 	
 	public Review() {}
-	public Review(String pidnum, String comnum,String content,String star,Timestamp birth) {
+	public Review(String pidnum, String comnum,String content,String star,Timestamp birth, Integer id) {
 		this.pidnum=pidnum;
 		this.comnum=comnum;
 		this.content=content;
 		this.star=star;
 		this.birth=birth;
+		this.id = id;
 	}
 	public String getPidnum() {
 		return pidnum;
