@@ -264,6 +264,7 @@ label {
 			} else if (password !== confirmPassword) {
 				Swal.fire("오류", "비밀번호가 일치하지 않습니다. 다시 확인해주세요", "error");
 				e.preventDefault();
+				
 				/*         } else {
 				 // 회원가입 성공 메세지
 				 Swal.fire("성공", "회원가입이 성공적으로 완료되었습니다!", "success")
@@ -271,9 +272,17 @@ label {
 				 */
 				/*             
 				 .then((result) => {
-				 // "확인" 버튼을 누르면 hospitallogin.jsp 페이지로 리디렉션
 				 if (result.isConfirmed) {
-				 window.location.href = "hospitallogin.jsp";
+					$.ajax({
+						url:"pjoin",
+						type:"post",
+						data:
+							
+						{"pidnum" : $('#hiddenPidnum').val()},
+						success:function(res){
+							location.href=res
+
+					 
 				 }
 				 });   */
 			}
