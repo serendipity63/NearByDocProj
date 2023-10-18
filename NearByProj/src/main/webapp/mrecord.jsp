@@ -77,7 +77,7 @@ body {
 h1 {
 	width: 202px;
 	height: 50px;
-	margin: 14px auto;
+	margin: 0px auto;
 	color: rgb(25, 25, 112);
 }
 th{
@@ -94,7 +94,7 @@ th{
 table {
 	border: 1px solid;
     width: 1454px;
-    margin: 65px 71px auto;
+    margin: 67px 71px auto;
 }
 
 input {
@@ -111,7 +111,7 @@ select {
 }
 
 #center {
-	margin:-15px auto;
+	margin:10px auto;
     width: 1479px;
    
    
