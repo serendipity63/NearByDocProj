@@ -287,8 +287,7 @@ input:focus {
 
 						// 이메일 입력 필드에서 입력 변화 감지
 						$("#pemail")
-								.on(
-										"input",
+								.on( "input",
 										function() {
 											const pemail = $("#pemail").val();
 											const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
@@ -482,13 +481,6 @@ input:focus {
 
 				</div>
 
-				주민번호 <span id="pidnumMessage" class="error-message"></span><br>
-				<div id="info_pidnum">
-					<input type="number" id="pidnum" name="pidnum" size="13"
-						placeholder="-없이 숫자만 입력" required />
-					<%-- 주민번호 중복검사 및 유효성검사 버튼 --%>
-					<button id="pidnumcheck">중복 확인</button>
-				</div>
 
 				비밀번호<br>
 
@@ -513,6 +505,13 @@ input:focus {
 						onchange="check()" placeholder="" required /> <span
 						class="icon material-symbols-outlined"> lock </span>
 
+				</div>
+				주민번호 <span id="pidnumMessage" class="error-message"></span><br>
+				<div id="info_pidnum">
+					<input type="number" id="pidnum" name="pidnum" size="13"
+						placeholder="-없이 숫자만 입력" required />
+					<%-- 주민번호 중복검사 및 유효성검사 버튼 --%>
+					<button id="pidnumcheck">중복 확인</button>
 				</div>
 
 				이름<br> <input type="text" id="pname" name="pname"
