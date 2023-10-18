@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import dto.Hospital;
+import dto.Patient;
 import dto.Reservation;
 
 public interface ReservationService {
@@ -26,4 +27,5 @@ public interface ReservationService {
 	void insertReservation(Reservation reservation) throws Exception;
 	public Map<String,Object> selectAllResBycomnum(String comnum,Integer page) throws Exception;
 	Map<String,Object> resAllSearch(String type, String keyword, Integer page, String sdate, String edate, String comnum) throws Exception;
+	
 }

@@ -26,4 +26,6 @@ public interface PatientDao {
 	void deletePatient(String pidnum) throws Exception;
 	
 	Patient selectPatientByname(String pname) throws Exception;
+	
+	List<Patient> patientListBypidnum(String pidnum) throws Exception;
 }
