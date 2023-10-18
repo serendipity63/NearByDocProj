@@ -137,7 +137,7 @@ $(function (){
 	$("#out").click(function() {
 		Swal.fire({
 			  title: '탈퇴',
-			  test : '탈퇴하시겠습니까?',
+			  text : '탈퇴하시겠습니까?',
 			  icon: 'question',
 			  showCancelButton: true,
 			  confirmButtonText: '확인',
