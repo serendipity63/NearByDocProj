@@ -13,6 +13,15 @@ public class Patient {
 	private String proadaddress;
 	private String ppostcode;
 	private String pdetailaddress;
+	private String ppidnum;
+
+	public String getPpidnum() {
+		return ppidnum;
+	}
+
+	public void setPpidnum(String ppidnum) {
+		this.ppidnum = ppidnum;
+	}
 
 	public Patient() {}
 
@@ -30,12 +39,31 @@ public class Patient {
 	}
 	
 	// 개인정보 수정위한 생성자
-	public Patient(String pname,String ptel,String pemail,String proadaddress, String pidnum) {
+	public Patient(String pname,String ptel,String pemail, String ppassword, String proadaddress, String pidnum) {
 		this.pname = pname;
 		this.ptel = ptel;
 		this.pemail = pemail;
+		this.ppassword = ppassword;
 		this.proadaddress = proadaddress;
 		this.pidnum = pidnum;
+	}
+	
+	// 가족 추가 생성자
+	public Patient(String pidnum, String pname, String ptel, String proadaddress, String ppidnum) {
+		this.pidnum = pidnum;
+		this.pname = pname;
+		this.ptel = ptel;
+		this.proadaddress = proadaddress;
+		this.ppidnum = ppidnum;
+	}
+	
+	// 가족 정보 수정 생성자
+	public Patient(String pname, String ptel, String proadaddress, String pidnum) {
+		this.pname = pname;
+		this.ptel = ptel;
+		this.proadaddress = proadaddress;
+		this.pidnum = pidnum;
+		
 	}
 
 	public String getPemail() {

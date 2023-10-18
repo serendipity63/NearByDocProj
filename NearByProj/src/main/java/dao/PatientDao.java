@@ -24,6 +24,15 @@ public interface PatientDao {
 	void updatePatient(Patient patient) throws Exception;
 	// 환자 정보 삭제
 	void deletePatient(String pidnum) throws Exception;
+	// 가족 구성원 조회
+	public List<Map<String, Object>> selecetMyFamily(String pidnum) throws Exception;
+	//가족 구성원 추가
+	public void addFamily(Patient patient) throws Exception;
+	//가족 구성원 삭제
+	public void deleteFamily(String pname) throws Exception;
+	//가족 정보 수정
+	public void famInfoUpdate(Patient patient) throws Exception;
+	
 	
 	Patient selectPatientByname(String pname) throws Exception;
 }

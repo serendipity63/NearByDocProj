@@ -152,4 +152,37 @@ public class PatientServiceImpl implements PatientService {
 		return patientDao.selectPatientByname(pname);
 	}
 
+	@Override
+	public List<Map<String, Object>> famList(String pidnum) throws Exception {
+		
+		return patientDao.selecetMyFamily(pidnum);
+	}
+
+	@Override
+	public String addFam(Patient patient, String pidnum) throws Exception {
+		if(!(patient.getPpidnum().equals(pidnum))) {
+			patientDao.addFamily(patient);
+			return "can"; 
+		}
+		return "cant";
+		
+	}
+
+	@Override
+	public void famDelete(String pname) throws Exception {
+		patientDao.deleteFamily(pname);
+		
+	}
+
+	@Override
+	public void famUpdate(Patient patient) throws Exception {
+		System.out.println("ServiceImpl -----------");
+		System.out.println("pname : " + patient.getPname());
+		System.out.println("ptel : " + patient.getPtel());
+		System.out.println("Proadaddress : " + patient.getProadaddress());
+		System.out.println("pidnum : " + patient.getPidnum());
+		patientDao.famInfoUpdate(patient);
+		
+	}
+
 }

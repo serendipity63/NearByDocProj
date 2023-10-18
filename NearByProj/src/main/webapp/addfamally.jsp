@@ -192,12 +192,12 @@ margin-left : 70px;
 $(function(){
 	$(".reg").click(function(){
 		var pname = $("#pname").val();
-		var ftel = $("#tel").val();
-		var faddress = $("#address").val();
-		var fidnum = $("#idnum").val();
+		var ptel = $("#tel").val();
+		var proadaddress = $("#proadaddress").val();
+		var pidnum = $("#idnum").val();
 		
 		// 데이터 작성 확인
-		if (!pname || !ftel || !faddress || !fidnum) {
+		if (!pname || !ptel || !paddress || !pidnum) {
 			Swal.fire({
 				icon: 'error',
 				title: 'Error',
@@ -208,10 +208,10 @@ $(function(){
 				url: "addfamally",
 				type: "post",
 				data: {
-					"fname": pname,
-					"ftel": ftel,
-					"faddress": faddress,
-					"fidnum": fidnum
+					"pname": pname,
+					"ptel": ftel,
+					"proadaddress": proadaddress,
+					"pidnum": fidnum
 				},
 				success: function(res) {
 					console.log(res);
@@ -260,13 +260,13 @@ $(function(){
 				style="margin-left: 280px;"> arrow_back </span> <br> <br>
 			<!-- <form action="addfamally" method="post"> -->
 				<p>이름</p>
-				<input type="text" id="pname" name="fname" placeholder="" required="required">
+				<input type="text" id="pname" name="pname" placeholder="" required="required">
 				<p>전화번호</p>
-				<input type="text" id="tel" name="ftel" placeholder="-없이 숫자만 입력" required="required">
+				<input type="text" id="tel" name="tel" placeholder="-없이 숫자만 입력" required="required">
 				<p>주소</p>
-				<input type="text" id="address" name="faddress" placeholder="" required="required">
+				<input type="text" id="proadaddress" name="proadaddress" placeholder="" required="required">
 				<p>주민등록번호</p>
-				<input type="text" id="idnum" name="fidnum" placeholder="-없이 숫자만 입력" required="required">
+				<input type="text" id="idnum" name="idnum" placeholder="-없이 숫자만 입력" required="required">
 				<br>
 				<div class="idbtn">
 					<input class="reg" type=button value="등록"
