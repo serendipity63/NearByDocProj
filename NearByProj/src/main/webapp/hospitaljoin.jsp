@@ -20,10 +20,6 @@
 	href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<link rel="stylesheet"
-	href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
-<script
-	src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
 
 
 <script>
@@ -36,7 +32,6 @@
 		});
 	}
 </script>
-
 
 <style type="text/css">
 @charset "UTF-8";
@@ -67,30 +62,34 @@ a {
 /* 로그인 폼 스타일 */
 form.join-form {
 	float: right;
-	margin-top: 10px;
+	margin-top: 5px;
+	justify-content: center;
+	align-items: center;
 }
 
 /* 로그인 폼 요소 스타일 */
 form.join-form input[type="text"], form.join-form input[type="password"],
 	form.join-form button {
-	margin: 10px;
+	margin: 6px;
 }
 
 .container {
 	padding: 10px;
 	border: 2px solid;
-	width: 500px;
-	height: 800px;
+	width: 550px;
+	height: 890px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	border-radius: 20px;
-	margin-top: 60px;
+	margin-top: 55px;
+	margin: auto;
 }
 
 .row {
 	height: 40px;
 	margin: auto;
+	margin-bottom: 5px;
 }
 
 .input {
@@ -112,18 +111,24 @@ input[type='submit'] {
 	height: 40px;
 	background-color: #191970;
 	color: #fff;
-	margin-bottom: 25px;
+	margin-bottom: 5px;
+	margin-top: 5px;
 	text-indent: 0;
 	border: 0;
 }
 
-input[type='text'], input[type='number'], input[type='password'], input[type='submit']
-	{
-	margin-bottom: 22px;
+input[type='text'], input[type='number'], input[type='password'] {
+	margin-bottom: 8px;
 }
 
 input[type='submit']:hover {
 	cursor: pointer;
+}
+
+input[type='file'] {
+	border: none;
+	margin-bottom: 4px;
+	margin-top: 4px;
 }
 
 /* 우편번호 입력 칸 스타일 */
@@ -133,7 +138,7 @@ input[type='submit']:hover {
 }
 
 .input input[name='hroadAddress'] {
-	margin-bottom: 10px;
+	margin-bottom: 8px;
 }
 
 /* 우편번호 찾기 버튼 스타일 */
@@ -161,7 +166,38 @@ input[type='submit']:hover {
 	cursor: pointer;
 	margin-left: -90px;
 }
+
+label {
+	margin-top: 4px;
+	font-size: 13px;
+	text-align: left;
+	align-items: left;
+}
+
+.label {
+	margin-top: 2px;
+}
+
+.clinic_container {
+	display: flex;
+}
+
+.clinic_container input {
+	width: 120px;
+	margin: 5px;
+}
+
+.lunch_container{
+	display:flex;
+}
+
+.lunch_container input{
+	width: 120px;
+	margin: 5px;
+}
+
 </style>
+
 <!-- 사업자번호 중복검사  기능 -->
 <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
 <script type="text/javascript"
@@ -307,7 +343,6 @@ input[type='submit']:hover {
 	});
 </script>
 
-
 <%--주소불러오기  --%>
 <script
 	src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
@@ -364,6 +399,7 @@ input[type='submit']:hover {
 
 
 
+
 <title>병원등록</title>
 </head>
 
@@ -372,157 +408,230 @@ input[type='submit']:hover {
 	pageContext.include("hospitalheader.jsp");
 	%>
 
-	<center>
-		<div class="container" id='query'>
-			<form action="hjoin" method="post" id="form"
-				enctype="multipart/form-data">
-				<div class="title">병원등록</div>
+	<div class="container" id='query'>
 
+		<form action="hjoin" method="post" id="form"
+			enctype="multipart/form-data">
+
+			<div class="title">병원등록</div>
+
+
+
+			<div class="row">
+				<div class="input">
+					<label for="hname">병원명 </label> <br> <input type="text"
+						id="hname" name="hname" placeholder="병원명">
+				</div>
+			</div>
+
+
+			<div id="info_comnum">
 				<div class="row">
 					<div class="input">
-						<input type="text" id="hname" name="hname" placeholder="병원명">
+						<label for="comnum">사업자등록번호 </label> <br> <input
+							type="number" id="comnum" name="comnum" placeholder="사업자등록번호"
+							required="required" />
+						<button id="comnumcheck">중복 확인</button>
+
 					</div>
 				</div>
+			</div>
 
 
-				<div id="info_comnum">
-					<div class="row">
-						<div class="input">
-							<input type="number" id="comnum" name="comnum"
-								placeholder="사업자등록번호" required="required" />
-							<button id="comnumcheck">중복 확인</button>
-
-						</div>
-					</div>
+			<div class="row">
+				<div class="input">
+					<label for="hpassword">비밀번호 </label> <br> <input
+						type="password" id="hpassword" name="hpassword" placeholder="비밀번호"
+						required="required"/ >
 				</div>
+			</div>
 
-
-
-				<div class="row">
-					<div class="input">
-						<input type="password" id="hpassword" name="hpassword"
-							placeholder="비밀번호" required="required"/ >
-					</div>
+			<div class="row">
+				<div class="input">
+					<label for="hpassword-confirm">비밀번호 재확인 </label> <br> <input
+						type="password" id="hpassword-confirm" placeholder="비밀번호 재확인"
+						required="required" />
 				</div>
-				<div class="row">
-					<div class="input">
-						<input type="password" id="hpassword-confirm"
-							placeholder="비밀번호 재확인" required="required" />
-					</div>
+			</div>
+
+			<%-- 주소시작 --%>
+
+			<div class="row">
+				<label for="hadress">주소 </label> <br>
+				<div class="input">
+					<input type="text" id="hpostcode" name="hpostcode"
+						placeholder="우편번호" readonly>
 				</div>
-
-				<%-- 주소시작 --%>
-
-				<div class="row">
-					<div class="input">
-						<input type="text" id="hpostcode" name="hpostcode"
-							placeholder="우편번호" readonly>
-					</div>
-					<div class="input">
-						<button type="button" name="postcode-button"
-							onclick="execDaumPostcode1()">우편번호 찾기</button>
-					</div>
+				<div class="input">
+					<button type="button" name="postcode-button"
+						onclick="execDaumPostcode1()">우편번호 찾기</button>
 				</div>
+			</div>
 
 
-				<div class="row">
-					<div class="input">
-						<input type="text" id="haddress" name="hroad" placeholder="도로명 주소"
-							onblur="addressSearch(this.value)">
-					</div>
+			<div class="row">
+				<div class="input">
+					<input type="text" id="haddress" name="hroad" placeholder="도로명 주소"
+						onblur="addressSearch(this.value)">
 				</div>
-				<div class="row">
-					<div class="input">
-						<input type="text" id="hdetailAddress" name="hdetail"
-							placeholder="상세주소">
-					</div>
+			</div>
+			<div class="row">
+				<div class="input">
+					<input type="text" id="hdetailAddress" name="hdetail"
+						placeholder="상세주소">
 				</div>
-				<input type="text" id="extraAddress" name="hdong" placeholder="참고항목">
+			</div>
+			<input type="text" id="extraAddress" name="hdong" placeholder="참고항목">
 
-				<script type="text/javascript"
-					src="//dapi.kakao.com/v2/maps/sdk.js?appkey=0f92754065fd18fb9b2450d8077e930c&libraries=services,drawing"></script>
+			<script type="text/javascript"
+				src="//dapi.kakao.com/v2/maps/sdk.js?appkey=0f92754065fd18fb9b2450d8077e930c&libraries=services,drawing"></script>
 
-				<script>
-					var geocoder = new kakao.maps.services.Geocoder();
-					function addressSearch(haddress) {
-						geocoder
-								.addressSearch(
-										haddress,
-										function(result, status) {
-											if (status === kakao.maps.services.Status.OK) {
-												//주소를 좌표로변환한 결과에서 위도와 경도를 얻어온다
-												var latitude = result[0].y;
-												var longitude = result[0].x;
-												var coords = new kakao.maps.LatLng(
-														result[0].y,
-														result[0].x);
-												console.log(latitude);
-												console.log(longitude);
-												console.log(coords);
-												// 위경도 넣는다 input에
-												document
-														.getElementById('latitude').value = latitude;
-												document
-														.getElementById("longitude").value = longitude;
+			<script>
+				var geocoder = new kakao.maps.services.Geocoder();
+				function addressSearch(haddress) {
+					geocoder
+							.addressSearch(
+									haddress,
+									function(result, status) {
+										if (status === kakao.maps.services.Status.OK) {
+											//주소를 좌표로변환한 결과에서 위도와 경도를 얻어온다
+											var latitude = result[0].y;
+											var longitude = result[0].x;
+											var coords = new kakao.maps.LatLng(
+													result[0].y, result[0].x);
+											console.log(latitude);
+											console.log(longitude);
+											console.log(coords);
+											// 위경도 넣는다 input에
+											document.getElementById('latitude').value = latitude;
+											document
+													.getElementById("longitude").value = longitude;
 
-											} else {
-												console.error('오류');
+										} else {
+											console.error('오류');
 
-											}
-										});
+										}
+									});
+				}
+			</script>
+			<input type="hidden" id="latitude" name="lat" placeholder="위도">
+			<input type="hidden" id="longitude" name="lon" placeholder="경도">
+
+			<%-- 주소끝 --%>
+
+			<div class="row">
+				<div class="input">
+					<label for="htel">전화번호 </label> <br> <input type="text"
+						maxlength="13" id="htel" class="htel" name="htel"
+						placeholder="전화번호" />
+				</div>
+			</div>
+
+
+			<div class="row">
+				<div class="input">
+					<label for="htel">진료과목명 </label> <br> <input type="text"
+						class="type" placeholder="진료과목명" onclick="openTypeSelectionPage()"
+						name="department" id="department" required="required" />
+				</div>
+			</div>
+
+
+			<%-- 진료시간 시작 --%>
+
+			<script type="text/javascript">
+				function inputTimeColon(time) {
+
+					// replace 함수를 사용하여 콜론( : )을 공백으로 치환한다.
+					var replaceTime = time.value.replace(/\:/g, "");
+
+					// 텍스트박스의 입력값이 4~5글자 사이가 되는 경우에만 실행한다.
+					if (replaceTime.length >= 4 && replaceTime.length < 5) {
+
+						var hours = replaceTime.substring(0, 2); // 선언한 변수 hours에 시간값을 담는다.
+						var minute = replaceTime.substring(2, 4); // 선언한 변수 minute에 분을 담는다.
+
+						// isFinite함수를 사용하여 문자가 선언되었는지 확인한다.
+						if (isFinite(hours + minute) == false) {
+							alert("문자는 입력하실 수 없습니다.");
+							time.value = "00:00";
+							return false;
+						}
+
+						// 두 변수의 시간과 분을 합쳐 입력한 시간이 24시가 넘는지를 체크한다.
+						if (hours + minute > 2400) {
+							alert("시간은 24시를 넘길 수 없습니다.");
+							time.value = "24:00";
+							return false;
+						}
+
+						// 입력한 분의 값이 60분을 넘는지 체크한다.
+						if (minute > 60) {
+							alert("분은 60분을 넘길 수 없습니다.");
+							time.value = hours + ":00";
+							return false;
+						}
+
+						time.value = hours + ":" + minute;
 					}
-				</script>
-				<input type="hidden" id="latitude" name="lat" placeholder="위도">
-				<input type="hidden" id="longitude" name="lon" placeholder="경도">
+				}
+			</script>
 
-				<%-- 주소끝 --%>
 
-				<div class="row">
-					<div class="input">
-						<input type="text" maxlength="13" id="htel" class="htel"
-							name="htel" placeholder="전화번호" />
+			<div class="row">
+				<div class="input">
+					<label for="clinic">진료시간 </label> <br>
+					<div class="clinic_container">
+						<input type="text" name ="clinic1" id="clinic" class="timeBox"
+							onKeyup="inputTimeColon(this);" placeholder="HH:MM" maxlength="5" />
+							~
+						<input type="text" name ="clinic2" id="clinic" class="timeBox"
+							onKeyup="inputTimeColon(this);" placeholder="HH:MM" maxlength="5" />
+					</div>
+
+				</div>
+			</div>
+
+
+			<%-- 점심시간 시작 --%>
+			<div class="row">
+				<div class="input">
+					<label for="lunch">점심시간 </label> <br>
+					<div class="lunch_container">
+						<input type="text" name ="lunch1" class="timeBox" onKeyup="inputTimeColon(this);"
+							placeholder="HH:MM" maxlength="5" /> ~ <input type="text"
+							name ="lunch2" class="timeBox" onKeyup="inputTimeColon(this);"
+							placeholder="HH:MM" maxlength="5" />
 					</div>
 				</div>
+			</div>
 
 
 
+			<div class="input">
+				<input type="hidden" name="lunch" />
+			</div>
 
-				<div class="row">
-					<div class="input">
-						<input type="text" class="type" placeholder="진료과목명"
-							onclick="openTypeSelectionPage()" name="department"
-							id="department" required="required" />
-					</div>
-				</div>
+			<%-- 병원사진 등록 --%>
 
-				<div class="row">
-					<div class="input">
-						<input type="text" class="clinic" id="clinic" name="clinic"
-							placeholder="진료시간">
-					</div>
+			<div class="row">
+				<div class="input">
+					<label for="file">병원사진등록 </label> <br> <input type="file"
+						name="file" id="file" accept="image/*" />
 				</div>
-				<div class="row">
-					<div class="input">
-						<input type="text" name="lunch" placeholder="점심시간">
-					</div>
-				</div>
-				
-				<div class="row">
-					<div class="input">
-						<%--디자인은 수정할게요  --%>
-						<input type="file" name="file" id="file" accept="image/*" />
-					</div>
-				</div>
-				
-				<div class="button">
-					<input type="submit" value="병 원 등 록">
-				</div>
-				<div>
-					니어바이닥 병원회원이신가요? <a href="hlogin">로그인</a>
-				</div>
-			</form>
-		</div>
-	</center>
+			</div>
 
+			<div class="button">
+				<input type="submit" value="병 원 등 록">
+			</div>
+
+			<div>
+				니어바이닥 병원회원이신가요? <a href="hlogin">로그인</a>
+			</div>
+		</form>
+	</div>
 </body>
 </html>
+
+
+

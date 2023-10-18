@@ -28,7 +28,8 @@ a {
     font-family: 'Noto Sans', sans-serif;
     text-align: center;
     padding-top: 10px;
-    padding-bottom: 20px;
+    padding-bottom: 10px;
+    margin-bottom:10px;
 
 }
 

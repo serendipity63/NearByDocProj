@@ -26,7 +26,8 @@
 	rel="stylesheet">
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-<script>
+	
+<script type="text/javascript">
 	function toggleOtherDeptInput() {
 		var otherDeptCheckbox = document.getElementById("otherDeptCheckbox");
 		var otherDeptInput = document.getElementById("otherDeptInput");
@@ -250,11 +251,11 @@ list-style-type:none;}
 	<%
 	pageContext.include("header.jsp");
 	%>
+
 	<br><br>
 	<%
 	pageContext.include("searchBox.jsp");
 	%>
-	
 	<a class="hospital" href="hlogin">
 		<div class="hospital">
 			혹시 병원 관계자이신가요? <br>병원페이지 바로가기
