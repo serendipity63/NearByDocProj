@@ -66,19 +66,17 @@ public class HospitalJoin extends HttpServlet {
 		String lunch2 = multi.getParameter("lunch2");
 		String clinic1 = multi.getParameter("clinic1");
 		String clinic2 = multi.getParameter("clinic2");
-		String lunch = lunch1 +" ~ " + lunch2;
-		String clinic = clinic1 +" ~ " + clinic2;
+		String lunch = lunch1 + " ~ " + lunch2;
+		String clinic = clinic1 + " ~ " + clinic2;
 		String hroad = multi.getParameter("hroad");
 		String hdong = multi.getParameter("hdong");
 		String hdetail = multi.getParameter("hdetail");
 		String hpostcode = multi.getParameter("hpostcode");
-		String hurl= multi.getOriginalFileName("file");		
-		
-		
-		
+		String hurl = multi.getOriginalFileName("file");
+
 		System.out.println(hurl);
 		request.setAttribute("hurl", hurl);
-		
+
 		BigDecimal hgrade = null;
 		Integer hreviewcnt = null;
 		BigDecimal lat = new BigDecimal(multi.getParameter("lat"));
@@ -91,7 +89,6 @@ public class HospitalJoin extends HttpServlet {
 				hdetail, hpostcode, hurl, hgrade, hreviewcnt, lat, lon);
 		hospital.setHurl(hurl);
 
-		
 		try {
 			HospitalService hospitalService = new HospitalServiceImpl();
 			hospitalService.hospitaljoin(hospital);

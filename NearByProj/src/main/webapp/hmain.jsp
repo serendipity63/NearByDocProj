@@ -132,13 +132,9 @@ b{
 	color:blue;
 }
 
-
-
-
-
-
 </style>
 </head>
+
 <body style="overflow-x: hidden">
 
 

@@ -19,7 +19,9 @@
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+<script type="text/javascript"
+	src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
 
 
 <script>
@@ -111,19 +113,16 @@ input[type='submit'] {
 	height: 40px;
 	background-color: #191970;
 	color: #fff;
-	margin-bottom: 5px;
-	margin-top: 5px;
+	margin-bottom: 10px;
 	text-indent: 0;
 	border: 0;
+	cursor:pointer;
 }
 
 input[type='text'], input[type='number'], input[type='password'] {
 	margin-bottom: 8px;
 }
 
-input[type='submit']:hover {
-	cursor: pointer;
-}
 
 input[type='file'] {
 	border: none;
@@ -178,17 +177,16 @@ label {
 	margin-top: 2px;
 }
 
-.clinic_container {
+
+.clinic_container, .lunch_container {
 	display: flex;
+	justify-content:center;
+	align-items:center;
 }
 
 .clinic_container input {
 	width: 120px;
 	margin: 5px;
-}
-
-.lunch_container{
-	display:flex;
 }
 
 .lunch_container input{
@@ -198,9 +196,6 @@ label {
 
 </style>
 
-<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
-<script type="text/javascript"
-	src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
 
 <script type="text/javascript">
 <!-- 사업자번호 중복검사  기능 -->
@@ -350,7 +345,6 @@ label {
 				});
 	});
 </script>
-
 
 		<script type="text/javascript">
 		
@@ -582,7 +576,6 @@ label {
 
 			<%-- 진료시간 시작 --%>
 	
-
 
 			<div class="row">
 				<div class="input">
