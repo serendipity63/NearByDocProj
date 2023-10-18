@@ -66,7 +66,7 @@ public class ReservationServiceImpl implements ReservationService{
 	
 
 	@Override
-	public Map<String, Object> reservationListByPage(Integer page) throws Exception {
+	public Map<String, Object> todayResListByPage(Integer page) throws Exception {
 	
 	PageInfo pageInfo = new PageInfo();
 	Integer reservationCount = resDao.selectReservationCount();
@@ -84,7 +84,7 @@ public class ReservationServiceImpl implements ReservationService{
 	pageInfo.setEndPage(endPage);
 
 	int row = (page - 1) * 10 + 1; 
-	List<Reservation> reservationList = resDao.selectTodayReservation(row - 1);
+	List<Map<String, Object>> reservationList = resDao.selectTodayReservation(row - 1);
 
 	Map<String, Object> map = new HashMap<>();
 	map.put("pageInfo", pageInfo);
@@ -314,5 +314,9 @@ public class ReservationServiceImpl implements ReservationService{
 	}
 	
 	
+	
+
+	
+
 	
 }

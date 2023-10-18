@@ -55,10 +55,10 @@ public class ReservationDaoImpl implements ReservationDao{
 	public Integer cntMyReservation(String pidnum) throws Exception {
 		return sqlSession.selectOne("mapper.reservation.cntMyReservation", pidnum);
 	}
-
+	//오늘의 예약 내역
 	@Override
-	public List<Reservation> selectTodayReservation(Integer row) throws Exception {
-		return sqlSession.selectList("mapper.reservation.selectReservationList",row);
+	public List<Map<String,Object>> selectTodayReservation(Integer row) throws Exception {
+		return sqlSession.selectList("mapper.reservation.selectTodayReservation",row);
 	}
 
 	@Override
@@ -114,7 +114,7 @@ public class ReservationDaoImpl implements ReservationDao{
 	}
 
 
-
+	//예약 환자 정보
 	@Override
 	public Integer selectAllReservationCount() throws Exception {
 		return sqlSession.selectOne("mapper.reservation.selectAllReservationCount");
@@ -138,7 +138,7 @@ public class ReservationDaoImpl implements ReservationDao{
 		return sqlSession.selectList("mapper.reservation.searchReservationList",param);
 	}
 
-	/* 예약 환자 정보 */
+	
 
 	
 
