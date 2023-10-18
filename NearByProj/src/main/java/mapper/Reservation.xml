@@ -123,16 +123,7 @@ order by r.resdate desc
      </update>
 	
 	
-	<select id='selectTodayReservationList' parameterType="Integer" resultType="Reservation">
-	<![CDATA[
-		select id,resdate,restime,p.pname,p.pidnum,comment,h.department,status
-		from reservation r,patient p,hospital h
-		where r.pidnum=p.pidnum
-		and h.comnum=r.comnum
-		order by id desc
-		limit #{row},10
-	]]>
-	</select>
+	
 	<select id='selectHRecordList' parameterType="String" resultType="Reservation">
 	<![CDATA[
 		select resdate,restime,p.pname,comment,h.department,status,doccomment
@@ -206,6 +197,18 @@ order by r.resdate desc
 		select * from reservation 
         where comnum=#{comnum} and resdate between #{sdate} and #{edate} and ${type} like '%${keyword}%'
         limit #{row},10
+	]]>
+	</select>
+	
+	<!-- 오늘의 예약조회 -->
+	<select id='selectTodayReservationList' parameterType="Integer" resultType="hashmap">
+	<![CDATA[
+		select id,resdate,restime,p.pname as pname,p.pidnum as pidnum ,comment,h.department as department,status
+		from reservation r,patient p,hospital h
+		where r.pidnum=p.pidnum
+		and h.comnum=r.comnum
+		order by id desc
+		limit #{row},10
 	]]>
 	</select>
 	

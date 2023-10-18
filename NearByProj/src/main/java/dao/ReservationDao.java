@@ -32,7 +32,7 @@ public interface ReservationDao {
 	List<Map<String,Object>> searchReservationList(Map<String,Object> param)throws Exception;
 	
 	/*오늘의 예약 내역 */
-	List<Reservation>selectTodayReservation(Integer row) throws Exception;
+	List<Map<String,Object>>selectTodayReservation(Integer row) throws Exception;
 	Integer selectReservationCount() throws Exception;
 	Reservation selectReservation(Integer num) throws Exception;
 	
