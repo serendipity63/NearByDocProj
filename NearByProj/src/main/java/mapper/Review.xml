@@ -24,6 +24,7 @@
 	       , h.department as department
 	       , r.star as star
 	       , r.content as content
+	       , r.id as id
 	    from review r
 	       , hospital h
 	   where r.pidnum=#{pidnum}
@@ -37,6 +38,10 @@
 	values (#{pidnum},#{comnum},#{content},#{star},now()) 
 	]]>
 	</insert>
+	
+	<delete id="deleteReview" parameterType="Integer">
+	delete from review where id = #{id}
+	</delete>
 	
 	<select id="selectLastReview" parameterType="String"
 		resultType="hashmap">

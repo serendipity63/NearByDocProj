@@ -12,6 +12,8 @@ public interface ReservationDao {
 	String findById(Integer id) throws Exception;
 	Map<String, Object> selectMyDetailReservation(Map<String, Object> param);
 	Map<String, Object> selectFamDetailReservation(Map<String, Object> param);
+	void statusUpdate(Reservation res) throws Exception;
+	void commentUpdate(Reservation res) throws Exception;
 
 	
 	

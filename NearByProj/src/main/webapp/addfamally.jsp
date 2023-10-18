@@ -17,6 +17,10 @@
 <link
 	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap"
 	rel="stylesheet">
+<!-- alert 디자인 -->
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">	
+	
 <title>NearByDocHeader</title>
 
 <style>
@@ -149,17 +153,29 @@ input {
 margin-left : 70px;
 }
 </style>
-
+<script type="text/javascript"
+	src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
 <script>
-$(function(){
+/* $(function(){
 	$(".reg").click(function(){
+		
+		var pname = $("#pname").val();
+		var ftel = $("#tel").val();
+		var faddress = $("#address").val();
+		var fidnum = $("#idnum").val();
+		
+		// 데이터 작성 확인
+		if (!name || !tel || !address || !idnum) {
+			alert("모든 항목을 작성해야 합니다.");
+		}
+		
 		$.ajax({
 			url:"addfamally",
 			type:"post",
-			data:{"fname" : $("#pname").val()
-	      		, "ftel" : $("#tel").val()
-	      		, "faddress" : $("#address").val()
-	      		, "fidnum" : $("#idnum").val()},
+			data:{"fname" : pname
+	      		, "ftel" : ftel
+	      		, "faddress" : faddress
+	      		, "fidnum" : $fidnum },
 	      		success:function(res){
 			    	console.log(res);
 			    	if(res=="can"){
@@ -171,6 +187,63 @@ $(function(){
 			    }
 		})
 	})
+}) */
+
+$(function(){
+	$(".reg").click(function(){
+		var pname = $("#pname").val();
+		var ftel = $("#tel").val();
+		var faddress = $("#address").val();
+		var fidnum = $("#idnum").val();
+		
+		// 데이터 작성 확인
+		if (!pname || !ftel || !faddress || !fidnum) {
+			Swal.fire({
+				icon: 'error',
+				title: 'Error',
+				text: '모든 항목을 작성해야 합니다.'
+			});
+		} else {
+			$.ajax({
+				url: "addfamally",
+				type: "post",
+				data: {
+					"fname": pname,
+					"ftel": ftel,
+					"faddress": faddress,
+					"fidnum": fidnum
+				},
+				success: function(res) {
+					console.log(res);
+					if (res == "can") {
+						Swal.fire({
+							icon: 'success',
+							title: '등록 성공',
+							text: '가족 등록이 성공적으로 완료되었습니다.'
+						}).then(function() {
+							location.href = "addfamally";
+						});
+					} else {
+						Swal.fire({
+							icon: 'error',
+							title: 'Error',
+							text: '등록한 사람과 주민번호가 같을 수 없습니다.'
+						});
+					}
+				}
+			});
+		}
+	})
+	
+	$(".cancel").click(function() {
+        // Reset the input fields
+        $("#pname").val("");
+        $("#tel").val("");
+        $("#address").val("");
+        $("#idnum").val("");
+    });
+	
+	
 })
 </script>
 </head>
@@ -183,25 +256,24 @@ $(function(){
 	<div id="container">
 		<div id="famallymanage">
 			<span style="text-align: left; margin: 10px 0 10px 10px">가족관리</span>
-			<span class="material-symbols-outlined" onClick="history.go(-1)"
+			<span class="material-symbols-outlined" onClick="location.href='mypage'"
 				style="margin-left: 280px;"> arrow_back </span> <br> <br>
 			<!-- <form action="addfamally" method="post"> -->
 				<p>이름</p>
-				<input type="text" id="pname" name="fname" placeholder="" required="">
+				<input type="text" id="pname" name="fname" placeholder="" required="required">
 				<p>전화번호</p>
-				<input type="text" id="tel" name="ftel" placeholder="-없이 숫자만 입력" required="">
+				<input type="text" id="tel" name="ftel" placeholder="-없이 숫자만 입력" required="required">
 				<p>주소</p>
-				<input type="text" id="address" name="faddress" placeholder="" required="">
+				<input type="text" id="address" name="faddress" placeholder="" required="required">
 				<p>주민등록번호</p>
-				<input type="text" id="idnum" name="fidnum" placeholder="-없이 숫자만 입력" required="">
+				<input type="text" id="idnum" name="fidnum" placeholder="-없이 숫자만 입력" required="required">
 				<br>
 				<div class="idbtn">
 					<input class="reg" type=button value="등록"
 						style="text-align: left;">
 				</div>
 			<!-- </form> -->
-			<input class="cancel" type="button" value="취소" onclick="cancel">
-			<!-- <button class="cancel" onclick="cancel"><h4>취소</h4></button> -->
+			<input class="cancel" type="button" value="취소">
 			<br>
 
 		</div>

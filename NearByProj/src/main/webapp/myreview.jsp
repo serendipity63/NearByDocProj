@@ -17,6 +17,9 @@
 <link
 	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap"
 	rel="stylesheet">
+<!-- alert 디자인 -->
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">	
 <title>NearByDocHeader</title>
 
 <style>
@@ -26,7 +29,8 @@
 	width: 430px;
 	height: 480px;
 	padding-top: 5px;
-	overflow: hidden; /* Hide the scrollbar */
+	overflow-y: scroll;
+	
 
 }
 
@@ -68,8 +72,59 @@
 	margin-left: 20px;
 }
 
+#res>h5{
+float:left;
+}
+
+.deleteBtn{
+margin-left: 270px;
+border-radius: 10px;
+background: #363A3E;
+color : white;
+width : 50px;
+height : 36px;
+}
+
+
 </style>
+<script type="text/javascript"
+	src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
+<script>
+$(function(){
+	$(".deleteBtn").click(function(){
+		var id = $(".hiddenId").val();
+		console.log(id);
+		
+		Swal.fire({
+			  title: '삭제',
+			  test : '삭제하시겠습니까?',
+			  icon: 'question',
+			  showCancelButton: true,
+			  confirmButtonText: '확인',
+			  cancelButtonText: '취소',
+			}).then((result) => {
+			  /* Read more about isConfirmed, isDenied below */
+			  if (result.isConfirmed) {
+				  $.ajax({
+						url:"deletedeview",
+						type:"post",
+						data:{
+							"id" : id 
+							},
+						success:function(res){
+							location.href='myreview'
+						}
+					})
+			  } else if (result.isDenied) {
+				  return false;
+			  }
+		})
+	})
+})
+</script>
 </head>
+
+
 
 <body>
 	<!-- 헤더 -->
@@ -78,17 +133,19 @@
 	%>
 	<div id="sub">
 		<span>나의 리뷰</span> <span class="material-symbols-outlined"
-			onClick="history.go(-1)" style="margin-left: 260px;">
+			onClick="location.href='mypage'" style="margin-left: 260px;">
 			arrow_back </span> <br>
 		<hr>
 	</div>
 
-	<div id="container">
+	<div id="container" style="cursor: pointer;">
 	<div id="roll">
 		<c:forEach items="${reviews}" var="review" varStatus="status">
 			<div id="res">
+			<input class="hiddenId" type="text" value="${review.id }" style="display: none">
 				<h4>${review.name }</h4>
 				<h5>${review.date }</h5>
+				<input class="deleteBtn" type="button" value="삭제">
 				<div id="reviewbox">
 					<span>진료 과목 </span> &nbsp; <span>${review.department }</span> <br>
 					<br> <span id="cntStar"> <c:forEach begin="1"
