@@ -17,7 +17,7 @@
 <body>
 <center>
 <% pageContext.include("header.jsp"); %>
-<h2><%=request.getAttribute("err") %> </h2>
+<h3><%=request.getAttribute("err") %> </h3>
 
 <a href="home" class="logo"><img src="image?file=error.jpg"
 			alt="에러404" width="430px" height="430px"></a>

@@ -12,12 +12,15 @@
 	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/icon?family=Material+Icons">
-<link
-	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap"
-	rel="stylesheet">
-<title>NearByDocHeader</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap"
+        rel="stylesheet">
+<title>NearByDocMyPage</title>
 
-<style>
+<style type="text/css">
+*{
+    font-family: 'Noto Sans kr', sans-serif;
+}
+
 #container {
 	border-radius: 10px;
 	background-color: #CFE8F7;

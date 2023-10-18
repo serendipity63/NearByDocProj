@@ -78,7 +78,7 @@
    <delete id="deletePatient" parameterType="String">
    <![CDATA[
    
-   	delete from patient where pname=#{pname} 
+   	delete from patient where pidnum = #{pidnum} 
    
    ]]>
    

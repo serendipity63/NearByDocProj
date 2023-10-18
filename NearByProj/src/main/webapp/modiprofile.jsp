@@ -15,6 +15,9 @@
 <link
    href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap"
    rel="stylesheet">
+<!-- alert 디자인 -->
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
 <title>NearByDocHeader</title>
 
 <style>
@@ -94,9 +97,42 @@ margin-left :60px;
 
 
 </style>
+<script type="text/javascript"
+	src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
 <script>
 	$(function() {
-		$
+		$(".modibtn").click(function(){
+			
+			var pname = $("#pname").val();
+			var ptel = $("#ptel").val();
+			var pemail = $("#pemail").val();
+			var proadaddress = $("#proadaddress").val();
+			
+			Swal.fire({
+				 title: '수정',
+		         text: '수정하시겠습니까?',
+		         icon: 'question',
+		         showCancelButton: true,
+		         confirmButtonText: '확인',
+		         cancelButtonText: '취소',
+				}).then((result) => {
+					if (result.isConfirmed) {
+						  $.ajax({
+								url:"modiprofile",
+								type:"post",
+								data:{
+									"pname" : pname
+								  , "ptel" : ptel
+								  ,	"pemail" : pemail
+								  ,	"proadaddress" : proadaddress
+									},
+								success:function(res){
+									location.href=res
+								}
+							})
+					  } 
+				})
+		})
 	})
 </script>
 </head>
@@ -110,20 +146,19 @@ margin-left :60px;
 
    <div id="container">
     <div>
-    <form id="updateProfile" action="modiprofile" method="post"> 
 	    <p class="col">이름</p>
-	    <p><input type="text" id="name" name="pname" value="${myinfo.pname }"></p>
+	    <p><input type="text" id="pname" name="pname" value="${myinfo.pname }"></p>
 	    <p class="col">전화번호</p>
-	    <p><input type="text" id="tel" name="ptel"  value="${myinfo.ptel } "></p>
+	    <p><input type="text" id="ptel" name="ptel"  value="${myinfo.ptel } "></p>
 	    <p class="col">이메일</p>
-	    <p><input type="text" id="email" name="pemail" value="${myinfo.pemail }"></p>
+	    <p><input type="text" id="pemail" name="pemail" value="${myinfo.pemail }"></p>
 	    <p class="col">주소</p>
-	    <p><input type="text" id="address" name="proadaddress" value="${myinfo.proadaddress }"></p>
+	    <p><input type="text" id="proadaddress" name="proadaddress" value="${myinfo.proadaddress }"></p>
 	    <span>
-        <input class="modibtn" type="submit" value="수정" onclick="modi()">
-        <input class="canbtn" type="button" onclick="history.go(-1)" value="취소">
+	     
+        <input class="modibtn" type="submit" value="수정">
+        <input class="canbtn" type="button" onclick="location.href='profile'" value="취소">
       </span>
-    </form>
     </div>
     </div>
 

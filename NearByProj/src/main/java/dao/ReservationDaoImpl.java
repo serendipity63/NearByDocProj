@@ -33,9 +33,23 @@ public class ReservationDaoImpl implements ReservationDao{
 	public Map<String, Object> selectFamDetailReservation(Map<String, Object> param) {
 		return sqlSession.selectOne("mapper.reservation.selectFamDetailReservation", param);
 	}
-	
-	
 
+
+	@Override
+	public void statusUpdate(Reservation res) throws Exception {
+		// TODO Auto-generated method stub
+		sqlSession.update("mapper.reservation.statusUpdate",res);
+		sqlSession.commit();
+	}
+	
+	@Override
+	public void commentUpdate(Reservation res) throws Exception {
+		// TODO Auto-generated method stub
+		sqlSession.update("mapper.reservation.commentUpdate",res);
+		sqlSession.commit();
+	}
+	
+	
 	@Override
 	public Integer cntMyReservation(String pidnum) throws Exception {
 		return sqlSession.selectOne("mapper.reservation.cntMyReservation", pidnum);
@@ -99,6 +113,7 @@ public class ReservationDaoImpl implements ReservationDao{
 	}
 
 
+
 	@Override
 	public Integer selectAllReservationCount() throws Exception {
 		return sqlSession.selectOne("mapper.reservation.selectAllReservationCount");
@@ -125,5 +140,5 @@ public class ReservationDaoImpl implements ReservationDao{
 	/* 예약 환자 정보 */
 
 	
-	
+
 }

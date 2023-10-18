@@ -246,6 +246,18 @@ public class ReservationServiceImpl implements ReservationService{
 		
 		return map;
 	}
+
+	@Override
+	public void resUpdate(Reservation res) throws Exception {
+		resDao.statusUpdate(res);
+		
+	}
+	
+	@Override
+	public void updateComment(Reservation res) throws Exception {
+		resDao.commentUpdate(res);
+		
+	}
 	
 	/*예약 환자 정보*/
 

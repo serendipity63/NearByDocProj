@@ -63,13 +63,9 @@ public class PatientDaoImpl implements PatientDao {
 	public void deletePatient(String pidnum) throws Exception {
 		System.out.println("Impl : " +pidnum);
 		sqlSession.delete("mapper.patient.deletePatient",pidnum);
-	}
-	@Override
-	public void deleteMyPatient(String pname) throws Exception {
-		sqlSession.delete("mapper.patient.deletePatient",pname);
-
 		sqlSession.commit();
 	}
+	
 	
 	@Override
 	public Patient selectPatientByname(String pname) throws Exception {

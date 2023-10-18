@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import dto.Patient;
+import dto.Reservation;
 import service.ReservationService;
 import service.ReservationServiceImpl;
 
@@ -49,7 +50,7 @@ public class Resmanage extends HttpServlet {
 			System.out.println("Controller pidnum : "+reservation.get("pidnum"));
 			
 			Map<String,Object> res = resService.detailRes(reservation);
-			request.setAttribute("res", res);	
+			request.setAttribute("res", res);
 			request.getRequestDispatcher("resmanage.jsp").forward(request, response);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -61,8 +62,20 @@ public class Resmanage extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("utf-8");
+		Integer id = Integer.parseInt(request.getParameter("id"));
+		String status = request.getParameter("status");
 		
-		doGet(request, response);
+		Reservation reservation = new Reservation(id, status);
+		ReservationService reservationService = new ReservationServiceImpl();
+		
+		try {
+			reservationService.resUpdate(reservation);
+			request.getRequestDispatcher("reslist.jsp").forward(request, response);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		
 	}
 

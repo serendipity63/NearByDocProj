@@ -85,9 +85,9 @@ public class PatientServiceImpl implements PatientService {
 	public Patient login(String pemail, String ppassword) throws Exception {
 		Patient patient = patientDao.selectPatient(pemail);
 		if (patient == null)
-			throw new Exception("이메일틀림");
+			throw new Exception("이메일을 잘못 입력하셨습니다 다시 로그인해주세요");
 		if (patient.getPpassword().equals(ppassword) == false)
-			throw new Exception("비밀번호 오류");
+			throw new Exception("비밀번호를 잘못 입력하셨습니다 다시 로그인해주세요");
 
 		return patient;
 	}
@@ -96,7 +96,7 @@ public class PatientServiceImpl implements PatientService {
 	public void patientjoin(Patient patient) throws Exception {
 		Patient spatient = patientDao.selectPatient(patient.getPemail());
 		if (spatient != null)
-			throw new Exception("이메일 중복오류");
+			throw new Exception("이미 가입된 이메일이 있습니다 로그인해주세요!");
 		patientDao.insertPatient(patient);
 	}
 

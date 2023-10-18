@@ -13,7 +13,13 @@ public interface ReservationDao {
 	String findById(Integer id) throws Exception;
 	Map<String, Object> selectMyDetailReservation(Map<String, Object> param);
 	Map<String, Object> selectFamDetailReservation(Map<String, Object> param);
+
+	void statusUpdate(Reservation res) throws Exception;
+	void commentUpdate(Reservation res) throws Exception;
+
+
 	Integer cntMyReservation(String pidnum)throws Exception;
+
 	
 	/* 예약환자정보 */
 	//예약 환자 전체 데이터 수

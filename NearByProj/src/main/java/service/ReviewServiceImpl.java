@@ -31,5 +31,10 @@ public class ReviewServiceImpl implements ReviewService {
 	public Map<String,Object> selectLastReview(String comnum) throws Exception {
 		return reviewDao.selectLastReview(comnum);
 	}
+	@Override
+	public void reviewDelete(Integer id) throws Exception {
+		reviewDao.deleteReview(id);
+		
+	}
 }
 
