@@ -25,6 +25,11 @@
         if (!emailRegex.test(email)) {
             alert("올바른 이메일 형식으로 입력하세요.");
             return false;
+            else if (email===""){
+            	alert("이메일을 입력하세요")
+            	return false;
+            }    
+            	
         }
 
         // 비밀번호 필드가 비어 있는지 확인

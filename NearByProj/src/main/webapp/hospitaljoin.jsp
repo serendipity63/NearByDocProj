@@ -278,7 +278,6 @@ label {
 						type:"post",
 						data:
 							
-						{"pidnum" : $('#hiddenPidnum').val()},
 						success:function(res){
 							location.href=res
 
