@@ -76,7 +76,7 @@ form.join-form input[type="text"], form.join-form input[type="password"],
 .container {
 	padding: 10px;
 	border: 2px solid;
-	width: 550px;
+	width: 500px;
 	height: 890px;
 	display: flex;
 	justify-content: center;
@@ -198,12 +198,12 @@ label {
 
 </style>
 
-<!-- 사업자번호 중복검사  기능 -->
 <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
 <script type="text/javascript"
 	src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
 
 <script type="text/javascript">
+<!-- 사업자번호 중복검사  기능 -->
 	$(function() {
 		let isComnumCheck = false;
 		let isPasswordMatch = false;
@@ -352,6 +352,47 @@ label {
 	});
 </script>
 
+
+		<script type="text/javascript">
+		
+		//시간 넣는 것
+				function inputTimeColon(time) {
+
+					// replace 함수를 사용하여 콜론( : )을 공백으로 치환한다.
+					var replaceTime = time.value.replace(/\:/g, "");
+
+					// 텍스트박스의 입력값이 4~5글자 사이가 되는 경우에만 실행한다.
+					if (replaceTime.length >= 4 && replaceTime.length < 5) {
+
+						var hours = replaceTime.substring(0, 2); // 선언한 변수 hours에 시간값을 담는다.
+						var minute = replaceTime.substring(2, 4); // 선언한 변수 minute에 분을 담는다.
+
+						// isFinite함수를 사용하여 문자가 선언되었는지 확인한다.
+						if (isFinite(hours + minute) == false) {
+							Swal.fire("오류", "문자는 입력하실 수 없습니다", "error");
+							time.value = "00:00";
+							return false;
+						}
+
+						// 두 변수의 시간과 분을 합쳐 입력한 시간이 24시가 넘는지를 체크한다.
+						if (hours + minute > 2400) {
+							Swal.fire("오류","시간은 24시를 넘길 수 없습니다","error");
+							time.value = "24:00";
+							return false;
+						}
+
+						// 입력한 분의 값이 60분을 넘는지 체크한다.
+						if (minute > 60) {
+							Swal.fire("오류","분은 60분을 넘길 수 없습니다","error");
+							time.value = hours + ":00";
+							return false;
+						}
+
+						time.value = hours + ":" + minute;
+					}
+				}
+			</script>
+
 <%--주소불러오기  --%>
 <script
 	src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
@@ -424,12 +465,10 @@ label {
 
 			<div class="title">병원등록</div>
 
-
-
 			<div class="row">
 				<div class="input">
-					<label for="hname">병원명 </label> <br> <input type="text"
-						id="hname" name="hname" placeholder="병원명">
+					<label for="hname">병원명 </label> <br> 
+					<input type="text" id="hname" name="hname" placeholder="병원명">
 				</div>
 			</div>
 
@@ -437,11 +476,9 @@ label {
 			<div id="info_comnum">
 				<div class="row">
 					<div class="input">
-						<label for="comnum">사업자등록번호 </label> <br> <input
-							type="number" id="comnum" name="comnum" placeholder="사업자등록번호"
-							required="required" />
+						<label for="comnum">사업자등록번호 </label> <br> 
+						<input type="number" id="comnum" name="comnum" placeholder="사업자등록번호" required="required" />
 						<button id="comnumcheck">중복 확인</button>
-
 					</div>
 				</div>
 			</div>
@@ -450,8 +487,7 @@ label {
 			<div class="row">
 				<div class="input">
 					<label for="hpassword">비밀번호 </label> <br> <input
-						type="password" id="hpassword" name="hpassword" placeholder="비밀번호"
-						required="required"/ >
+						type="password" id="hpassword" name="hpassword" placeholder="비밀번호" required="required" />
 				</div>
 			</div>
 
@@ -477,13 +513,12 @@ label {
 				</div>
 			</div>
 
-
 			<div class="row">
 				<div class="input">
 					<input type="text" id="haddress" name="hroad" placeholder="도로명 주소"
 						onblur="addressSearch(this.value)">
 				</div>
-			</div>
+			</div>			
 			<div class="row">
 				<div class="input">
 					<input type="text" id="hdetailAddress" name="hdetail"
@@ -491,6 +526,8 @@ label {
 				</div>
 			</div>
 			<input type="text" id="extraAddress" name="hdong" placeholder="참고항목">
+
+			<%-- 위도 경도 얻기 시작 --%>
 
 			<script type="text/javascript"
 				src="//dapi.kakao.com/v2/maps/sdk.js?appkey=0f92754065fd18fb9b2450d8077e930c&libraries=services,drawing"></script>
@@ -523,19 +560,17 @@ label {
 									});
 				}
 			</script>
+			<%-- 받아온 위도 경도를 hidden에다가 저장함 --%>
 			<input type="hidden" id="latitude" name="lat" placeholder="위도">
 			<input type="hidden" id="longitude" name="lon" placeholder="경도">
 
-			<%-- 주소끝 --%>
 
 			<div class="row">
 				<div class="input">
-					<label for="htel">전화번호 </label> <br> <input type="text"
-						maxlength="13" id="htel" class="htel" name="htel"
-						placeholder="전화번호" />
+					<label for="htel">전화번호 </label> <br> 
+					<input type="text" maxlength="13" id="htel" class="htel" name="htel" placeholder="전화번호" />
 				</div>
 			</div>
-
 
 			<div class="row">
 				<div class="input">
@@ -547,44 +582,7 @@ label {
 
 
 			<%-- 진료시간 시작 --%>
-
-			<script type="text/javascript">
-				function inputTimeColon(time) {
-
-					// replace 함수를 사용하여 콜론( : )을 공백으로 치환한다.
-					var replaceTime = time.value.replace(/\:/g, "");
-
-					// 텍스트박스의 입력값이 4~5글자 사이가 되는 경우에만 실행한다.
-					if (replaceTime.length >= 4 && replaceTime.length < 5) {
-
-						var hours = replaceTime.substring(0, 2); // 선언한 변수 hours에 시간값을 담는다.
-						var minute = replaceTime.substring(2, 4); // 선언한 변수 minute에 분을 담는다.
-
-						// isFinite함수를 사용하여 문자가 선언되었는지 확인한다.
-						if (isFinite(hours + minute) == false) {
-							alert("문자는 입력하실 수 없습니다.");
-							time.value = "00:00";
-							return false;
-						}
-
-						// 두 변수의 시간과 분을 합쳐 입력한 시간이 24시가 넘는지를 체크한다.
-						if (hours + minute > 2400) {
-							alert("시간은 24시를 넘길 수 없습니다.");
-							time.value = "24:00";
-							return false;
-						}
-
-						// 입력한 분의 값이 60분을 넘는지 체크한다.
-						if (minute > 60) {
-							alert("분은 60분을 넘길 수 없습니다.");
-							time.value = hours + ":00";
-							return false;
-						}
-
-						time.value = hours + ":" + minute;
-					}
-				}
-			</script>
+	
 
 
 			<div class="row">
@@ -615,17 +613,12 @@ label {
 				</div>
 			</div>
 
-
-
-			<div class="input">
-				<input type="hidden" name="lunch" />
-			</div>
-
 			<%-- 병원사진 등록 --%>
 
 			<div class="row">
 				<div class="input">
-					<label for="file">병원사진등록 </label> <br> <input type="file"
+					<label for="file">병원사진등록 </label> <br> 
+					<input type="file"
 						name="file" id="file" accept="image/*" />
 				</div>
 			</div>

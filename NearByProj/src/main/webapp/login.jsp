@@ -11,6 +11,9 @@
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap"
         rel="stylesheet">
+    <script type="text/javascript"
+	src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
+        
     <title>로그인</title>
         <script type="text/javascript">
     function validateForm() {
@@ -83,6 +86,7 @@ input {
 }
 
 button.loginbutton {
+
     height: 40px;
     width: 100%;
     border-radius: 4px;
@@ -94,6 +98,7 @@ button.loginbutton {
     font-weight: bold;
     font-size: 14pt;
     display: inline-block;
+    cursor:pointer;
 }
 
 form {
@@ -142,9 +147,7 @@ button {
     font-size: 12pt;
 }
 
-.loginbutton:hover {
-    cursor: pointer;
-}
+
 
 .input-container {
     position: relative;

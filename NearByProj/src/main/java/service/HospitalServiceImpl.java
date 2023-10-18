@@ -20,9 +20,9 @@ public class HospitalServiceImpl implements HospitalService {
 	public Hospital login(String comnum, String hpassword) throws Exception {
 		Hospital hospital = hospitalDao.selectHospital(comnum);
 		if (hospital == null)
-			throw new Exception("사업자등록번호틀림");
+			throw new Exception("사업자등록번호를 잘못 입력하셨습니다 다시 로그인해주세요");
 		if (hospital.getHpassword().equals(hpassword) == false)
-			throw new Exception("비밀번호 오류");
+			throw new Exception("비밀번호를 잘못 입력하셨습니다 다시 로그인해주세요");
 		return hospital;
 	}
 
@@ -34,7 +34,7 @@ public class HospitalServiceImpl implements HospitalService {
 	public void hospitaljoin(Hospital hospital) throws Exception {
 		Hospital shospital = hospitalDao.selectHospital(hospital.getComnum());
 		if (shospital != null)
-			throw new Exception("사업자등록번호 중복오류");
+			throw new Exception("이미 가입된 사업자등록번호가 있습니다 로그인해주세요");
 		hospitalDao.insertHospital(hospital);
 
 	}

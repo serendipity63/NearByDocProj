@@ -91,7 +91,7 @@
 
 		.new {
 			margin-top: 20px;
-			margin-bottom: 20px;
+			margin-bottom: 5px;
 		}
 
 		.log {
@@ -133,6 +133,8 @@
 				<button type="submit" class="login-button">로그인</button>
 
 				<div class="new">니어바이닥이 처음이신가요? <a href="hjoin">회원가입</a></div>
+				<div class="wrong">병원을 예약하러 오셨나요? <a href="main">니어바이닥 바로가기</a></div>
+				
 			</form>
 		</div>
 	</center>
