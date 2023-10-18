@@ -12,4 +12,6 @@ public interface FamilyService {
 	public List<Map<String, Object>> famList(String pidnum) throws Exception; 
   Family selectFamily(String name) throws Exception;
   	public List<Family> familylist(String pidnum) throws Exception;
+  	public void editFam(String fname) throws Exception;
+  	public void famUpdate(Family family) throws Exception;
 }
