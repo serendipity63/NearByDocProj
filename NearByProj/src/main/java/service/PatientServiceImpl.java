@@ -126,6 +126,15 @@ public class PatientServiceImpl implements PatientService {
 	@Override
 
 	public void modiProfile(Patient patient) throws Exception {
+		
+		System.out.println("Service ----------------");
+		System.out.println(patient.getPname());
+		System.out.println(patient.getPtel());
+		System.out.println(patient.getPemail());
+		System.out.println(patient.getPpassword());
+		System.out.println(patient.getProadaddress());
+		System.out.println(patient.getPidnum());
+		
 		patientDao.updatePatient(patient);
 
 	}

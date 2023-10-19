@@ -37,7 +37,7 @@
 	<![CDATA[
 		SELECT p.pname as name
 		     , p.ptel as tel
-		     , p.paddress as address
+		     , p.proadaddress as address
 		     , p.pidnum as id
 		  FROM patient p 
 		 WHERE 1=1
@@ -69,7 +69,7 @@
 	<!-- 가족 구성원 정보 수정  -->
 	<update id="famInfoUpdate" parameterType="Patient">
 	<![CDATA[
-	update family set pname = #{pname} , ptel = #{ptel}, proadaddress = #{proadaddress}
+	update patient set pname = #{pname} , ptel = #{ptel}, proadaddress = #{proadaddress}
 	where pidnum = #{pidnum}
 	]]>
 	</update>
@@ -117,15 +117,15 @@
    </select>
    
    
-   <delete id="deletePatient" parameterType="String">
+   <update id="deletePatient" parameterType="String">
    <![CDATA[
-   
-   	delete from patient where pidnum = #{pidnum} 
+    
+   	update patient set quit = true where pidnum = #{pidnum}
    
    ]]>
    
    
-   </delete>
+   </update>
    
    <select id="selectPatientByname" parameterType="String" resultType="Patient">
 	<![CDATA[
