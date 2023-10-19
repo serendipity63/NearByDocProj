@@ -14,8 +14,15 @@
     <style>
         body {
             font-family: 'Noto Sans kr', sans-serif;
-
         }
+       	button{
+	background-color: #191970;
+	color: #fff;
+	border: 0;
+	width:100px;
+	height:25px;
+	cursor:pointer;
+       	}
 
         li {
             list-style: none;
