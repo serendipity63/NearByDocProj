@@ -3,6 +3,7 @@ package controller;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.io.*;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -34,7 +35,7 @@ public class ImageView extends HttpServlet {
 		String fileName=request.getParameter("file");
 		
 		ServletContext context=request.getServletContext();
-		String filePath=context.getRealPath("upload")+"\\"+fileName;
+		String filePath=context.getRealPath("upload")+"//"+fileName;
 		
 		FileInputStream fis=new FileInputStream(filePath);
 		OutputStream out=response.getOutputStream();
