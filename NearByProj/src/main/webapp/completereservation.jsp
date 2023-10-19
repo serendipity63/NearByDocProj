@@ -111,7 +111,7 @@ button {
 				<tbody>
 					<tr>
 						<c:choose>
-							<c:when test="${reservation.fidnum eq null}">
+							<c:when test="${reservation.pidnum eq user.pidnum}">
 								<td>${user.pname}</td>
 							</c:when>
 							<c:otherwise>

@@ -136,13 +136,13 @@ public class ReservationServiceImpl implements ReservationService{
 		String clinic = hospital.getClinic();
 		String lunch = hospital.getLunch();
 		int scH = Integer.parseInt(clinic.substring(0, 2));
-		int scM = Integer.parseInt(clinic.substring(2, 4));
-		int ecH = Integer.parseInt(clinic.substring(4, 6));
-		int ecM = Integer.parseInt(clinic.substring(6, 8));
+		int scM = Integer.parseInt(clinic.substring(3, 5));
+		int ecH = Integer.parseInt(clinic.substring(8, 10));
+		int ecM = Integer.parseInt(clinic.substring(11, 13));
 		int slH = Integer.parseInt(lunch.substring(0, 2));
-		int slM = Integer.parseInt(lunch.substring(2, 4));
-		int elH = Integer.parseInt(lunch.substring(4, 6));
-		int elM = Integer.parseInt(lunch.substring(6, 8));
+		int slM = Integer.parseInt(lunch.substring(3, 5));
+		int elH = Integer.parseInt(lunch.substring(8, 10));
+		int elM = Integer.parseInt(lunch.substring(11, 13));
 		while (true) {
 			String hour = Integer.toString(scH);
 			if (hour.length() == 1) {
