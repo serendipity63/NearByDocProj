@@ -77,16 +77,17 @@ input[type="button"]{
 	
 	
 			<table id="title">
+								<tr>
+					<td>병원명</td>
+					<td><input type="text" name="hname" 
+					id="hname"  value="${hinfo.getHname() }" disabled="disabled"/></td>
+				</tr>
+				
 				<tr>
 					<td>진료 과목</td>
 					<td>
 					<input type="text" name="department" 
 					id="department"  value="${hinfo.getDepartment() }" disabled="disabled"/></td>
-				</tr>
-				<tr>
-					<td>병원명</td>
-					<td><input type="text" name="hname" 
-					id="hname"  value="${hinfo.getHname() }" disabled="disabled"/></td>
 				</tr>
 
 				<tr>

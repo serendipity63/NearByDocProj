@@ -13,20 +13,20 @@ public class Hospital {
 	private String hroad;
 	private String hdong;
 	private String hdetail;
-	private String hpostcode;	
+	private String hpostcode;
 	private String hurl;
 	private BigDecimal hgrade;
 	private Integer hreviewcnt;
 	private BigDecimal lat;
 	private BigDecimal lon;
-	
-	
+
 	public Hospital() {
 
 	}
 
 	public Hospital(String hname, String hpassword, String comnum, String htel, String department, String lunch,
-			String clinic, String hroad, String hdong, String hdetail, String hpostcode, String hurl, BigDecimal hgrade, Integer hreviewcnt, BigDecimal lat, BigDecimal lon) {
+			String clinic, String hroad, String hdong, String hdetail, String hpostcode, String hurl, BigDecimal hgrade,
+			Integer hreviewcnt, BigDecimal lat, BigDecimal lon) {
 		this.hname = hname;
 		this.hpassword = hpassword;
 		this.comnum = comnum;
@@ -34,32 +34,29 @@ public class Hospital {
 		this.department = department;
 		this.lunch = lunch;
 		this.clinic = clinic;
-		this.hdong=hdong;
+		this.hdong = hdong;
 		this.hroad = hroad;
 		this.hdetail = hdetail;
 		this.hpostcode = hpostcode;
-		this.hurl=hurl;
-		this.hgrade=hgrade;
-		this.hreviewcnt=hreviewcnt;
+		this.hurl = hurl;
+		this.hgrade = hgrade;
+		this.hreviewcnt = hreviewcnt;
 		this.lat = lat;
 		this.lon = lon;
 	}
-	
-// 병원정보 수정위한 생성자	
-	public Hospital(String hname, String hpassword, String comnum, String htel, String department, String lunch,
-			String clinic, String hroad, String hdong, String hdetail, String hpostcode, String hurl) {
-		this.department=department;
-		this.hname=hname;
-		this.htel=htel;
-		this.hpassword=hpassword;
-		this.comnum=comnum;
-		this.clinic=clinic;
-		this.hroad=hroad;
-		this.lunch=lunch;
-		
-	}
 
-		
+// 병원정보 수정위한 생성자	
+	public Hospital(String hname, String htel, String department, String lunch, String clinic, String hroad,
+			String hurl) {
+		this.hname = hname;
+		this.comnum = comnum; // comnum을 수정할 수 없도록 설정
+		this.htel = htel;
+		this.department = department;
+		this.lunch = lunch;
+		this.clinic = clinic;
+		this.hroad = hroad;
+		this.hurl = hurl;
+	}
 
 	public String getHname() {
 		return hname;
@@ -189,7 +186,4 @@ public class Hospital {
 		this.lon = lon;
 	}
 
-	
-	
-	
 }

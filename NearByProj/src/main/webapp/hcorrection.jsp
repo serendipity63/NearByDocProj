@@ -142,7 +142,7 @@ input[type="button"]{
 		<h1>병원정보</h1>
 	
 		
-		<form action="hospitalmodify" method="post" enctype="maltipart/form-data">
+		<form action="hospitalmodify" method="post" enctype="multipart/form-data">
 		
 			<table>
 			<tr>
@@ -182,7 +182,7 @@ input[type="button"]{
 				<tr>
 					<td>병원사진</td>
 					<td><input type="file" name="hurl"
-					id="hurl" value="${hinfo.getHurl() }" /></td>
+					id="hurl"  accept="image/*" value="${hinfo.getHurl() }" /></td>
 				
 				</tr>
 				
