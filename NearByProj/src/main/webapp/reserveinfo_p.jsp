@@ -28,8 +28,8 @@ h1 {
 table{
 	border: 1px solid;
     width: 1346px;
-    margin:55px 70px auto;
-    position:absolute;
+    margin:55px 53px auto;
+    
    
     
 }

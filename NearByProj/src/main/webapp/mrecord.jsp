@@ -70,7 +70,7 @@ body {
 h1 {
 	width: 202px;
 	height: 50px;
-	margin: 0px auto;
+	margin: 18px auto;
 	color: rgb(25, 25, 112);
 }
 th{
@@ -105,7 +105,9 @@ select {
 }
 
 #center {
-	margin:10px auto;
+	position: absolute;
+	left:180px;
+	padding-left :130px;
     width: 1479px;
    
    
@@ -128,7 +130,7 @@ button {
 .reserveform {
 	width: 1522px;
 	height: 100px;
-	margin: -10px auto;
+	margin: -18px auto;
 }
 #date{
 	float:right;
@@ -146,7 +148,7 @@ button {
 #emptyArea {
 	width: 708px;
 	text-align: center;
-	margin:280px auto;
+	margin:480px auto;
 }
 
 #emptyArea a {

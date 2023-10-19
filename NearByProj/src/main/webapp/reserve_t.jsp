@@ -39,7 +39,7 @@ table {
 }
 #emptyArea { width: 708px;
     text-align: center;
-    margin:0 auto; }
+    margin:450px auto; }
 #emptyArea a {
 	display: inline-block;
 	width: 20px;

@@ -44,7 +44,7 @@ table {
 }
 td{
 	width:63px;
-	background-color:lightblue;
+	background-color:white;
 	color:black;
 	text-align:center;
 }
@@ -52,26 +52,22 @@ input[type="text"]{
 	width: 241px;
     height: 42px;
     text-align: center;
+    border:none;
+}
+#button{
+	text-align:center;
+
+}
+input[type="submit"]{
+	width:200px;
+	height:40px;
+}
+input[type="button"]{
+	width: 200px;
+    height: 40px;
+    
 }
 
-#button {
-	margin-top: 50px;
-    margin-left: 904px;
-}
-
-#button>a {
-	padding: 10px;
-    text-decoration: none;
-    color: white;
-    background-color: #0a0a4d;
-    border-radius:10px;
-    display: inline-block;
-    width: 81px;
-}
-#button>a:hover{
-	 background-color:blue;
-      transition: 0.7s;
-}
 .ear{
 	background-color:#c1f3ea;
 	color:black;
@@ -181,11 +177,11 @@ input[type="text"]{
 			</table>
 			
 		</form>
-	    <span>
-	     
-        <input class="modibtn" type="submit" value="수정">
-        <input class="canbtn" type="button" onclick="location.href='hinfo'" value="취소">
-      </span>
+	   
+	    <div id="button">
+        <input type="submit" value="수정">
+        <input type="button" onclick="location.href='hinfo'" value="취소">
+     	</div>
 
 	
 </body>
