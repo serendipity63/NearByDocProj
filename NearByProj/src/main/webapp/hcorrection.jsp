@@ -52,6 +52,7 @@ input[type="text"]{
 	width: 241px;
     height: 42px;
     text-align: center;
+<<<<<<< Updated upstream
     border:none;
 }
 #button{
@@ -66,6 +67,9 @@ input[type="button"]{
 	width: 200px;
     height: 40px;
     
+=======
+    background-color:none;
+>>>>>>> Stashed changes
 }
 
 .ear{
@@ -137,7 +141,6 @@ input[type="button"]{
 	
 		
 		<form action="hospitalmodify" method="post" enctype="maltipart/form-data">
-		
 		
 			<table>
 			<tr>

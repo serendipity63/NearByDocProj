@@ -21,7 +21,6 @@ function validateForm(){
     	return false;
     	}
     
-    
     // 비밀번호 필드가 비어 있는지 확인
     if (password === "") {
         alert("비밀번호를 입력하세요.");
@@ -30,6 +29,7 @@ function validateForm(){
     return true;
 }
 </script>
+
 
 <head>
 	<title>NearByDoc for Hospital</title>
@@ -142,7 +142,7 @@ function validateForm(){
 
 				<div class="input-container">
 					<span class="icon material-symbols-outlined">local_hospital</span>
-					<input type="number" placeholder="사업자등록번호" id="comnum" name="comnum" required="required" />
+					<input type="number" placeholder="사업자등록번호" id="comnum" name="comnum" maxlength="12" required="required" />
 				</div>
 
 				<div class="input-container">
