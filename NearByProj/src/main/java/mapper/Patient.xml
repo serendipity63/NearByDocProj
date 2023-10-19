@@ -5,6 +5,13 @@
 <mapper namespace="mapper.patient">
 
 
+	<insert id="insertPatient" parameterType="Patient">
+	
+	<![CDATA[
+	insert into patient (pidnum,pemail,ppassword,pname,ptel,proadaddress,pdetailaddress,ppostcode,quit, ppidnum) values 
+	(#{pidnum},#{pemail},#{ppassword},#{pname},#{ptel},#{proadaddress},#{pdetailaddress},#{ppostcode},#{quit},#{ppidnum}) 
+	]]>
+	</insert>
 
 	<select id="selectPatient" parameterType="String" resultType="Patient">
 	<![CDATA[
@@ -76,12 +83,6 @@
 	
 
 
-	<insert id="insertPatient" parameterType="Patient">
-	
-	<![CDATA[
-	insert into patient (pidnum,pemail,ppassword,pname,ptel,proadaddress,pdetailaddress,ppostcode,quit, ppidnum) values (#{pidnum},#{pemail},#{ppassword},#{pname},#{ptel},#{proadaddress},#{pdetailaddress},#{ppostcode},#{quit},#{ppidnum}) 
-	]]>
-	</insert>
 	
 	<select id="selectPatientList" parameterType="Integer" resultType="Patient">
 	<![CDATA[

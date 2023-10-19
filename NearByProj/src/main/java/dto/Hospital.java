@@ -44,6 +44,22 @@ public class Hospital {
 		this.lat = lat;
 		this.lon = lon;
 	}
+	
+// 병원정보 수정위한 생성자	
+	public Hospital(String hname, String hpassword, String comnum, String htel, String department, String lunch,
+			String clinic, String hroad, String hdong, String hdetail, String hpostcode, String hurl) {
+		this.department=department;
+		this.hname=hname;
+		this.htel=htel;
+		this.hpassword=hpassword;
+		this.comnum=comnum;
+		this.clinic=clinic;
+		this.hroad=hroad;
+		this.lunch=lunch;
+		
+	}
+
+		
 
 	public String getHname() {
 		return hname;

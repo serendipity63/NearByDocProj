@@ -63,7 +63,7 @@ a {
 }
 
 </style>
-<title>hospitalheader</title>
+<title> hospitalheader </title>
 </head>
 <body>
  <div class="outerDiv">

@@ -7,6 +7,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
@@ -35,12 +36,15 @@ public class HospitalModify extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
-		String comnum=request.getParameter("comnum");
+		HttpSession session = request.getSession();
+		Hospital hospital= (Hospital) session.getAttribute("hospitaluser");
+		String comnum= hospital.getComnum();
+		
+		HospitalService hospitalService=new HospitalServiceImpl();
 		
 		try {
-			HospitalService hospitalService=new HospitalServiceImpl();
-			Hospital hospital=hospitalService.hospitalInfo(comnum);
-			request.setAttribute("hospital", hospital);
+			Hospital hinfo= hospitalService.hospitalInfo(comnum);
+			request.setAttribute("hinfo", hinfo);
 			request.getRequestDispatcher("hcorrection.jsp").forward(request, response);
 		}catch(Exception e) {
 			e.printStackTrace();
@@ -54,34 +58,27 @@ public class HospitalModify extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
+
+		String department=request.getParameter("department");
+		String hname=request.getParameter("hname");
+		String htel=request.getParameter("htel");
+		String hroad=request.getParameter("hroad");
+		String comnum2=request.getParameter("comnum");
+		String clinic=request.getParameter("clinic");
+		String lunch=request.getParameter("lunch");
 		
-		String uploadPath=request.getServletContext().getRealPath("upload");
-		int size=10*1024*1024;
-		MultipartRequest multi=new MultipartRequest(request,uploadPath,size,"utf-8",new DefaultFileRenamePolicy());
+		HttpSession session= request.getSession();
+		Hospital h= (Hospital) session.getAttribute("hospitaluser");
+		String comnum=h.getComnum();
 		
-		String department=multi.getParameter("department");
-		String hname=multi.getParameter("hname");
-		String comnum=multi.getParameter("comnum");
-		String htel=multi.getParameter("htel");
-		String hroad=multi.getParameter("hroad");
-		String clinic=multi.getParameter("clinic");
-		String lunch=multi.getParameter("lunch");
-		
-		Hospital hospital=new Hospital();
-		hospital.setHname(hname);
-		hospital.setComnum(comnum);
-		hospital.setHtel(htel);
-		hospital.setDepartment(department);
-		hospital.setLunch(lunch);
-		hospital.setClinic(clinic);
-		hospital.setHroad(hroad);
-		
-		
+		Hospital hospital= new Hospital(hname, hname, comnum, htel, department, lunch, clinic, hroad, comnum2, clinic, lunch, comnum);
+				
+				
 		
 		try {
 			HospitalService hospitalService= new HospitalServiceImpl();
 			hospitalService.hospitalModify(hospital);
-			response.sendRedirect("hospitalinfo?comnum="+hospital.getComnum());
+			response.sendRedirect("hinfo");
 		}catch(Exception e) {
 			e.printStackTrace();
 			request.setAttribute("err", "병원 수정 오류");

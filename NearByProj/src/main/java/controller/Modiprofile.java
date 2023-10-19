@@ -64,7 +64,6 @@ public class Modiprofile extends HttpServlet {
 		Patient p = (Patient) session.getAttribute("user");
 		String pidnum = p.getPidnum();
 		
-		
 		Patient patient = new Patient(pname, ptel, pemail, proadaddress, pidnum);
 		try {
 			PatientService patientService = new PatientServiceImpl();

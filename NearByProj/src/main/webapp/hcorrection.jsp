@@ -11,6 +11,13 @@
 <link
 	href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap"
 	rel="stylesheet">
+<script
+   src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	
+<!-- alert 디자인 -->
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+	
 </head>
 
 <style>
@@ -82,6 +89,52 @@ input[type="text"]{
 	color:black;
 }
 </style>
+
+<script type="text/javascript"
+	src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
+<script>
+	$(function() {
+		$(".modibtn").click(function(){
+			
+			var department = $("#department").val();
+			var hname = $("#hname").val();
+			var htel = $("#htel").val();
+			var hroad = $("#hroad").val();
+			var lunch = $("#lunch").val();
+			var clinic = $("#clinic").val();
+			
+			Swal.fire({
+				 title: '수정',
+		         text: '수정하시겠습니까?',
+		         icon: 'question',
+		         showCancelButton: true,
+		         confirmButtonText: '확인',
+		         cancelButtonText: '취소',
+				}).then((result) => {
+					if (result.isConfirmed) {
+						  $.ajax({
+								url:"hospitalmodify",
+								type:"post",
+								data:{
+									"department" : department
+								  , "hname" : hname
+								  , "htel" : htel
+								  , "hroad" : hroad
+								  , "lunch" : lunch
+								  , "clinic" : clinic
+									},
+								success:function(res){
+									location.href=res
+								}
+							})
+					  } 
+				})
+		})
+	})
+</script>
+ 
+
+
 <body>
 	<% pageContext.include("hmain.jsp");%>
 		<h1>병원정보</h1>
@@ -91,49 +144,49 @@ input[type="text"]{
 		
 		
 			<table>
-				<tr>
+			<tr>
 					<td>진료 과목</td>
-					<td><input type="text" name="department" 
-					id="department"  value="${hospital.department }" placeholder="${hospital.department }" /></td>
+					<td>
+					<input type="text" name="department" 
+					id="department"  value="${hinfo.getDepartment() }" /></td>
 				</tr>
 				<tr>
 					<td>병원명</td>
 					<td><input type="text" name="hname" 
-					id="hname"  value="${hospital.hname }" placeholder="${hospital.hname }" /></td>
+					id="hname"  value="${hinfo.getHname() }" /></td>
 				</tr>
-				<tr>
-					<td>사업자등록번호</td>
-					<td><input type="text" name="comnum"
-					id="comnum" value="${hospital.comnum }" placeholder="${hospital.comnum }" /></td>
-				</tr>
+
 				<tr>
 					<td>전화번호</td>
 					<td><input type="text" name="htel"
-					id="htel" value="${hospital.htel }"placeholder="${hospital.htel }" /></td>
+					id="htel" value="${hinfo.getHtel() }" /></td>
 				</tr>
 				<tr>
 					<td>주소</td>
 					<td><input type="text" name="address"
-					id="address" value="${hospital.address }" placeholder="${hospital.address }" /></td>
+					id="address" value="${hinfo.getHroad() }" /></td>
 				</tr>
 
 				<tr>
 					<td>진료시간</td>
 					<td><input type="text" name="clinic"
-					id="clinic" value="${hospital.clinic }" placeholder="${hospital.clinic }" /></td>
+					id="clinic" value="${hinfo.getClinic() }" /></td>
 				</tr>
 				<tr>
 					<td>점심시간</td>
 					<td><input type="text" name="lunch"
-					id="lunch" value="${hospital.lunch }"placeholder="${hospital.lunch }" /></td>
+					id="lunch" value="${hinfo.getLunch() }" /></td>
+				
 				</tr>
-
 			</table>
 			
 		</form>
-		<div id="button">
-			<input type="submit" value="수정완료">
-		</div>
+	    <span>
+	     
+        <input class="modibtn" type="submit" value="수정">
+        <input class="canbtn" type="button" onclick="location.href='hinfo'" value="취소">
+      </span>
+
 	
 </body>
 </html>
