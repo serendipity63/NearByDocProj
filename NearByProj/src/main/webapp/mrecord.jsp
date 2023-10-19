@@ -165,6 +165,9 @@ button {
 	background: black;
 	color:white;
 }
+#table1 {
+	height:150px;
+}
 </style>
 
 
@@ -197,7 +200,7 @@ button {
 		</div>
 	</div>
 	</form>
-
+	<div id="table1">
 	<table>
 		<tr>
 			<th>일자</th>
@@ -221,6 +224,7 @@ button {
 			</tr>
 		</c:forEach>
 	</table>
+	</div>
 	<div id="emptyArea">
 		<c:choose>
 			<c:when test="${res.pageInfo.curPage>1}">

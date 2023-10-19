@@ -176,6 +176,7 @@
 				r.doccomment as doccomment
 		from reservation r, patient p
         where r.pidnum = p.pidnum and r.comnum=#{comnum} and r.resdate between #{sdate} and #{edate} and p.${type} like '%${keyword}%'
+        order by r.resdate,r.restime
         limit #{row},10
 	]]>
 	</select>
@@ -197,6 +198,7 @@
 				r.doccomment as doccomment
 		from reservation r, patient p
         where r.pidnum = p.pidnum and r.comnum=#{comnum}
+        order by r.resdate,r.restime
         limit #{row},10
 	]]>
 	</select>
