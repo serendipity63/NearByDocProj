@@ -1,8 +1,0 @@
-package dao;
-
-import java.util.List;
-import java.util.Map;
-
-public interface ReviewDao {
-	List<Map<String, String>> reviewListByHos(String comnum) throws Exception;
-}

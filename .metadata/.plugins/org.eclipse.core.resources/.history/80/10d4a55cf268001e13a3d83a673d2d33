@@ -1,9 +1,0 @@
-package service;
-
-import java.util.List;
-
-import dto.Review;
-
-public interface ReviewService {
-	List<Review> reviewList() throws Exception;
-}
