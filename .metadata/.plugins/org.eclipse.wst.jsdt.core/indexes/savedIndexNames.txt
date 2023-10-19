@@ -1,0 +1,8 @@
+INDEX VERSION 1.4+C:\khs\NearByDocProj\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+3963288127.index
+2579776007.index
+2538888103.index
+4202413367.index
+667499470.index
+2369391035.index
+2651297935.index

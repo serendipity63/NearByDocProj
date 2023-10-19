@@ -1,0 +1,7 @@
+INDEX VERSION 1.131
+C:\khs\NearByDocProj\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2651297935.index
+\NearByProj\src\main\java
+C:\khs\NearByDocProj\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2400963200.index
+\NearByProj\src\main\java
+C:\khs\NearByDocProj\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\86392649.index
+\NearByProj\src\main\java
