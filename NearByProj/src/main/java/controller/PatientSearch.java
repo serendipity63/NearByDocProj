@@ -8,7 +8,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import dto.Hospital;
 import service.ReservationService;
 import service.ReservationServiceImpl;
 
@@ -38,6 +40,9 @@ public class PatientSearch extends HttpServlet {
 		String type=request.getParameter("type");
 		String keyword=request.getParameter("keyword");
 		String page=request.getParameter("page");
+		HttpSession session = request.getSession();
+		Hospital hospital = (Hospital)session.getAttribute("hospitaluser");
+		String comnum = hospital.getComnum();
 		int curPage=1;
 		if(page!=null) {
 			curPage= Integer.parseInt(page);
@@ -45,7 +50,7 @@ public class PatientSearch extends HttpServlet {
 
 		try {
 			ReservationService resService=new ReservationServiceImpl();
-			Map<String,Object>res=resService.patientResListSearch(type,keyword,curPage);	
+			Map<String,Object>res=resService.patientResListSearch(type,keyword,curPage,comnum);	
 			request.setAttribute("res", res);
 			System.out.println(res);
 			request.getRequestDispatcher("reserveinfo_p.jsp").forward(request, response);

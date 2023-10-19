@@ -231,7 +231,7 @@
 		<![CDATA[
 			select count(*) 
 		 	from reservation r, patient p
-	 		where r.pidnum=p.pidnum	and p.${type} = #{keyword}
+	 		where r.pidnum=p.pidnum	r.comnum=#{comnum} and p.${type} like '%${keyword}%'
 		]]>
 	</select>
 	
@@ -241,7 +241,7 @@
 	 	select p.pname as pname,p.pidnum as pidnum,p.pemail as pemail,p.ptel as ptel, 
 	 		p.ppostcode as ppostcode,p.proadaddress as proadaddress 
 	 	from reservation r, patient p
-	 	where r.pidnum=p.pidnum	and p.${type} = #{keyword}
+	 	where r.comnum = #{comnum} and r.pidnum=p.pidnum and p.${type} like '%${keyword}%'
 	 	order by id desc
 	 	limit #{row},10
 	 ]]>
@@ -249,9 +249,10 @@
 	 
 	 
 	<!-- 예약 환자 전체 데이터 수-->
-	<select id='selectAllReservationCount' resultType="Integer">
+	<select id='selectAllReservationCount' parameterType="String" resultType="Integer">
 	<![CDATA[
 		select count(*) from reservation
+		where comnum=#{comnum}
 	]]>
 	</select>
 	
