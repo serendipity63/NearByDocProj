@@ -124,7 +124,7 @@ input[type="text"]{
 								  , "clinic" : clinic
 									},
 								success:function(res){
-									location.href=res
+									location.href="hinfo"
 								}
 							})
 					  } 
