@@ -47,11 +47,10 @@ public class HospitalLogin extends HttpServlet {
 			Hospital hospital = hospitalService.login(comnum, hpassword);
 			HttpSession session = request.getSession();
 			session.setAttribute("hospitaluser", hospital);
-			response.sendRedirect("trlist");
+			request.getRequestDispatcher("reserve_t.jsp").forward(request, response);
 		} catch (Exception e) {
 			request.setAttribute("err", e.getMessage());
 			request.getRequestDispatcher("herror.jsp").forward(request, response);
-			//그리고 리다이렉션하게
 		}
 	}
 
