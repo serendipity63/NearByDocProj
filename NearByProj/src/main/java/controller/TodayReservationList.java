@@ -35,9 +35,9 @@ public class TodayReservationList extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	request.setCharacterEncoding("utf-8");
 		String page= request.getParameter("page");
-//		HttpSession session = request.getSession();
-//		Hospital hospital = (Hospital)session.getAttribute("hospitaluser");
-//		String comnum = hospital.getComnum();
+		HttpSession session = request.getSession();
+		Hospital hospital = (Hospital)session.getAttribute("hospitaluser");
+		String comnum = hospital.getComnum();
 		int curpage=1;
 		if(page!=null) {
 			curpage= Integer.parseInt(page);
@@ -45,7 +45,7 @@ public class TodayReservationList extends HttpServlet {
 		
 		try {
 			ReservationService reservationservice = new ReservationServiceImpl();
-			Map<String,Object>res=reservationservice.todayResListByPage(curpage);
+			Map<String,Object>res=reservationservice.todayResListByPage(curpage,comnum);
 			System.out.println(res);
 			request.setAttribute("res", res);
 			request.getRequestDispatcher("reserve_t.jsp").forward(request, response);

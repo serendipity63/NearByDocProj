@@ -137,7 +137,7 @@
 	
 	<select id="patientListBypidnum" parameterType="String" resultType="Patient">
 	<![CDATA[
-		select * from patient where ppidnum=#{pidnum}
+		select * from patient where ppidnum=#{pidnum} and quit=false
 	]]>
 	</select>
 	

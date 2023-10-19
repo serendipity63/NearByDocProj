@@ -79,7 +79,7 @@ table {
 				<td>${reservation.pname }</td>
 				<td>${reservation.resdate }</td>
 				<td>${reservation.restime }</td>
-				<td>${reservation.department }</td>
+				<td>${hospitaluser.department }</td>
 				<td>${reservation.comment }</td>
 				<td>${reservation.status }</td>
 				<%-- <td>
