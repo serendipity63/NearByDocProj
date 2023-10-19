@@ -2,9 +2,6 @@ package dto;
 
 public class Patient {
 	
-
-	
-
 	private String pemail;
 	private String pidnum;
 	private String ppassword;
@@ -13,7 +10,6 @@ public class Patient {
 	private String proadaddress;
 	private String ppostcode;
 	private String pdetailaddress;
-
 	private Boolean quit;
 	private String ppidnum;
 

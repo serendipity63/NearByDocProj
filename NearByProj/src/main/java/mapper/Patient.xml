@@ -8,14 +8,14 @@
 	<insert id="insertPatient" parameterType="Patient">
 	
 	<![CDATA[
-	insert into patient (pidnum,pemail,ppassword,pname,ptel,proadaddress,pdetailaddress,ppostcode,quit, ppidnum) values 
+	insert into patient (pidnum,pemail,ppassword,pname,ptel,proadaddress,pdetailaddress,ppostcode, quit, ppidnum) values 
 	(#{pidnum},#{pemail},#{ppassword},#{pname},#{ptel},#{proadaddress},#{pdetailaddress},#{ppostcode},#{quit},#{ppidnum}) 
 	]]>
 	</insert>
 
 	<select id="selectPatient" parameterType="String" resultType="Patient">
 	<![CDATA[
-		select * from patient where pemail=#{pemail}
+		select * from patient where pemail=#{pemail} and quit=0;
 	]]>
 	</select>
 	
