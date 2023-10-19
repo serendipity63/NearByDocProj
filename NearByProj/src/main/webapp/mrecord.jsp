@@ -41,10 +41,10 @@ $('').datepicker('setDate', 'today'); //(-1D:하루전, -1M:한달전, -1Y:일�
 }); 
 
 	
-function callBtn(pidnum) {
+function callBtn(num) {
 	var keyword=$('#keyword').val()
 	if(keyword!=null && keyword.trim()!='') {
-			$('#page').val(pname);
+			$('#page').val(num);
 			$('#searchform').submit();
 	}
 }
