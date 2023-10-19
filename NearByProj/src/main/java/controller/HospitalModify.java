@@ -58,14 +58,17 @@ public class HospitalModify extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
+		String uploadPath=request.getServletContext().getRealPath("upload");
+		int size=10*1024*1024;
+		MultipartRequest multi=new MultipartRequest(request,uploadPath,size,"utf-8",new DefaultFileRenamePolicy());
 
-		String department=request.getParameter("department");
-		String hname=request.getParameter("hname");
-		String htel=request.getParameter("htel");
-		String hroad=request.getParameter("hroad");
-		String comnum2=request.getParameter("comnum");
-		String clinic=request.getParameter("clinic");
-		String lunch=request.getParameter("lunch");
+		String department=multi.getParameter("department");
+		String hname=multi.getParameter("hname");
+		String htel=multi.getParameter("htel");
+		String hroad=multi.getParameter("hroad");
+		String comnum2=multi.getParameter("comnum");
+		String clinic=multi.getParameter("clinic");
+		String lunch=multi.getParameter("lunch");
 		
 		HttpSession session= request.getSession();
 		Hospital h= (Hospital) session.getAttribute("hospitaluser");

@@ -122,6 +122,8 @@ input[type="button"]{
 								  , "hroad" : hroad
 								  , "lunch" : lunch
 								  , "clinic" : clinic
+								  , "hurl" : hurl
+								  
 									},
 								success:function(res){
 									location.href="hinfo"
@@ -177,6 +179,13 @@ input[type="button"]{
 					id="lunch" value="${hinfo.getLunch() }" /></td>
 				
 				</tr>
+				<tr>
+					<td>병원사진</td>
+					<td><input type="file" name="hurl"
+					id="hurl" value="${hinfo.getHurl() }" /></td>
+				
+				</tr>
+				
 			</table>
 			
 		</form>

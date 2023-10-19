@@ -32,10 +32,7 @@ table {
 }
 td{
 	width:30px;
-<<<<<<< Updated upstream
 	background-color:white;
-=======
->>>>>>> Stashed changes
 	color:black;
 	text-align:center;
 }
@@ -107,6 +104,13 @@ td{
 					<td><input type="text" name="lunch"
 					id="lunch" value="${hinfo.getLunch() }" disabled="disabled" /></td>
 				</tr>
+					<tr>
+					<td>병원 사진</td>
+					<td>
+					<img src="image?file=${hinfo.getHurl()}" alt="병원" width="100" height="100" >
+					</td>
+				</tr>
+				
 			</table>
 			
 				<input type="button" id="modify" value="수정" onclick="location.href='hospitalmodify'">
