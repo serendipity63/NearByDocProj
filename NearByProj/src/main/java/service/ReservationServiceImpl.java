@@ -259,7 +259,7 @@ public class ReservationServiceImpl implements ReservationService{
 		if (endPage > maxPage)
 			endPage = maxPage;
 		if (page > maxPage)
-			page = maxPage; // 2페이지 1개 일때 삭제하면 현재페이지랑 max페이지를 같게 1페이지로
+			page = maxPage; 
 
 		pageInfo.setAllPage(maxPage);
 		pageInfo.setCurPage(page);

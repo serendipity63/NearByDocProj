@@ -157,7 +157,7 @@ input {
 				
 				<td style="background-color:white;">${patient.ppostcode }</td>
 			
-				<td style="background-color:white;">${patient.proadaddress }</td>
+				<td style="background-color:white;">${patient.proadaddress} ${patient.pdetailaddress }</td>
 				
 				<td style="background-color:white;">
 				<c:if test="${hospitaluser.comnum eq reserve.comnum }">

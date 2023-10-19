@@ -36,6 +36,7 @@ footer {
     width: 100vw;
     color: #fff;
     margin: 0 auto;
+    
 }
 
 .footer-content {
