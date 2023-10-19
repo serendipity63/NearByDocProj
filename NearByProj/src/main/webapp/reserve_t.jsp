@@ -39,7 +39,7 @@ table {
 }
 #emptyArea { width: 708px;
     text-align: center;
-    margin:450px auto; }
+    margin:200px auto; }
 #emptyArea a {
 	display: inline-block;
 	width: 20px;
@@ -81,7 +81,11 @@ table {
 				<td>${reservation.restime }</td>
 				<td>${hospitaluser.department }</td>
 				<td>${reservation.comment }</td>
-				<td>${reservation.status }</td>
+				<td>${reservation.status }<select>
+				<option value="option">진료선택</option>
+				<option value="complete">진료완료</option>
+				<option value="cancel">진료취소</option>
+				</select></td>
 				<%-- <td>
 					<c:if test="${hospitaluser.id == hospital.comnum }">
 						<a href="patientdelete?num=${patient.pname }&page=${res.pageInfo.curPage}">삭제</a>

@@ -249,6 +249,8 @@
 		where r.comnum=#{comnum}
 		and r.pidnum=p.pidnum
 		and resdate = (select substring(now(),1,10))
+		order by restime
+
 		limit #{row},10
 	]]>
 	</select>
@@ -278,7 +280,8 @@
 	 	     , p.pemail as pemail
 	 	     , p.ptel as ptel
 	 	     , p.ppostcode as ppostcode
-	 	     , p.proadaddress as proadaddress 
+	 	     , p.proadaddress as proadaddress
+	 	     , p.pdetailaddress as pdetailaddress 
 	 	  from reservation r
 	 	     , patient p
 	 	 where 1=1
@@ -307,7 +310,8 @@
 	 	     , p.pemail as pemail
 	 	     , p.ptel as ptel
 	 	     , p.ppostcode as ppostcode
-	 	     , p.proadaddress as proadaddress 
+	 	     , p.proadaddress as proadaddress
+	 	     , p.pdetailaddress as pdetailaddress
 	 	  from reservation r
 	 	     , patient p
 	 	 where 1=1
