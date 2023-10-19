@@ -1,9 +1,9 @@
 package dao;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import dto.Patient;
 import dto.Reservation;
 
 public interface ReservationDao {
@@ -41,10 +41,11 @@ public interface ReservationDao {
 
 	List<String> resTimeList(Map<String,String> param) throws Exception;
 	List<Reservation> selectAllResBycomnum(String comnum) throws Exception;
-	Integer selectResCount(String comnum) throws Exception;
+
 	
 	Integer searchAllResCount(Map<String,Object> param) throws Exception;
 	
-	List<Reservation>searchAllResList(Map<String,Object> param) throws Exception;
-	
+	List<HashMap<String,String>> searchAllResList(Map<String,Object> param) throws Exception;
+	Integer selectResCount(String comnum) throws Exception;
+	List<Map<String,Object>> selectResList(Map<String,Object> param) throws Exception;
 }
