@@ -264,7 +264,7 @@
 	<!-- 예약 환자 조건 검색 데이터 수-->
 	<select id="searchReservationCount"  parameterType="hashmap" resultType="Integer">
 		<![CDATA[
-			select count(r.pidnum) 
+			select count(distinct r.pidnum) 
 		 	from reservation r, patient p
 	 		where r.pidnum=p.pidnum and	r.comnum = #{comnum} and p.${type} like '%${keyword}%'
 		]]>
@@ -294,7 +294,7 @@
 	<!-- 예약 환자 전체 데이터 수-->
 	<select id='selectAllReservationCount' parameterType="String" resultType="Integer">
 	<![CDATA[
-		select count(pidnum) from reservation
+		select count(distinct pidnum) from reservation
 		where comnum=#{comnum}
 	]]>
 	</select>
