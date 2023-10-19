@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.reservation">
+	<insert id="insertReservation" parameterType="Reservation"
+		useGeneratedKeys="true" keyProperty="id">
+    <![CDATA[
+       insert into Reservation (pidnum,comnum,resdate,restime,comment,status,doccomment, fidnum) values 
+       (#{pidnum},#{comnum},#{resdate},#{restime},#{comment},#{status},#{doccomment},#{fidnum}) 
+    ]]>
+	</insert>
+
+	<select id="cntMyReservation" parameterType="String" resultType="Integer">
+	<![CDATA[
+		SELECT COUNT(p.pidnum)
+		FROM reservation r,
+		hospital h,
+		patient p
+		WHERE 1=1
+		AND r.pidnum = #{pidnum}
+		AND r.comnum = h.comnum
+		]]>
+	</select>
+
+    <!-- 내 예약 목록 조회 -->
+	<select id='selectMyReservation' parameterType="String" resultType="hashmap">
+   <![CDATA[
+   select h.hname as name
+        , h.hroad as address
+        , h.htel as tel
+        , r.resdate as date
+        , r.restime as time
+        , r.`status` as status
+        , r.id as id
+        , r.fidnum as fidnum
+    from reservation r
+       , hospital h
+   where 1=1
+     and r.pidnum = #{pidnum}
+     and r.comnum = h.comnum
+order by r.resdate desc
+     ]]>   
+	</select>
+	
+	
+
+	<!-- 리뷰 번호로 예약자 주민 번호 찾기 -->
+	<select id="findById" parameterType="Integer" resultType="String">
+	<![CDATA[
+	SELECT r.fidnum
+	  FROM reservation r
+	 WHERE 1=1
+	   AND r.id = #{id};
+ ]]>
+     </select>
+	
+	
+     <!-- 예약 세부 내용 조회 - 본인 -->
+	 <select id="selectMyDetailReservation" parameterType="hashMap" resultType="hashmap">
+	 <![CDATA[
+     SELECT h.hname as hname
+	      , h.hroad as address
+	      , h.clinic as time
+	      , h.htel as tel
+	      , p.pname as pname
+	      , r.resdate as resdate
+	      , r.restime as restime
+	      , h.department as department
+	      , r.comment as comment
+	      , p.pidnum  
+	   FROM hospital h
+	      , patient p
+	      , reservation r
+	  WHERE 1=1
+	    AND p.pidnum = r.pidnum
+		AND h.comnum = r.comnum
+	    AND r.pidnum = #{pidnum}
+	    AND r.id     = #{id}
+	    ]]>
+     </select>
+	
+	
+	<!-- 예약 세부 내용 조회 - 가족 -->
+	 <select id="selectFamDetailReservation" parameterType="hashMap" resultType="hashmap">
+	 <![CDATA[
+     SELECT h.hname as hname
+	      , h.hroad as address
+	      , h.clinic as time
+	      , h.htel as tel
+	      , f.fname as pname
+	      , r.resdate as resdate
+	      , r.restime as restime
+	      , h.department as department
+	      , r.comment as comment
+	   FROM hospital h
+	      , reservation r
+	      , family f
+	  WHERE 1=1
+	    AND f.fidnum = r.fidnum
+	    AND h.comnum = r.comnum
+	    AND f.pidnum = #{pidnum}
+	    AND r.id = #{id}
+	    ]]>
+     </select>
+	
+
+	
+	<select id='selectTodayReservationList' parameterType="Integer" resultType="Reservation">
+	<![CDATA[
+		select id,resdate,restime,p.pname,p.pidnum,comment,h.department,status
+		from reservation r,patient p,hospital h
+		where r.pidnum=p,pidnum
+		and h.comnum=r.comnum
+		order by id desc
+		limit #{row},10
+	]]>
+	</select>
+	<select id='selectHRecordList' parameterType="String" resultType="Reservation">
+	<![CDATA[
+		select resdate,restime,p.pname,comment,h.department,status,doccomment
+		from reservation r,patient p,hospital h
+		where r.pidnum=p,pidnum
+		and h.comnum=r.comnum
+		order by resdate desc
+		limit #{row},10
+	]]>
+	</select>
+	
+	<select id='selectReservation' parameterType="Integer" resultType="Reservation">
+	<![CDATA[
+		select * from reservation where id=#{id}
+	]]>
+	</select>
+	
+	
+
+	<select id='searchHRecordList' parameterType="hashmap" resultType="Reservation">
+	<![CDATA[
+		select * from reservation
+   		where ${type} like '%${keyword}%' order by resdate desc
+   		limit #{row},10
+	]]>
+	
+	</select>
+	
+	<select id='searchHRecordCount' parameterType="hashmap" resultType="Integer">
+	<![CDATA[
+		select count(*) from reservation
+   		where ${type} like '%${keyword}%' 
+	]]>
+	
+	</select>
+	
+	<select id='searchResTimeList' parameterType="hashmap" resultType="String">
+	<![CDATA[
+		select restime from reservation
+   		where comnum= #{comnum} and resdate=#{date}
+	]]>
+	
+	</select>
+	
+	<select id="selectAllResBycomnum" parameterType="String" resultType="Reservation">
+	<![CDATA[
+		SELECT *
+		FROM reservation
+		WHERE comnum=#{comnum}
+		]]>
+	</select>
+	
+	<select id="selectResCount" parameterType="String" resultType="Integer">
+      <![CDATA[
+         select count(pidnum) from reservation where comnum=#{comnum}
+      ]]>
+    
+   </select>
+
+	<select id="searchAllResCount" parameterType="hashmap" resultType="Integer">
+      <![CDATA[
+         select count(pidnum) from reservation 
+         where comnum=#{comnum} and resdate between #{sdate} and #{edate} and ${type} like '%${keyword}%'
+      ]]>
+    
+   </select>
+   
+   <select id='searchAllResList' parameterType="hashmap" resultType="Reservation">
+	<![CDATA[
+		select * from reservation 
+        where comnum=#{comnum} and resdate between #{sdate} and #{edate} and ${type} like '%${keyword}%'
+	]]>
+	
+	</select>
+
+
+</mapper>

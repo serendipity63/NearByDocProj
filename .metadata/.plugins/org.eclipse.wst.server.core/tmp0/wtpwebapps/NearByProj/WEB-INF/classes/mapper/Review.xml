@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.review">
+
+	<select id="reviewListByHos" parameterType="String"
+		resultType="hashmap">
+	<![CDATA[
+		select 	p.pname as name, 
+				r.content as content,
+				r.star as star, 
+				r.birth as birth
+		from review r, patient p 
+		where r.comnum=#{comnum} AND r.pidnum=p.pidnum
+	]]>
+	</select>
+	
+	
+	<select id="myReviewListByid" parameterType="String" resultType="hashmap">
+	<![CDATA[
+
+	  select h.hname as name
+	       , SUBSTRING(r.birth,1, 10) as date
+	       , h.department as department
+	       , r.star as star
+	       , r.content as content
+	       , r.id as id
+	    from review r
+	       , hospital h
+	   where r.pidnum=#{pidnum}
+	ORDER BY r.birth DESC;
+	]]>
+	</select>
+
+	<insert id="insertReview" parameterType="Review">
+	<![CDATA[
+	insert into review (pidnum,comnum,content,star,birth) 
+	values (#{pidnum},#{comnum},#{content},#{star},now()) 
+	]]>
+	</insert>
+	
+	<delete id="deleteReview" parameterType="Integer">
+	delete from review where id = #{id}
+	</delete>
+	
+	<select id="selectLastReview" parameterType="String"
+		resultType="hashmap">
+	<![CDATA[
+		select 	p.pname as name, 
+				r.content as content,
+				r.star as star,
+				r.birth as birth
+		from review r
+		JOIN patient p 
+		on r.pidnum=p.pidnum
+		where r.comnum=#{comnum}  AND r.birth = (SELECT MAX(birth) from review r
+		JOIN patient p 
+		on r.pidnum=p.pidnum
+		where r.comnum=#{comnum})
+	]]>
+	</select>
+	
+	<update id="updateReviewCnt" parameterType="Review">
+   		<![CDATA[
+			update hospital set hreviewcnt=hreviewcnt+1 where comnum=#{comnum}
+		]]>
+   </update>
+	
+	
+</mapper>
