@@ -249,7 +249,6 @@
 		where r.comnum=#{comnum}
 		and r.pidnum=p.pidnum
 		and resdate = (select substring(now(),1,10))
-		order by id desc
 		limit #{row},10
 	]]>
 	</select>
@@ -257,6 +256,7 @@
 	<![CDATA[
 		select count(*) from reservation
 		where comnum=#{comnum}
+		  and resdate = (select substring(now(),1,10))
 	]]>
 	</select>
 	
@@ -285,8 +285,8 @@
 	 	   and r.pidnum = p.pidnum 
 	 	   and r.comnum = #{comnum} 
 	 	   and p.${type} like '%${keyword}%'
-	 	order by p.pname asc
-	 	limit #{row},10
+	 	 order by p.pname asc
+	 	 limit #{row},10
 	 ]]>
 	 </select> 
 	 
@@ -302,16 +302,19 @@
 	<!-- 예약 환자 전체 조회 -->
 	<select id='selectAllReservationList' parameterType="hashmap" resultType="hashmap">
 	<![CDATA[
-	 	select distinct	p.pname as pname,
-	 			p.pidnum as pidnum,
-	 			p.pemail as pemail,
-	 			p.ptel as ptel, 
-	 			p.ppostcode as ppostcode,
-	 			p.proadaddress as proadaddress 
-	 	from reservation r, patient p
-	 	where r.pidnum=p.pidnum and r.comnum=#{comnum}
-	 	order by id desc
-	 	limit #{row},10
+	 	select distinct	p.pname as pname
+	 	     , p.pidnum as pidnum
+	 	     , p.pemail as pemail
+	 	     , p.ptel as ptel
+	 	     , p.ppostcode as ppostcode
+	 	     , p.proadaddress as proadaddress 
+	 	  from reservation r
+	 	     , patient p
+	 	 where 1=1
+	 	   and r.pidnum = p.pidnum 
+	 	   and r.comnum=#{comnum}
+	  order by p.pname asc
+	     limit #{row},10
 	 	]]>
 	</select>
 
