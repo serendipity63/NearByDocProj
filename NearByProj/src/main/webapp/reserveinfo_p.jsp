@@ -14,16 +14,15 @@ body {
 h1 {
 	width: 197px;
 	height: 55px;
-	margin:0 auto;
+	margin:18px auto;
 	color: rgb(25, 25, 112);
 }
 
 #center {
-	margin:10px auto;
+	position: absolute;
+	left:180px;
+	padding-left :130px;
     width: 1479px;
-   
-   
-   
 }
 
 table{
@@ -158,7 +157,7 @@ input {
 				
 				<td style="background-color:white;">${patient.ppostcode }</td>
 			
-				<td style="background-color:white;">${patient.proadaddress+patient.pdetailaddress }</td>
+				<td style="background-color:white;">${patient.proadaddress }</td>
 				
 				<td style="background-color:white;">
 				<c:if test="${hospitaluser.comnum eq reserve.comnum }">
