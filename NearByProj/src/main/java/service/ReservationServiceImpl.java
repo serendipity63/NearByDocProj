@@ -71,33 +71,6 @@ public class ReservationServiceImpl implements ReservationService{
 	
 
 	@Override
-	public Map<String, Object> todayResListByPage(Integer page) throws Exception {
-	
-	PageInfo pageInfo = new PageInfo();
-	Integer reservationCount = resDao.selectReservationCount();
-	int maxPage = (int) Math.ceil((double) reservationCount / 10); 
-	int startPage = (page - 1) / 10 * 10 + 1; 
-	int endPage = startPage + 10 - 1;
-	if (endPage > maxPage)
-		endPage = maxPage;
-	if (page > maxPage)
-		page = maxPage; 
-
-	pageInfo.setAllPage(maxPage);
-	pageInfo.setCurPage(page);
-	pageInfo.setStartPage(startPage);
-	pageInfo.setEndPage(endPage);
-
-	int row = (page - 1) * 10 + 1; 
-	List<Map<String, Object>> reservationList = resDao.selectTodayReservation(row - 1);
-
-	Map<String, Object> map = new HashMap<>();
-	map.put("pageInfo", pageInfo);
-	map.put("reservationList", reservationList);
-	return map;
-}
-
-	@Override
 	public Map<String, Object> hrecordSearch(String type, String keyword, Integer page) throws Exception {
 		Map<String, Object> param = new HashMap<>();
 
@@ -315,6 +288,32 @@ public class ReservationServiceImpl implements ReservationService{
 		map.put("type", type);
 		map.put("keyword", keyword);
 		map.put("patientresList", resList);
+		return map;
+	}
+
+	@Override
+	public Map<String, Object> todayResListByPage(Integer page) throws Exception {
+		PageInfo pageInfo = new PageInfo();
+		Integer todayreslistCount = resDao.selectTodayResCount();
+		int maxPage = (int) Math.ceil((double) todayreslistCount / 10); 
+		int startPage = (page - 1) / 10 * 10 + 1; 
+		int endPage = startPage + 10 - 1;
+		if (endPage > maxPage)
+			endPage = maxPage;
+		if (page > maxPage)
+			page = maxPage; 
+
+		pageInfo.setAllPage(maxPage);
+		pageInfo.setCurPage(page);
+		pageInfo.setStartPage(startPage);
+		pageInfo.setEndPage(endPage);
+
+		int row = (page - 1) * 10 + 1; 
+		List<Map<String,Object>> todayresList = resDao.selectTodayReservationList(row - 1);
+
+		Map<String, Object> map = new HashMap<>();
+		map.put("pageInfo", pageInfo);
+		map.put("todayresList", todayresList);
 		return map;
 	}
 	
