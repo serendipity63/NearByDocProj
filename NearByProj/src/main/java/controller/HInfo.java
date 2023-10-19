@@ -33,12 +33,14 @@ public class HInfo extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
-		String comnum =request.getParameter("comnum");
+		HttpSession session=request.getSession();
+		Hospital hospital=(Hospital)session.getAttribute("hospitaluser");
+		String comnum =hospital.getComnum();
 		
+		HospitalService hospitalService= new HospitalServiceImpl();
 		try {
-			HospitalService hospitalService= new HospitalServiceImpl();
-			Hospital hospital=hospitalService.hospitalInfo(comnum);
-			request.setAttribute("hospital", hospital);
+			Hospital hinfo =hospitalService.hospitalInfo(comnum);
+			request.setAttribute("hinfo", hinfo);
 			request.getRequestDispatcher("hinfo.jsp").forward(request, response);
 			
 		}catch(Exception e) {

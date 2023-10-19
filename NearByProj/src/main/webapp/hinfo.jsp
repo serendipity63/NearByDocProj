@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+	
 <!DOCTYPE html>
 <html>
 <head>
@@ -82,38 +84,47 @@ td{
 			<table id="title">
 				<tr>
 					<td>진료 과목</td>
-					<td class="ear">이비인후과</td>
+					<td>
+					<input type="text" name="department" 
+					id="department"  value="${hinfo.getDepartment() }" disabled="disabled"/></td>
 				</tr>
 				<tr>
 					<td>병원명</td>
-					<td style="background-color:white">니어바이닥의원</td>
+					<td><input type="text" name="hname" 
+					id="hname"  value="${hinfo.getHname() }" disabled="disabled"/></td>
 				</tr>
-				<tr>
-					<td>사업자등록번호</td>
-					<td class="num">123-45-67890</td>
-				</tr>
+
 				<tr>
 					<td>전화번호</td>
-					<td style="background-color:white">02-1234-5678</td>
+					<td><input type="text" name="htel"
+					id="htel" value="${hinfo.getHtel() }" disabled="disabled"/></td>
 				</tr>
 				<tr>
 					<td>주소</td>
-					<td class="add">서울시 금천구 호서대벤처타워</td>
+					<td><input type="text" name="address"
+					id="address" value="${hinfo.getHroad() }" disabled="disabled" /></td>
 				</tr>
 
 				<tr>
 					<td>진료시간</td>
-					<td style="background-color:white">09:00~18:00</td>
+					<td><input type="text" name="clinic"
+					id="clinic" value="${hinfo.getClinic() }" disabled="disabled" /></td>
 				</tr>
 				<tr>
 					<td>점심시간</td>
-					<td class="lun">13:00~14:00</td>
+					<td><input type="text" name="lunch"
+					id="lunch" value="${hinfo.getLunch() }" disabled="disabled" /></td>
 				</tr>
-				
 			</table>
+				<input type="button" value="수정" onclick="location.href='hospitalmodify'">
+			
 				<div id="button">
 				<c:if test="${hospitaluser.comnum eq hospital.comnum }">
-				<a href="hospitalmodify?comnum=${hospital.comnum }">수정하기</a>
+				
+				
+				<input id="hiddenPidnum" type="text" value="${hinfo.getComnum() }" style="display:none;" > 
+				
+				
 				</c:if>
 				</div>
 				

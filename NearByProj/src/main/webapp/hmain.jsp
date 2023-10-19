@@ -140,7 +140,7 @@ b{
 
    <div id="header">
 
-      <a href="reserve_t.jsp"><img src="image?file=icon.png"
+      <a href="trlist"><img src="image?file=icon.png"
          width="50px" height="50px" alt="로고 이미지"/></a>
          <span>병원매니저</span>
       
@@ -169,7 +169,7 @@ b{
       </h3>
     
       <h3>
-         <a href="reserve_t.jsp">오늘의 예약내역</a>
+         <a href="trlist">오늘의 예약내역</a>
       </h3>
       
       <br>
@@ -193,7 +193,7 @@ b{
          <hr>
          <br>
          <p>
-            <a href="hinfo.jsp">병원 정보</a>
+            <a href="hinfo">병원 정보</a>
          </p>
          <br>
          
@@ -204,7 +204,7 @@ b{
          <br>
          
          <div id="logout">
-            <a href="hospitallogin.jsp">로그아웃</a>
+            <a href="hlogout">로그아웃</a>
          </div>
          
 
