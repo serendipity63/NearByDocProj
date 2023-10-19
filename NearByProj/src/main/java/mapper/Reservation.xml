@@ -116,14 +116,10 @@
 	]]>
 	</select>
 	
-	<select id='selectReservation' parameterType="Integer" resultType="Reservation">
-	<![CDATA[
-		select * from reservation where id=#{id}
-	]]>
-	</select>
-	
-	
 
+	
+	
+	<!-- 진료 기록 조회 -->
 	<select id='searchHRecordList' parameterType="hashmap" resultType="Reservation">
 	<![CDATA[
 		select * from reservation
@@ -184,7 +180,12 @@
 	<!-- 오늘의 예약조회 -->
 	<select id='selectTodayReservationList' parameterType="Integer" resultType="hashmap">
 	<![CDATA[
-		select id,resdate,restime,p.pname as pname,p.pidnum as pidnum ,comment,h.department as department,status
+		select r.resdate as resdate
+		,r.restime as restime
+		,p.pname as pname
+		,h.department as department
+		,r.comment as comment
+		,r.status as status
 		from reservation r,patient p,hospital h
 		where r.pidnum=p.pidnum
 		and h.comnum=r.comnum
@@ -192,6 +193,12 @@
 		limit #{row},10
 	]]>
 	</select>
+	<select id='selectTodayResCount' resultType="Integer" >
+	<![CDATA[
+		select count(*) from reservation r,patient p,hospital h
+	]]>
+	</select>
+	
 	
 	<!-- 예약 환자 조건 검색 데이터 수-->
 	<select id="searchReservationCount"  resultType="Integer" parameterType="hashmap" >

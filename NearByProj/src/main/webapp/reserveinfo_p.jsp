@@ -158,13 +158,13 @@ input {
 				
 				<td style="background-color:white;">${patient.ppostcode }</td>
 			
-				<td style="background-color:white;">${patient.proadaddress }</td>
+				<td style="background-color:white;">${patient.proadaddress+patient.pdetailaddress }</td>
 				
-				<%-- <td style="background-color:white;">
+				<td style="background-color:white;">
 				<c:if test="${hospitaluser.comnum eq reserve.comnum }">
 					<a href="patientdelete?pname=${patient.pname }&page=${res.pageInfo.curPage}" style="text-decoration:none;  color:red;">삭제</a>
 					</c:if>
-				</td> --%>
+				</td>
 			</tr>
 		</c:forEach>
 	</table>

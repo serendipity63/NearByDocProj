@@ -62,20 +62,15 @@ public class ReservationDaoImpl implements ReservationDao{
 	}
 	//오늘의 예약 내역
 	@Override
-	public List<Map<String,Object>> selectTodayReservation(Integer row) throws Exception {
-		return sqlSession.selectList("mapper.reservation.selectTodayReservation",row);
+	public List<Map<String,Object>> selectTodayReservationList(Integer row) throws Exception {
+		return sqlSession.selectList("mapper.reservation.selectTodayReservationList",row);
 	}
 
 	@Override
-	public Integer selectReservationCount() throws Exception {
-		return sqlSession.selectOne("mapper.reservation.selectReservationCount");
+	public Integer selectTodayResCount() throws Exception {
+		return sqlSession.selectOne("mapper.reservation.selectTodayResCount");
 	}
-
-	@Override
-	public Reservation selectReservation(Integer num) throws Exception {
-		return sqlSession.selectOne("mapper.reservation.selectReservation",num);
-	}
-
+	// 진료 기록 조회
 	@Override
 	public Integer searchHRecordCount(Map<String, Object> param) throws Exception {
 		return sqlSession.selectOne("mapper.reservation.searchHRecordCount",param);
