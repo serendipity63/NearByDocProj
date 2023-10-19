@@ -19,9 +19,10 @@
 	rel="stylesheet">
 <!-- alert 디자인 -->
 <link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
 
-<title>NearByDocHeader</title>
+	href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">	
+	
+<title>가족추가</title>
 
 <style>
 #container {
