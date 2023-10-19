@@ -91,6 +91,10 @@ table {
     margin: 67px 71px auto;
     position:absolute;
 }
+table>td{
+	background-color:white;
+
+}
 
 input {
 	width: 224px;
@@ -105,9 +109,10 @@ select {
     cursor: pointer;
 }
 
+
 #center {
 	position: absolute;
-	left:180px;
+	left:170px;
 	padding-left :130px;
     width: 1479px;
    
@@ -149,7 +154,7 @@ button {
 #emptyArea {
 	width: 708px;
 	text-align: center;
-	margin:480px auto;
+	margin:700px auto;
 }
 
 #emptyArea a {
@@ -170,6 +175,7 @@ button {
 #table1 {
 	height:150px;
 }
+
 </style>
 
 
@@ -221,11 +227,12 @@ button {
 				<td>${reserve.pname }</td>
 				<td>${reserve.comment }</td>
 				<td>${hospitaluser.department }</td>
-				<td>${reserve.status }</td>
+				<td>${reserve.status }</td>	
 				<td>${reserve.doccomment }</td>
 			</tr>
 		</c:forEach>
 	</table>
+	</div>
 	</div>
 	<div id="emptyArea">
 		<c:choose>
@@ -265,6 +272,6 @@ button {
 		&nbsp;&nbsp;
 
 	</div>
-	</div>
+	
 </body>
 </html>

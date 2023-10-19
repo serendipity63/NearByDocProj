@@ -240,7 +240,7 @@
 	<!-- 오늘의 예약조회 -->
 	<select id='selectTodayReservationList' parameterType="hashmap" resultType="hashmap">
 	<![CDATA[
-		select r.resdate as resdate
+		select distinct r.resdate as resdate
 		,r.restime as restime
 		,p.pname as pname
 		,r.comment as comment
@@ -249,7 +249,8 @@
 		where r.comnum=#{comnum}
 		and r.pidnum=p.pidnum
 		and resdate = (select substring(now(),1,10))
-		order by id desc
+		order by restime
+
 		limit #{row},10
 	]]>
 	</select>
@@ -257,6 +258,7 @@
 	<![CDATA[
 		select count(*) from reservation
 		where comnum=#{comnum}
+		  and resdate = (select substring(now(),1,10))
 	]]>
 	</select>
 	
@@ -264,7 +266,7 @@
 	<!-- 예약 환자 조건 검색 데이터 수-->
 	<select id="searchReservationCount"  parameterType="hashmap" resultType="Integer">
 		<![CDATA[
-			select count(r.pidnum) 
+			select count(distinct r.pidnum) 
 		 	from reservation r, patient p
 	 		where r.pidnum=p.pidnum and	r.comnum = #{comnum} and p.${type} like '%${keyword}%'
 		]]>
@@ -273,16 +275,21 @@
 	<!-- 예약 환자 조건 검색 -->
 	<select id='searchReservationList' parameterType="hashmap" resultType="hashmap">
 	 <![CDATA[
-	 	select 	p.pname as pname,
-	 			p.pidnum as pidnum,
-	 			p.pemail as pemail,
-	 			p.ptel as ptel, 
-	 			p.ppostcode as ppostcode,
-	 			p.proadaddress as proadaddress 
-	 	from reservation r, patient p
-	 	where r.pidnum=p.pidnum and r.comnum = #{comnum} and p.${type} like '%${keyword}%'
-	 	order by id desc
-	 	limit #{row},10
+	 	select distinct p.pname as pname
+	 	     , p.pidnum as pidnum
+	 	     , p.pemail as pemail
+	 	     , p.ptel as ptel
+	 	     , p.ppostcode as ppostcode
+	 	     , p.proadaddress as proadaddress
+	 	     , p.pdetailaddress as pdetailaddress 
+	 	  from reservation r
+	 	     , patient p
+	 	 where 1=1
+	 	   and r.pidnum = p.pidnum 
+	 	   and r.comnum = #{comnum} 
+	 	   and p.${type} like '%${keyword}%'
+	 	 order by p.pname asc
+	 	 limit #{row},10
 	 ]]>
 	 </select> 
 	 
@@ -290,23 +297,29 @@
 	<!-- 예약 환자 전체 데이터 수-->
 	<select id='selectAllReservationCount' parameterType="String" resultType="Integer">
 	<![CDATA[
-		select count(pidnum) from reservation
+		select count(distinct pidnum) from reservation
 		where comnum=#{comnum}
 	]]>
 	</select>
 	
 	<!-- 예약 환자 전체 조회 -->
 	<select id='selectAllReservationList' parameterType="hashmap" resultType="hashmap">
-	 	select 	p.pname as pname,
-	 			p.pidnum as pidnum,
-	 			p.pemail as pemail,
-	 			p.ptel as ptel, 
-	 			p.ppostcode as ppostcode,
-	 			p.proadaddress as proadaddress 
-	 	from reservation r, patient p
-	 	where r.pidnum=p.pidnum and r.comnum=#{comnum}
-	 	order by id desc
-	 	limit #{row},10
+	<![CDATA[
+	 	select distinct	p.pname as pname
+	 	     , p.pidnum as pidnum
+	 	     , p.pemail as pemail
+	 	     , p.ptel as ptel
+	 	     , p.ppostcode as ppostcode
+	 	     , p.proadaddress as proadaddress
+	 	     , p.pdetailaddress as pdetailaddress
+	 	  from reservation r
+	 	     , patient p
+	 	 where 1=1
+	 	   and r.pidnum = p.pidnum 
+	 	   and r.comnum=#{comnum}
+	  order by p.pname asc
+	     limit #{row},10
+	 	]]>
 	</select>
 
 </mapper>

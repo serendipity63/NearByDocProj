@@ -17,6 +17,7 @@
 <style>
 *{
       font-family: 'Noto Sans kr', sans-serif;
+	
 
 }
 
@@ -25,6 +26,7 @@ body {
    	background-color: #eee;
   	width:100%;
   	height:100%;
+  
    
 }
 
