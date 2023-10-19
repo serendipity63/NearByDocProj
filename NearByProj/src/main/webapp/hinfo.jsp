@@ -24,15 +24,18 @@ h1 {
     /* margin-top: 50px; */
     color: rgb(25, 25, 112);
 }
+
 table {
 	width: 1000px;
 	height: 500px;
 	margin: 50px 0px 0px 450px;
-	
 }
 td{
 	width:30px;
+<<<<<<< Updated upstream
 	background-color:white;
+=======
+>>>>>>> Stashed changes
 	color:black;
 	text-align:center;
 }
@@ -46,7 +49,6 @@ td{
 	padding: 10px;
     text-decoration: none;
     color: white;
-    background-color: #0a0a4d;
     border-radius:10px;
     display: inline-block;
     width: 81px;
@@ -55,32 +57,22 @@ td{
 	 background-color:blue;
       transition: 0.7s;
 }
-.ear{
-	background-color:#c1f3ea;
-	color:black;
-}
-.num{
-	background-color:#c1f3ea;
-	color:black;
-}
-.add{
-	background-color:#c1f3ea;
-	color:black;
-}
-.lun{
-	background-color:#c1f3ea;
-	color:black;
-}
 
+.modify{
+	text-align:center;
+
+}
 
 </style>
 <body>
 	<% pageContext.include("hmain.jsp");%>
+	
+	<center>
 	<h1>병원정보</h1>
 	
-		
-		
-		
+	
+	
+	
 			<table id="title">
 				<tr>
 					<td>진료 과목</td>
@@ -116,7 +108,8 @@ td{
 					id="lunch" value="${hinfo.getLunch() }" disabled="disabled" /></td>
 				</tr>
 			</table>
-				<input type="button" value="수정" onclick="location.href='hospitalmodify'">
+			
+				<input type="button" id="modify" value="수정" onclick="location.href='hospitalmodify'">
 			
 				<div id="button">
 				<c:if test="${hospitaluser.comnum eq hospital.comnum }">
@@ -130,7 +123,7 @@ td{
 				
 			
 	
-	
+	</center>
 	
 </body>
 </html>
