@@ -30,8 +30,8 @@ public interface ReservationDao {
 	List<Map<String,Object>> searchReservationList(Map<String,Object> param)throws Exception;
 	
 	/*오늘의 예약 내역 */
-	List<Map<String,Object>>selectTodayReservationList(Integer row) throws Exception;
-	Integer selectTodayResCount() throws Exception;
+	List<Map<String,Object>>selectTodayReservationList(Map<String,Object> param) throws Exception;
+	Integer selectTodayResCount(String comnum) throws Exception;
 	
 	
 	/* 진료기록 */

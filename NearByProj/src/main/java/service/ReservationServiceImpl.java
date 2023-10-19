@@ -290,9 +290,9 @@ public class ReservationServiceImpl implements ReservationService{
 	}
 
 	@Override
-	public Map<String, Object> todayResListByPage(Integer page) throws Exception {
+	public Map<String, Object> todayResListByPage(Integer page, String comnum) throws Exception {
 		PageInfo pageInfo = new PageInfo();
-		Integer todayreslistCount = resDao.selectTodayResCount();
+		Integer todayreslistCount = resDao.selectTodayResCount(comnum);
 		int maxPage = (int) Math.ceil((double) todayreslistCount / 10); 
 		int startPage = (page - 1) / 10 * 10 + 1; 
 		int endPage = startPage + 10 - 1;
@@ -305,9 +305,12 @@ public class ReservationServiceImpl implements ReservationService{
 		pageInfo.setCurPage(page);
 		pageInfo.setStartPage(startPage);
 		pageInfo.setEndPage(endPage);
-
+		
 		int row = (page - 1) * 10 + 1; 
-		List<Map<String,Object>> todayresList = resDao.selectTodayReservationList(row - 1);
+		Map<String,Object> param = new HashMap<>();
+		param.put("row", row-1);
+		param.put("comnum", comnum);
+		List<Map<String,Object>> todayresList = resDao.selectTodayReservationList(param);
 
 		Map<String, Object> map = new HashMap<>();
 		map.put("pageInfo", pageInfo);
