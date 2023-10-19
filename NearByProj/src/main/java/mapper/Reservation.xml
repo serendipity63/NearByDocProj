@@ -153,26 +153,52 @@
 		]]>
 	</select>
 	
-	<select id="selectResCount" parameterType="String" resultType="Integer">
-      <![CDATA[
-         select count(pidnum) from reservation where comnum=#{comnum}
-      ]]>
-    
-   </select>
+	
    
  	<!-- 전체 예약조회 -->
 	<select id="searchAllResCount" parameterType="hashmap" resultType="Integer">
       <![CDATA[
-         select count(pidnum) from reservation 
-         where comnum=#{comnum} and resdate between #{sdate} and #{edate} and ${type} like '%${keyword}%'
+         select count(r.pidnum) 
+         from reservation r, patient p
+         where r.pidnum = p.pidnum and r.comnum=#{comnum} and r.resdate between #{sdate} and #{edate} and p.${type} like '%${keyword}%'
       ]]>
     
    </select>
-   
-   <select id='searchAllResList' parameterType="hashmap" resultType="Reservation">
+	
+	<select id='searchAllResList' parameterType="hashmap" resultType="hashmap">
 	<![CDATA[
-		select * from reservation 
-        where comnum=#{comnum} and resdate between #{sdate} and #{edate} and ${type} like '%${keyword}%'
+		select 	r.resdate as resdate,
+				r.restime as restime,
+				p.pname as pname,
+				p.pidnum as pidnum,
+				r.comment as comment,
+				r.status as status,
+				r.doccomment as doccomment
+		from reservation r, patient p
+        where r.pidnum = p.pidnum and r.comnum=#{comnum} and r.resdate between #{sdate} and #{edate} and p.${type} like '%${keyword}%'
+        order by r.resdate,r.restime
+        limit #{row},10
+	]]>
+	</select>
+	
+	<select id="selectResCount" parameterType="String" resultType="Integer">
+      <![CDATA[
+         select count(pidnum) from reservation where comnum=#{comnum}
+      ]]>
+   </select>
+	
+	<select id='selectResList' parameterType="hashmap" resultType="hashmap">
+	<![CDATA[
+		select 	r.resdate as resdate,
+				r.restime as restime,
+				p.pname as pname,
+				p.pidnum as pidnum,
+				r.comment as comment,
+				r.status as status,
+				r.doccomment as doccomment
+		from reservation r, patient p
+        where r.pidnum = p.pidnum and r.comnum=#{comnum}
+        order by r.resdate,r.restime
         limit #{row},10
 	]]>
 	</select>

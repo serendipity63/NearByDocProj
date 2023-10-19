@@ -1,8 +1,6 @@
 package controller;
 
 import java.io.IOException;
-import java.util.Map;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -10,60 +8,53 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import java.util.Map;
 import dto.Hospital;
-import service.PatientService;
-import service.PatientServiceImpl;
 import service.ReservationService;
 import service.ReservationServiceImpl;
 
 /**
- * Servlet implementation class MrecordSearch
+ * Servlet implementation class MrecordList
  */
-@WebServlet("/mrecordsearch")
-public class MrecordSearch extends HttpServlet {
+@WebServlet("/mrecordlist")
+public class MrecordList extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MrecordSearch() {
+    public MrecordList() {
         super();
         // TODO Auto-generated constructor stub
     }
-    
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    	request.setCharacterEncoding("utf-8");
-    	request.getRequestDispatcher("mrecord.jsp").forward(request, response);
-    }
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
-		String type = request.getParameter("type");
-		String keyword = request.getParameter("keyword");
 		String page = request.getParameter("page");
-		String sdate = request.getParameter("sdate");
-		String edate = request.getParameter("edate");
 		HttpSession session = request.getSession();
 		Hospital hospital = (Hospital)session.getAttribute("hospitaluser");
 		String comnum = hospital.getComnum();
-		int curPage = 1;
+		int curpage = 1;
 		if(page!=null) {
-			curPage = Integer.parseInt(page);
+			curpage = Integer.parseInt(page);
 		}
-
 		
 		try {
 			ReservationService reservationService = new ReservationServiceImpl();
-			Map<String, Object> res = reservationService.resAllSearch(type, keyword, curPage, sdate, edate,comnum);
+			Map<String, Object> res = reservationService.resListByPage(comnum, curpage);
 			request.setAttribute("res", res);
-			System.out.println(res);
+			/*
+			 * request.setAttribute("sdate","0000-00-00");
+			 * request.setAttribute("edate","9999-99-99");
+			 */
+			
 			request.getRequestDispatcher("mrecord.jsp").forward(request, response);
 		} catch(Exception e) {
 			e.printStackTrace();
-			request.setAttribute("err", "게시판 검색 오류");
+			request.setAttribute("err", e.getMessage());
 			request.getRequestDispatcher("error404.jsp").forward(request, response);
 		}
 	}

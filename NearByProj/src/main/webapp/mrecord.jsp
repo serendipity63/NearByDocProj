@@ -37,13 +37,14 @@ dateFormat: 'yy-mm-dd' //달력 날짜 형태
 });
 
 //초기값을 오늘 날짜로 설정해줘야 합니다.
-$('#datepicker').datepicker('setDate', 'today'); //(-1D:하루전, -1M:한달전, -1Y:일년전), (+1D:하루후, -1M:한달후, -1Y:일년후)
-});
+$('').datepicker('setDate', 'today'); //(-1D:하루전, -1M:한달전, -1Y:일년전), (+1D:하루후, -1M:한달후, -1Y:일년후)
+}); 
+
 	
-function callBtn(pidnum) {
+function callBtn(num) {
 	var keyword=$('#keyword').val()
 	if(keyword!=null && keyword.trim()!='') {
-			$('#page').val(pname);
+			$('#page').val(num);
 			$('#searchform').submit();
 	}
 }
@@ -166,6 +167,9 @@ button {
 	background: black;
 	color:white;
 }
+#table1 {
+	height:150px;
+}
 </style>
 
 
@@ -182,31 +186,23 @@ button {
 	<input type="hidden" name="page" id="page" value="1">	
 	<div class="reserveform">
 
-		<select name="patient">
-			<option value="all">선택</option>
-			<option value="patient">환자명</option>
-			<option value="number">주민등록번호</option>
+		<select name="type">
+			<option value="pname" ${res.type eq 'pname'? 'selected':'' }>환자명</option>
+			<option value="pidnum" ${res.type eq 'pidnum'? 'selected':'' }>주민등록번호</option>
 		</select> 
 		<input type="text" name="keyword" id="keyword" value="${res.keyword }" /> 
 		
-	
-
-
 		<div id="date">
-		<span><기간></span>
-		<input type="text" id="datepicker1" placeholder="0000-00-00">
+		<span>기간 :</span>
+		<input type="text" id="datepicker1" name="sdate" value="${res.sdate}">
+		<span> ~</span>
+		<input type="text" id="datepicker2" name="edate" value="${res.edate}">
 
-		<input type="text" id="datepicker2" placeholder="0000-00-00">
-
-
-		
 		<input type="submit" id="search" value="검색" />
 		</div>
-
-
 	</div>
 	</form>
-
+	<div id="table1">
 	<table>
 		<tr>
 			<th>일자</th>
@@ -216,29 +212,25 @@ button {
 			<th>진료과목</th>
 			<th>진료완료처리</th>
 			<th><a href="javascript:openOpinion('opinion.jsp','popup');" style=text-decoration:none;>담당의소견</a></th>
-			<th>기록삭제</th>
 		</tr>
 
-		<c:forEach items="${res.reserveList }" var="reserve">
+		<c:forEach items="${res.resList }" var="reserve">
 			<tr>
 				<td>${reserve.resdate }</td>
 				<td>${reserve.restime }</td>
-				<td>${reserve.name }</td>
+				<td>${reserve.pname }</td>
 				<td>${reserve.comment }</td>
-				<td>${reserve.department }</td>
+				<td>${hospitaluser.department }</td>
 				<td>${reserve.status }</td>
-				<td>${reserve.opinion }</td>
-				<td><c:if test="${hospitaluser.id == hospital.comnum }">
-					<a href="patientdelete?pname=${patient.pname }&page=${res.pageInfo.curPage}">삭제</a>
-					</c:if>
-				</td>
+				<td>${reserve.doccomment }</td>
 			</tr>
 		</c:forEach>
 	</table>
+	</div>
 	<div id="emptyArea">
 		<c:choose>
 			<c:when test="${res.pageInfo.curPage>1}">
-				<a href="patientlist?page=${res.pageInfo.curPage-1}">&lt;</a>
+				<a href="mrecordlist?page=${res.pageInfo.curPage-1}">&lt;</a>
 			</c:when>
 			<c:otherwise>
 					&lt;
@@ -250,11 +242,11 @@ button {
 			end="${res.pageInfo.endPage}" var="i">
 			<c:choose>
 				<c:when test="${res.pageInfo.curPage==i}">
-					<a href="patientlist?page=${i}" class="select"
+					<a href="mrecordlist?page=${i}" class="select"
 						onclick="callBtn(${i});return ${res.keyword==null};">${i}</a>&nbsp;
 					</c:when>
 				<c:otherwise>
-					<a href="patientlist?page=${i}" class="btn"
+					<a href="mrecordlist?page=${i}" class="btn"
 						onclick="callBtn(${i});return ${res.keyword==null};">${i}</a>&nbsp;
 				</c:otherwise>
 
@@ -264,7 +256,7 @@ button {
 
 		<c:choose>
 			<c:when test="${res.pageInfo.curPage<res.pageInfo.allPage}">
-				<a href="patientlist?page=${res.pageInfo.curPage+1}">&gt;</a>
+				<a href="mrecordlist?page=${res.pageInfo.curPage+1}">&gt;</a>
 			</c:when>
 			<c:otherwise>
 					&gt;
