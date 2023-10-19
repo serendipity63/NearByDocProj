@@ -54,14 +54,19 @@ public class ReservationServiceImpl implements ReservationService{
 		return map;
 	}
 	@Override
-	public Map<String, Object> detailRes(Map<String, Object> param) throws Exception {
-		// 리뷰 번호로 해당 리뷰의 예약자의 주민번호 찾기
-		if(resDao.findById((Integer) param.get("id"))== null) { // null일 경우 본인이 예약
-			return resDao.selectMyDetailReservation(param);
-		}
+	public Map<String, Object> detailRes(Integer id) throws Exception {
 		
-			return resDao.selectFamDetailReservation(param);
-
+		
+		// 리뷰 번호와 주민등록 번호로 예약 상세 조회
+		
+		
+		//리뷰 번호로 주민등록 번호 조회
+		String pidnum = resDao.findById(id);
+		System.out.println("Service---------------");
+		System.out.println(id);
+		System.out.println(pidnum);
+		
+		return resDao.selectMyDetailReservation(id, pidnum);
 	}
 	
 

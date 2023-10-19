@@ -10,7 +10,7 @@ import dto.Reservation;
 public interface ReservationService {
 	
 	List<Map<String, Object>> showReservation(String pidnum)throws Exception;
-	Map<String,Object> detailRes(Map<String, Object> param) throws Exception;
+	Map<String,Object> detailRes(Integer id) throws Exception;
 
 	void resUpdate(Reservation res) throws Exception;
 	void updateComment(Reservation res) throws Exception;

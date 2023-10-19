@@ -138,14 +138,14 @@ $(function(){
 		<hr>
 	</div>
 
-	<div id="container" style="cursor: pointer;">
+	<div id="container">
 	<div id="roll">
 		<c:forEach items="${reviews}" var="review" varStatus="status">
 			<div id="res">
 			<input class="hiddenId" type="text" value="${review.id }" style="display: none">
 				<h4>${review.name }</h4>
 				<h5>${review.date }</h5>
-				<input class="deleteBtn" type="button" value="삭제">
+				<input class="deleteBtn" type="button" value="삭제"  style="cursor: pointer;">
 				<div id="reviewbox">
 					<span>진료 과목 </span> &nbsp; <span>${review.department }</span> <br>
 					<br> <span id="cntStar"> <c:forEach begin="1"

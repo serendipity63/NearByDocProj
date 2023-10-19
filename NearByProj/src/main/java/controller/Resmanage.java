@@ -37,19 +37,18 @@ public class Resmanage extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		Integer id = Integer.parseInt(request.getParameter("id"));
-		HttpSession session = request.getSession();
-		Patient patient = (Patient)session.getAttribute("user");
-		String pidnum = patient.getPidnum();
+//		HttpSession session = request.getSession();
+//		Patient patient = (Patient)session.getAttribute("user");
+//		String pidnum = patient.getPidnum();
 		
 		ReservationService resService = new ReservationServiceImpl();
 		try {
-			Map<String, Object> reservation = new HashMap<>();
-			reservation.put("id", id);
-			reservation.put("pidnum", pidnum);
+
 			
-			System.out.println("Controller pidnum : "+reservation.get("pidnum"));
+			System.out.println("Controller---------------");
+			System.out.println(id);
 			
-			Map<String,Object> res = resService.detailRes(reservation);
+			Map<String,Object> res = resService.detailRes(id);
 			request.setAttribute("res", res);
 			request.getRequestDispatcher("resmanage.jsp").forward(request, response);
 		} catch (Exception e) {

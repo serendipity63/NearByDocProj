@@ -129,7 +129,7 @@ margin-left :60px;
 								  ,	"proadaddress" : proadaddress
 									},
 								success:function(res){
-									location.href="profile"
+									location.href="profile";
 								}
 							})
 					  } 
