@@ -62,13 +62,13 @@ public class ReservationDaoImpl implements ReservationDao{
 	}
 	//오늘의 예약 내역
 	@Override
-	public List<Map<String,Object>> selectTodayReservationList(Integer row) throws Exception {
-		return sqlSession.selectList("mapper.reservation.selectTodayReservationList",row);
+	public List<Map<String,Object>> selectTodayReservationList(Map<String,Object> param) throws Exception {
+		return sqlSession.selectList("mapper.reservation.selectTodayReservationList",param);
 	}
 
 	@Override
-	public Integer selectTodayResCount() throws Exception {
-		return sqlSession.selectOne("mapper.reservation.selectTodayResCount");
+	public Integer selectTodayResCount(String comnum) throws Exception {
+		return sqlSession.selectOne("mapper.reservation.selectTodayResCount",comnum);
 	}
 	// 진료 기록 조회
 	@Override
