@@ -43,6 +43,7 @@ public class PatientSearch extends HttpServlet {
 		HttpSession session = request.getSession();
 		Hospital hospital = (Hospital)session.getAttribute("hospitaluser");
 		String comnum = hospital.getComnum();
+		System.out.println(comnum);
 		int curPage=1;
 		if(page!=null) {
 			curPage= Integer.parseInt(page);

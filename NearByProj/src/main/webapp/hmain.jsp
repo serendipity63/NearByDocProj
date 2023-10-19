@@ -186,7 +186,7 @@ b{
          	</p> 
             
             <p>
-               <a href="reserveinfo_p.jsp" >환자 정보 조회</a>
+               <a href="patientsearch" >환자 정보 조회</a>
             </p>
             <br>
         
