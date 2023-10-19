@@ -182,11 +182,11 @@ b{
          </h2>
          <hr>
             <p>
-            <a href="mrecord.jsp">진료 기록 조회</a>
+            <a href="mrecordlist">진료 기록 조회</a>
          	</p> 
             
             <p>
-               <a href="reserveinfo_p.jsp" >환자 정보 조회</a>
+               <a href="patientsearch" >환자 정보 조회</a>
             </p>
             <br>
         

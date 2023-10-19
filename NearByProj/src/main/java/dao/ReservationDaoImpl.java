@@ -1,11 +1,11 @@
 package dao;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
-import dto.Patient;
 import dto.Reservation;
 import util.MybatisSqlSessionFactory;
 
@@ -26,15 +26,20 @@ public class ReservationDaoImpl implements ReservationDao{
 	}
 	
 	@Override
-	public Map<String, Object> selectMyDetailReservation(Map<String, Object> param) {
-		return sqlSession.selectOne("mapper.reservation.selectMyDetailReservation", param);
+	public Map<String, Object> selectMyDetailReservation(Integer id,String pidnum) {
+		System.out.println("Enter Dao---------------");
+		System.out.println(id);
+		System.out.println(pidnum);
+		Map<String, Object> map = new HashMap<>();
+		map.put("id", id);
+		map.put("pidnum", pidnum);
+		
+		System.out.println("Go xml---------------");
+		System.out.println(map.get("id"));
+		System.out.println(map.get("pidnum"));
+		
+		return sqlSession.selectOne("mapper.reservation.selectMyDetailReservation",map);
 	}
-	
-	@Override
-	public Map<String, Object> selectFamDetailReservation(Map<String, Object> param) {
-		return sqlSession.selectOne("mapper.reservation.selectFamDetailReservation", param);
-	}
-
 
 	@Override
 	public void statusUpdate(Reservation res) throws Exception {
@@ -57,20 +62,15 @@ public class ReservationDaoImpl implements ReservationDao{
 	}
 	//오늘의 예약 내역
 	@Override
-	public List<Map<String,Object>> selectTodayReservation(Integer row) throws Exception {
-		return sqlSession.selectList("mapper.reservation.selectTodayReservation",row);
+	public List<Map<String,Object>> selectTodayReservationList(Integer row) throws Exception {
+		return sqlSession.selectList("mapper.reservation.selectTodayReservationList",row);
 	}
 
 	@Override
-	public Integer selectReservationCount() throws Exception {
-		return sqlSession.selectOne("mapper.reservation.selectReservationCount");
+	public Integer selectTodayResCount() throws Exception {
+		return sqlSession.selectOne("mapper.reservation.selectTodayResCount");
 	}
-
-	@Override
-	public Reservation selectReservation(Integer num) throws Exception {
-		return sqlSession.selectOne("mapper.reservation.selectReservation",num);
-	}
-
+	// 진료 기록 조회
 	@Override
 	public Integer searchHRecordCount(Map<String, Object> param) throws Exception {
 		return sqlSession.selectOne("mapper.reservation.searchHRecordCount",param);
@@ -98,32 +98,39 @@ public class ReservationDaoImpl implements ReservationDao{
 		return sqlSession.selectList("mapper.reservation.selectAllResBycomnum",comnum);
 	}
 	
-	@Override
-	public Integer selectResCount(String comnum) throws Exception {
-		return sqlSession.selectOne("mapper.reservation.selectResCount",comnum);
-	}
-	
-	@Override
-	public Integer searchAllResCount(Map<String, Object> param) throws Exception {
-		return sqlSession.selectOne("mapper.reservation.searchAllResCount",param);
-	}
-	
-	@Override
-	public List<Reservation> searchAllResList(Map<String, Object> param) throws Exception {
-		return sqlSession.selectList("mapper.reservation.searchAllResList",param);
-	}
+	   //전체 예약 조회
+	 @Override
+	   public Integer searchAllResCount(Map<String, Object> param) throws Exception {
+
+	         return sqlSession.selectOne("mapper.reservation.searchAllResCount",param);
+	   }
+	   
+	   @Override
+	   public List<HashMap<String,String>> searchAllResList(Map<String, Object> param) throws Exception {
+
+	         return sqlSession.selectList("mapper.reservation.searchAllResList",param);
+	   }
+	   @Override
+	   public Integer selectResCount(String comnum) throws Exception {
+	      return sqlSession.selectOne("mapper.reservation.selectResCount",comnum);
+	   }
+	   @Override
+	   public List<Map<String, Object>> selectResList(Map<String,Object> param) throws Exception {
+	      return sqlSession.selectList("mapper.reservation.selectResList", param);
+	   }
+
 
 
 	//예약 환자 정보
 	@Override
-	public Integer selectAllReservationCount() throws Exception {
-		return sqlSession.selectOne("mapper.reservation.selectAllReservationCount");
+	public Integer selectAllReservationCount(String comnum) throws Exception {
+		return sqlSession.selectOne("mapper.reservation.selectAllReservationCount", comnum);
 	}
 
 
 	@Override
-	public List<Map<String, Object>> selectAllReservationList(Integer row) throws Exception {
-		return sqlSession.selectList("mapper.reservation.selectAllReservationList",row);
+	public List<Map<String, Object>> selectAllReservationList(Map<String, Object> patientAll) throws Exception {
+		return sqlSession.selectList("mapper.reservation.selectAllReservationList",patientAll);
 	}
 
 

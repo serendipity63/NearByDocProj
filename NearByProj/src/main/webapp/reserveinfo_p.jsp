@@ -14,23 +14,22 @@ body {
 h1 {
 	width: 197px;
 	height: 55px;
-	margin:0 auto;
+	margin:18px auto;
 	color: rgb(25, 25, 112);
 }
 
 #center {
-	margin:10px auto;
+	position: absolute;
+	left:180px;
+	padding-left :130px;
     width: 1479px;
-   
-   
-   
 }
 
 table{
 	border: 1px solid;
     width: 1346px;
-    margin:55px 70px auto;
-    position:absolute;
+    margin:55px 53px auto;
+    
    
     
 }
@@ -160,11 +159,11 @@ input {
 			
 				<td style="background-color:white;">${patient.proadaddress }</td>
 				
-				<%-- <td style="background-color:white;">
+				<td style="background-color:white;">
 				<c:if test="${hospitaluser.comnum eq reserve.comnum }">
 					<a href="patientdelete?pname=${patient.pname }&page=${res.pageInfo.curPage}" style="text-decoration:none;  color:red;">삭제</a>
 					</c:if>
-				</td> --%>
+				</td>
 			</tr>
 		</c:forEach>
 	</table>

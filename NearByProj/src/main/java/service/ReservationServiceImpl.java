@@ -8,7 +8,6 @@ import java.util.Map;
 import dao.ReservationDao;
 import dao.ReservationDaoImpl;
 import dto.Hospital;
-import dto.Patient;
 import dto.Reservation;
 import util.PageInfo;
 
@@ -54,43 +53,21 @@ public class ReservationServiceImpl implements ReservationService{
 		return map;
 	}
 	@Override
-	public Map<String, Object> detailRes(Map<String, Object> param) throws Exception {
-		// 리뷰 번호로 해당 리뷰의 예약자의 주민번호 찾기
-		if(resDao.findById((Integer) param.get("id"))== null) { // null일 경우 본인이 예약
-			return resDao.selectMyDetailReservation(param);
-		}
+	public Map<String, Object> detailRes(Integer id) throws Exception {
 		
-			return resDao.selectFamDetailReservation(param);
-
+		
+		// 리뷰 번호와 주민등록 번호로 예약 상세 조회
+		
+		
+		//리뷰 번호로 주민등록 번호 조회
+		String pidnum = resDao.findById(id);
+		System.out.println("Service---------------");
+		System.out.println(id);
+		System.out.println(pidnum);
+		
+		return resDao.selectMyDetailReservation(id, pidnum);
 	}
 	
-
-	@Override
-	public Map<String, Object> todayResListByPage(Integer page) throws Exception {
-	
-	PageInfo pageInfo = new PageInfo();
-	Integer reservationCount = resDao.selectReservationCount();
-	int maxPage = (int) Math.ceil((double) reservationCount / 10); 
-	int startPage = (page - 1) / 10 * 10 + 1; 
-	int endPage = startPage + 10 - 1;
-	if (endPage > maxPage)
-		endPage = maxPage;
-	if (page > maxPage)
-		page = maxPage; 
-
-	pageInfo.setAllPage(maxPage);
-	pageInfo.setCurPage(page);
-	pageInfo.setStartPage(startPage);
-	pageInfo.setEndPage(endPage);
-
-	int row = (page - 1) * 10 + 1; 
-	List<Map<String, Object>> reservationList = resDao.selectTodayReservation(row - 1);
-
-	Map<String, Object> map = new HashMap<>();
-	map.put("pageInfo", pageInfo);
-	map.put("reservationList", reservationList);
-	return map;
-}
 
 	@Override
 	public Map<String, Object> hrecordSearch(String type, String keyword, Integer page) throws Exception {
@@ -207,15 +184,7 @@ public class ReservationServiceImpl implements ReservationService{
 	public Map<String, Object> resAllSearch(String type, String keyword, Integer page, String sdate, String edate, String comnum)
 			throws Exception {
 		Map<String, Object> param = new HashMap<>();
-		String type2;
-		if(type.equals("환자명")) {
-			type2="pname";
-		} else {
-			type2="pidnum";
-		}
-		
-		
-		param.put("type", type2);
+		param.put("type", type);
 		param.put("keyword", keyword);
 		param.put("sdate", sdate);
 		param.put("edate", edate);
@@ -223,6 +192,9 @@ public class ReservationServiceImpl implements ReservationService{
 		
 		PageInfo pageInfo = new PageInfo();
 		int resCount = resDao.searchAllResCount(param);
+		System.out.println("검색 개수");
+		System.out.println(resCount);
+		//if(resCount==0) resCount
 		int maxPage = (int)Math.ceil((double)resCount/10);
 		int startPage = (page-1)/10*10+1;
 		int endPage = startPage+10-1;
@@ -233,10 +205,10 @@ public class ReservationServiceImpl implements ReservationService{
 		pageInfo.setCurPage(page);
 		pageInfo.setStartPage(startPage);
 		pageInfo.setEndPage(endPage);
-		
+		if(page==0) page=1;
 		int row = (page-1)*10+1;	//현재 페이지의 시작 row
 		param.put("row", row-1);
-		List<Reservation> resList = resDao.searchAllResList(param);
+		List<HashMap<String,String>> resList = resDao.searchAllResList(param);
 		
 		
 		Map<String, Object> map = new HashMap<>();
@@ -244,6 +216,8 @@ public class ReservationServiceImpl implements ReservationService{
 		map.put("resList", resList);
 		map.put("type", type);
 		map.put("keyword", keyword);
+		map.put("sdate", sdate);
+		map.put("edate", edate);
 		
 		return map;
 	}
@@ -263,18 +237,18 @@ public class ReservationServiceImpl implements ReservationService{
 	/*예약 환자 정보*/
 
 	@Override
-	public Map<String, Object> patientResListSearch(String type, String keyword, Integer page) throws Exception {
+	public Map<String, Object> patientResListSearch(String type, String keyword, Integer page, String comnum) throws Exception {
 		Map<String, Object> param = new HashMap<>();
 		param.put("type", type);
 		param.put("keyword", keyword);
-
+		param.put("comnum", comnum);
 		PageInfo pageInfo = new PageInfo();
 
 		Map<String, Object> map = new HashMap<>();
 		
 		Integer resCount;
 		if(type.equals("all") || keyword==null || keyword.trim().equals("")) { //전체 예약 환자 조회
-			resCount = resDao.selectAllReservationCount();
+			resCount = resDao.selectAllReservationCount(comnum);
 		} else { //조건별 예약환자 조회
 			resCount = resDao.searchReservationCount(param);
 		}
@@ -298,10 +272,12 @@ public class ReservationServiceImpl implements ReservationService{
 		}
 
 		int row = (page - 1) * 10 + 1; // 현재 페이지의 시작 row
-
+		Map<String, Object> patientAll = new HashMap<>();
+		patientAll.put("row", row-1);
+		patientAll.put("comnum", comnum);
 		List<Map<String, Object>> resList;
 		if(type.equals("all") || keyword==null || keyword.trim().equals("")) { //전체 예약 환자 조회
-			resList = resDao.selectAllReservationList(row-1);
+			resList = resDao.selectAllReservationList(patientAll);
 		} else { //조건별 예약환자 조회
 			param.put("row", row - 1);
 			resList = resDao.searchReservationList(param);
@@ -312,10 +288,61 @@ public class ReservationServiceImpl implements ReservationService{
 		map.put("patientresList", resList);
 		return map;
 	}
-	
-	
-	
 
+	@Override
+	public Map<String, Object> todayResListByPage(Integer page) throws Exception {
+		PageInfo pageInfo = new PageInfo();
+		Integer todayreslistCount = resDao.selectTodayResCount();
+		int maxPage = (int) Math.ceil((double) todayreslistCount / 10); 
+		int startPage = (page - 1) / 10 * 10 + 1; 
+		int endPage = startPage + 10 - 1;
+		if (endPage > maxPage)
+			endPage = maxPage;
+		if (page > maxPage)
+			page = maxPage; 
+
+		pageInfo.setAllPage(maxPage);
+		pageInfo.setCurPage(page);
+		pageInfo.setStartPage(startPage);
+		pageInfo.setEndPage(endPage);
+
+		int row = (page - 1) * 10 + 1; 
+		List<Map<String,Object>> todayresList = resDao.selectTodayReservationList(row - 1);
+
+		Map<String, Object> map = new HashMap<>();
+		map.put("pageInfo", pageInfo);
+		map.put("todayresList", todayresList);
+		return map;
+	}
+	
+	
+	
+@Override
+public Map<String, Object> resListByPage(String comnum, Integer page) throws Exception {
+	PageInfo pageInfo = new PageInfo();
+	int resCount = resDao.selectResCount(comnum);
+	int maxPage = (int)Math.ceil((double)resCount/10);
+	int startPage = (page-1)/10*10+1;  //1,11,21,31...
+	int endPage = startPage+10-1; //10,20,30...
+	if(endPage>maxPage) endPage=maxPage;
+	if(page>maxPage) page=maxPage;
+	
+	pageInfo.setAllPage(maxPage);
+	pageInfo.setCurPage(page);
+	pageInfo.setStartPage(startPage);
+	pageInfo.setEndPage(endPage);
+	
+	int row = (page-1)*10+1;  //현재 페이지의 시작 row
+	Map<String, Object> param =new HashMap<>();
+	param.put("row", row-1);
+	param.put("comnum", comnum);
+	List<Map<String,Object>> resList = resDao.selectResList(param);
+	
+	Map<String, Object> map = new HashMap<>();
+	map.put("pageInfo", pageInfo);
+	map.put("resList", resList);
+	return map;
+}
 	
 
 	
