@@ -197,7 +197,7 @@ $(function(){
 		var pidnum = $("#idnum").val();
 		
 		// 데이터 작성 확인
-		if (!pname || !ptel || !paddress || !pidnum) {
+		if (!pname || !ptel || !proadaddress || !pidnum) {
 			Swal.fire({
 				icon: 'error',
 				title: 'Error',
@@ -209,9 +209,9 @@ $(function(){
 				type: "post",
 				data: {
 					"pname": pname,
-					"ptel": ftel,
+					"ptel": ptel,
 					"proadaddress": proadaddress,
-					"pidnum": fidnum
+					"pidnum": pidnum
 				},
 				success: function(res) {
 					console.log(res);

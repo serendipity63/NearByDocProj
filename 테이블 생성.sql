@@ -8,7 +8,7 @@ CREATE TABLE patient (
   ppostcode VARCHAR(200),
   pdetailaddress VARCHAR(200),
   quit BOOLEAN DEFAULT FALSE,
-  fidnum VARCHAR(200)
+  ppidnum VARCHAR(200)
 );
 
 
@@ -57,5 +57,4 @@ CREATE TABLE review (
 DROP TABLE review;
 DROP TABLE reservation;
 DROP TABLE hospital;
-DROP TABLE family;
 DROP TABLE patient;

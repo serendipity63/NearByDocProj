@@ -54,6 +54,16 @@ public class PatientDaoImpl implements PatientDao {
 	@Override
 
 	public void updatePatient(Patient patient) throws Exception {
+		
+		System.out.println("Dao ----------------");
+		System.out.println(patient.getPname());
+		System.out.println(patient.getPtel());
+		System.out.println(patient.getPemail());
+		System.out.println(patient.getPpassword());
+		System.out.println(patient.getProadaddress());
+		System.out.println(patient.getPidnum());
+		
+		
 		sqlSession.update("mapper.patient.updatePatient", patient);
 		sqlSession.commit();
 		
@@ -62,7 +72,7 @@ public class PatientDaoImpl implements PatientDao {
 	@Override
 	public void deletePatient(String pidnum) throws Exception {
 		System.out.println("Impl : " +pidnum);
-		sqlSession.delete("mapper.patient.deletePatient",pidnum);
+		sqlSession.update("mapper.patient.deletePatient",pidnum);
 		sqlSession.commit();
 	}
 	

@@ -106,6 +106,7 @@ margin-left :60px;
 			var pname = $("#pname").val();
 			var ptel = $("#ptel").val();
 			var pemail = $("#pemail").val();
+			var ppassword = $("#ppassword").val();
 			var proadaddress = $("#proadaddress").val();
 			
 			Swal.fire({
@@ -124,10 +125,11 @@ margin-left :60px;
 									"pname" : pname
 								  , "ptel" : ptel
 								  ,	"pemail" : pemail
+								  ,	"ppassword" : ppassword
 								  ,	"proadaddress" : proadaddress
 									},
 								success:function(res){
-									location.href=res
+									location.href="profile"
 								}
 							})
 					  } 
@@ -152,6 +154,8 @@ margin-left :60px;
 	    <p><input type="text" id="ptel" name="ptel"  value="${myinfo.ptel } "></p>
 	    <p class="col">이메일</p>
 	    <p><input type="text" id="pemail" name="pemail" value="${myinfo.pemail }"></p>
+	    <p class="col">비밀번호</p>
+	    <p><input type="text" id="ppassword" name="ppassword" value="${myinfo.ppassword }"></p>
 	    <p class="col">주소</p>
 	    <p><input type="text" id="proadaddress" name="proadaddress" value="${myinfo.proadaddress }"></p>
 	    <span>
