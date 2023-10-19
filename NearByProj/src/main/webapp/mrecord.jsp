@@ -91,6 +91,10 @@ table {
     margin: 67px 71px auto;
     position:absolute;
 }
+table>td{
+	background-color:white;
+
+}
 
 input {
 	width: 224px;
@@ -107,7 +111,7 @@ select {
 
 #center {
 	position: absolute;
-	left:180px;
+	left:170px;
 	padding-left :130px;
     width: 1479px;
    
@@ -149,7 +153,7 @@ button {
 #emptyArea {
 	width: 708px;
 	text-align: center;
-	margin:480px auto;
+	margin:350px auto;
 }
 
 #emptyArea a {

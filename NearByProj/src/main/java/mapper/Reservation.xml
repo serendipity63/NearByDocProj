@@ -240,7 +240,7 @@
 	<!-- 오늘의 예약조회 -->
 	<select id='selectTodayReservationList' parameterType="hashmap" resultType="hashmap">
 	<![CDATA[
-		select r.resdate as resdate
+		select distinct r.resdate as resdate
 		,r.restime as restime
 		,p.pname as pname
 		,r.comment as comment
@@ -297,7 +297,7 @@
 	
 	<!-- 예약 환자 전체 조회 -->
 	<select id='selectAllReservationList' parameterType="hashmap" resultType="hashmap">
-	 	select 	p.pname as pname,
+	 	select distinct	p.pname as pname,
 	 			p.pidnum as pidnum,
 	 			p.pemail as pemail,
 	 			p.ptel as ptel, 
