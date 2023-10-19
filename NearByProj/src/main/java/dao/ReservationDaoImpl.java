@@ -144,6 +144,28 @@ public class ReservationDaoImpl implements ReservationDao{
 		return sqlSession.selectList("mapper.reservation.searchReservationList",param);
 	}
 
+
+	@Override
+	public List<Object> selectResByName(String pname) throws Exception {
+		
+		return sqlSession.selectList("mapper.reservation.selectResByName", pname);
+	}
+
+
+	@Override
+	public void updateStatusCuzQuit(Integer id) throws Exception {
+		sqlSession.update("mapper.reservation.updateStatusCuzQuit",id);
+		sqlSession.commit();
+		
+	}
+
+
+	@Override
+	public List<Integer> selectIdByName(String pname) throws Exception {
+		
+		return sqlSession.selectList("mapper.reservation.selectIdByName", pname);
+	}
+
 	
 
 	

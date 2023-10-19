@@ -102,7 +102,41 @@
      update reservation set comment = #{comment} where id = #{id}
      ]]>
      </update>
+     
+     <!-- 이름으로 예약 정보 찾기  -->
+     <select id="selectResByName" parameterType="String" resultType="String">
+     <![CDATA[
+     select p.pname
+       from reservation r
+          , patient p 
+      where 1=1
+        and r.pidnum = p.pidnum
+        and p.pname = #{pname};
+     ]]>
+     </select>
+     
+     <!--  -->
+     <select id="selectIdByName" parameterType="String" resultType="Integer">
+     <![CDATA[
+     select r1.id
+	   from reservation r1
+		  , patient p
+	  where 1=1
+	    and r1.pidnum = p.pidnum
+	    and p.pname = #{pname}
+	    ]]>
+     </select>
 	
+	<!-- 가족 삭제로 인한 가족의 예약 상태 변경  -->
+	<update id="updateStatusCuzQuit" parameterType="Integer">
+	<![CDATA[
+	update reservation 
+       set status = '5' 
+     where 1=1
+       and id = #{id}
+	]]>
+	
+	</update>
 	
 	
 	<select id='selectHRecordList' parameterType="String" resultType="Reservation">

@@ -48,4 +48,7 @@ public interface ReservationDao {
 	List<HashMap<String,String>> searchAllResList(Map<String,Object> param) throws Exception;
 	Integer selectResCount(String comnum) throws Exception;
 	List<Map<String,Object>> selectResList(Map<String,Object> param) throws Exception;
+	List<Object> selectResByName(String pname) throws Exception;
+	void updateStatusCuzQuit(Integer id) throws Exception;
+	List<Integer> selectIdByName(String pname) throws Exception;
 }

@@ -231,7 +231,7 @@ $(function(){
 	$('#idnum').keydown(function (event) {
 	    var key = event.charCode || event.keyCode || 0;
 	    var $text = $(this);
-	    var maxLength = 14;
+	    var maxLength = 13;
 
 	    if ($text.val().length >= maxLength && key !== 8 && key !== 9) {
 	        event.preventDefault();
@@ -241,11 +241,6 @@ $(function(){
 	        event.preventDefault();
 	    }
 
-	    if ((key >= 48 && key <= 57) && $text.val().length < maxLength) {
-	        if ($text.val().length === 6) {
-	            $text.val($text.val() + '-');
-	        }
-	    }
 	});
 
 
