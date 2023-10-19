@@ -42,6 +42,7 @@
 		  FROM patient p 
 		 WHERE 1=1
 		   AND p.ppidnum = #{pidnum}
+		   AND p.quit = false
 		   ]]>
 	</select>
 
@@ -55,15 +56,15 @@
 	
 	
 	<!-- 가족 구성원 삭제 -->
-	<delete id="deleteFamily" parameterType="String">
+	<update id="deleteFamily" parameterType="String">
 	<![CDATA[
-	DELETE 
-	  FROM patient
+	update patient
+	   set quit = true
 	 WHERE 1=1	
        AND pname = #{pname}
 	]]>
 	
-	</delete>
+	</update>
 	
 	
 	<!-- 가족 구성원 정보 수정  -->

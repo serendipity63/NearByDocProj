@@ -1,11 +1,11 @@
 package dao;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
-import dto.Patient;
 import dto.Reservation;
 import util.MybatisSqlSessionFactory;
 
@@ -26,15 +26,20 @@ public class ReservationDaoImpl implements ReservationDao{
 	}
 	
 	@Override
-	public Map<String, Object> selectMyDetailReservation(Map<String, Object> param) {
-		return sqlSession.selectOne("mapper.reservation.selectMyDetailReservation", param);
+	public Map<String, Object> selectMyDetailReservation(Integer id,String pidnum) {
+		System.out.println("Enter Dao---------------");
+		System.out.println(id);
+		System.out.println(pidnum);
+		Map<String, Object> map = new HashMap<>();
+		map.put("id", id);
+		map.put("pidnum", pidnum);
+		
+		System.out.println("Go xml---------------");
+		System.out.println(map.get("id"));
+		System.out.println(map.get("pidnum"));
+		
+		return sqlSession.selectOne("mapper.reservation.selectMyDetailReservation",map);
 	}
-	
-	@Override
-	public Map<String, Object> selectFamDetailReservation(Map<String, Object> param) {
-		return sqlSession.selectOne("mapper.reservation.selectFamDetailReservation", param);
-	}
-
 
 	@Override
 	public void statusUpdate(Reservation res) throws Exception {

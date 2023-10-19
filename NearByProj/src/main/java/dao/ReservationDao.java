@@ -10,8 +10,7 @@ public interface ReservationDao {
 	
 	List<Map<String, Object>> selectMyReservation(String pidnum)throws Exception;
 	String findById(Integer id) throws Exception;
-	Map<String, Object> selectMyDetailReservation(Map<String, Object> param);
-	Map<String, Object> selectFamDetailReservation(Map<String, Object> param);
+	Map<String, Object> selectMyDetailReservation(Integer id, String pidnum);
 
 	void statusUpdate(Reservation res) throws Exception;
 	void commentUpdate(Reservation res) throws Exception;

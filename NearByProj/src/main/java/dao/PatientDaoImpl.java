@@ -31,7 +31,7 @@ public class PatientDaoImpl implements PatientDao {
 
 	@Override
 	public Integer selectPatientCount() throws Exception {
-		return sqlSession.selectOne("mapper.patient.selectPatientCount");
+		return sqlSession.update("mapper.patient.selectPatientCount");
 	}
 	
 	
