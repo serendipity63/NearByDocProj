@@ -14,8 +14,6 @@
 <title>니어닥병원마이페이지</title>
 
 
-
-
 <style>
 *{
       font-family: 'Noto Sans kr', sans-serif;
@@ -129,7 +127,7 @@ h3>p>a{
 }
 b{
 	
-	color:blue;
+	color:#191970;
 }
 
 </style>

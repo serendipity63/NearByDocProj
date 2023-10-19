@@ -92,7 +92,7 @@ button {
 #famlist {
 	background: white;
 	height: 500px;
-	overflow-y: scroll;
+	overflow-y: auto;
 }
 
 #famlist>input {

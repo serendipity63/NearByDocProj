@@ -24,11 +24,11 @@ h1 {
     /* margin-top: 50px; */
     color: rgb(25, 25, 112);
 }
+
 table {
 	width: 1000px;
 	height: 500px;
 	margin: 50px 0px 0px 450px;
-	
 }
 td{
 	width:30px;
@@ -52,7 +52,6 @@ input[type="button"]{
 	padding: 10px;
     text-decoration: none;
     color: white;
-    background-color: #0a0a4d;
     border-radius:10px;
     display: inline-block;
     width: 81px;
@@ -61,32 +60,22 @@ input[type="button"]{
 	 background-color:blue;
       transition: 0.7s;
 }
-.ear{
-	background-color:#c1f3ea;
-	color:black;
-}
-.num{
-	background-color:#c1f3ea;
-	color:black;
-}
-.add{
-	background-color:#c1f3ea;
-	color:black;
-}
-.lun{
-	background-color:#c1f3ea;
-	color:black;
-}
 
+.modify{
+	text-align:center;
+
+}
 
 </style>
 <body>
 	<% pageContext.include("hmain.jsp");%>
+	
+	<center>
 	<h1>병원정보</h1>
 	
-		
-		
-		
+	
+	
+	
 			<table id="title">
 				<tr>
 					<td>진료 과목</td>
@@ -121,8 +110,16 @@ input[type="button"]{
 					<td><input type="text" name="lunch"
 					id="lunch" value="${hinfo.getLunch() }" disabled="disabled" /></td>
 				</tr>
+					<tr>
+					<td>병원 사진</td>
+					<td>
+					<img src="image?file=${hinfo.getHurl()}" alt="병원" width="100" height="100" >
+					</td>
+				</tr>
+				
 			</table>
-				<input type="button" value="수정" onclick="location.href='hospitalmodify'">
+			
+				<input type="button" id="modify" value="수정" onclick="location.href='hospitalmodify'">
 			
 				<div id="button">
 				<c:if test="${hospitaluser.comnum eq hospital.comnum }">
@@ -136,7 +133,7 @@ input[type="button"]{
 				
 			
 	
-	
+	</center>
 	
 </body>
 </html>

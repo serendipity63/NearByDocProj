@@ -156,7 +156,7 @@ input[type='file'] {
 #info_comnum button {
 	position: absolute;
 	width: 90px;
-	height: 29.5px;
+	height: 31px;
 	border-radius: 3px;
 	border: none;
 	background: #191970;
@@ -575,7 +575,6 @@ label {
 
 
 			<%-- 진료시간 시작 --%>
-	
 
 			<div class="row">
 				<div class="input">
