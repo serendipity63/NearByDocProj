@@ -17,7 +17,7 @@ public interface ReservationService {
 	
 
 	/* 예약 환자 정보*/
-	Map<String,Object> patientResListSearch(String type,String keyword,Integer page) throws Exception;
+	Map<String,Object> patientResListSearch(String type,String keyword,Integer page, String comnum) throws Exception;
 	/*오늘의 예약 */
 	Map<String,Object> todayResListByPage(Integer page)throws Exception;
 	

@@ -98,38 +98,32 @@ public class ReservationDaoImpl implements ReservationDao{
 		return sqlSession.selectList("mapper.reservation.selectAllResBycomnum",comnum);
 	}
 	
-	
-	//전체 예약 조회
-	@Override
-	public Integer searchAllResCount(Map<String, Object> param) throws Exception {
-
-			return sqlSession.selectOne("mapper.reservation.searchAllResCount",param);
-	}
-	
-	@Override
-	public List<HashMap<String,String>> searchAllResList(Map<String, Object> param) throws Exception {
-
-			return sqlSession.selectList("mapper.reservation.searchAllResList",param);
-	}
 	@Override
 	public Integer selectResCount(String comnum) throws Exception {
 		return sqlSession.selectOne("mapper.reservation.selectResCount",comnum);
 	}
+	
 	@Override
-	public List<Map<String, Object>> selectResList(Map<String,Object> param) throws Exception {
-		return sqlSession.selectList("mapper.reservation.selectResList", param);
+	public Integer searchAllResCount(Map<String, Object> param) throws Exception {
+		return sqlSession.selectOne("mapper.reservation.searchAllResCount",param);
 	}
+	
+	@Override
+	public List<Reservation> searchAllResList(Map<String, Object> param) throws Exception {
+		return sqlSession.selectList("mapper.reservation.searchAllResList",param);
+	}
+
 
 	//예약 환자 정보
 	@Override
-	public Integer selectAllReservationCount() throws Exception {
-		return sqlSession.selectOne("mapper.reservation.selectAllReservationCount");
+	public Integer selectAllReservationCount(String comnum) throws Exception {
+		return sqlSession.selectOne("mapper.reservation.selectAllReservationCount", comnum);
 	}
 
 
 	@Override
-	public List<Map<String, Object>> selectAllReservationList(Integer row) throws Exception {
-		return sqlSession.selectList("mapper.reservation.selectAllReservationList",row);
+	public List<Map<String, Object>> selectAllReservationList(Map<String, Object> patientAll) throws Exception {
+		return sqlSession.selectList("mapper.reservation.selectAllReservationList",patientAll);
 	}
 
 

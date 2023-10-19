@@ -237,18 +237,18 @@ public class ReservationServiceImpl implements ReservationService{
 	/*예약 환자 정보*/
 
 	@Override
-	public Map<String, Object> patientResListSearch(String type, String keyword, Integer page) throws Exception {
+	public Map<String, Object> patientResListSearch(String type, String keyword, Integer page, String comnum) throws Exception {
 		Map<String, Object> param = new HashMap<>();
 		param.put("type", type);
 		param.put("keyword", keyword);
-
+		param.put("comnum", comnum);
 		PageInfo pageInfo = new PageInfo();
 
 		Map<String, Object> map = new HashMap<>();
 		
 		Integer resCount;
 		if(type.equals("all") || keyword==null || keyword.trim().equals("")) { //전체 예약 환자 조회
-			resCount = resDao.selectAllReservationCount();
+			resCount = resDao.selectAllReservationCount(comnum);
 		} else { //조건별 예약환자 조회
 			resCount = resDao.searchReservationCount(param);
 		}
@@ -272,10 +272,12 @@ public class ReservationServiceImpl implements ReservationService{
 		}
 
 		int row = (page - 1) * 10 + 1; // 현재 페이지의 시작 row
-
+		Map<String, Object> patientAll = new HashMap<>();
+		patientAll.put("row", row-1);
+		patientAll.put("comnum", comnum);
 		List<Map<String, Object>> resList;
 		if(type.equals("all") || keyword==null || keyword.trim().equals("")) { //전체 예약 환자 조회
-			resList = resDao.selectAllReservationList(row-1);
+			resList = resDao.selectAllReservationList(patientAll);
 		} else { //조건별 예약환자 조회
 			param.put("row", row - 1);
 			resList = resDao.searchReservationList(param);
