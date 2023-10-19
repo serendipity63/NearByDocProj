@@ -6,6 +6,8 @@ import java.util.Map;
 
 import dao.PatientDao;
 import dao.PatientDaoImpl;
+import dao.ReservationDao;
+import dao.ReservationDaoImpl;
 import dto.Patient;
 import util.PageInfo;
 
@@ -183,7 +185,21 @@ public class PatientServiceImpl implements PatientService {
 
 	@Override
 	public void famDelete(String pname) throws Exception {
-		patientDao.deleteFamily(pname);
+		
+		
+		ReservationDao resDao = new ReservationDaoImpl();
+		List<Object> resList = resDao.selectResByName(pname);
+		if(resList != null) { // 탈퇴하려는 사람의 이름으로 예약 조회했을 때 있을 경우 
+			List<Integer> idList = resDao.selectIdByName(pname); //예약 번호들을 찾아내서 list에 담는다 
+			for(int i = 0; i<idList.size(); i++) {
+				System.out.println("idList : "+idList.get(i));
+				resDao.updateStatusCuzQuit((Integer)idList.get(i));  //찾아낸 id들을 이용하여  해당 예약들의 상태를 변경 시킨
+			}
+			// 상태를 변경 시킨 후 회원 상태 변경 과정 
+			patientDao.deleteFamily(pname); // 이후 회원의 상태를 탈퇴로 변경
+		}
+		
+		patientDao.deleteFamily(pname); 
 		
 	}
 
