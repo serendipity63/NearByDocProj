@@ -142,8 +142,6 @@ b{
          width="50px" height="50px" alt="로고 이미지"/></a>
          <span>병원매니저</span>
       
-
-
    </div>
 
    <div id="sidemenubox">
