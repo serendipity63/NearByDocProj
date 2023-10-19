@@ -32,7 +32,7 @@ table {
 }
 td{
 	width:30px;
-	background-color:#3fc7bb;
+	background-color:white;
 	color:black;
 	text-align:center;
 }

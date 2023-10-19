@@ -260,7 +260,7 @@
 	 	select p.pname as pname,p.pidnum as pidnum,p.pemail as pemail,p.ptel as ptel, 
 	 		p.ppostcode as ppostcode,p.proadaddress as proadaddress 
 	 	from reservation r, patient p
-	 	where r.pidnum=p.pidnum
+	 	where r.pidnum=p.pidnum, r.comnum=#{comnum}
 	 	order by id desc
 	 	limit #{row},10
 	</select>
