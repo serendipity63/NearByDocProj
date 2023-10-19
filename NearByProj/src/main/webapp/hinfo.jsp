@@ -36,6 +36,12 @@ td{
 	color:black;
 	text-align:center;
 }
+input[type="button"]{
+   	text-align:center;
+}
+
+
+
 
 #button {
 	margin-top: 50px;

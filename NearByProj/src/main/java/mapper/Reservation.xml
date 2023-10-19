@@ -227,11 +227,11 @@
 	
 	
 	<!-- 예약 환자 조건 검색 데이터 수-->
-	<select id="searchReservationCount"  parameterType="hashmap" >
+	<select id="searchReservationCount"  parameterType="hashmap" resultType="Integer">
 		<![CDATA[
 			select count(r.pidnum) 
 		 	from reservation r, patient p
-	 		where r.pidnum=p.pidnum	r.comnum=#{comnum} and p.${type} like '%${keyword}%'
+	 		where r.pidnum=p.pidnum and	r.comnum = #{comnum} and p.${type} like '%${keyword}%'
 		]]>
 	</select>
 	
@@ -269,7 +269,7 @@
 	 			p.ppostcode as ppostcode,
 	 			p.proadaddress as proadaddress 
 	 	from reservation r, patient p
-	 	where r.pidnum=p.pidnum, r.comnum=#{comnum}
+	 	where r.pidnum=p.pidnum and r.comnum=#{comnum}
 	 	order by id desc
 	 	limit #{row},10
 	</select>
