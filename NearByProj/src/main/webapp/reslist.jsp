@@ -125,6 +125,11 @@ function confirmReservation(reservationId) {
 					<c:if test="${reservation.status eq 4}">
 						<span>방문 안함</span>
 					</c:if>
+					
+					
+					<c:if test="${reservation.status eq 5}">
+						<span>회원 탈퇴</span>
+					</c:if>
 			
 			
 			
@@ -141,6 +146,11 @@ function confirmReservation(reservationId) {
 				<c:if test="${reservation.status eq 4}">
 					<table class="restable" style="background-color: #DAD9D9">
 				</c:if>
+				<c:if test="${reservation.status eq 5}">
+					<table class="restable" style="background-color: #DAD9D9">
+				</c:if>
+				
+				
 								<tr>
 									<th rowspan="2">
 										<h4>${reservation.name }</h4>
