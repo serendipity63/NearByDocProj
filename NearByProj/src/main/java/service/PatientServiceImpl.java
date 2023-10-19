@@ -88,7 +88,6 @@ public class PatientServiceImpl implements PatientService {
 			throw new Exception("이메일을 잘못 입력하셨습니다 다시 로그인해주세요");
 		if (patient.getPpassword().equals(ppassword) == false)
 			throw new Exception("비밀번호를 잘못 입력하셨습니다 다시 로그인해주세요");
-
 		return patient;
 	}
 
@@ -126,6 +125,15 @@ public class PatientServiceImpl implements PatientService {
 	@Override
 
 	public void modiProfile(Patient patient) throws Exception {
+		
+		System.out.println("Service ----------------");
+		System.out.println(patient.getPname());
+		System.out.println(patient.getPtel());
+		System.out.println(patient.getPemail());
+		System.out.println(patient.getPpassword());
+		System.out.println(patient.getProadaddress());
+		System.out.println(patient.getPidnum());
+		
 		patientDao.updatePatient(patient);
 
 	}

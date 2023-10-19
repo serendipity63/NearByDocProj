@@ -58,17 +58,39 @@ public class Modiprofile extends HttpServlet {
 		String pname = request.getParameter("pname");
 		String ptel = request.getParameter("ptel");
 		String pemail = request.getParameter("pemail");
+		String ppassword = request.getParameter("ppassword");
 		String proadaddress = request.getParameter("proadaddress");
 
 		HttpSession session = request.getSession();
 		Patient p = (Patient) session.getAttribute("user");
 		String pidnum = p.getPidnum();
 		
+
 		
-		Patient patient = new Patient(pname, ptel, pemail, proadaddress, pidnum);
+		Patient patient = new Patient(pname, ptel, pemail, ppassword, proadaddress, pidnum);
+
 		try {
 			PatientService patientService = new PatientServiceImpl();
+			
+			System.out.println("Controller ----------------");
+			System.out.println(patient.getPname());
+			System.out.println(patient.getPtel());
+			System.out.println(patient.getPemail());
+			System.out.println(patient.getPpassword());
+			System.out.println(patient.getProadaddress());
+			System.out.println(patient.getPidnum());
+			
 			patientService.modiProfile(patient);
+			
+			System.out.println("After sql ----------------");
+			System.out.println(patient.getPname());
+			System.out.println(patient.getPtel());
+			System.out.println(patient.getPemail());
+			System.out.println(patient.getPpassword());
+			System.out.println(patient.getProadaddress());
+			System.out.println(patient.getPidnum());
+			
+			
 			response.sendRedirect("profile");
 		} catch (Exception e) {
 			request.setAttribute("err", e.getMessage());

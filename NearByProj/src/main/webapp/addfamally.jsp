@@ -19,9 +19,10 @@
 	rel="stylesheet">
 <!-- alert 디자인 -->
 <link rel="stylesheet"
+
 	href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">	
 	
-<title>NearByDocHeader</title>
+<title>가족추가</title>
 
 <style>
 #container {
@@ -67,7 +68,7 @@ button {
 }
 
 .idbtn {
-	margin-left:180px;
+	margin-left: 180px;
 }
 
 .idbtn>input {
@@ -134,7 +135,7 @@ table {
 	height: 100px;
 }
 
-table>td{
+table>td {
 	font-size: 1px;
 	margin-left: 10px;
 }
@@ -150,44 +151,16 @@ table tr td:nth-child(2) {
 }
 
 input {
-margin-left : 70px;
+	margin-left: 70px;
 }
 </style>
+<!-- alert 디자인 -->
 <script type="text/javascript"
 	src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
+<!-- 우편번호 -->
+<script
+	src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
-/* $(function(){
-	$(".reg").click(function(){
-		
-		var pname = $("#pname").val();
-		var ftel = $("#tel").val();
-		var faddress = $("#address").val();
-		var fidnum = $("#idnum").val();
-		
-		// 데이터 작성 확인
-		if (!name || !tel || !address || !idnum) {
-			alert("모든 항목을 작성해야 합니다.");
-		}
-		
-		$.ajax({
-			url:"addfamally",
-			type:"post",
-			data:{"fname" : pname
-	      		, "ftel" : ftel
-	      		, "faddress" : faddress
-	      		, "fidnum" : $fidnum },
-	      		success:function(res){
-			    	console.log(res);
-			    	if(res=="can"){
-			    		alert("등록 성공");
-			    		location.href="addfamally"
-			    	} else {
-			    		alert("등록한 사람과 주민번호가 같을 수 없습니다.")
-			    	}
-			    }
-		})
-	})
-}) */
 
 $(function(){
 	$(".reg").click(function(){
@@ -197,7 +170,7 @@ $(function(){
 		var pidnum = $("#idnum").val();
 		
 		// 데이터 작성 확인
-		if (!pname || !ptel || !paddress || !pidnum) {
+		if (!pname || !ptel || !proadaddress || !pidnum) {
 			Swal.fire({
 				icon: 'error',
 				title: 'Error',
@@ -209,9 +182,9 @@ $(function(){
 				type: "post",
 				data: {
 					"pname": pname,
-					"ptel": ftel,
+					"ptel": ptel,
 					"proadaddress": proadaddress,
-					"pidnum": fidnum
+					"pidnum": pidnum
 				},
 				success: function(res) {
 					console.log(res);
@@ -235,13 +208,95 @@ $(function(){
 		}
 	})
 	
+	
+	$('#tel').keydown(function (event) {
+    var key = event.charCode || event.keyCode || 0;
+    var $text = $(this);
+
+    if (key !== 8 && key !== 9) {
+        if ($text.val().length === 3 || $text.val().length === 8) {
+            $text.val($text.val() + '-');
+        }
+    }
+
+    if (key !== 8 && key !== 9 && key !== 46 && (key < 48 || key > 57)) {
+        event.preventDefault();
+    }
+
+    return (key == 8 || key == 9 || key == 46 || (key >= 48 && key <= 57));
+});
+
+	
+	
+	$('#idnum').keydown(function (event) {
+	    var key = event.charCode || event.keyCode || 0;
+	    var $text = $(this);
+	    var maxLength = 14;
+
+	    if ($text.val().length >= maxLength && key !== 8 && key !== 9) {
+	        event.preventDefault();
+	    }
+
+	    if (key !== 8 && key !== 9 && key !== 46 && (key < 48 || key > 57)) {
+	        event.preventDefault();
+	    }
+
+	    if ((key >= 48 && key <= 57) && $text.val().length < maxLength) {
+	        if ($text.val().length === 6) {
+	            $text.val($text.val() + '-');
+	        }
+	    }
+	});
+
+
+	
+	
+	
 	$(".cancel").click(function() {
         // Reset the input fields
         $("#pname").val("");
         $("#tel").val("");
-        $("#address").val("");
+        $("#proadaddress").val("");
         $("#idnum").val("");
     });
+	
+	
+	
+	$("#proadaddress").click(function(){
+		new daum.Postcode({
+
+			oncomplete : function(data) {
+
+				// 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+
+				// 각 주소의 노출 규칙에 따라 주소를 조합한다.
+
+				// 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+
+				var addr = ''; // 주소 변수
+
+				var extraAddr = ''; // 참고항목 변수
+
+				//사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+
+				if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+
+					addr = data.roadAddress;
+
+				} else { // 사용자가 지번 주소를 선택했을 경우(J)
+
+					addr = data.jibunAddress;
+
+				}
+
+				// 우편번호와 주소 정보를 해당 필드에 넣는다.
+				document.getElementById("proadaddress").value = addr;
+
+
+			}
+
+		}).open();
+	})
 	
 	
 })
@@ -256,49 +311,51 @@ $(function(){
 	<div id="container">
 		<div id="famallymanage">
 			<span style="text-align: left; margin: 10px 0 10px 10px">가족관리</span>
-			<span class="material-symbols-outlined" onClick="location.href='mypage'"
-				style="margin-left: 280px;"> arrow_back </span> <br> <br>
+			<span class="material-symbols-outlined"
+				onClick="location.href='mypage'" style="margin-left: 280px;">
+				arrow_back </span> <br> <br>
 			<!-- <form action="addfamally" method="post"> -->
-				<p>이름</p>
-				<input type="text" id="pname" name="pname" placeholder="" required="required">
-				<p>전화번호</p>
-				<input type="text" id="tel" name="tel" placeholder="-없이 숫자만 입력" required="required">
-				<p>주소</p>
-				<input type="text" id="proadaddress" name="proadaddress" placeholder="" required="required">
-				<p>주민등록번호</p>
-				<input type="text" id="idnum" name="idnum" placeholder="-없이 숫자만 입력" required="required">
-				<br>
-				<div class="idbtn">
-					<input class="reg" type=button value="등록"
-						style="text-align: left;">
-				</div>
+			<p>이름</p>
+			<input type="text" id="pname" name="pname" placeholder="이름"
+				required="required">
+			<p>전화번호</p>
+			<input type="text" id="tel" name="tel" placeholder="전화번호"
+				required="required">
+			<p>주소</p>
+			<input type="text" id="proadaddress" name="proadaddress"
+				placeholder="주소" required="required">
+			<p>주민등록번호</p>
+			<input type="text" id="idnum" name="idnum" placeholder="주민등록번호"
+				required="required"> <br>
+			<div class="idbtn">
+				<input class="reg" type=button value="등록" style="text-align: left;">
+			</div>
 			<!-- </form> -->
-			<input class="cancel" type="button" value="취소">
-			<br>
+			<input class="cancel" type="button" value="취소"> <br>
 
 		</div>
 
 		<div id="famlist">
 			<br>
 			<c:forEach items="${familys}" var="family">
-			<div id="detailfam">
-				<table border="1">
-					<tr>
-						<td>이름</td>
-						<td size="30px">${family.name }</td>
-					</tr>
-					<tr>
-						<td>전화번호</td>
-						<td>${family.tel }</td>
-					</tr>
-					<tr>
-						<td>주소</td>
-						<td>${family.address }</td>
-					</tr>
-				</table>
-			</div>
+				<div id="detailfam">
+					<table border="1">
+						<tr>
+							<td>이름</td>
+							<td size="30px">${family.name }</td>
+						</tr>
+						<tr>
+							<td>전화번호</td>
+							<td>${family.tel }</td>
+						</tr>
+						<tr>
+							<td>주소</td>
+							<td>${family.address }</td>
+						</tr>
+					</table>
+				</div>
 			</c:forEach>
-			
+
 
 			<input type="button" value="수정" onClick="location.href='modifamally'">
 			<!-- <button><h4><a href="modifamally.html">수정</a></h4></button> -->
