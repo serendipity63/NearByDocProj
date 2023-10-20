@@ -28,6 +28,7 @@
 			<if test="hroad !=null">hroad=#{hroad},</if>
 			<if test="clinic !=null">clinic=#{clinic},</if>
 			<if test="lunch !=null">lunch=#{lunch},</if>
+			<if test="hurl !=null">hurl=#{hurl},</if>
 		</trim>
 		where comnum= #{comnum}
 	</update>

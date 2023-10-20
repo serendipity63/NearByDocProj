@@ -92,7 +92,7 @@ input[type="button"]{
 
 <script type="text/javascript"
 	src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
-<script>
+<!-- <script>
 	$(function() {
 		$(".modibtn").click(function(){
 			
@@ -133,7 +133,7 @@ input[type="button"]{
 				})
 		})
 	})
-</script>
+</script> -->
  
 
 
@@ -142,8 +142,8 @@ input[type="button"]{
 		<h1>병원정보</h1>
 	
 		
-		<form action="hospitalmodify" method="post" enctype="maltipart/form-data">
-		
+		<form action="hospitalmodify" method="post" enctype="multipart/form-data">
+			<input type= "hidden" name="comnum" value ="${hinfo.comnum }">
 			<table>
 			<tr>
 					<td>진료 과목</td>
@@ -182,18 +182,18 @@ input[type="button"]{
 				<tr>
 					<td>병원사진</td>
 					<td><input type="file" name="hurl"
-					id="hurl" value="${hinfo.getHurl() }" /></td>
+					id="hurl"  accept="image/*" value="${hinfo.getHurl() }" /></td>
 				
 				</tr>
 				
 			</table>
-			
-		</form>
-	   
 	    <div id="button">
         <input type="submit" value="수정">
         <input type="button" onclick="location.href='hinfo'" value="취소">
      	</div>
+			
+		</form>
+	   
 
 	
 </body>
