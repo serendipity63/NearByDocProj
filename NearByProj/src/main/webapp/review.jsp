@@ -41,10 +41,10 @@
 
 .btn-primary {
 	width: 410px;
-	background-color: #1376F8;
+	background-color: #CFE8F7;
 	border-radius: 10px;
 	border-color: white;
-	color: white;
+	color: #333333;
 	padding: 15px 30px;
 	text-align: center;
 	font-size: 16px;
