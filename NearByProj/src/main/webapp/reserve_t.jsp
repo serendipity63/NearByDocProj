@@ -28,7 +28,7 @@ td{
 	background-color:white;
 }
 #center{
-	margin:0 auto;
+	margin:50px auto;
 	position: absolute;
 	left:170px;
 	padding-left :130px;

@@ -81,7 +81,7 @@ input {
 #emptyArea {
 	width: 708px;
 	text-align: center;
-	margin:355px auto;
+	margin:321px auto;
 }
 
 #emptyArea button {

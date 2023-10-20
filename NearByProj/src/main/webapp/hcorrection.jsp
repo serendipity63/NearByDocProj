@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <title>니어닥병원정보</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://fonts.gstatic.com" >
 <link
 	href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap"
 	rel="stylesheet">
@@ -35,7 +35,7 @@ h1 {
 table {
 	width: 1020px;
 	height: 500px;
-	margin: 50px 0px 0px 450px;
+	margin: 50px 247px 0px 450px;
 }
 
 td {
@@ -54,6 +54,7 @@ input[type="text"] {
 
 #button {
 	text-align: center;
+	margin-right:160px;
 }
 
 input[type="submit"] {
@@ -92,7 +93,7 @@ input[type="button"] {
 	src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
 
 
-<body>
+<body style="overflow-y:hidden">
 	<%
 	pageContext.include("hmain.jsp");
 	%>

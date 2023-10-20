@@ -20,7 +20,7 @@ body {
 h1 {
 	width: 120px;
     
-    margin: 0 auto;
+    margin: 40px auto;
     /* margin-top: 50px; */
     color: rgb(25, 25, 112);
 }
@@ -28,7 +28,7 @@ h1 {
 table {
 	width: 1000px;
 	height: 500px;
-	margin: 50px 0px 0px 450px;
+	margin: 50px 287px 0px 450px;
 }
 td{
 	width:30px;
@@ -39,13 +39,17 @@ td{
 input[type="button"]{
    	text-align:center;
 }
+input[type=text]{
+	border:none;
+	background-color:white;
+}
 
 
 
 
 #button {
-	margin-top: 50px;
-    margin-left: 904px;
+	text-align: center;
+	margin-right:160px;
 }
 
 #button>a {
@@ -61,17 +65,19 @@ input[type="button"]{
       transition: 0.7s;
 }
 
-.modify{
+#modify{
 	text-align:center;
-
+	width:200px;
+	height:40px;
+	margin-right:210px;
 }
 
 </style>
 <body style="overflow-y:hidden">
 	<% pageContext.include("hmain.jsp");%>
-	
-	<center>
 	<h1>병원정보</h1>
+	<center>
+	
 	
 			<table id="title">
 								<tr>
