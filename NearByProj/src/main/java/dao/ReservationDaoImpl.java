@@ -167,7 +167,10 @@ public class ReservationDaoImpl implements ReservationDao{
 		return sqlSession.selectList("mapper.reservation.selectIdByName", pname);
 	}
 
-	
+	@Override
+	public List<String> resListByPidnum(Map<String, Object> param) throws Exception {
+		return sqlSession.selectList("mapper.reservation.resListByPidnum", param);
+	}
 
 	
 

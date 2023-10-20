@@ -321,5 +321,13 @@
 	     limit #{row},10
 	 	]]>
 	</select>
-
+	
+	<!-- 리뷰작성을 위한 해당 병원 예약 내역 조회(김형섭), 정확한 조회 조건 아니지만 적용에는 문제없을 듯?-->
+	<select id='resListByPidnum' parameterType="hashmap" resultType="String">
+	<![CDATA[
+		select r.id
+		from reservation r, patient p
+		where r.comnum=#{comnum} and (r.status=1 or r.status=2) and (r.pidnum=#{pidnum} or (p.ppidnum=#{pidnum} and r.pidnum=p.pidnum))
+	]]>
+	</select>
 </mapper>
