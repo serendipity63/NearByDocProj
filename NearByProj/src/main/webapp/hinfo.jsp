@@ -73,20 +73,18 @@ input[type="button"]{
 	<center>
 	<h1>병원정보</h1>
 	
-	
-	
-	
 			<table id="title">
+								<tr>
+					<td>병원명</td>
+					<td><input type="text" name="hname" 
+					id="hname"  value="${hinfo.getHname() }" disabled="disabled"/></td>
+				</tr>
+				
 				<tr>
 					<td>진료 과목</td>
 					<td>
 					<input type="text" name="department" 
 					id="department"  value="${hinfo.getDepartment() }" disabled="disabled"/></td>
-				</tr>
-				<tr>
-					<td>병원명</td>
-					<td><input type="text" name="hname" 
-					id="hname"  value="${hinfo.getHname() }" disabled="disabled"/></td>
 				</tr>
 
 				<tr>
@@ -125,7 +123,7 @@ input[type="button"]{
 				<c:if test="${hospitaluser.comnum eq hospital.comnum }">
 				
 				
-				<input id="hiddenPidnum" type="text" value="${hinfo.getComnum() }" style="display:none;" > 
+				<input id="hiddenComnum" type="text" value="${hinfo.getComnum() }" style="display:none;" > 
 				
 				
 				</c:if>
