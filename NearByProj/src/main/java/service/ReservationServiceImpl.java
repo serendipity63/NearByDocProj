@@ -359,7 +359,14 @@ public Map<String, Object> resListByPage(String comnum, Integer page) throws Exc
 	map.put("resList", resList);
 	return map;
 }
-	
+	@Override
+	public List<String> resListByPidnum(String pidnum,String comnum) throws Exception {
+		Map<String, Object> param = new HashMap<>();
+		param.put("pidnum", pidnum);
+		param.put("comnum", comnum);
+		
+		return resDao.resListByPidnum(param);
+	}
 
 	
 }
