@@ -78,8 +78,7 @@ public class HospitalModify extends HttpServlet {
 		System.out.println("lunch"+lunch);
 		
 		HttpSession session = request.getSession();
-		Hospital h = (Hospital) session.getAttribute("hospitaluser");
-
+		Hospital h=(Hospital)session.getAttribute("hospitaluser");
 
 		Hospital hospital = new Hospital();
 		hospital.setComnum(comnum);
@@ -90,7 +89,7 @@ public class HospitalModify extends HttpServlet {
 		hospital.setHtel(htel);
 		hospital.setLunch(lunch);
 		hospital.setHname(hname);
-		
+
 		try {
 			HospitalService hospitalService = new HospitalServiceImpl();
 			hospitalService.hospitalModify(hospital);

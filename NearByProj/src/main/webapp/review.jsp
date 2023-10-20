@@ -6,11 +6,26 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link
+	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap"
+	rel="stylesheet">
+<%--sweetalert2  --%>
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+
+<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+<script type="text/javascript"
+	src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
+
+
+
 <title>리뷰 작성</title>
-<style>
+<style type="text/css">
 .main {
 	width: 430px;
 	margin: auto;
+	color: #333333;
+	font-family: 'Noto Sans kr', sans-serif;
 }
 
 .top {
@@ -40,15 +55,17 @@
 }
 
 .btn-primary {
-	width: 410px;
+	width: 420px;
 	background-color: #CFE8F7;
 	border-radius: 10px;
-	border-color: white;
+	border: none;
 	color: #333333;
 	padding: 15px 30px;
 	text-align: center;
 	font-size: 16px;
 	margin: auto;
+	cursor: pointer;
+	
 }
 
 .star_rating {
@@ -136,7 +153,7 @@
 		%>
 		<br>
 		<div class="top">
-			<h3>리뷰 작성</h3>
+			<h3>리뷰작성</h3>
 		</div>
 		<br>
 		<div class="infosum">
@@ -163,7 +180,7 @@
 		</div>
 		<br> <br>
 		<div class="selectstar">
-			<p>별점을 선택해주세요.</p>
+			<p>별점을 선택해주세요</p>
 			<div class="star_rating">
 				<span class="star on" value="1"> </span> <span class="star"
 					value="2"> </span> <span class="star" value="3"> </span> <span
@@ -180,7 +197,6 @@
 		</div>
 		<br>
 		<div>
-			<!--<button type="button" id="aa">리뷰작성</button>-->
 			<button type="button" class="btn-primary" id="btn_submit">리뷰작성</button>
 		</div>
 	</div>
