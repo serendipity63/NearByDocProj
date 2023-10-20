@@ -73,9 +73,6 @@ input[type="button"]{
 	<center>
 	<h1>병원정보</h1>
 	
-	
-	
-	
 			<table id="title">
 								<tr>
 					<td>병원명</td>
@@ -126,7 +123,7 @@ input[type="button"]{
 				<c:if test="${hospitaluser.comnum eq hospital.comnum }">
 				
 				
-				<input id="hiddenPidnum" type="text" value="${hinfo.getComnum() }" style="display:none;" > 
+				<input id="hiddenComnum" type="text" value="${hinfo.getComnum() }" style="display:none;" > 
 				
 				
 				</c:if>

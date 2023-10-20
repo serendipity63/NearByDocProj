@@ -92,7 +92,7 @@ input[type="button"]{
 
 <script type="text/javascript"
 	src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
-<script>
+<!-- <script>
 	$(function() {
 		$(".modibtn").click(function(){
 			
@@ -133,7 +133,7 @@ input[type="button"]{
 				})
 		})
 	})
-</script>
+</script> -->
  
 
 
@@ -143,7 +143,7 @@ input[type="button"]{
 	
 		
 		<form action="hospitalmodify" method="post" enctype="multipart/form-data">
-		
+			<input type= "hidden" name="comnum" value ="${hinfo.comnum }">
 			<table>
 			<tr>
 					<td>진료 과목</td>
@@ -187,13 +187,13 @@ input[type="button"]{
 				</tr>
 				
 			</table>
-			
-		</form>
-	   
 	    <div id="button">
         <input type="submit" value="수정">
         <input type="button" onclick="location.href='hinfo'" value="취소">
      	</div>
+			
+		</form>
+	   
 
 	
 </body>

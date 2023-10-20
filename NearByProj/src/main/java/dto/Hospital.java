@@ -45,18 +45,6 @@ public class Hospital {
 		this.lon = lon;
 	}
 
-// 병원정보 수정위한 생성자	
-	public Hospital(String hname, String htel, String department, String lunch, String clinic, String hroad,
-			String hurl) {
-		this.hname = hname;
-		this.comnum = comnum; // comnum을 수정할 수 없도록 설정
-		this.htel = htel;
-		this.department = department;
-		this.lunch = lunch;
-		this.clinic = clinic;
-		this.hroad = hroad;
-		this.hurl = hurl;
-	}
 
 	public String getHname() {
 		return hname;

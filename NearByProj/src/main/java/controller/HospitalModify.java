@@ -66,25 +66,36 @@ public class HospitalModify extends HttpServlet {
 		int size = 10 * 1024 * 1024;
 		MultipartRequest multi = new MultipartRequest(request, uploadPath, size, "utf-8",
 				new DefaultFileRenamePolicy());
-
+		String comnum=multi.getParameter("comnum");
 		String department = multi.getParameter("department");
 		String hname = multi.getParameter("hname");
 		String htel = multi.getParameter("htel");
 		String hroad = multi.getParameter("hroad");
 		String clinic = multi.getParameter("clinic");
 		String lunch = multi.getParameter("lunch");
-		String hurl = multi.getParameter("hurl");
+		String hurl = multi.getOriginalFileName("hurl");
 
+		System.out.println("lunch"+lunch);
+		
 		HttpSession session = request.getSession();
 		Hospital h = (Hospital) session.getAttribute("hospitaluser");
-		String comnum = h.getComnum(); // 이전 comnum 값 사용
-		String hpassword = h.getHpassword(); // 이전 hpassword 값 사용
 
-		Hospital hospital = new Hospital(hname, htel, department, lunch, clinic, hroad, hurl);
 
+		Hospital hospital = new Hospital();
+		hospital.setComnum(comnum);
+		hospital.setClinic(clinic);
+		hospital.setDepartment(department);
+		hospital.setHroad(hroad);
+		hospital.setHurl(hurl);
+		hospital.setHtel(htel);
+		hospital.setLunch(lunch);
+		hospital.setHname(hname);
+		
 		try {
 			HospitalService hospitalService = new HospitalServiceImpl();
 			hospitalService.hospitalModify(hospital);
+			System.out.println(hospital.getLunch());
+			
 			response.sendRedirect("hinfo");
 		} catch (Exception e) {
 			e.printStackTrace();
