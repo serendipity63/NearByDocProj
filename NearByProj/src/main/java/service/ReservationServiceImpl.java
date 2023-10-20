@@ -205,19 +205,24 @@ public class ReservationServiceImpl implements ReservationService{
 		pageInfo.setCurPage(page);
 		pageInfo.setStartPage(startPage);
 		pageInfo.setEndPage(endPage);
-		if(page==0) page=1;
+		
+		Map<String, Object> map = new HashMap<>();
+		map.put("pageInfo", pageInfo);
+		map.put("type", type);
+		map.put("keyword", keyword);
+		map.put("sdate", sdate);
+		map.put("edate", edate);
+		if (page == 0) {
+			return map;
+		}
 		int row = (page-1)*10+1;	//현재 페이지의 시작 row
 		param.put("row", row-1);
 		List<HashMap<String,String>> resList = resDao.searchAllResList(param);
 		
 		
-		Map<String, Object> map = new HashMap<>();
-		map.put("pageInfo", pageInfo);
+		
 		map.put("resList", resList);
-		map.put("type", type);
-		map.put("keyword", keyword);
-		map.put("sdate", sdate);
-		map.put("edate", edate);
+
 		
 		return map;
 	}
@@ -306,14 +311,18 @@ public class ReservationServiceImpl implements ReservationService{
 		pageInfo.setStartPage(startPage);
 		pageInfo.setEndPage(endPage);
 		
+		Map<String, Object> map = new HashMap<>();
+		map.put("pageInfo", pageInfo);
+		if (page == 0) {
+			return map;
+		}
+		
 		int row = (page - 1) * 10 + 1; 
 		Map<String,Object> param = new HashMap<>();
 		param.put("row", row-1);
 		param.put("comnum", comnum);
 		List<Map<String,Object>> todayresList = resDao.selectTodayReservationList(param);
 
-		Map<String, Object> map = new HashMap<>();
-		map.put("pageInfo", pageInfo);
 		map.put("todayresList", todayresList);
 		return map;
 	}
@@ -335,14 +344,18 @@ public Map<String, Object> resListByPage(String comnum, Integer page) throws Exc
 	pageInfo.setStartPage(startPage);
 	pageInfo.setEndPage(endPage);
 	
+	Map<String, Object> map = new HashMap<>();
+	map.put("pageInfo", pageInfo);
+	if (page == 0) {
+		return map;
+	}
+	
 	int row = (page-1)*10+1;  //현재 페이지의 시작 row
 	Map<String, Object> param =new HashMap<>();
 	param.put("row", row-1);
 	param.put("comnum", comnum);
 	List<Map<String,Object>> resList = resDao.selectResList(param);
 	
-	Map<String, Object> map = new HashMap<>();
-	map.put("pageInfo", pageInfo);
 	map.put("resList", resList);
 	return map;
 }
