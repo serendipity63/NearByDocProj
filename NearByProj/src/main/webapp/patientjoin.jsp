@@ -179,15 +179,16 @@ input:focus {
 #info_pemail button {
 	position: absolute;
 	width: 90px;
-	height: 42px;
+	height: 45px;
 	border-radius: 4px;
-	right: 5px;
+	right: 2px;
 	border: none;
-	top: 3px;
+	top: 1px;
 	background: #CFE8F7;
 	color: #333333;
 	cursor: pointer;
 	font-weight: bold;
+
 }
 
 #info_pidnum {
@@ -197,11 +198,11 @@ input:focus {
 #info_pidnum button {
 	position: absolute;
 	width: 90px;
-	height: 42px;
+	height: 45px;
 	border-radius: 4px;
-	right: 5px;
+	right: 2px;
 	border: none;
-	top: 3px;
+	top: 1px;
 	background: #CFE8F7;
 	color: #333333;
 	cursor: pointer;
@@ -394,11 +395,6 @@ input:focus {
 										});
 
 						$("#form").submit(function(e) {
-							/* 			e.preventDefault();
-							 if(isPidnumCheck==false){
-							 alert("주민번호 중복체크하세요")
-
-							 } */
 						});
 					});
 </script>

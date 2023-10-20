@@ -214,9 +214,7 @@ ul {
 								onclick="openLocationSelectionPage()" required>
 						</div>
 					</div>
-					<!-- <div class="button"> -->
 					<button class="search-button" type="submit">병원 찾기</button>
-					<!-- </div> -->
 				</div>
 			</div>
 		</div>
