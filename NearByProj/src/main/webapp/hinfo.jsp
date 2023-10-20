@@ -24,10 +24,6 @@ h1 {
     /* margin-top: 50px; */
     color: rgb(25, 25, 112);
 }
-#center{
-	position: absolute;
-    width: 1479px;
-}
 
 table {
 	width: 1000px;
@@ -40,22 +36,42 @@ td{
 	color:black;
 	text-align:center;
 }
-
-input[type=button]{
- 	margin:0 auto;
+input[type="button"]{
+   	text-align:center;
 }
 
 
 
 
+#button {
+	margin-top: 50px;
+    margin-left: 904px;
+}
 
+#button>a {
+	padding: 10px;
+    text-decoration: none;
+    color: white;
+    border-radius:10px;
+    display: inline-block;
+    width: 81px;
+}
+#button>a:hover{
+	 background-color:blue;
+      transition: 0.7s;
+}
+
+.modify{
+	text-align:center;
+
+}
 
 </style>
 <body style="overflow-y:hidden">
 	<% pageContext.include("hmain.jsp");%>
-	<h1>병원정보</h1>
-	<div id="center">
 	
+	<center>
+	<h1>병원정보</h1>
 	
 			<table id="title">
 								<tr>
@@ -101,21 +117,21 @@ input[type=button]{
 				
 			</table>
 			
-				
-		
+				<input type="button" id="modify" value="수정" onclick="location.href='hospitalmodify'">
 			
-				
+				<div id="button">
 				<c:if test="${hospitaluser.comnum eq hospital.comnum }">
 				
 				
 				<input id="hiddenComnum" type="text" value="${hinfo.getComnum() }" style="display:none;" > 
 				
 				
-				
 				</c:if>
+				</div>
 				
-		</div>
-		<input type="button"  value="수정" onclick="location.href='hospitalmodify'">	
-		
+			
+	
+	</center>
+	
 </body>
 </html>

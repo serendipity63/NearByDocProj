@@ -27,7 +27,7 @@ body {
 
 h1 {
 	width: 120px;
-	margin: 0 auto;
+	margin: 40px auto;
 	/* margin-top: 50px; */
 	color: rgb(25, 25, 112);
 }
@@ -47,32 +47,25 @@ td {
 
 input[type="text"] {
 	width: 241px;
-
 	height: 42px;
 	text-align: center;
-	
-
 	border:none;
-
-
 }
 
 #button {
 	text-align: center;
-	width: 200px;
-	height: 40px; 
-	background-color: none;
 }
 
 input[type="submit"] {
 	width: 200px;
-    height: 40px;
-    background-color:none;
-
-
+	height: 40px;
 }
 
-
+input[type="button"] {
+	width: 200px;
+	height: 40px; 
+	background-color: none;
+}
 
 .ear {
 	background-color: #c1f3ea;
