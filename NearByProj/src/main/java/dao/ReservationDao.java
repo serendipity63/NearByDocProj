@@ -21,9 +21,9 @@ public interface ReservationDao {
 	
 	/* 예약환자정보 */
 	//예약 환자 전체 데이터 수
-	Integer selectAllReservationCount(String comnum)throws Exception;
+	Integer selectAllReservationCount(Map<String, Object> param)throws Exception;
 	//예약 환자 전체 조회
-	List<Map<String,Object>> selectAllReservationList(Map<String, Object> patientAll) throws Exception;
+	List<Map<String,Object>> selectAllReservationList(Map<String, Object> param) throws Exception;
 	//예약 환자 조건 검색 데이터 수
 	Integer searchReservationCount(Map<String,Object> param ) throws Exception;
 	//예약 환자 조건 검색
