@@ -327,7 +327,7 @@
 	<![CDATA[
 		select r.id
 		from reservation r, patient p
-		where r.comnum=#{comnum} and (r.pidnum=#{pidnum} or r.pidnum=p.pidnum)
+		where r.comnum=#{comnum} and (r.status=1 or r.status=2) and (r.pidnum=#{pidnum} or (p.ppidnum=#{pidnum} and r.pidnum=p.pidnum))
 	]]>
 	</select>
 </mapper>
