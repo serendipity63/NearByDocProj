@@ -123,14 +123,14 @@ public class ReservationDaoImpl implements ReservationDao{
 
 	//예약 환자 정보
 	@Override
-	public Integer selectAllReservationCount(String comnum) throws Exception {
-		return sqlSession.selectOne("mapper.reservation.selectAllReservationCount", comnum);
+	public Integer selectAllReservationCount(Map<String,Object> param) throws Exception {
+		return sqlSession.selectOne("mapper.reservation.selectAllReservationCount", param);
 	}
 
 
 	@Override
-	public List<Map<String, Object>> selectAllReservationList(Map<String, Object> patientAll) throws Exception {
-		return sqlSession.selectList("mapper.reservation.selectAllReservationList",patientAll);
+	public List<Map<String, Object>> selectAllReservationList(Map<String, Object> param) throws Exception {
+		return sqlSession.selectList("mapper.reservation.selectAllReservationList",param);
 	}
 
 
