@@ -45,7 +45,6 @@ public class Hospital {
 		this.lon = lon;
 	}
 
-
 	public String getHname() {
 		return hname;
 	}

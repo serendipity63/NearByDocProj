@@ -9,11 +9,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+<link
+	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap"
+	rel="stylesheet">
+	
 <title>병원 정보</title>
 <style>
 .main {
 	width: 430px;
 	margin: auto;
+	font-family: 'Noto Sans kr', sans-serif;
+	
 }
 
 .material-symbols-outlined {
@@ -63,9 +69,17 @@
 	text-align: center;
 }
 
+button{
+cursor:pointer;
+width:100px;
+
+
+}
 .button {
 	margin: auto;
 	text-align: center;
+	background-color: #cfe8f7;
+	
 }
 
 .btn-primary {
@@ -121,7 +135,6 @@
 
 			<img src="image?file=${hospital.hurl}" alt="병원" width="420">
 
-
 			<table class="hosinfo">
 				<tr>
 					<td colspan="2"><font size="6"> ${hospital.hname} </font></td>
@@ -153,7 +166,7 @@
 		<div>
 			<c:choose>
 				<c:when test="${empty lastreview}">
-					<p>해당 병원의 리뷰가 없습니다.</p>
+					<p>해당 병원의 리뷰가 없습니다</p>
 				</c:when>
 				<c:otherwise>
 					<table>
