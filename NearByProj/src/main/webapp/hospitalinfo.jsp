@@ -57,7 +57,7 @@
 
 .reviewwrite {
 	width: 430px;
-	height: 110px;
+	height: 115px;
 	background-color: gainsboro;
 	vertical-align: center;
 	text-align: center;
@@ -195,11 +195,24 @@
 		</div>
 		<br>
 		<div class="reviewwrite">
-			<br>
+			
+			<c:choose>
+				<c:when test="${empty user}">
+				<br><br>
+					<p>리뷰를 작성하시려면 로그인주세요.</p>
+				</c:when>
+				<c:when test="${empty resListByUser}">
+				<br><br>
+					<p>해당 병원의 예약 내역이 있는 사람만 리뷰작성 가능합니다.</p>
+				</c:when>
+				<c:otherwise>
+				<br>
 			<p>이 병원에서 진료 경험, 어떠셨나요?</p>
 			<br>
-			<button
+				<button
 				onclick="window.open('insertreview', 'window_name','width=800, height=1000, location=no, status=no, scrollbars=yes')">리뷰하기</button>
+				</c:otherwise>
+		</c:choose>
 		</div>
 		<br>
 		<p class="sub"}>병원 위치 정보</p>
@@ -241,8 +254,16 @@
 
 		<br> <br>
 		<div>
-			<button type="button" class="btn-primary"
+		<c:choose>
+				<c:when test="${empty user}">
+					<p>예약을 진행하시려면 로그인해주세요.</p>
+				</c:when>
+				<c:otherwise>
+				<button type="button" class="btn-primary"
 				onclick="location.href='insertreservation';">예약하기</button>
+				</c:otherwise>
+		</c:choose>
+			
 		</div>
 	</div>
 	<br>

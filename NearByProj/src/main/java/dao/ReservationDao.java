@@ -51,4 +51,5 @@ public interface ReservationDao {
 	List<Object> selectResByName(String pname) throws Exception;
 	void updateStatusCuzQuit(Integer id) throws Exception;
 	List<Integer> selectIdByName(String pname) throws Exception;
+	List<String> resListByPidnum(Map<String, Object> param) throws Exception;
 }
