@@ -5,7 +5,7 @@ CREATE TABLE patient (
   pname  varchar(200),
   ptel  varchar(200),
   proadaddress varchar(200),
-  ppostcode VARCHAR(200),
+  ppostcode VARCHAR(200), 
   pdetailaddress VARCHAR(200),
   quit BOOLEAN DEFAULT FALSE,
   ppidnum VARCHAR(200)

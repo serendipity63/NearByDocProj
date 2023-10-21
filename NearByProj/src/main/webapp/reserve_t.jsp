@@ -29,6 +29,10 @@ td{
 }
 #center{
 	margin:0 auto;
+	position: absolute;
+	left:170px;
+	padding-left :130px;
+    width: 1479px;
 }
 
 table {
@@ -94,7 +98,8 @@ table {
 			</tr>
 			</c:forEach>
 		</table>
-	</div>
+	
+	
 	<div id="emptyArea">
 			<c:choose>  
 				<c:when test="${res.pageInfo.curPage>1}">
@@ -129,7 +134,7 @@ table {
 			</c:choose>
 			&nbsp;&nbsp;
            
-    	</div>
-	
+    </div>
+	</div>
 </body>
 </html>
