@@ -128,14 +128,7 @@ $(function() {
 								type:'POST',
 								data:{'date':date[0].value},
 								success: function() {
-									console.log("post 성공");
 									$('#timebutton').load(window.location.href+ ' #timebutton');
-									 console.log("reload 성공");
-									 /* function reloadTime() {
-										 
-										 $('#timebutton').load(window.location.href+ ' #timebutton');
-										console.log("load 성공"); 
-									}  */
 								},
 								error: function( request, status, error ){
 
@@ -145,8 +138,6 @@ $(function() {
 							})
 						}
 					});
-	//초기값을 오늘 날짜로 설정해줘야 합니다.
-	//$('#datepicker').datepicker('setDate', 'today'); //(-1D:하루전, -1M:한달전, -1Y:일년전), (+1D:하루후, -1M:한달후, -1Y:일년후)            
 });
 </script>
 </head>
@@ -161,7 +152,24 @@ $(function() {
 			<h3>예약하기 (OOO종합병원)</h3>
 		</div>
 		<br>
-		<form action="insertreservation" method="post" id='form'>
+		
+		<script>
+		function checkNull(){
+			var name= $(":input:radio[name=name]:checked").val();
+			console.log(name);
+			var resdate=$('#datepicker').val();
+			console.log(resdate);
+			if(name==null || name=='') {
+				alert("진료대상을 선택해주세요.");
+				return false;
+			}
+			if(resdate==null || resdate=='') {
+				alert("진료날짜를 선택해주세요.");
+				return false;
+			}
+		  }
+		</script>
+		<form action="insertreservation" method="post" id='form' onsubmit="return checkNull();">
 			<div class="patientselect">
 				<p class="sub">진료 대상 선택</p>
 				<br>
@@ -169,7 +177,7 @@ $(function() {
 					<tbody>
 						<tr>
 							<td width="100"><input type="radio" name="name"
-								value="${user.pname}">&nbsp;${user.pname}</td>
+								value="${user.pname}">&nbsp;&nbsp;${user.pname}</td>
 							<c:choose>
 								<c:when test="${empty patientlist}">
 
@@ -177,7 +185,7 @@ $(function() {
 								<c:otherwise>
 									<c:forEach items="${patientlist}" var="patient">
 										<td width="100"><input type="radio" name="name"
-											value="${patient.pname}">&nbsp;${patient.pname}</td>
+											value="${patient.pname}">&nbsp;&nbsp;${patient.pname}</td>
 									</c:forEach>
 								</c:otherwise>
 							</c:choose>
@@ -188,10 +196,8 @@ $(function() {
 			</div>
 			<br>
 			<div class="selectservice">
-				<p class="sub">진료과목 선택</p>
-				<br> <input type="radio" name="department"
-					value="${hospital.department}">&nbsp;${hospital.department}
-				<br>
+				<p class="sub">진료과목</p>
+				<br> <p>${hospital.department}</p>
 				<br>
 			</div>
 			<br>
@@ -221,9 +227,13 @@ $(function() {
 			</div>
 			<br>
 			<div>
-				<button type="submit" class="btn-primary">예약하기</button>
+				<button type="submit" class="btn-primary" id ="next">예약하기</button>
 			</div>
 		</form>
+		
+		<script>
+		
+		</script>
 	</div>
 	<br>
 	<br>

@@ -58,7 +58,6 @@ public class HospitalInfo extends HttpServlet {
 			if (patient != null) {
 				String pidnum = patient.getPidnum();
 				resListByUser = reservationservice.resListByPidnum(pidnum, comnum);
-				System.out.println(resListByUser);
 				request.setAttribute("resListByUser", resListByUser);
 			}
 			Map<String, Object> lastreview = reviewservice.selectLastReview(comnum);
