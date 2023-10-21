@@ -33,6 +33,7 @@ function validateForm(){
 
 <head>
 	<title>NearByDoc for Hospital</title>
+	
 	<style>
 		* {
 			margin: 0;

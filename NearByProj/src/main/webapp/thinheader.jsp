@@ -90,7 +90,7 @@ a {
 			<c:choose>
 				<c:when test="${empty user}">
 					<a href="login" class="button">로그인</a>
-					<a href="patientjoin" class="button">회원가입</a>
+					<a href="pjoin" class="button">회원가입</a>
 				</c:when>
 				<c:otherwise>
 					<a href="mypage" class="button">마이페이지</a>
