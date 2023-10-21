@@ -253,7 +253,7 @@ public class ReservationServiceImpl implements ReservationService{
 		
 		Integer resCount;
 		if(type.equals("all") || keyword==null || keyword.trim().equals("")) { //전체 예약 환자 조회
-			resCount = resDao.selectAllReservationCount(comnum);
+			resCount = resDao.selectAllReservationCount(param);
 		} else { //조건별 예약환자 조회
 			resCount = resDao.searchReservationCount(param);
 		}
@@ -280,11 +280,12 @@ public class ReservationServiceImpl implements ReservationService{
 		Map<String, Object> patientAll = new HashMap<>();
 		patientAll.put("row", row-1);
 		patientAll.put("comnum", comnum);
+		param.put("row", row - 1);
 		List<Map<String, Object>> resList;
 		if(type.equals("all") || keyword==null || keyword.trim().equals("")) { //전체 예약 환자 조회
-			resList = resDao.selectAllReservationList(patientAll);
+			resList = resDao.selectAllReservationList(param);
 		} else { //조건별 예약환자 조회
-			param.put("row", row - 1);
+			
 			resList = resDao.searchReservationList(param);
 		}
 

@@ -4,6 +4,7 @@
 <!DOCTYPE html>
 <html>
 
+
 <head>
 <meta charset="UTF-8">
 <title>니어닥병원정보</title>
@@ -18,12 +19,14 @@
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
+
 </head>
 
 <style>
 body {
 	margin: 0 auto;
-    font-family: 'Noto Sans kr', sans-serif;
+	font-family: 'Noto Sans kr', sans-serif;
+	
 }
 
 h1 {

@@ -295,10 +295,11 @@
 	 
 	 
 	<!-- 예약 환자 전체 데이터 수-->
-	<select id='selectAllReservationCount' parameterType="String" resultType="Integer">
+	<select id='selectAllReservationCount' parameterType="hashmap" resultType="Integer">
 	<![CDATA[
-		select count(distinct pidnum) from reservation
-		where comnum=#{comnum}
+		select count(distinct r.pidnum)
+		from reservation r, patient p
+		where r.pidnum=p.pidnum and r.comnum=#{comnum} and (p.pidnum like '%${keyword}%' or p.pname like '%${keyword}%')
 	]]>
 	</select>
 	
@@ -317,6 +318,7 @@
 	 	 where 1=1
 	 	   and r.pidnum = p.pidnum 
 	 	   and r.comnum=#{comnum}
+	 	   and (p.pidnum like '%${keyword}%' or p.pname like '%${keyword}%')
 	  order by p.pname asc
 	     limit #{row},10
 	 	]]>

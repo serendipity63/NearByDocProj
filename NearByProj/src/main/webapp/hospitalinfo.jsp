@@ -143,7 +143,7 @@ width:100px;
 					<td colspan="2">${hospital.hroad}</td>
 				</tr>
 				<tr>
-					<td>진료과목:</td>
+					<td>진료과목 :</td>
 					<td>${hospital.department}</td>
 				</tr>
 				<tr>
