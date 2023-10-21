@@ -32,7 +32,7 @@ footer {
     left: 0;
     right: 0;
     background: #05053f;
-    height: 120px;
+    height: 68px;
     width: 100vw;
     color: #fff;
     margin: 0 auto;
@@ -50,7 +50,7 @@ footer {
 
   text-align: center;
   
-  margin-top:30px;
+  margin-top:3px;
 }
 
 .footer-content h3 {
@@ -218,17 +218,7 @@ year.textContent = new Date().getFullYear();
 
       <div class="footer-menu">
 
-        <ul class="f-menu">
-
-          <li><a href="">Home</a></li>
-
-          <li><a href="">About</a></li>
-
-          <li><a href="">Contact</a></li>
-
-          <li><a href="">Blog</a></li>
-
-        </ul>
+       
 
       </div>
 

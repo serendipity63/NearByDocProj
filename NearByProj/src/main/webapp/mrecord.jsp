@@ -66,69 +66,78 @@ body {
 	margin: 0 auto;
 }
 
-
-
 h1 {
 	width: 202px;
 	height: 50px;
 	margin: 18px auto;
 	color: rgb(25, 25, 112);
 }
-th{
+
+th {
 	padding: 4px;
 	width: 192px;
 	color: black;
 	text-align: center;
-	border-right:1px solid white;
 	font-weight: bold;
-	background-color: lightgray;
+	border-bottom:6px solid #191970;
 	
 }
 
 table {
-	border: 1px solid;
-    width: 1454px;
-    margin: 67px 71px auto;
-    position:absolute;
+	width: 1454px;
+	margin: 27px 71px auto;
+	position: absolute;
 }
-table>td{
-	background-color:white;
 
+table>td {
+	background-color: white;
 }
 
 input {
 	width: 224px;
 	height: 38px;
+	border-radius: 5px;
 }
 
 select {
 	width: 224px;
-    height: 38px;
-    margin-top: 50px;
-    margin-left: 70px;
-    cursor: pointer;
+	height: 38px;
+	margin-top: 50px;
+	margin-right: 30px;
+	cursor: pointer;
+	border-radius: 5px;
 }
-
 
 #center {
 	position: absolute;
-	left:170px;
-	padding-left :130px;
-    width: 1479px;
-   
-   
+	left: 170px;
+	padding-left: 130px;
+	width: 1462px;
 }
+
 button {
 	width: 100px;
 	height: 30px;
 	background-color: rgb(25, 25, 112);
 }
+#searchform{
+	width: 1449px;
+    margin-left: 73px;
+    padding: 62px 30px 3px;
+    background: #fff;
+    margin-bottom: 30px;
+    text-align: right;
+    box-shadow: 0 5px 5px rgba(0,0,0,0.2);
+    border: 1px solid #ddd;
+
+}
+
 
 #search {
-	color: black;
+	color: white;
 	width: 100px;
-	height: 30px;
-	background-color: lightgray;
+	height: 42px;
+	background-color: #191970;
 	border-radius: 10px;
 	cursor: pointer;
 }
@@ -136,25 +145,27 @@ button {
 .reserveform {
 	width: 1522px;
 	height: 100px;
-	margin: -18px auto;
+	margin: -97px -288px auto;
 }
-#date{
-	float:right;
+
+#date {
+	float: right;
 }
 
 #datepicker1 {
 	margin-top: 50px;
-	
+	border-radius: 5px;
 }
 
 #datepicker2 {
 	margin-left: 20px;
+	border-radius: 5px;
 }
 
 #emptyArea {
 	width: 708px;
 	text-align: center;
-	margin:700px auto;
+	margin: 700px auto;
 }
 
 #emptyArea a {
@@ -170,70 +181,70 @@ button {
 
 #emptyArea .select {
 	background: black;
-	color:white;
-}
-#table1 {
-	height:150px;
+	color: white;
 }
 
 </style>
 
 
-<body style="overflow-y:hidden">
-	<% pageContext.include("hmain.jsp");%>
+<body style="overflow-y: hidden">
+	<%
+	pageContext.include("hmain.jsp");
+	%>
 
 
 	<div id="center">
-	<h1>진료 기록 조회</h1>
-	<br>
-	<br>
+		<h1>진료 기록 조회</h1>
+		<br> <br>
 
-	<form action="mrecordsearch" method="post" id="searchform">
-	<input type="hidden" name="page" id="page" value="1">	
-	<div class="reserveform">
+		<form action="mrecordsearch" method="post" id="searchform">
+			<input type="hidden" name="page" id="page" value="1">
+			<div class="reserveform">
 
-		<select name="type">
-			<option value="pname" ${res.type eq 'pname'? 'selected':'' }>환자명</option>
-			<option value="pidnum" ${res.type eq 'pidnum'? 'selected':'' }>주민등록번호</option>
-		</select> 
-		<input type="text" name="keyword" id="keyword" value="${res.keyword }" /> 
-		
-		<div id="date">
-		<span>기간 :</span>
-		<input type="text" id="datepicker1" name="sdate" value="${res.sdate}">
-		<span> ~</span>
-		<input type="text" id="datepicker2" name="edate" value="${res.edate}">
+				<select name="type">
+					<option value="pname" ${res.type eq 'pname'? 'selected':'' }>환자명</option>
+					<option value="pidnum" ${res.type eq 'pidnum'? 'selected':'' }>주민등록번호</option>
+				</select> <input type="text" name="keyword" id="keyword"
+					value="${res.keyword }" />
+				&nbsp;&nbsp;&nbsp;&nbsp;
+				<div id="date">
+					
+					&nbsp;&nbsp;&nbsp;&nbsp;<span style="width:50px;">기간</span> <input type="text" id="datepicker1" name="sdate"
+						value="${res.sdate}"> <span style="margin-top:20px; font-size:40px;">-</span>
+					<input type="text" id="datepicker2" name="edate"
+						value="${res.edate}"> &nbsp;&nbsp; <input type="submit"
+						id="search" value="검색" />
+				</div>
+				
+			</div>
+		</form>
 
-		<input type="submit" id="search" value="검색" />
-		</div>
-	</div>
-	</form>
-	<div id="table1">
-	<table>
-		<tr>
-			<th>일자</th>
-			<th>시간</th>
-			<th>환자명</th>
-			<th>요청사항</th>
-			<th>진료과목</th>
-			<th>진료완료처리</th>
-			<th><a href="javascript:openOpinion('opinion.jsp','popup');" style=text-decoration:none;>담당의소견</a></th>
-		</tr>
-
-		<c:forEach items="${res.resList }" var="reserve">
+		<table>
 			<tr>
-				<td>${reserve.resdate }</td>
-				<td>${reserve.restime }</td>
-				<td>${reserve.pname }</td>
-				<td>${reserve.comment }</td>
-				<td>${hospitaluser.department }</td>
-				<td>${reserve.status }</td>	
-				<td>${reserve.doccomment }</td>
+				<th>일자</th>
+				<th>시간</th>
+				<th>환자명</th>
+				<th>요청사항</th>
+				<th>진료과목</th>
+				<th>진료완료처리</th>
+				<th><a href="javascript:openOpinion('opinion.jsp','popup');"
+					style="text-decoration: none;">담당의소견</a></th>
 			</tr>
-		</c:forEach>
-	</table>
+
+			<c:forEach items="${res.resList }" var="reserve">
+				<tr>
+					<td style="background-color:white">${reserve.resdate }</td>
+					<td style="background-color:white">${reserve.restime }</td>
+					<td style="background-color:white">${reserve.pname }</td>
+					<td style="background-color:white">${reserve.comment }</td>
+					<td style="background-color:white">${hospitaluser.department }</td>
+					<td style="background-color:white">${reserve.status }</td>
+					<td style="background-color:white">${reserve.doccomment }</td>
+				</tr>
+			</c:forEach>
+		</table>
 	</div>
-	</div>
+
 	<div id="emptyArea">
 		<c:choose>
 			<c:when test="${res.pageInfo.curPage>1}">
@@ -272,6 +283,6 @@ button {
 		&nbsp;&nbsp;
 
 	</div>
-	
+
 </body>
 </html>
