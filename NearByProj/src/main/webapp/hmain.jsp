@@ -105,19 +105,12 @@ b {
 }
 
 #hi,
-#list,
-#logout {
-    margin-top:100px;
+#list{
+    margin-top:40px;
 }
-
-#footer {
-    background-color: #191970;
-    color: white;
-    text-align: center;
-    padding: 10px;
-    position: absolute;
-    bottom: 0;
-    width: 100%;
+#logout{
+ 	margin-top:60px;
+	margin-left:95px;
 }
 
 
@@ -126,19 +119,27 @@ b {
 
 <body>
     <div id="header">
-        <div id="logo">
-            <a href="trlist"><img src="image?file=icon.png" width="60px"
+    	
+    	 
+        	<div id="logo">
+            	<a href="trlist"><img src="image?file=icon.png" width="60px"
                 height="50px" alt="로고 이미지" /></a>
-        </div>
+        	</div>
+          
         <div id="manager">니어매니저</div>
     </div>
 
     <div id="side">
         <div id="sidemenu">
-            <div id="hi">
-                <img src="image?file=home.png" width="50px" height="50px"> <br>
-                <c:choose>
+         
+           		<div id="hi">
+               		<h3><img src="image?file=${hinfo.getHurl()}" alt="병원 마이페이지" onerror="this.style.display='none'" width="100" height="100"><br></h3>
+               	</div>
+               	<br><br>
+          
+               <c:choose>
                     <c:when test="${hospitaluser eq Empty}">
+                    	
                         <p style="text-decoration: none;">
                             <a href="hlogin">로그인</a>
                         </p>
@@ -170,13 +171,11 @@ b {
                 <a href="hlogout">로그아웃</a>
             </div>
         </div>
-    </div>
+    
 
     <div id="content">
-    </div>
-        <div id="footer">
-        &copy; 2023 NEARBYDOC
-    </div>
     
+    </div>
+    <% pageContext.include("hfooter.jsp");%>
 </body>
 </html>
