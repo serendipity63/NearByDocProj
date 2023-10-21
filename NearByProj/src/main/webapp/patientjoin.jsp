@@ -49,15 +49,6 @@ a {
 	margin-top: 0;
 }
 
-.outerDiv .logo img {
-	width: 150px;
-	height: 115px;
-	vertical-align: middle;
-	display: inline-block;
-	margin-right: 10px;
-	margin-top: 50px;
-}
-
 input {
 	height: 45px;
 	width: 98%;
@@ -188,7 +179,6 @@ input:focus {
 	color: #333333;
 	cursor: pointer;
 	font-weight: bold;
-
 }
 
 #info_pidnum {
@@ -236,9 +226,13 @@ input:focus {
 						$("#pidnum").on(
 								"input",
 								function() {
-									const pidnum = $("#pidnum").val();
-									const pidnumPattern = /^[0-9]{13}$/;
+									let pidnum = $("#pidnum").val();
+									let formattedPidnum = formatPidnum(pidnum);
+									$("#pidnum").val(formattedPidnum); // 입력 필드에 포맷팅된 값 설정
+									pidnum = formattedPidnum.replace(/-/g, ""); // 하이픈 제외한 값
+									const pidnumPattern = /^\d{13}$/; // 하이픈이 없는 13자리 숫자
 									const isOK = pidnumPattern.test(pidnum);
+
 									if (!isOK) {
 										$("#pidnumMessage").text(
 												"올바른 주민번호 형식으로 입력하세요").show();
@@ -286,9 +280,27 @@ input:focus {
 									});
 								});
 
+						function formatPidnum(pidnum) {
+						    // 모든 하이픈 제거
+						    pidnum = pidnum.replace(/-/g, "");
+						    // 숫자와 하이픈만 남기고 나머지 문자 제거
+						    pidnum = pidnum.replace(/[^\d]/g, "");
+						    // 6자리 이상일 때 하이픈 추가
+						    if (pidnum.length > 6) {
+						        pidnum = pidnum.slice(0, 6) + '-' + pidnum.slice(6, 13);
+						    }
+
+						    return pidnum;
+						}
+						
+						
+						
+						
+
 						// 이메일 입력 필드에서 입력 변화 감지
 						$("#pemail")
-								.on( "input",
+								.on(
+										"input",
 										function() {
 											const pemail = $("#pemail").val();
 											const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
@@ -396,6 +408,8 @@ input:focus {
 
 						$("#form").submit(function(e) {
 						});
+						
+						
 					});
 </script>
 
@@ -451,13 +465,11 @@ input:focus {
 </head>
 
 <body>
+	<%
+	pageContext.include("thinheader.jsp");
+	%>
 
-	<div class="outerDiv">
 
-		<a href="home" class="logo"><img src="image?file=logo.png"
-			alt="로고 이미지"></a>
-
-	</div>
 
 	<div class="myform">
 
@@ -492,27 +504,25 @@ input:focus {
 
 					비밀번호 확인 <span id="check" class="invalid-feedback"
 						style="margin-left: 3px;">비밀번호가 동일하지 않습니다.</span>
-
 				</div>
 
 				<div class="input-container">
 
 					<input type="password" id="ppasswordcheck" class="form-control"
-						onchange="check()" placeholder="" required /> <span
+						placeholder="" required /> <span
 						class="icon material-symbols-outlined"> lock </span>
 
 				</div>
 				주민번호 <span id="pidnumMessage" class="error-message"></span><br>
 				<div id="info_pidnum">
-					<input type="number" id="pidnum" name="pidnum" size="13"
-						placeholder="-없이 숫자만 입력" required />
+					<input type="text" id="pidnum" name="pidnum"
+						placeholder="-없이 숫자만 입력" maxlength="14" required />
 					<%-- 주민번호 중복검사 및 유효성검사 버튼 --%>
 					<button id="pidnumcheck">중복 확인</button>
 				</div>
 
 				이름<br> <input type="text" id="pname" name="pname"
-					placeholder="" required /> 
-					휴대전화<br> <input type="text"
+					placeholder="" required /> 휴대전화<br> <input type="text"
 					id="ptel" class="ptel" name="ptel" maxlength="13"
 					placeholder="-없이 숫자만 입력" /> 주소<br>
 

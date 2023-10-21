@@ -3,9 +3,14 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%><!--  uri core를 c로 설정 -->
 <!DOCTYPE html>
 <html>
+
+
 <head>
 <meta charset="UTF-8">
 <title>니어닥병원정보</title>
+<link
+	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap"
+	rel="stylesheet">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link
@@ -14,82 +19,58 @@
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-<!-- alert 디자인 -->
-<link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
 
 </head>
 
 <style>
 body {
 	margin: 0 auto;
+	font-family: 'Noto Sans kr', sans-serif;
+	
 }
 
 h1 {
-	width: 120px;
-	margin: 40px auto;
-	/* margin-top: 50px; */
-	color: rgb(25, 25, 112);
+	text-align: center;
+	font-size: 24px;
+	color: #191970;
+	margin: 20px 0;
 }
 
 table {
-	width: 1020px;
-	height: 500px;
-	margin: 50px 0px 0px 450px;
+	width: 100%;
+	max-width: 600px;
+	margin: 20px auto;
+	border-collapse: collapse;
 }
 
 td {
-	width: 63px;
-	background-color: white;
-	color: black;
-	text-align: center;
+	padding: 10px;
+	text-align: left;
 }
 
 input[type="text"] {
-	width: 241px;
-	height: 42px;
-	text-align: center;
-	border:none;
+	width: 100%;
+	height: 32px;
+	border: 1px solid #ccc;
+	padding: 5px;
 }
 
 #button {
 	text-align: center;
+	margin-top: 20px;
 }
 
-input[type="submit"] {
-	width: 200px;
+input[type="submit"], input[type="button"] {
+	width: 100px;
 	height: 40px;
-}
-
-input[type="button"] {
-	width: 200px;
-	height: 40px; 
-	background-color: none;
-}
-
-.ear {
-	background-color: #c1f3ea;
-	color: black;
-}
-
-.num {
-	background-color: #c1f3ea;
-	color: black;
-}
-
-.add {
-	background-color: #c1f3ea;
-	color: black;
-}
-
-.lun {
-	background-color: #c1f3ea;
-	color: black;
+	background-color: #191970;
+	color: #fff;
+	border: none;
+	cursor: pointer;
+	margin: 0 10px;
 }
 </style>
 
-<script type="text/javascript"
-	src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
 
 
 <body>
@@ -110,7 +91,7 @@ input[type="button"] {
 			</tr>
 
 			<tr>
-				<td>진료 과목</td>
+				<td>진료과목</td>
 				<td><input type="text" name="department" id="department"
 					value="${hinfo.department }" /></td>
 			</tr>
@@ -146,14 +127,15 @@ input[type="button"] {
 
 		</table>
 		<div id="button">
-			<input type="submit" value="수정"> <input type="button"
+			<input type="submit" value="수정"> 
+			<input type="button"
 				onclick="location.href='hinfo'" value="취소">
 		</div>
 
 	</form>
 
 
-
 </body>
+
 </html>
 
