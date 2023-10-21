@@ -187,7 +187,7 @@
 
 										</tr>
 										<tr>
-											<td width="110">진료시간:</td>
+											<td width="70">진료시간:</td>
 											<td width="110">${hospital.clinic}</td>
 											<td width="110">${hospital.htel}</td>
 										</tr>
