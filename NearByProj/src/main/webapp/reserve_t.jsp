@@ -19,7 +19,7 @@ h1{
 th {
 	width: 450px;
 	height: 30px;
-	background-color:lightgray;
+	border-bottom:6px solid #191970;
 	
 	
 }
@@ -28,7 +28,7 @@ td{
 	background-color:white;
 }
 #center{
-	margin:0 auto;
+	margin:50px auto;
 	position: absolute;
 	left:170px;
 	padding-left :130px;
@@ -37,7 +37,6 @@ td{
 
 table {
 	
-    border: 1px solid;
     width: 1454px;
     margin:100px auto;
 }

@@ -19,6 +19,7 @@ body {
 }
 
 h1 {
+
 	text-align: center;
 	font-size: 24px;
 	color: #191970;
@@ -30,6 +31,11 @@ table {
 	max-width: 600px;
 	margin: 20px auto;
 	border-collapse: collapse;
+
+}
+input[type=text]{
+	border:none;
+	background-color:white;
 }
 
 td {
@@ -46,7 +52,9 @@ input[type="text"] {
 
 #button {
 	text-align: center;
+
 	margin-top: 20px;
+
 }
 
 input[type="submit"], input[type="button"] {
@@ -62,6 +70,7 @@ input[type="submit"], input[type="button"] {
 }
 </style>
 
+<body style="overflow-y:hidden">
 <%
 pageContext.include("hmain.jsp");
 %>
@@ -124,6 +133,7 @@ pageContext.include("hmain.jsp");
 	</c:if>
 </div>
 </center>
+
 
 
 </body>

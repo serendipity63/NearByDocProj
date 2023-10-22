@@ -128,7 +128,7 @@ function confirmReservation(reservationId) {
 					
 					
 					<c:if test="${reservation.status eq 5}">
-						<span>회원 탈퇴</span>
+						<span>예약 취소</span>
 					</c:if>
 			
 			

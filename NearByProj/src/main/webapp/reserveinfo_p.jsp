@@ -12,7 +12,7 @@ body {
 }
 
 h1 {
-	width: 197px;
+	width: 215px;
 	height: 55px;
 	margin:18px auto;
 	color: rgb(25, 25, 112);
@@ -22,11 +22,10 @@ h1 {
 	position: absolute;
 	left:180px;
 	padding-left :130px;
-    width: 1479px;
+    width: 1462px;
 }
 
 table{
-	border: 1px solid;
     width: 1346px;
     margin:55px 53px auto;
     
@@ -35,53 +34,62 @@ table{
 }
 
 th {
-	width: 300px;
+	
 	height: 30px;
-	background-color:lightgray;
+	border-bottom:6px solid #191970;
 }
 td{
 	text-align:center;
  }
 h5{
 	text-align:center;
-}
-
-.select {
-	background-color: blue;
+	float:right;
 }
 
 select {
 	width: 224px;
 	height: 38px;
 	cursor: pointer;
+	border-radius:5px;
 }
 
 input {
 	width: 224px;
 	height: 38px;
+	border-radius:5px;
 }
 
-#reserveform {
-	
-	width: 1000px;
-	height: 50px;
-	margin:83px -169px auto;
-	
+#searchform{
+	width:1340px;
+	margin-left:50px;
+	padding: 62px 30px 3px;
+    background: #fff;
+    margin-bottom: 30px;
+    text-align: right;
+    box-shadow: 0 5px 5px rgba(0,0,0,0.2);
+    border: 1px solid #ddd;
 }
+#reserveform{
+	margin-top:-50px;
+
+}
+
 
 #search {
-	color: black;
+	color: white;
 	width: 100px;
-	height: 30px;
-	background-color: lightgray;
+	height: 38px;
+	background-color: #191970;
 	border-radius: 10px;
 	cursor: pointer;
+	
+	
 }
 
 #emptyArea {
 	width: 708px;
 	text-align: center;
-	margin:355px auto;
+	margin:356px auto;
 }
 
 #emptyArea button {
@@ -116,17 +124,22 @@ input {
 	<div id="center">
 	
 	<h1>환자 정보 조회</h1>
+	<br>
+	<br>
 
 	<form action="patientsearch" method="post" id="searchform">
 		<input type="hidden" id="page" name="page" value="1"/>
 		<div id="reserveform">
 			<h5>
+				환자조회
 				<select name="type">
 					<option value="all">전체</option>
 					<option value="pname" ${res.type eq 'pname'? 'selected':'' }>환자명</option>
 					<option value="pidnum" ${res.type eq 'pidnum'? 'selected':'' }>주민등록번호</option>
 				</select> 
+				&nbsp;&nbsp;&nbsp;
 				<input type="text" name="keyword" id="keyword" value="${res.keyword }" /> 
+				&nbsp;&nbsp;&nbsp;
 				<input type="submit" id="search" value="검색" />
 			</h5>
 		</div>
@@ -175,7 +188,7 @@ input {
 			</c:when>
 			<c:otherwise>
          			&lt;	
-				</c:otherwise>
+			</c:otherwise>
 		</c:choose>
 		&nbsp;&nbsp;
 
