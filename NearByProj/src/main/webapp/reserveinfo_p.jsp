@@ -34,7 +34,7 @@ table{
 }
 
 th {
-	width: 300px;
+	
 	height: 30px;
 	border-bottom:6px solid #191970;
 }
