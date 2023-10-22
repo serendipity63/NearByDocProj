@@ -210,7 +210,7 @@ button {
 				<div id="date">
 					
 					&nbsp;&nbsp;&nbsp;&nbsp;<span style="width:50px;">기간</span> <input type="text" id="datepicker1" name="sdate"
-						value="${res.sdate}"> <span style="margin-top:20px; font-size:40px;">-</span>
+						value="${res.sdate}"> <span style="font-size:30px;">-</span>
 					<input type="text" id="datepicker2" name="edate"
 						value="${res.edate}"> &nbsp;&nbsp; <input type="submit"
 						id="search" value="검색" />

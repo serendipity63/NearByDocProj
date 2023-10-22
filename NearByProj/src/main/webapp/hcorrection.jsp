@@ -73,7 +73,7 @@ input[type="submit"], input[type="button"] {
 
 
 
-<body>
+<body style="overflow-y:hidden">
 	<%
 	pageContext.include("hmain.jsp");
 	%>

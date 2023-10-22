@@ -92,11 +92,7 @@ body {
 #user {
     text-align: center;
     padding: 20px;
-    color: #FFFFFF;
-}
-
-b {
-    color: #03A9F4;
+    color: #191970;
 }
 
 #content {
