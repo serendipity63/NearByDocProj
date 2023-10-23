@@ -129,12 +129,12 @@ body {
 
 			<div id="hi">
 				<h3>
-					<img src="image?file=${hospitaluser.hurl}" alt="병원 마이페이지"
-						onerror="this.style.display='none'" width="100" height="100"><br>
+					<img src="image?file=${hospital.hurl}" alt="병원 마이페이지 이미지"
+						onerror="this.style.display='none'" width="100" height="100">
+
 				</h3>
 			</div>
-			<br>
-			<br>
+			<br> <br>
 
 			<c:choose>
 				<c:when test="${hospitaluser eq Empty}">
