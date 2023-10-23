@@ -137,7 +137,7 @@ public class ReservationServiceImpl implements ReservationService {
 				if (!date.equals(today)) {
 					timelist.add(hour + ":" + min);
 				} else {
-					if (scH >= curHour && scM >= curMin) {
+					if ((scH == curHour && scM >= curMin) ||(scH > curHour)) {
 						timelist.add(hour + ":" + min);
 					}
 				}
@@ -169,7 +169,7 @@ public class ReservationServiceImpl implements ReservationService {
 				if (!date.equals(today)) {
 					timelist.add(hour + ":" + min);
 				} else {
-					if (elH >= curHour && elM >= curMin) {
+					if ((elH == curHour && elM >= curMin) || (elH > curHour)) {
 						timelist.add(hour + ":" + min);
 					}
 				}
