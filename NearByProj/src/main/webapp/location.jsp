@@ -141,7 +141,7 @@ a {
 			</div>
 
 			<script type="text/javascript"
-				src="//dapi.kakao.com/v2/maps/sdk.js?appkey=0f92754065fd18fb9b2450d8077e930c&libraries=services"></script>
+				src="//dapi.kakao.com/v2/maps/sdk.js?appkey=9d89924221e4663ea28198ac12a7944f&libraries=services"></script>
 			<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
 			<script>
 var geocoder = new kakao.maps.services.Geocoder();
