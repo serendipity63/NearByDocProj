@@ -101,7 +101,7 @@ button {
 		%>
 		<br>
 		<div class="top">
-			<h3>예약하기 (OOO종합병원)</h3>
+			<h3>예약하기 (${hospital.hname})</h3>
 		</div>
 		<br>
 		<div class="patient">
