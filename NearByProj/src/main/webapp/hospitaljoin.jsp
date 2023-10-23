@@ -205,11 +205,10 @@ label {
 
 		$('#comnumcheck').click(function() {
 			const comnum = $("#comnum").val().trim(); // 사업자번호 입력에서 공백 제거
-			if (comnum.length !== 10) {
+			if (comnum.length !== 12) {
 				Swal.fire("오류", "사업자등록번호는 10자리여야 합니다", "error");
 				return; // 입력 오류가 있으므로 중복 체크를 진행하지 않음
 			}
-
 			$.ajax({
 				url : "comnumcheck",
 				type : "post",
@@ -250,7 +249,7 @@ label {
 			const password = $("#hpassword").val();
 			const confirmPassword = $("#hpassword-confirm").val();
 
-			if (comnum.length !== 10) {
+			if (comnum.length !== 12) {
 				Swal.fire("오류", "사업자등록번호는 10자리여야 합니다", "error");
 				e.preventDefault();
 			} else if (!isComnumCheck) {
@@ -260,25 +259,6 @@ label {
 				Swal.fire("오류", "비밀번호가 일치하지 않습니다. 다시 확인해주세요", "error");
 				e.preventDefault();
 				
-				/*         } else {
-				 // 회원가입 성공 메세지
-				 Swal.fire("성공", "회원가입이 성공적으로 완료되었습니다!", "success")
-				 e.preventDefault();
-				 */
-				/*             
-				 .then((result) => {
-				 if (result.isConfirmed) {
-					$.ajax({
-						url:"pjoin",
-						type:"post",
-						data:
-							
-						success:function(res){
-							location.href=res
-
-					 
-				 }
-				 });   */
 			}
 		});
 	});
@@ -344,6 +324,33 @@ label {
 					}
 				});
 	});
+</script>
+
+<script type="text/javascript">
+//comnum 사업자번호에 자동 하이픈
+$(document).ready(function () {
+   $(function () {
+            
+            $('#comnum').keydown(function (event) {
+             var key = event.charCode || event.keyCode || 0;
+             $text = $(this); 
+             if (key !== 8 && key !== 9) {
+                 if ($text.val().length === 3) {
+                     $text.val($text.val() + '-');
+                 }
+                 if ($text.val().length === 6) {
+                     $text.val($text.val() + '-');
+                 }
+             }
+
+             return (key == 8 || key == 9 || key == 46 || (key >= 48 && key <= 57) || (key >= 96 && key <= 105));
+			 // Key 8번 백스페이스, Key 9번 탭, Key 46번 Delete 부터 0 ~ 9까지, Key 96 ~ 105까지 넘버패트
+			 // 한마디로 JQuery 0 ~~~ 9 숫자 백스페이스, 탭, Delete 키 넘버패드외에는 입력못함
+         })
+   });
+
+});
+
 </script>
 
 		<script type="text/javascript">
@@ -470,7 +477,7 @@ label {
 				<div class="row">
 					<div class="input">
 						<label for="comnum">사업자등록번호 </label> <br> 
-						<input type="number" id="comnum" name="comnum" placeholder="사업자등록번호" required="required" />
+						<input type="text" id="comnum" name="comnum" placeholder="사업자등록번호" required="required" maxlength="12" />
 						<button id="comnumcheck">중복 확인</button>
 					</div>
 				</div>

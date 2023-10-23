@@ -11,6 +11,7 @@
 	href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap"
 	rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
 <script type="text/javascript">
 function validateForm(){
     var comnum = document.getElementById("comnum").value;
@@ -126,6 +127,33 @@ function validateForm(){
 		}
 
 	</style>
+<script type="text/javascript">
+//comnum 사업자번호에 자동 하이픈
+$(document).ready(function () {
+   $(function () {
+            
+            $('#comnum').keydown(function (event) {
+             var key = event.charCode || event.keyCode || 0;
+             $text = $(this); 
+             if (key !== 8 && key !== 9) {
+                 if ($text.val().length === 3) {
+                     $text.val($text.val() + '-');
+                 }
+                 if ($text.val().length === 6) {
+                     $text.val($text.val() + '-');
+                 }
+             }
+
+             return (key == 8 || key == 9 || key == 46 || (key >= 48 && key <= 57) || (key >= 96 && key <= 105));
+			 // Key 8번 백스페이스, Key 9번 탭, Key 46번 Delete 부터 0 ~ 9까지, Key 96 ~ 105까지 넘버패트
+			 // 한마디로 JQuery 0 ~~~ 9 숫자 백스페이스, 탭, Delete 키 넘버패드외에는 입력못함
+         })
+   });
+
+});
+
+</script>
+	
 </head>
 
 <body>
@@ -143,7 +171,7 @@ function validateForm(){
 
 				<div class="input-container">
 					<span class="icon material-symbols-outlined">local_hospital</span>
-					<input type="number" placeholder="사업자등록번호" id="comnum" name="comnum" maxlength="12" required="required" />
+					<input type="text" placeholder="사업자등록번호" id="comnum" name="comnum" maxlength="12" required="required" />
 				</div>
 
 				<div class="input-container">
