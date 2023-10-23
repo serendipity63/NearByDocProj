@@ -65,56 +65,57 @@ public class HospitalModify extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		String uploadPath = request.getServletContext().getRealPath("upload");
 		int size = 10 * 1024 * 1024;
-		MultipartRequest multi = new MultipartRequest(request, uploadPath, size, "utf-8",
-				new DefaultFileRenamePolicy());
-		String comnum = multi.getParameter("comnum");
-		String department = multi.getParameter("department");
-		String hname = multi.getParameter("hname");
-		String htel = multi.getParameter("htel");
-		String hroad = multi.getParameter("hroad");
-		String hdetail = multi.getParameter("hdetail");
-		String hpostcode = multi.getParameter("hpostcode");
-		String hdong = multi.getParameter("hdong");
-		String clinic = multi.getParameter("clinic");
-		String lunch = multi.getParameter("lunch");
-		String hurl = multi.getOriginalFileName("hurl");
-
-		BigDecimal lat = new BigDecimal(multi.getParameter("lat"));
-		System.out.println(lat);
-		BigDecimal lon = new BigDecimal(multi.getParameter("lon"));
-		System.out.println(lon);
-
-		System.out.println("lunch" + lunch);
-
-		HttpSession session = request.getSession();
-		Hospital h = (Hospital) session.getAttribute("hospitaluser");
-
-		Hospital hospital = new Hospital();
-		hospital.setComnum(comnum);
-		hospital.setHname(hname);
-		hospital.setDepartment(department);
-		hospital.setClinic(clinic);
-		hospital.setHroad(hroad);
-		hospital.setHdetail(hdetail);
-		hospital.setHpostcode(hpostcode);
-		hospital.setHdong(hdong);
-		hospital.setHtel(htel);
-		hospital.setLunch(lunch);
-		hospital.setHurl(hurl);
-		hospital.setLat(lat);
-		hospital.setLon(lon);
+		MultipartRequest multi = null;
 
 		try {
+			multi = new MultipartRequest(request, uploadPath, size, "utf-8", new DefaultFileRenamePolicy());
+		} catch (IOException e) {
+			e.printStackTrace();
+			request.setAttribute("err", "파일 업로드 오류");
+			request.getRequestDispatcher("herror.jsp").forward(request, response);
+			return;
+		}
+
+		try {
+			BigDecimal lat = new BigDecimal(multi.getParameter("lat"));
+			System.out.println(lat);
+			BigDecimal lon = new BigDecimal(multi.getParameter("lon"));
+			System.out.println(lon);
+
+			HttpSession session = request.getSession();
+			Hospital h = (Hospital) session.getAttribute("hospitaluser");
+			Hospital hospital = new Hospital();
+
+			hospital.setComnum(multi.getParameter("comnum"));
+			hospital.setHname(multi.getParameter("hname"));
+			hospital.setDepartment(multi.getParameter("department"));
+			hospital.setClinic(multi.getParameter("clinic"));
+			hospital.setHroad(multi.getParameter("hroad"));
+			hospital.setHdetail(multi.getParameter("hdetail"));
+			hospital.setHpostcode(multi.getParameter("hpostcode"));
+			hospital.setHdong(multi.getParameter("hdong"));
+			hospital.setHtel(multi.getParameter("htel"));
+			hospital.setLunch(multi.getParameter("lunch"));
+			String hurl = multi.getOriginalFileName("hurl");
+			hospital.setHurl(hurl);
+			hospital.setLat(lat);
+			hospital.setLon(lon);
+
 			HospitalService hospitalService = new HospitalServiceImpl();
 			hospitalService.hospitalModify(hospital);
 
 			response.sendRedirect("hinfo");
+		} catch (NumberFormatException e) {
+			e.printStackTrace();
+			// 예외 처리: BigDecimal 생성 중에 오류 발생
+			request.setAttribute("err", "위도 및 경도 형식 오류");
+			request.getRequestDispatcher("herror.jsp").forward(request, response);
 		} catch (Exception e) {
 			e.printStackTrace();
+			// 예외 처리: 병원 수정 중에 오류 발생
 			request.setAttribute("err", "병원 수정 오류");
 			request.getRequestDispatcher("herror.jsp").forward(request, response);
 		}
-
 	}
 
 }

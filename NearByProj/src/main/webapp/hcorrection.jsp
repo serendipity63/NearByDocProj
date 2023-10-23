@@ -199,8 +199,8 @@ input[type="submit"], input[type="button"] {
 
 
 		<%-- 받아온 위도 경도를 hidden에다가 저장함 --%>
-		<input type="hidden" id="lat" name="lat" placeholder="위도" /> <input
-			type="hidden" id="lon" name="lon" placeholder="경도" />
+		<input type="hidden" id="lat" name="lat" value="${hinfo.lat}" /> <input
+			type="hidden" id="lon" name="lon" value="${hinfo.lon}" />
 
 	</form>
 
