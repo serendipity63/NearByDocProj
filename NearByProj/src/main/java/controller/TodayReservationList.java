@@ -56,6 +56,34 @@ public class TodayReservationList extends HttpServlet {
 		}
 		
 	}
-
-	
+    
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    	request.setCharacterEncoding("utf-8");
+    	String id= request.getParameter("id");
+    	String doccomment = request.getParameter("doccomment");
+    	String page = request.getParameter("page");
+    	System.out.println(id);
+    	System.out.println(doccomment);
+    	System.out.println(page);
+    	HttpSession session = request.getSession();
+    	Hospital hospital = (Hospital)session.getAttribute("hospitaluser");
+		String comnum = hospital.getComnum();
+		int curpage=1;
+		if(page!=null) {
+			curpage= Integer.parseInt(page);
+		}
+		
+		try {
+			ReservationService reservationservice = new ReservationServiceImpl();
+			reservationservice.updateDoccommentById(id,doccomment);
+			Map<String,Object>res=reservationservice.todayResListByPage(curpage,comnum);
+			System.out.println(res);
+			request.setAttribute("res", res);
+			request.getRequestDispatcher("reserve_t.jsp").forward(request, response);
+		}catch(Exception e) {
+			e.printStackTrace();
+			request.setAttribute("err", e.getMessage());
+			request.getRequestDispatcher("error404.jsp").forward(request, response);
+		}
+    }
 }
