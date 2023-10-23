@@ -32,4 +32,5 @@ public interface ReservationService {
 	Map<String,Object> resAllSearch(String type, String keyword, Integer page, String sdate, String edate, String comnum) throws Exception;
 	Map<String,Object> resListByPage(String comnum,Integer page) throws Exception;
 	List<String> resListByPidnum(String pidnum,String comnum) throws Exception;
+	void updateDoccommentById(String id, String doccomment) throws Exception;
 }

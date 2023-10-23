@@ -157,7 +157,7 @@ body {
 
 		<div id="list">
 			<div class="list-item">
-				<a href="mrecordlist">진료 기록 조회</a>
+				<a href="mrecordlist">예약/진료 내역 조회</a>
 			</div>
 			<div class="list-item">
 				<a href="patientsearch">환자 정보 조회</a>

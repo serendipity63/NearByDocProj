@@ -369,5 +369,12 @@ public Map<String, Object> resListByPage(String comnum, Integer page) throws Exc
 		return resDao.resListByPidnum(param);
 	}
 
+	@Override
+	public void updateDoccommentById(String id, String doccomment) throws Exception {
+		Map<String, Object> param = new HashMap<>();
+		param.put("id", id);
+		param.put("doccomment", doccomment);
+		resDao.updateDoccommentById(param);
+	}
 	
 }
