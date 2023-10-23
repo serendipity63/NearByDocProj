@@ -18,6 +18,58 @@
 	rel="stylesheet">
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript"
+	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=9d89924221e4663ea28198ac12a7944f&libraries=services,drawing"></script>
+<script
+	src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script>
+	function execDaumPostcode() {
+		new daum.Postcode({
+			oncomplete : function(data) {
+				var roadAddress = data.roadAddress;
+				var jibunAddress = data.jibunAddress;
+				var zonecode = data.zonecode;
+				var bname = data.bname;
+				var buildingName = data.buildingName;
+				var apartment = data.apartment;
+
+				// 도로명 주소
+				document.getElementById("hroad").value = roadAddress;
+				// 상세주소
+				document.getElementById("hdetails").value = jibunAddress;
+				// 우편번호
+				document.getElementById("hpostcode").value = zonecode;
+
+				// 참고항목 (법정동명 및 건물명)
+				var extraAddress = '';
+				if (data.userSelectedType === 'R' && bname
+						&& /[동|로|가]$/g.test(bname)) {
+					extraAddress += bname;
+				}
+				if (buildingName && apartment === 'Y') {
+					extraAddress += (extraAddress !== '' ? ', ' + buildingName
+							: buildingName);
+				}
+				document.getElementById("hdong").value = extraAddress;
+
+				// 주소를 좌표로 변환
+				var geocoder = new daum.maps.services.Geocoder();
+				geocoder.addressSearch(roadAddress, function(result, status) {
+					if (status === daum.maps.services.Status.OK) {
+						var lat = result[0].y; // 위도
+						var lon = result[0].x; // 경도
+
+						// 위도와 경도를 hidden input 필드에 저장
+						document.getElementById("lat").value = lat;
+						console.log(lat);
+						document.getElementById("lon").value = lon;
+						console.log(lon);
+					}
+				});
+			}
+		}).open();
+	}
+</script>
 
 
 </head>
@@ -26,7 +78,6 @@
 body {
 	margin: 0 auto;
 	font-family: 'Noto Sans kr', sans-serif;
-	
 }
 
 h1 {
@@ -73,7 +124,7 @@ input[type="submit"], input[type="button"] {
 
 
 
-<body style="overflow-y:hidden">
+<body style="overflow-y: hidden">
 	<%
 	pageContext.include("hmain.jsp");
 	%>
@@ -103,10 +154,19 @@ input[type="submit"], input[type="button"] {
 			</tr>
 			<tr>
 				<td>주소</td>
-				<td><input type="text" name="address" id="address"
-					value="${hinfo.hroad }" /></td>
+				<td>
+					<div style="display: flex;">
+						<div style="width: 50%;">
+							<input type="text" name="hroad" id="hroad" value="${hinfo.hroad}"
+								readonly onclick="execDaumPostcode()" />
+						</div>
+						<div style="width: 50%;">
+							<input type="text" name="hdetail" id="hdetail"
+								placeholder="상세주소를 입력해주세요">
+						</div>
+					</div>
+				</td>
 			</tr>
-
 			<tr>
 				<td>진료시간</td>
 				<td><input type="text" name="clinic" id="clinic"
@@ -126,13 +186,24 @@ input[type="submit"], input[type="button"] {
 			</tr>
 
 		</table>
+
+
 		<div id="button">
-			<input type="submit" value="수정"> 
-			<input type="button"
+			<input type="submit" value="수정"> <input type="button"
 				onclick="location.href='hinfo'" value="취소">
 		</div>
 
+		<input type="hidden" name="hpostcode" id="hpostcode"> 
+			<input type="hidden" name="hdong" id="hdong"> <input
+			type="hidden" name="hdetails" id="hdetails">
+
+
+		<%-- 받아온 위도 경도를 hidden에다가 저장함 --%>
+		<input type="hidden" id="lat" name="lat" placeholder="위도" /> <input
+			type="hidden" id="lon" name="lon" placeholder="경도" />
+
 	</form>
+
 
 
 </body>

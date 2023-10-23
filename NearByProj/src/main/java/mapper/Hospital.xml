@@ -26,9 +26,15 @@
 			<if test="hname !=null">hname=#{hname},</if>
 			<if test="htel !=null">htel=#{htel},</if>
 			<if test="hroad !=null">hroad=#{hroad},</if>
+			<if test="hdetail !=null">hdetail=#{hdetail},</if>
+			<if test="hpostcode !=null">hpostcode=#{hpostcode},</if>
+			<if test="hdong !=null">hdong=#{hdong},</if>
 			<if test="clinic !=null">clinic=#{clinic},</if>
 			<if test="lunch !=null">lunch=#{lunch},</if>
 			<if test="hurl !=null">hurl=#{hurl},</if>
+			<if test="lat !=null">lat=#{lat},</if>
+			<if test="lon !=null">lon=#{lon},</if>
+			
 		</trim>
 		where comnum= #{comnum}
 	</update>
