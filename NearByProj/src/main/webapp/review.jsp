@@ -40,7 +40,7 @@
 .selectstar {
 	border-bottom: 1px solid;
 	border-color: gainsboro;
-	height: 60px;
+	height: 75px;
 }
 
 #text {
@@ -178,7 +178,7 @@
 			</table>
 			<br>
 		</div>
-		<br> <br>
+		<br>
 		<div class="selectstar">
 			<p>별점을 선택해주세요</p>
 			<div class="star_rating">
