@@ -67,7 +67,7 @@ body {
 }
 
 h1 {
-	width: 202px;
+	width: 270px;
 	height: 50px;
 	margin: 18px auto;
 	color: rgb(25, 25, 112);
@@ -197,7 +197,7 @@ button {
 
 
 	<div id="center">
-		<h1>진료 기록 조회</h1>
+		<h1>예약/진료 내역 조회</h1>
 		<br> <br>
 
 		<form action="mrecordsearch" method="post" id="searchform">
