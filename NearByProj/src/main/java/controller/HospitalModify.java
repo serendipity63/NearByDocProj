@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.math.BigDecimal;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -66,35 +67,47 @@ public class HospitalModify extends HttpServlet {
 		int size = 10 * 1024 * 1024;
 		MultipartRequest multi = new MultipartRequest(request, uploadPath, size, "utf-8",
 				new DefaultFileRenamePolicy());
-		String comnum=multi.getParameter("comnum");
+		String comnum = multi.getParameter("comnum");
 		String department = multi.getParameter("department");
 		String hname = multi.getParameter("hname");
 		String htel = multi.getParameter("htel");
 		String hroad = multi.getParameter("hroad");
+		String hdetail = multi.getParameter("hdetail");
+		String hpostcode = multi.getParameter("hpostcode");
+		String hdong = multi.getParameter("hdong");
 		String clinic = multi.getParameter("clinic");
 		String lunch = multi.getParameter("lunch");
 		String hurl = multi.getOriginalFileName("hurl");
 
-		System.out.println("lunch"+lunch);
-		
+		BigDecimal lat = new BigDecimal(multi.getParameter("lat"));
+		System.out.println(lat);
+		BigDecimal lon = new BigDecimal(multi.getParameter("lon"));
+		System.out.println(lon);
+
+		System.out.println("lunch" + lunch);
+
 		HttpSession session = request.getSession();
-		Hospital h=(Hospital)session.getAttribute("hospitaluser");
+		Hospital h = (Hospital) session.getAttribute("hospitaluser");
 
 		Hospital hospital = new Hospital();
 		hospital.setComnum(comnum);
-		hospital.setClinic(clinic);
+		hospital.setHname(hname);
 		hospital.setDepartment(department);
+		hospital.setClinic(clinic);
 		hospital.setHroad(hroad);
-		hospital.setHurl(hurl);
+		hospital.setHdetail(hdetail);
+		hospital.setHpostcode(hpostcode);
+		hospital.setHdong(hdong);
 		hospital.setHtel(htel);
 		hospital.setLunch(lunch);
-		hospital.setHname(hname);
+		hospital.setHurl(hurl);
+		hospital.setLat(lat);
+		hospital.setLon(lon);
 
 		try {
 			HospitalService hospitalService = new HospitalServiceImpl();
 			hospitalService.hospitalModify(hospital);
-			System.out.println(hospital.getLunch());
-			
+
 			response.sendRedirect("hinfo");
 		} catch (Exception e) {
 			e.printStackTrace();

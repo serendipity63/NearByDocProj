@@ -19,7 +19,6 @@ body {
 }
 
 h1 {
-
 	text-align: center;
 	font-size: 24px;
 	color: #191970;
@@ -31,11 +30,11 @@ table {
 	max-width: 600px;
 	margin: 20px auto;
 	border-collapse: collapse;
-
 }
-input[type=text]{
-	border:none;
-	background-color:white;
+
+input[type=text] {
+	border: none;
+	background-color: white;
 }
 
 td {
@@ -52,9 +51,7 @@ input[type="text"] {
 
 #button {
 	text-align: center;
-
 	margin-top: 20px;
-
 }
 
 input[type="submit"], input[type="button"] {
@@ -65,74 +62,92 @@ input[type="submit"], input[type="button"] {
 	border: none;
 	cursor: pointer;
 	margin: 0 10px;
-	text-align:center;
-	
+	text-align: center;
 }
 </style>
 
-<body style="overflow-y:hidden">
-<%
+<body style="overflow-y: hidden">
+	<%
 pageContext.include("hmain.jsp");
 %>
 
-<h1>병원정보</h1>
-
-<table id="title">
-	<tr>
-		<td>병원명</td>
-		<td><input type="text" name="hname" id="hname"
-			value="${hinfo.getHname() }" disabled="disabled" /></td>
-	</tr>
-
-	<tr>
-		<td>진료과목</td>
-		<td><input type="text" name="department" id="department"
-			value="${hinfo.getDepartment() }" disabled="disabled" /></td>
-	</tr>
-
-	<tr>
-		<td>전화번호</td>
-		<td><input type="text" name="htel" id="htel"
-			value="${hinfo.getHtel() }" disabled="disabled" /></td>
-	</tr>
-	<tr>
-		<td>주소</td>
-		<td><input type="text" name="address" id="address"
-			value="${hinfo.getHroad() }" disabled="disabled" /></td>
-	</tr>
-
-	<tr>
-		<td>진료시간</td>
-		<td><input type="text" name="clinic" id="clinic"
-			value="${hinfo.getClinic() }" disabled="disabled" /></td>
-	</tr>
-	<tr>
-		<td>점심시간</td>
-		<td><input type="text" name="lunch" id="lunch"
-			value="${hinfo.getLunch() }" disabled="disabled" /></td>
-	</tr>
-	<tr>
-		<td>병원사진</td>
-		<td><img src="image?file=${hinfo.getHurl()}" alt="병원" width="100"
-			height="100"></td>
-	</tr>
-
-</table>
-<center> 
-	<input type="button" id="modify" value="수정"
-	onclick="location.href='hospitalmodify'">
-
-<div id="button">
-	<c:if test="${hospitaluser.comnum eq hospital.comnum }">
+	<h1>병원정보</h1>
 
 
-		<input id="hiddenComnum" type="text" value="${hinfo.getComnum() }"
-			style="display: none;">
+	<table id="title">
+		<tr>
+			<td>병원명</td>
+			<td><input type="text" name="hname" id="hname"
+				value="${hinfo.getHname() }" disabled="disabled" /></td>
+		</tr>
+
+		<tr>
+			<td>진료과목</td>
+			<td><input type="text" name="department" id="department"
+				value="${hinfo.getDepartment() }" disabled="disabled" /></td>
+		</tr>
+
+		<tr>
+			<td>전화번호</td>
+			<td><input type="text" name="htel" id="htel"
+				value="${hinfo.getHtel() }" disabled="disabled" /></td>
+		</tr>
+		<tr>
+			<td>주소</td>
+			<td>
+				<div style="display: flex;">
+					<div style="width: 50%;">
+						<input type="text" name="hroad" id="hroad"
+							value="${hinfo.getHroad() }" disabled="disabled" />
+					</div>
+					<div style="width: 50%;">
+						<input type="text" name="hdetail" id="hdetail"
+							value="${hinfo.getHdetail() }" disabled="disabled" />
+					</div>
+				</div>	
+			</td>	
+		</tr>
+
+		<tr>
+			<td>진료시간</td>
+			<td><input type="text" name="clinic" id="clinic"
+				value="${hinfo.getClinic() }" disabled="disabled" /></td>
+		</tr>
+		<tr>
+			<td>점심시간</td>
+			<td><input type="text" name="lunch" id="lunch"
+				value="${hinfo.getLunch() }" disabled="disabled" /></td>
+		</tr>
+		<tr>
+			<td>병원사진</td>
+			<td><img src="image?file=${hinfo.getHurl()}" alt="병원"
+				width="100" height="100"></td>
+
+			<td><input type="text" name="hdong" id="hdong"
+				value="${hinfo.getHdong() }" style="display: none;" /></td>
+			<td><input type="text" name="lat" id="lat"
+				value="${hinfo.getLat() }" style="display: none;" /></td>
+			<td><input type="text" name="lon" id="lon"
+				value="${hinfo.getLon() }" style="display: none;" /></td>
+
+		</tr>
+
+	</table>
+
+	<center>
+		<input type="button" id="modify" value="수정"
+			onclick="location.href='hospitalmodify'">
+
+		<div id="button">
+			<c:if test="${hospitaluser.comnum eq hospital.comnum }">
 
 
-	</c:if>
-</div>
-</center>
+				<input id="hiddenComnum" type="text" value="${hinfo.getComnum() }"
+					style="display: none;">
+
+			</c:if>
+		</div>
+	</center>
 
 
 
