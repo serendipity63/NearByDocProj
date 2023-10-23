@@ -263,6 +263,18 @@
 	]]>
 	</select>
 	
+	<select id='selectCurTime' resultType="String" >
+	<![CDATA[
+		SELECT SUBSTRING(NOW(),12,5)
+	]]>
+	</select>
+	
+	<select id='selectToday' resultType="String" >
+	<![CDATA[
+		SELECT SUBSTRING(NOW(),1,10)
+	]]>
+	</select>
+	
 	
 	<!-- 예약 환자 조건 검색 데이터 수-->
 	<select id="searchReservationCount"  parameterType="hashmap" resultType="Integer">

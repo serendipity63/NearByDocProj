@@ -53,4 +53,6 @@ public interface ReservationDao {
 	List<Integer> selectIdByName(String pname) throws Exception;
 	List<String> resListByPidnum(Map<String, Object> param) throws Exception;
 	void updateDoccommentById(Map<String, Object> param) throws Exception;
+	String selectCurTime() throws Exception;
+	String selectToday() throws Exception;
 }
