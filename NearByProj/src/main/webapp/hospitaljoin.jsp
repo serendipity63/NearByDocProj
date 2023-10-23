@@ -523,7 +523,7 @@ label {
 			<%-- 위도 경도 얻기 시작 --%>
 
 			<script type="text/javascript"
-				src="//dapi.kakao.com/v2/maps/sdk.js?appkey=0f92754065fd18fb9b2450d8077e930c&libraries=services,drawing"></script>
+				src="//dapi.kakao.com/v2/maps/sdk.js?appkey=9d89924221e4663ea28198ac12a7944f&libraries=services,drawing"></script>
 
 			<script>
 				var geocoder = new kakao.maps.services.Geocoder();
