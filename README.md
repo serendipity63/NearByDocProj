@@ -7,6 +7,13 @@
 
 NEARBYDOC은 이러한 변화에 대응하여 연령불문 편리하게 병원을 예약하고 찾을 수 있는 서비스를 제공합니다. 현대 사회에서는 건강과 웰빙에 대한 관심이 증가하고 있으며, 이에 따라 병원 예약 뿐만 아니라 다양한 편의 기능도 함께 제공합니다.
 
+## 🔅 기술 스택
+<img src="https://img.shields.io/badge/jsp-00599C?style=for-the-badge&logo=c%2B%2B&logoColor=white"><img src="https://img.shields.io/badge/servlet-4479A1?style=for-the-badge&logo=mysql&logoColor=white"><img src="https://img.shields.io/badge/java-007396?style=for-the-badge&logo=java&logoColor=white"> <img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black">
+<img src="https://img.shields.io/badge/jquery-0769AD?style=for-the-badge&logo=jquery&logoColor=white">
+<img src="https://img.shields.io/badge/mariaDB-003545?style=for-the-badge&logo=mariaDB&logoColor=white">
+<img src="https://img.shields.io/badge/apache tomcat-F8DC75?style=for-the-badge&logo=apachetomcat&logoColor=white">
+<img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white"><img src="https://img.shields.io/badge/kakaomapapi-FFCA28?style=for-the-badge&logo=firebase&logoColor=white">
+
 ## 🏥 주요 기능
 ### 사용자 페이지
 
@@ -67,12 +74,7 @@ NEARBYDOC은 이러한 변화에 대응하여 연령불문 편리하게 병원�
 **[김지수](https://github.com/serendipity63)**
 **[박행복](https://github.com/happiipark)**
 **[박철현](https://github.com/1912-git)**
-## 🔅 기술 스택
-<img src="https://img.shields.io/badge/jsp-00599C?style=for-the-badge&logo=c%2B%2B&logoColor=white"><img src="https://img.shields.io/badge/servlet-4479A1?style=for-the-badge&logo=mysql&logoColor=white"><img src="https://img.shields.io/badge/java-007396?style=for-the-badge&logo=java&logoColor=white"> <img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black">
-<img src="https://img.shields.io/badge/jquery-0769AD?style=for-the-badge&logo=jquery&logoColor=white">
-<img src="https://img.shields.io/badge/mariaDB-003545?style=for-the-badge&logo=mariaDB&logoColor=white">
-<img src="https://img.shields.io/badge/apache tomcat-F8DC75?style=for-the-badge&logo=apachetomcat&logoColor=white">
-<img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white"><img src="https://img.shields.io/badge/kakaomapapi-FFCA28?style=for-the-badge&logo=firebase&logoColor=white">
+
 
 
 
